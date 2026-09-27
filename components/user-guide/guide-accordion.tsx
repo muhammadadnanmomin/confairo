@@ -78,7 +78,7 @@ export function GuideAccordion({ sections, color }: GuideAccordionProps) {
             <button
               type="button"
               onClick={() => toggle(idx)}
-              className="flex w-full items-center justify-between gap-4 p-5 text-left"
+              className="flex w-full cursor-pointer items-center justify-between gap-4 p-5 text-left"
             >
               <div className="flex items-center gap-3">
                 <div

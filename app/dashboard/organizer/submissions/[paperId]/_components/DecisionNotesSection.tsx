@@ -61,7 +61,7 @@ export default function DecisionNotesSection({
               ].map(tpl => (
                 <button
                   key={tpl}
-                  className="text-xs px-2.5 py-1 rounded-full border border-gray-200 hover:bg-gray-100 text-gray-600 transition-colors"
+                  className="cursor-pointer text-xs px-2.5 py-1 rounded-full border border-gray-200 hover:bg-gray-100 text-gray-600 transition-colors"
                   onClick={() => onNoteChange(note ? `${note}\n${tpl}` : tpl)}
                 >
                   {tpl}

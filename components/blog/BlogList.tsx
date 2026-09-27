@@ -107,7 +107,7 @@ export function BlogList({ posts }: BlogListProps) {
           <button
             type="button"
             onClick={() => setVisibleCount((c) => c + POSTS_PER_PAGE)}
-            className="inline-flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-6 py-2.5 text-sm font-medium text-gray-700 shadow-sm transition-all hover:border-gray-300 hover:bg-gray-50 hover:shadow"
+            className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-gray-200 bg-white px-6 py-2.5 text-sm font-medium text-gray-700 shadow-sm transition-all hover:border-gray-300 hover:bg-gray-50 hover:shadow"
           >
             Load More Articles
             <svg

@@ -84,7 +84,7 @@ export function TableOfContents({ content }: TableOfContentsProps) {
                 });
               }}
               className={cn(
-                "block border-l-2 py-1.5 text-sm transition-all",
+                "block cursor-pointer border-l-2 py-1.5 text-sm transition-all",
                 heading.level === 3 ? "pl-6" : "pl-4",
                 activeId === heading.id
                   ? "border-indigo-600 font-medium text-indigo-600"

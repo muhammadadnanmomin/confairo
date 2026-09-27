@@ -481,7 +481,7 @@ export default function EditProfilePage() {
                   <button
                     type="button"
                     onClick={() => removeInterest(tag)}
-                    className="ml-1 rounded-full hover:bg-muted p-0.5"
+                    className="ml-1 cursor-pointer rounded-full hover:bg-muted p-0.5"
                   >
                     <X className="h-3 w-3" />
                   </button>

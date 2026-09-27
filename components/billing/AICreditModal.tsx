@@ -54,7 +54,7 @@ export default function AICreditModal({
           <button
             onClick={onClose}
             disabled={paying}
-            className="absolute top-3 right-3 h-7 w-7 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors"
+            className="absolute top-3 right-3 h-7 w-7 cursor-pointer rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors disabled:cursor-not-allowed"
           >
             <X className="h-4 w-4" />
           </button>
@@ -91,7 +91,7 @@ export default function AICreditModal({
                     key={pack.id}
                     onClick={() => setSelected(pack.credits)}
                     disabled={paying}
-                    className={`relative rounded-xl border-2 p-4 text-left transition-all duration-200 ${
+                    className={`relative cursor-pointer rounded-xl border-2 p-4 text-left transition-all duration-200 disabled:cursor-not-allowed ${
                       isSelected
                         ? "border-indigo-600 bg-indigo-50 shadow-md shadow-indigo-100/50 ring-1 ring-indigo-600/20"
                         : "border-gray-200 bg-white hover:border-gray-300 hover:shadow-sm"
@@ -128,7 +128,7 @@ export default function AICreditModal({
             <button
               onClick={() => setSelected(0)}
               disabled={paying}
-              className={`w-full mt-2 py-2.5 rounded-lg text-sm transition-all ${
+              className={`w-full mt-2 cursor-pointer py-2.5 rounded-lg text-sm transition-all disabled:cursor-not-allowed ${
                 selected === 0
                   ? "bg-gray-100 text-gray-800 font-medium border-2 border-gray-300"
                   : "text-gray-500 hover:text-gray-700 hover:bg-gray-50 border-2 border-transparent"
@@ -207,7 +207,7 @@ export default function AICreditModal({
             <button
               onClick={onClose}
               disabled={paying}
-              className="w-full text-center text-xs text-gray-400 hover:text-gray-600 transition-colors py-1"
+              className="w-full cursor-pointer text-center text-xs text-gray-400 hover:text-gray-600 transition-colors py-1 disabled:cursor-not-allowed"
             >
               Cancel
             </button>

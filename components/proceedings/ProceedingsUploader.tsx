@@ -136,7 +136,7 @@ export default function ProceedingsUploader({
             <button
               type="button"
               onClick={(e) => { e.stopPropagation(); setFile(null); }}
-              className="ml-2 p-1 rounded hover:bg-gray-200"
+              className="ml-2 cursor-pointer p-1 rounded hover:bg-gray-200"
             >
               <X className="h-4 w-4 text-gray-500" />
             </button>

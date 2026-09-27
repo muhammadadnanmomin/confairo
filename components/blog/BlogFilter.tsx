@@ -20,7 +20,7 @@ export function BlogFilter({ selected, onChange }: BlogFilterProps) {
         type="button"
         onClick={() => onChange("all")}
         className={cn(
-          "rounded-full px-4 py-1.5 text-sm font-medium transition-all",
+          "cursor-pointer rounded-full px-4 py-1.5 text-sm font-medium transition-all",
           selected === "all"
             ? "bg-indigo-600 text-white shadow-sm"
             : "border border-gray-200 bg-white text-gray-600 hover:border-gray-300 hover:bg-gray-50"
@@ -36,7 +36,7 @@ export function BlogFilter({ selected, onChange }: BlogFilterProps) {
           type="button"
           onClick={() => onChange(cat.value)}
           className={cn(
-            "rounded-full px-4 py-1.5 text-sm font-medium transition-all",
+            "cursor-pointer rounded-full px-4 py-1.5 text-sm font-medium transition-all",
             selected === cat.value
               ? "bg-indigo-600 text-white shadow-sm"
               : "border border-gray-200 bg-white text-gray-600 hover:border-gray-300 hover:bg-gray-50"

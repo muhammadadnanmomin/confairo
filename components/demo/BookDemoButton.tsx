@@ -52,7 +52,7 @@ export function BookDemoButton({
     <button
       type="button"
       onClick={handleClick}
-      className={`${base} ${variants[variant]} ${className}`}
+      className={`${base} cursor-pointer ${variants[variant]} ${className}`}
     >
       <Calendar className="h-4 w-4" />
       {label}

@@ -62,7 +62,7 @@ export function QuickActions({ onSelect, disabled }: QuickActionsProps) {
           onClick={() => onSelect(action.query)}
           disabled={disabled}
           className="
-            inline-flex items-center gap-1.5 rounded-full
+            inline-flex cursor-pointer items-center gap-1.5 rounded-full
             border border-gray-200 dark:border-gray-700
             bg-white dark:bg-gray-800
             px-2.5 py-1

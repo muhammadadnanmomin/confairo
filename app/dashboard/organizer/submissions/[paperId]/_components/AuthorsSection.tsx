@@ -20,7 +20,7 @@ export default function AuthorsSection({ authors, paper, onCopyEmail, copiedEmai
   return (
     <Card className="overflow-hidden">
       <button
-        className="w-full flex items-center justify-between px-5 py-4 bg-gray-50/50 hover:bg-gray-100/50 transition-colors text-left"
+        className="w-full cursor-pointer flex items-center justify-between px-5 py-4 bg-gray-50/50 hover:bg-gray-100/50 transition-colors text-left"
         onClick={() => setExpanded(!expanded)}
       >
         <div className="flex items-center gap-2 text-sm font-semibold text-gray-700">
@@ -51,7 +51,7 @@ export default function AuthorsSection({ authors, paper, onCopyEmail, copiedEmai
                     {a.email && (
                       <div className="flex items-center gap-1">
                         <a href={`mailto:${a.email}`} className="text-blue-600 hover:underline text-xs">{a.email}</a>
-                        <button onClick={() => onCopyEmail(a.email)} className="text-gray-400 hover:text-gray-600" title="Copy email">
+                        <button onClick={() => onCopyEmail(a.email)} className="cursor-pointer text-gray-400 hover:text-gray-600" title="Copy email">
                           {copiedEmail === a.email ? <CheckCircle2 className="h-3 w-3 text-green-500" /> : <Copy className="h-3 w-3" />}
                         </button>
                       </div>

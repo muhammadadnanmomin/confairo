@@ -212,7 +212,7 @@ export default function ReviewerPapersPage() {
           {searchQuery && (
             <button
               onClick={() => setSearchQuery("")}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+              className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-400 hover:text-gray-600"
             >
               <X className="h-4 w-4" />
             </button>
@@ -278,7 +278,7 @@ export default function ReviewerPapersPage() {
           {activeFilterCount > 0 && (
             <button
               onClick={clearFilters}
-              className="flex items-center gap-1 text-xs text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md border border-gray-200 hover:bg-gray-50 transition-colors"
+              className="flex cursor-pointer items-center gap-1 text-xs text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md border border-gray-200 hover:bg-gray-50 transition-colors"
             >
               <RotateCcw className="h-3 w-3" />
               Clear Filters
@@ -313,7 +313,7 @@ export default function ReviewerPapersPage() {
             {activeFilterCount > 0 && (
               <button
                 onClick={clearFilters}
-                className="mt-2 text-xs text-blue-600 hover:underline"
+                className="mt-2 cursor-pointer text-xs text-blue-600 hover:underline"
               >
                 Clear all filters
               </button>
@@ -410,7 +410,7 @@ function TabButton({
   return (
     <button
       onClick={onClick}
-      className={`px-4 py-2 rounded-lg text-sm font-medium border transition ${active
+      className={`cursor-pointer px-4 py-2 rounded-lg text-sm font-medium border transition ${active
         ? "bg-black text-white border-black"
         : "bg-white hover:bg-gray-50"
         }`}
@@ -451,7 +451,7 @@ function FilterSelect({
     <select
       value={value}
       onChange={e => onChange(e.target.value)}
-      className={`border rounded-md px-2.5 py-1.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition ${isActive ? "border-blue-400 bg-blue-50 text-blue-700" : "border-gray-200"
+      className={`cursor-pointer border rounded-md px-2.5 py-1.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition ${isActive ? "border-blue-400 bg-blue-50 text-blue-700" : "border-gray-200"
         }`}
     >
       {options.map(o => (

@@ -18,7 +18,7 @@ export default function ReviewerAuthorsSection({ authors, paper }: ReviewerAutho
       {/* Authors */}
       <Card className="overflow-hidden">
         <button
-          className="w-full flex items-center justify-between px-5 py-4 bg-gray-50/50 hover:bg-gray-100/50 transition-colors text-left"
+          className="w-full cursor-pointer flex items-center justify-between px-5 py-4 bg-gray-50/50 hover:bg-gray-100/50 transition-colors text-left"
           onClick={() => setExpanded(!expanded)}
         >
           <div className="flex items-center gap-2 text-sm font-semibold text-gray-700">

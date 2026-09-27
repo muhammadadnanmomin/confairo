@@ -103,7 +103,7 @@ export default function ForgotPasswordPage() {
 
           <button
             onClick={() => history.back()}
-            className="text-indigo-600 hover:underline"
+            className="cursor-pointer text-indigo-600 hover:underline"
           >
             ← Back to login
           </button>

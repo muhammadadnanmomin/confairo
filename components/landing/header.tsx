@@ -82,7 +82,7 @@ export function Header() {
           {!loading && !profile && (
             <>
               <Link href="/login">
-                <Button variant="ghost" size="sm" className="text-[13px]">
+                <Button variant="ghost" size="sm" className="text-[13px] cursor-pointer">
                   Log in
                 </Button>
               </Link>
@@ -90,7 +90,7 @@ export function Header() {
               <Link href="/signup">
                 <Button
                   size="sm"
-                  className="text-[13px] bg-[var(--lp-accent)] text-white hover:bg-[var(--lp-accent-hover)]"
+                  className="text-[13px] cursor-pointer bg-[var(--lp-accent)] text-white hover:bg-[var(--lp-accent-hover)]"
                 >
                   Get Started
                 </Button>
@@ -122,7 +122,7 @@ export function Header() {
         {/* Mobile Menu Button */}
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded-md p-1.5 md:hidden"
+          className="inline-flex cursor-pointer items-center justify-center rounded-md p-1.5 md:hidden"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle menu"
           aria-expanded={mobileMenuOpen}
@@ -210,7 +210,7 @@ export function Header() {
                   </Link>
 
                   <Link href="/signup">
-                    <Button className="w-full bg-[var(--lp-accent)] text-white hover:bg-[var(--lp-accent-hover)]">
+                    <Button className="w-full cursor-pointer bg-[var(--lp-accent)] text-white hover:bg-[var(--lp-accent-hover)]">
                       Get Started
                     </Button>
                   </Link>

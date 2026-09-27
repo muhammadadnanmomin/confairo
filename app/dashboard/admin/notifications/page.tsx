@@ -109,7 +109,7 @@ export default function AdminNotificationsPage() {
           <select
             value={target}
             onChange={(e) => setTarget(e.target.value)}
-            className="border rounded-md px-3 py-2 text-sm"
+            className="cursor-pointer border rounded-md px-3 py-2 text-sm"
           >
             <option value="all">All Users</option>
             <option value="organizer">Organizers</option>

@@ -634,6 +634,7 @@ export default function ParticipantSubmissionsPage() {
                       <label key={key} className="flex gap-2 text-sm items-center">
                         <input
                           type="checkbox"
+                          className="cursor-pointer"
                           onChange={e => setDeclarations(p => ({
                             ...p,
                             [confId]: { ...p[confId], [key]: e.target.checked }
@@ -1161,7 +1162,7 @@ function CollapsibleSection({
   return (
     <div className="border rounded-lg overflow-hidden">
       <button
-        className="w-full flex items-center justify-between px-4 py-3 bg-gray-50 hover:bg-gray-100 transition-colors text-left"
+        className="w-full cursor-pointer flex items-center justify-between px-4 py-3 bg-gray-50 hover:bg-gray-100 transition-colors text-left"
         onClick={() => toggle(id)}
       >
         <div className="flex items-center gap-2 text-sm font-semibold text-gray-700">

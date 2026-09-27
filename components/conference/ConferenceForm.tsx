@@ -960,7 +960,7 @@ export default function ConferenceForm({
                 <div className="space-y-1">
                     <label className="text-sm font-medium">Mode</label>
                     <select
-                        className="w-full border rounded-md px-3 py-2 text-sm bg-background"
+                        className="w-full cursor-pointer border rounded-md px-3 py-2 text-sm bg-background"
                         value={conferenceMode}
                         onChange={(e) => setConferenceMode(e.target.value)}
                     >
@@ -1179,7 +1179,7 @@ export default function ConferenceForm({
                                 <button
                                     type="button"
                                     onClick={() => removeTrack(t)}
-                                    className="ml-1 rounded-full hover:bg-muted p-0.5"
+                                    className="ml-1 cursor-pointer rounded-full hover:bg-muted p-0.5"
                                 >
                                     <X className="h-3 w-3" />
                                 </button>
@@ -1412,7 +1412,7 @@ export default function ConferenceForm({
                                         {/* Category header */}
                                         <button
                                             type="button"
-                                            className="w-full flex items-center justify-between px-4 py-3 bg-muted/40 hover:bg-muted/60 transition-colors"
+                                            className="w-full cursor-pointer flex items-center justify-between px-4 py-3 bg-muted/40 hover:bg-muted/60 transition-colors"
                                             onClick={() => toggleCategoryExpand(cat)}
                                         >
                                             <span className="text-sm font-semibold">{cat} Fees</span>

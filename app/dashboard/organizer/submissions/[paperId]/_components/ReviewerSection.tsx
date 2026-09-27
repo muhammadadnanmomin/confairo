@@ -64,7 +64,7 @@ export default function ReviewerSection({
                   <p className="text-xs text-gray-500">{reviewer.email}</p>
                   <button
                     onClick={() => onCopyEmail(reviewer.email)}
-                    className="text-gray-400 hover:text-gray-600 transition-colors"
+                    className="cursor-pointer text-gray-400 hover:text-gray-600 transition-colors"
                     title="Copy email"
                   >
                     {copiedEmail === reviewer.email

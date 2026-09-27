@@ -566,7 +566,7 @@ export function SessionModal({
                                             key={paper.id}
                                             type="button"
                                             onClick={() => togglePaper(paper.id)}
-                                            className={`w-full text-left text-sm px-2 py-1.5 rounded transition ${selected
+                                            className={`w-full cursor-pointer text-left text-sm px-2 py-1.5 rounded transition ${selected
                                                 ? "bg-indigo-50 text-indigo-700 font-medium"
                                                 : "hover:bg-gray-50"
                                                 }`}

@@ -58,7 +58,7 @@ export default function DashboardRootLayout({
       {mobileOpen && (
         <div
           onClick={() => setMobileOpen(false)}
-          className="fixed inset-0 z-40 bg-black/40 md:hidden"
+          className="fixed inset-0 z-40 cursor-pointer bg-black/40 md:hidden"
         />
       )}
 

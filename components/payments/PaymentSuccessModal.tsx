@@ -112,7 +112,7 @@ export default function PaymentSuccessModal({
                                 </code>
                                 <button
                                     onClick={handleCopyPaymentId}
-                                    className="p-1 rounded hover:bg-gray-200 transition"
+                                    className="p-1 cursor-pointer rounded hover:bg-gray-200 transition"
                                     title="Copy Payment ID"
                                 >
                                     {copied ? (

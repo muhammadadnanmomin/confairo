@@ -207,7 +207,7 @@ export default function BillingUpgradePage() {
             {/* Back link */}
             <button
                 onClick={() => router.back()}
-                className="flex items-center gap-1 text-sm text-gray-500 hover:text-gray-700 transition-colors"
+                className="flex cursor-pointer items-center gap-1 text-sm text-gray-500 hover:text-gray-700 transition-colors"
             >
                 <ArrowLeft className="h-4 w-4" />
                 Back

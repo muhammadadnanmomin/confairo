@@ -47,7 +47,7 @@ export default function SimilarityReviewPanel({
         <div className="flex-1">
           <label className="text-xs text-gray-500 block mb-1">Update Status</label>
           <select value={plagiarismStatus} onChange={e => onStatusChange(e.target.value)}
-            className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+            className="w-full cursor-pointer border border-gray-300 rounded-md px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
             <option value="pending">Not Analyzed</option>
             <option value="checking">Checking</option>
             <option value="passed">Passed</option>

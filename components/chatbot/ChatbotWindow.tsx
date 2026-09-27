@@ -141,7 +141,7 @@ export function ChatbotWindow({
             onClick={onClearHistory}
             title="Clear chat history"
             className="
-              h-7 w-7 rounded-lg
+              h-7 w-7 cursor-pointer rounded-lg
               flex items-center justify-center
               text-white/70 hover:text-white hover:bg-white/20
               transition-colors
@@ -156,7 +156,7 @@ export function ChatbotWindow({
             onClick={onMinimize}
             title="Minimize"
             className="
-              h-7 w-7 rounded-lg
+              h-7 w-7 cursor-pointer rounded-lg
               flex items-center justify-center
               text-white/70 hover:text-white hover:bg-white/20
               transition-colors
@@ -171,7 +171,7 @@ export function ChatbotWindow({
             onClick={onClose}
             title="Close"
             className="
-              h-7 w-7 rounded-lg
+              h-7 w-7 cursor-pointer rounded-lg
               flex items-center justify-center
               text-white/70 hover:text-white hover:bg-white/20
               transition-colors
@@ -280,7 +280,7 @@ export function ChatbotWindow({
               onClick={onStopStreaming}
               aria-label="Stop generating"
               className="
-                shrink-0 h-8 w-8 rounded-lg
+                shrink-0 h-8 w-8 cursor-pointer rounded-lg
                 bg-red-500 hover:bg-red-600
                 flex items-center justify-center
                 transition-colors
@@ -295,7 +295,7 @@ export function ChatbotWindow({
               disabled={!inputValue.trim()}
               aria-label="Send message"
               className="
-                shrink-0 h-8 w-8 rounded-lg
+                shrink-0 h-8 w-8 cursor-pointer rounded-lg
                 bg-indigo-600 hover:bg-indigo-700
                 flex items-center justify-center
                 transition-colors

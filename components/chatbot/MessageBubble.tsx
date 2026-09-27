@@ -123,7 +123,7 @@ export function MessageBubble({ message }: MessageBubbleProps) {
           {!message.isStreaming && message.content && (
             <button
               onClick={handleCopy}
-              className="text-[10px] text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 flex items-center gap-1 transition-colors"
+              className="cursor-pointer text-[10px] text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 flex items-center gap-1 transition-colors"
               aria-label="Copy message"
             >
               {copied ? (

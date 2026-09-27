@@ -328,7 +328,7 @@ export default function OrganizationSetup() {
                   <button
                     type="button"
                     onClick={clearLogo}
-                    className="text-xs text-red-500 hover:text-red-700 transition flex items-center gap-1 w-fit"
+                    className="cursor-pointer text-xs text-red-500 hover:text-red-700 transition flex items-center gap-1 w-fit"
                   >
                     <X className="h-3 w-3" />
                     Remove
@@ -339,7 +339,7 @@ export default function OrganizationSetup() {
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
-                className="flex items-center gap-3 w-full rounded-lg border-2 border-dashed border-gray-200 hover:border-primary/40 transition p-4 text-left group"
+                className="flex cursor-pointer items-center gap-3 w-full rounded-lg border-2 border-dashed border-gray-200 hover:border-primary/40 transition p-4 text-left group"
               >
                 <div className="h-12 w-12 rounded-lg bg-gray-100 group-hover:bg-primary/10 transition flex items-center justify-center">
                   <ImageIcon className="h-5 w-5 text-gray-400 group-hover:text-primary transition" />

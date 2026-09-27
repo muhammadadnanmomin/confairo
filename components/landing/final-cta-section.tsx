@@ -37,7 +37,7 @@ export function FinalCTASection() {
         <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
           <button
             onClick={handleGetStarted}
-            className="inline-flex items-center gap-2 rounded-md bg-[var(--lp-accent)] px-6 py-2.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[var(--lp-accent-hover)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--lp-accent)]"
+            className="inline-flex cursor-pointer items-center gap-2 rounded-md bg-[var(--lp-accent)] px-6 py-2.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[var(--lp-accent-hover)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--lp-accent)]"
           >
             Get Started
             <ArrowRight className="h-4 w-4" />
@@ -45,7 +45,7 @@ export function FinalCTASection() {
 
           <button
             onClick={openDemo}
-            className="inline-flex items-center gap-2 rounded-md border border-[var(--lp-border)] px-6 py-2.5 text-sm font-medium text-[var(--lp-ink-secondary)] transition-colors duration-200 hover:border-[var(--lp-border-strong)] hover:text-[var(--lp-ink)]"
+            className="inline-flex cursor-pointer items-center gap-2 rounded-md border border-[var(--lp-border)] px-6 py-2.5 text-sm font-medium text-[var(--lp-ink-secondary)] transition-colors duration-200 hover:border-[var(--lp-border-strong)] hover:text-[var(--lp-ink)]"
           >
             <Calendar className="h-4 w-4" />
             Book a Demo

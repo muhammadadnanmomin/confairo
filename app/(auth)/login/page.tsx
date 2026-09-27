@@ -121,7 +121,7 @@ function LoginInner() {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-400 hover:text-gray-600"
                 aria-label={showPassword ? "Hide password" : "Show password"}
               >
                 {showPassword ? (
@@ -166,7 +166,7 @@ function LoginInner() {
             Don&apos;t have an account?{" "}
             <button
               onClick={() => router.push("/signup")}
-              className="font-medium text-indigo-600 hover:underline"
+              className="cursor-pointer font-medium text-indigo-600 hover:underline"
             >
               Sign up
             </button>
@@ -175,7 +175,7 @@ function LoginInner() {
           <div>
             <button
               onClick={() => router.push("/forgot-password")}
-              className="text-indigo-600 hover:underline"
+              className="cursor-pointer text-indigo-600 hover:underline"
             >
               Forgot password?
             </button>

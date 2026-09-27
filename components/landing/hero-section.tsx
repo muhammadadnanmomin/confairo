@@ -92,7 +92,7 @@ export function HeroSection() {
             <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row lg:justify-start sm:justify-center">
               <button
                 onClick={handleGetStarted}
-                className="inline-flex items-center gap-2 rounded-md bg-[var(--lp-accent)] px-6 py-2.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[var(--lp-accent-hover)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--lp-accent)]"
+                className="inline-flex cursor-pointer items-center gap-2 rounded-md bg-[var(--lp-accent)] px-6 py-2.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[var(--lp-accent-hover)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--lp-accent)]"
               >
                 Get Started
                 <ArrowRight className="h-4 w-4" />
@@ -111,7 +111,7 @@ export function HeroSection() {
               Already organizing a conference?{" "}
               <button
                 onClick={handleOrganizerSetup}
-                className="font-medium text-[var(--lp-accent)] transition-colors duration-200 hover:text-[var(--lp-accent-hover)] hover:underline"
+                className="font-medium cursor-pointer text-[var(--lp-accent)] transition-colors duration-200 hover:text-[var(--lp-accent-hover)] hover:underline"
               >
                 Set up your organizer workspace →
               </button>

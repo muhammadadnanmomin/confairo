@@ -208,7 +208,7 @@ export function ManageTracksModal({
                                     key={color}
                                     type="button"
                                     onClick={() => setForm((f) => ({ ...f, color_code: color }))}
-                                    className="w-7 h-7 rounded-full border-2 transition-all hover:scale-110"
+                                    className="w-7 h-7 cursor-pointer rounded-full border-2 transition-all hover:scale-110"
                                     style={{
                                         backgroundColor: color,
                                         borderColor:

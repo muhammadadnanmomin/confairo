@@ -106,7 +106,7 @@ export function StepTimeline({ steps, color }: StepTimelineProps) {
                 <button
                   type="button"
                   onClick={() => toggleStep(idx)}
-                  className="flex w-full items-center justify-between gap-3 p-4 text-left sm:p-5"
+                  className="flex w-full cursor-pointer items-center justify-between gap-3 p-4 text-left sm:p-5"
                 >
                   <div className="flex items-center gap-3">
                     <Icon className="h-5 w-5 shrink-0 text-gray-400" />

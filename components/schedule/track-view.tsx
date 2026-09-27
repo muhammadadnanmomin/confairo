@@ -137,7 +137,9 @@ export function TrackView({
                         return (
                             <div
                                 key={track.id}
-                                className="flex-1 min-w-[160px] relative border-r last:border-r-0"
+                                className={`flex-1 min-w-[160px] relative border-r last:border-r-0 ${
+                                    !readonly && onSlotClick ? "cursor-pointer" : ""
+                                }`}
                                 onClick={(e) => {
                                     if (readonly) return;
                                     // Only fire if clicking empty space

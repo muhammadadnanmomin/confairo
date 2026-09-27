@@ -26,7 +26,7 @@ export function FloatingDemoButton() {
       onClick={openDemo}
       aria-label="Book a demo"
       className={`
-        fixed bottom-24 right-6 z-40
+        fixed bottom-24 right-6 z-40 cursor-pointer
         inline-flex items-center gap-2
         rounded-md bg-[var(--lp-accent)] 
         px-4 py-2.5 text-sm font-semibold text-white
@@ -37,7 +37,7 @@ export function FloatingDemoButton() {
       `}
     >
       <Calendar className="h-4 w-4" />
-      <span className="hidden sm:inline">Book a Demo</span>
+      <span className="hidden sm:inline cursor-pointer">Book a Demo</span>
     </button>
   );
 }

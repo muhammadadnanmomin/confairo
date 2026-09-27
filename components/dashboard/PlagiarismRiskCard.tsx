@@ -594,7 +594,7 @@ export default function PlagiarismRiskCard({ submissionId }: PlagiarismRiskCardP
               <span className="mx-2">•</span>
               <button
                 onClick={() => setShowFullReport(true)}
-                className="text-indigo-500 hover:text-indigo-700 underline underline-offset-2 transition-colors"
+                className="cursor-pointer text-indigo-500 hover:text-indigo-700 underline underline-offset-2 transition-colors"
               >
                 View Details
               </button>

@@ -122,7 +122,7 @@ export default function AdminUsersPage() {
                     onChange={(e) =>
                       updateRole(u.id, e.target.value)
                     }
-                    className="rounded border px-2 py-1 text-sm"
+                    className="cursor-pointer rounded border px-2 py-1 text-sm disabled:cursor-not-allowed"
                   >
                     <option value="participant">
                       Participant

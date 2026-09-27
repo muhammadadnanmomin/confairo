@@ -215,7 +215,7 @@ export function DashboardSidebar({
         {/* Mobile Close Button */}
         <button
           onClick={onMobileClose}
-          className="ml-auto md:hidden p-1 rounded-md hover:bg-gray-100 transition"
+          className="ml-auto cursor-pointer md:hidden p-1 rounded-md hover:bg-gray-100 transition"
         >
           <X className="h-5 w-5 text-gray-600" />
         </button>

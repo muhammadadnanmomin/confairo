@@ -601,7 +601,7 @@ export default function OrganizerCertificates() {
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="rounded-md border border-gray-200 bg-white px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="cursor-pointer rounded-md border border-gray-200 bg-white px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             >
               <option value="all">All Statuses</option>
               <option value="issued">Certificate Issued</option>
@@ -612,7 +612,7 @@ export default function OrganizerCertificates() {
             <select
               value={conferenceFilter}
               onChange={(e) => setConferenceFilter(e.target.value)}
-              className="rounded-md border border-gray-200 bg-white px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 truncate"
+              className="cursor-pointer rounded-md border border-gray-200 bg-white px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 truncate"
             >
               <option value="all">All Conferences</option>
               {uniqueConferences.map((c) => (

@@ -33,7 +33,7 @@ export function ChatbotButton({
         onClick={onClick}
         aria-label={isOpen ? "Close chat" : "Open Confairo AI chat"}
         className="
-          relative h-14 w-14 rounded-full
+          relative h-14 w-14 cursor-pointer rounded-full
           shadow-[0_8px_30px_rgba(79,70,229,0.4)]
           flex items-center justify-center
           transition-all duration-300 ease-out

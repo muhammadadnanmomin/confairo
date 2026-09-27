@@ -22,7 +22,7 @@ export default function AILimitModal({ onClose, used, total }: AILimitModalProps
         <div className="bg-gradient-to-br from-red-500 via-orange-500 to-amber-500 px-6 py-8 text-white relative">
           <button
             onClick={onClose}
-            className="absolute top-3 right-3 h-7 w-7 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors"
+            className="absolute top-3 right-3 h-7 w-7 cursor-pointer rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors"
           >
             <X className="h-4 w-4" />
           </button>
@@ -94,7 +94,7 @@ export default function AILimitModal({ onClose, used, total }: AILimitModalProps
               );
               onClose();
             }}
-            className="w-full text-center text-xs text-gray-400 hover:text-gray-600 transition-colors py-1"
+            className="w-full cursor-pointer text-center text-xs text-gray-400 hover:text-gray-600 transition-colors py-1"
           >
             Or buy 50 analyses for ₹299 →
           </button>

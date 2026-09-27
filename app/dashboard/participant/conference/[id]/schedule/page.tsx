@@ -245,7 +245,7 @@ export default function ParticipantSchedulePage() {
                     {/* Day Tabs */}
                     <div className="flex items-center gap-1.5 overflow-x-auto pb-1">
                         <button
-                            className={`px-3 py-1.5 rounded-lg text-sm font-medium transition whitespace-nowrap ${
+                            className={`cursor-pointer px-3 py-1.5 rounded-lg text-sm font-medium transition whitespace-nowrap ${
                                 !selectedDayId
                                     ? "bg-indigo-100 text-indigo-700"
                                     : "text-muted-foreground hover:bg-gray-100"
@@ -257,7 +257,7 @@ export default function ParticipantSchedulePage() {
                         {days.map((day) => (
                             <button
                                 key={day.id}
-                                className={`px-3 py-1.5 rounded-lg text-sm font-medium transition whitespace-nowrap ${
+                                className={`cursor-pointer px-3 py-1.5 rounded-lg text-sm font-medium transition whitespace-nowrap ${
                                     selectedDayId === day.id
                                         ? "bg-indigo-100 text-indigo-700"
                                         : "text-muted-foreground hover:bg-gray-100"
@@ -280,7 +280,7 @@ export default function ParticipantSchedulePage() {
                             <button
                                 key={tab.key}
                                 onClick={() => setActiveView(tab.key)}
-                                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition ${
+                                className={`flex cursor-pointer items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition ${
                                     activeView === tab.key
                                         ? "bg-white shadow-sm text-foreground"
                                         : "text-muted-foreground hover:text-foreground"

@@ -148,8 +148,8 @@ export function PricingSection() {
                 onClick={() => handlePlanClick(plan)}
                 className={`mt-6 w-full ${
                   plan.highlighted
-                    ? "bg-[var(--lp-accent)] text-white hover:bg-[var(--lp-accent-hover)]"
-                    : ""
+                    ? "bg-[var(--lp-accent)] cursor-pointer text-white hover:bg-[var(--lp-accent-hover)]"
+                    : "cursor-pointer"
                 }`}
                 variant={plan.highlighted ? "default" : "outline"}
               >

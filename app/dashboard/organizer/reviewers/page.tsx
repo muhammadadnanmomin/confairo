@@ -631,7 +631,7 @@ export default function OrganizerReviewers() {
           {searchQuery && (
             <button
               onClick={() => setSearchQuery("")}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+              className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-400 hover:text-gray-600"
             >
               <X className="h-4 w-4" />
             </button>
@@ -644,7 +644,7 @@ export default function OrganizerReviewers() {
             <select
               value={selectedConference}
               onChange={e => setSelectedConference(e.target.value)}
-              className={`border rounded-md px-2.5 py-1.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition ${selectedConference !== "all" ? "border-blue-400 bg-blue-50 text-blue-700" : "border-gray-200"
+              className={`cursor-pointer border rounded-md px-2.5 py-1.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition ${selectedConference !== "all" ? "border-blue-400 bg-blue-50 text-blue-700" : "border-gray-200"
                 }`}
             >
               <option value="all">All Conferences</option>
@@ -657,7 +657,7 @@ export default function OrganizerReviewers() {
           {activeFilterCount > 0 && (
             <button
               onClick={clearFilters}
-              className="flex items-center gap-1 text-xs text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md border border-gray-200 hover:bg-gray-50 transition-colors"
+              className="flex cursor-pointer items-center gap-1 text-xs text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md border border-gray-200 hover:bg-gray-50 transition-colors"
             >
               <RotateCcw className="h-3 w-3" />
               Clear Filters
@@ -692,7 +692,7 @@ export default function OrganizerReviewers() {
               <>
                 <Search className="h-8 w-8 text-gray-300 mx-auto mb-3" />
                 <p className="font-medium">No reviewers match current filters.</p>
-                <button onClick={clearFilters} className="mt-2 text-xs text-blue-600 hover:underline">
+                <button onClick={clearFilters} className="mt-2 cursor-pointer text-xs text-blue-600 hover:underline">
                   Clear all filters
                 </button>
               </>
@@ -742,7 +742,7 @@ export default function OrganizerReviewers() {
                             <Badge>Reviewer</Badge>
                             <button
                               onClick={() => setRemoveTarget({ reviewerId: r.id, conferenceId: confId, reviewerName: r.name })}
-                              className="text-gray-400 hover:text-red-600 transition-colors p-1 rounded"
+                              className="cursor-pointer text-gray-400 hover:text-red-600 transition-colors p-1 rounded"
                               title="Remove reviewer"
                             >
                               <Trash2 className="h-3.5 w-3.5" />

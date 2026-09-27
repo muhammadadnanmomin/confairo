@@ -432,7 +432,7 @@ export default function OrganizerBillingPage() {
             {/* Back link */}
             <button
                 onClick={() => router.back()}
-                className="flex items-center gap-1 text-sm text-gray-500 hover:text-gray-700 transition-colors"
+                className="flex cursor-pointer items-center gap-1 text-sm text-gray-500 hover:text-gray-700 transition-colors"
             >
                 <ArrowLeft className="h-4 w-4" />
                 Back
@@ -475,7 +475,7 @@ export default function OrganizerBillingPage() {
                                 key={pack.id}
                                 onClick={() => handleBuyCredits(pack.id)}
                                 disabled={buyingCredits}
-                                className={`relative group rounded-xl border-2 p-4 text-left transition-all hover:shadow-md ${pack.id === "ai_100"
+                                className={`relative group cursor-pointer rounded-xl border-2 p-4 text-left transition-all hover:shadow-md disabled:cursor-not-allowed ${pack.id === "ai_100"
                                         ? "border-indigo-300 bg-indigo-50/50 hover:border-indigo-400"
                                         : "border-gray-200 bg-white hover:border-gray-300"
                                     }`}

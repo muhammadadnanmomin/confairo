@@ -75,7 +75,7 @@ export function ShareButtons({ title, slug }: ShareButtonsProps) {
       <button
         type="button"
         onClick={handleCopyLink}
-        className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-3 text-sm text-gray-500 transition-all hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
+        className="inline-flex h-9 cursor-pointer items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-3 text-sm text-gray-500 transition-all hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
         title="Copy link"
       >
         {copied ? (

@@ -704,7 +704,7 @@ export default function ParticipantPaymentsPage() {
                     <div>
                       <label className="text-xs font-medium text-gray-500 uppercase tracking-wide block mb-1.5">Participant Category</label>
                       <select
-                        className="border border-gray-200 rounded-lg px-3 py-2.5 w-full text-sm bg-white focus:ring-2 focus:ring-indigo-200 focus:border-indigo-400 outline-none transition-all"
+                        className="cursor-pointer border border-gray-200 rounded-lg px-3 py-2.5 w-full text-sm bg-white focus:ring-2 focus:ring-indigo-200 focus:border-indigo-400 outline-none transition-all"
                         value={selectedCategory[confId] || ""}
                         onChange={(e) =>
                           setSelectedCategory({
@@ -738,7 +738,7 @@ export default function ParticipantPaymentsPage() {
                         <div>
                           <label className="text-xs font-medium text-gray-500 uppercase tracking-wide block mb-1.5">Presentation Type</label>
                           <select
-                            className="border border-gray-200 rounded-lg px-3 py-2.5 w-full text-sm bg-white focus:ring-2 focus:ring-indigo-200 focus:border-indigo-400 outline-none transition-all"
+                            className="cursor-pointer border border-gray-200 rounded-lg px-3 py-2.5 w-full text-sm bg-white focus:ring-2 focus:ring-indigo-200 focus:border-indigo-400 outline-none transition-all"
                             value={presentationType[confId] || ""}
                             onChange={(e) =>
                               setPresentationType({
@@ -760,7 +760,7 @@ export default function ParticipantPaymentsPage() {
                         <div>
                           <label className="text-xs font-medium text-gray-500 uppercase tracking-wide block mb-1.5">Publication Option</label>
                           <select
-                            className="border border-gray-200 rounded-lg px-3 py-2.5 w-full text-sm bg-white focus:ring-2 focus:ring-indigo-200 focus:border-indigo-400 outline-none transition-all"
+                            className="cursor-pointer border border-gray-200 rounded-lg px-3 py-2.5 w-full text-sm bg-white focus:ring-2 focus:ring-indigo-200 focus:border-indigo-400 outline-none transition-all"
                             value={publicationType[confId] || ""}
                             onChange={(e) =>
                               setPublicationType({

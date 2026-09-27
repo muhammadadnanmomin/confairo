@@ -167,7 +167,7 @@ export default function ChatbotAdminPage() {
               id="chatbot-admin-toggle"
               onClick={() => setSettings((s) => ({ ...s, enabled: !s.enabled }))}
               className={`
-                relative inline-flex h-6 w-11 items-center rounded-full
+                relative inline-flex h-6 w-11 cursor-pointer items-center rounded-full
                 transition-colors duration-200 focus:outline-none
                 ${settings.enabled ? "bg-indigo-600" : "bg-gray-300"}
               `}
@@ -233,11 +233,11 @@ export default function ChatbotAdminPage() {
             onClick={handleSave}
             disabled={saving}
             className="
-              flex items-center gap-2
+              flex cursor-pointer items-center gap-2
               bg-indigo-600 hover:bg-indigo-700
               text-white text-sm font-medium
               px-4 py-2.5 rounded-xl
-              transition-colors disabled:opacity-50
+              transition-colors disabled:cursor-not-allowed disabled:opacity-50
               shadow-sm
             "
           >
@@ -287,11 +287,11 @@ export default function ChatbotAdminPage() {
               onClick={handleSeed}
               disabled={seeding}
               className="
-                flex items-center gap-2
+                flex cursor-pointer items-center gap-2
                 bg-emerald-600 hover:bg-emerald-700
                 text-white text-sm font-medium
                 px-4 py-2.5 rounded-xl
-                transition-colors disabled:opacity-50
+                transition-colors disabled:cursor-not-allowed disabled:opacity-50
                 shadow-sm
               "
             >
@@ -309,13 +309,13 @@ export default function ChatbotAdminPage() {
               onClick={handleClear}
               disabled={clearing}
               className="
-                flex items-center gap-2
+                flex cursor-pointer items-center gap-2
                 bg-red-50 hover:bg-red-100
                 text-red-600 hover:text-red-700
                 border border-red-200
                 text-sm font-medium
                 px-4 py-2.5 rounded-xl
-                transition-colors disabled:opacity-50
+                transition-colors disabled:cursor-not-allowed disabled:opacity-50
               "
             >
               {clearing ? <Loader2 className="h-4 w-4 animate-spin" /> : <Trash2 className="h-4 w-4" />}
@@ -417,11 +417,11 @@ function CustomFAQCard({ onSaved }: { onSaved: () => void }) {
           onClick={handleAdd}
           disabled={saving || !question.trim() || !answer.trim()}
           className="
-            flex items-center gap-2
+            flex cursor-pointer items-center gap-2
             bg-indigo-600 hover:bg-indigo-700
             text-white text-sm font-medium
             px-4 py-2.5 rounded-xl
-            transition-colors disabled:opacity-50
+            transition-colors disabled:cursor-not-allowed disabled:opacity-50
             shadow-sm
           "
         >

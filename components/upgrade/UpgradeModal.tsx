@@ -142,7 +142,7 @@ export default function UpgradeModal({
                             variant: "destructive",
                             title: "Payment verification failed",
                             description:
-                                "Your payment could not be verified. Please contact support at Confairo.platform@gmail.com",
+                                "Your payment could not be verified. Please contact support at contact@confairo.com",
                         });
                     }
                 },

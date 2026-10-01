@@ -257,7 +257,7 @@ export function generatePaymentReceipt(data: ParticipantReceiptData): void {
     );
     y += 5;
     doc.text(
-        "For support, contact Confairo.platform@gmail.com",
+        "For support, contact contact@confairo.com",
         pageWidth / 2,
         y,
         { align: "center" }

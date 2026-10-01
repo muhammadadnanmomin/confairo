@@ -63,7 +63,7 @@ export default function ContactPage() {
               <div>
                 <p className="font-semibold">Email</p>
                 <p className="text-gray-600">
-                  Confairo.platform@gmail.com
+                  contact@confairo.com
                 </p>
               </div>
             </div>

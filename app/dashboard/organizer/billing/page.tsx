@@ -265,7 +265,7 @@ export default function OrganizerBillingPage() {
                             variant: "destructive",
                             title: "Payment verification failed",
                             description:
-                                "Your payment could not be verified. Please contact support at Confairo.platform@gmail.com",
+                                "Your payment could not be verified. Please contact support at contact@confairo.com",
                         });
                     }
                 },
@@ -476,8 +476,8 @@ export default function OrganizerBillingPage() {
                                 onClick={() => handleBuyCredits(pack.id)}
                                 disabled={buyingCredits}
                                 className={`relative group cursor-pointer rounded-xl border-2 p-4 text-left transition-all hover:shadow-md disabled:cursor-not-allowed ${pack.id === "ai_100"
-                                        ? "border-indigo-300 bg-indigo-50/50 hover:border-indigo-400"
-                                        : "border-gray-200 bg-white hover:border-gray-300"
+                                    ? "border-indigo-300 bg-indigo-50/50 hover:border-indigo-400"
+                                    : "border-gray-200 bg-white hover:border-gray-300"
                                     }`}
                             >
                                 {pack.id === "ai_100" && (

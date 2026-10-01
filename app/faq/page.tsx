@@ -80,7 +80,7 @@ const faqs = [
   {
     question: "How can I contact support?",
     answer:
-      "You can contact us through the Contact page or email us at Confairo.platform@gmail.com.",
+      "You can contact us through the Contact page or email us at contact@confairo.com.",
   },
 ];
 

@@ -173,7 +173,7 @@ export default function PrivacyPage() {
               For privacy-related questions or concerns, contact us at:
               <br />
               <span className="font-medium text-indigo-600">
-                Confairo.platform@gmail.com
+                contact@confairo.com
               </span>
             </p>
           </section>

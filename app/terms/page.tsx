@@ -205,7 +205,7 @@ export default function TermsPage() {
               For legal inquiries regarding these terms, please contact us at:
               <br />
               <span className="font-medium text-indigo-600">
-                Confairo.platform@gmail.com
+                contact@confairo.com
               </span>
             </p>
           </section>

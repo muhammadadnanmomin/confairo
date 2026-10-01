@@ -138,7 +138,7 @@ export async function sendPaymentConfirmation(
       </p>
       <p style="margin:8px 0 0;font-size:11px;color:#9ca3af;">
         For support, contact
-        <a href="mailto:Confairo.platform@gmail.com" style="color:#4f46e5;text-decoration:none;">Confairo.platform@gmail.com</a>
+        <a href="mailto:contact@confairo.com" style="color:#4f46e5;text-decoration:none;">contact@confairo.com</a>
       </p>
     </div>
 

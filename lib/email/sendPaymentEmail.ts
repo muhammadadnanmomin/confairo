@@ -131,7 +131,7 @@ export async function sendPaymentConfirmationEmail(
         Confairo — Academic Conference Management Platform
       </p>
       <p style="margin:4px 0 0;font-size:11px;color:#9ca3af;">
-        For support, contact Confairo.platform@gmail.com
+        For support, contact contact@confairo.com
       </p>
     </div>
 

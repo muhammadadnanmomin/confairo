@@ -71,7 +71,7 @@ export function Footer() {
             <div className="mt-3 space-y-1 text-sm text-[var(--lp-ink-tertiary)]">
               <div className="flex items-center gap-2">
                 <Mail className="h-3.5 w-3.5 text-[var(--lp-accent)]" />
-                Confairo.platform@gmail.com
+                contact@confairo.com
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="h-3.5 w-3.5 text-[var(--lp-accent)]" />

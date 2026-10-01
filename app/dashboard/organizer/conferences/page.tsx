@@ -27,6 +27,8 @@ import { toast } from "@/components/ui/use-toast";
 import Link from "next/link";
 
 import ShareConference from "@/components/shared/ShareConference";
+import { PublishVerificationDialog } from "@/components/verification/PublishVerificationDialog";
+import { VerificationRequestDialog } from "@/components/verification/VerificationRequestDialog";
 
 import {
   Calendar,
@@ -92,6 +94,9 @@ export default function OrganizerConferences() {
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [shareDialogConf, setShareDialogConf] = useState<{ id: string; title: string } | null>(null);
+  const [showPublishBlockDialog, setShowPublishBlockDialog] = useState(false);
+  const [showVerificationRequestDialog, setShowVerificationRequestDialog] = useState(false);
+  const [blockedConferenceTitle, setBlockedConferenceTitle] = useState<string | null>(null);
   const [ownerConferenceIds, setOwnerConferenceIds] = useState<Set<string>>(new Set());
   const [conferenceRoles, setConferenceRoles] = useState<Record<string, "owner" | "organizer">>({});
   const [roleFilter, setRoleFilter] = useState<"all" | "owned" | "co-organized">("all");
@@ -183,6 +188,14 @@ export default function OrganizerConferences() {
       const result = await res.json();
 
       if (!res.ok) {
+        // Intercept verification-required 403 on publish attempt (Phase 3C)
+        if (value && res.status === 403 && result.error === "Organizer verification required") {
+          const conf = conferences.find((c) => c.id === id);
+          setBlockedConferenceTitle(conf?.title || "Conference");
+          setShowPublishBlockDialog(true);
+          return;
+        }
+
         toast({
           variant: "destructive",
           title: res.status === 403
@@ -694,6 +707,21 @@ export default function OrganizerConferences() {
           userId={profile.id}
         />
       )}
+
+      {/* ============================================================ */}
+      {/*  Publish Verification Interception Dialog (Phase 3C)           */}
+      {/* ============================================================ */}
+      <PublishVerificationDialog
+        open={showPublishBlockDialog}
+        onOpenChange={setShowPublishBlockDialog}
+        conferenceTitle={blockedConferenceTitle || undefined}
+        onStartVerification={() => setShowVerificationRequestDialog(true)}
+      />
+
+      <VerificationRequestDialog
+        open={showVerificationRequestDialog}
+        onOpenChange={setShowVerificationRequestDialog}
+      />
 
     </div>
   );

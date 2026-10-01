@@ -3,11 +3,15 @@
 import { useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { useProfile } from "@/lib/auth/useProfile";
+import { useVerification } from "@/lib/verification/useVerification";
+import { VerificationRequestDialog } from "@/components/verification/VerificationRequestDialog";
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { Separator } from "@/components/ui/separator";
+import { Badge } from "@/components/ui/badge";
+import { Skeleton } from "@/components/ui/skeleton";
 import { toast } from "@/components/ui/use-toast";
 
 import {
@@ -26,6 +30,9 @@ import {
   Mail,
   Bell,
   Shield,
+  ShieldCheck,
+  CheckCircle2,
+  Clock,
   CreditCard,
   LogOut,
   KeyRound,
@@ -38,6 +45,20 @@ import {
 export default function SettingsPage() {
   const { profile } = useProfile();
   const supabase = createClient();
+
+  /* ── Verification status (Phase 3B) ── */
+  const {
+    isVerified,
+    institutionName,
+    institutionalEmail,
+    hasPendingRequest,
+    pendingEmail,
+    isLoading: verificationLoading,
+    error: verificationError,
+    refresh: refreshVerification,
+  } = useVerification();
+
+  const [showVerificationDialog, setShowVerificationDialog] = useState(false);
 
   /* ── Account email (from auth, read-only) ── */
   const [email, setEmail] = useState("");
@@ -116,6 +137,126 @@ export default function SettingsPage() {
             Email is managed through authentication and cannot be changed.
           </p>
         </div>
+
+      </Card>
+
+      {/* ── ACADEMIC TRUST & VERIFICATION ── */}
+      <Card className="p-6 space-y-6">
+
+        <SectionHeader
+          icon={<ShieldCheck className="h-5 w-5" />}
+          title="Academic Trust & Verification"
+          description="Verify your institutional affiliation before publishing academic conferences."
+        />
+
+        <Separator />
+
+        {verificationLoading ? (
+          <div className="space-y-3">
+            <Skeleton className="h-5 w-28" />
+            <Skeleton className="h-4 w-72" />
+          </div>
+        ) : verificationError ? (
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-sm">
+            <p className="text-gray-500">
+              We could not load your verification status. Please try again.
+            </p>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => refreshVerification()}
+              className="shrink-0"
+            >
+              Retry
+            </Button>
+          </div>
+        ) : isVerified ? (
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="space-y-1.5">
+              <div className="flex flex-wrap items-center gap-2">
+                <Badge className="bg-emerald-100 text-emerald-700 border-emerald-200">
+                  <CheckCircle2 className="h-3 w-3 mr-1" />
+                  Verified
+                </Badge>
+                {institutionName && (
+                  <span className="text-sm font-medium text-gray-900">
+                    {institutionName}
+                  </span>
+                )}
+              </div>
+              <p className="text-sm text-gray-500">
+                Your institutional affiliation is verified. You are authorized to publish academic conferences.
+              </p>
+              {institutionalEmail && (
+                <p className="text-xs text-gray-400">
+                  Verified via {institutionalEmail}
+                </p>
+              )}
+            </div>
+
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setShowVerificationDialog(true)}
+              className="shrink-0"
+            >
+              View Details
+            </Button>
+          </div>
+        ) : hasPendingRequest ? (
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="space-y-1.5">
+              <div className="flex flex-wrap items-center gap-2">
+                <Badge variant="outline" className="border-amber-300 bg-amber-50 text-amber-700">
+                  <Clock className="h-3 w-3 mr-1" />
+                  Verification Pending
+                </Badge>
+                {pendingEmail && (
+                  <span className="text-sm font-medium text-gray-800">
+                    {pendingEmail}
+                  </span>
+                )}
+              </div>
+              <p className="text-sm text-gray-500">
+                A verification link has been sent to your institutional email. Check your inbox to complete verification.
+              </p>
+            </div>
+
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setShowVerificationDialog(true)}
+              className="shrink-0"
+            >
+              Check Status
+            </Button>
+          </div>
+        ) : (
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="space-y-1">
+              <div className="flex items-center gap-2">
+                <Badge variant="secondary" className="text-gray-600">
+                  Not Verified
+                </Badge>
+              </div>
+              <p className="text-sm text-gray-500">
+                Institutional affiliation is required to publish conferences. Your primary login email will not change.
+              </p>
+            </div>
+
+            <Button
+              onClick={() => setShowVerificationDialog(true)}
+              className="bg-indigo-600 hover:bg-indigo-700 text-white shrink-0"
+            >
+              Verify Institutional Email
+            </Button>
+          </div>
+        )}
+
+        <VerificationRequestDialog
+          open={showVerificationDialog}
+          onOpenChange={setShowVerificationDialog}
+        />
 
       </Card>
 

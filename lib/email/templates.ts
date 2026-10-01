@@ -416,3 +416,90 @@ export const chairpersonAssignmentNotification = (
     </div>
   </div>
 `;
+
+
+/* ------------------------------------------------------------------ */
+/*  Phase 2C — Institutional Email Verification                        */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Escape HTML special characters in user-supplied strings to prevent
+ * injection in email templates.
+ */
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+export const institutionalVerificationEmail = (
+  institutionalEmail: string,
+  institutionName: string | null,
+  verificationLink: string,
+  expiresHours: number
+) => {
+  const safeEmail = escapeHtml(institutionalEmail);
+  const safeInstitution = institutionName ? escapeHtml(institutionName) : null;
+  const safeLink = encodeURI(verificationLink);
+
+  return `
+  <div style="font-family: Arial, Helvetica, sans-serif; background:#f6f8fb; padding:30px 15px; color:#222;">
+    <div style="max-width:600px; margin:auto; background:#ffffff; border-radius:8px; padding:30px; box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+
+      <h2 style="margin-top:0; color:#111;">Institutional Email Verification</h2>
+
+      <p>Hello,</p>
+
+      <p>
+        You requested to verify an institutional email address on
+        <strong>Confairo</strong> to unlock conference publishing capabilities.
+      </p>
+
+      <div style="background:#f3f6fb; border-left:4px solid #6366f1; padding:12px 15px; margin:15px 0; border-radius:4px;">
+        <p style="margin:0 0 6px;"><strong>Institutional Email:</strong> ${safeEmail}</p>
+        ${safeInstitution ? `<p style="margin:0;"><strong>Institution:</strong> ${safeInstitution}</p>` : ""}
+      </div>
+
+      <p>
+        Please click the button below to confirm ownership of this email address:
+      </p>
+
+      <p style="margin-top:25px;">
+        <a href="${safeLink}"
+           style="background:#6366f1; color:#fff; text-decoration:none; padding:12px 24px; border-radius:6px; display:inline-block; font-size:14px; font-weight:500;">
+          Verify Institutional Email
+        </a>
+      </p>
+
+      <p style="margin-top:20px; font-size:13px; color:#555;">
+        This verification link is <strong>single-use</strong> and will expire
+        in <strong>${expiresHours} hours</strong>. After verification, you will
+        be able to publish conferences on Confairo.
+      </p>
+
+      <p style="font-size:13px; color:#555;">
+        <strong>Important:</strong> Your primary Confairo login email is not
+        being changed. This verification only confirms your institutional
+        affiliation for trust purposes.
+      </p>
+
+      <hr style="border:none; border-top:1px solid #eee; margin:30px 0;" />
+
+      <p style="margin:0;">
+        Regards,<br/>
+        <strong>Confairo Team</strong>
+      </p>
+
+      <p style="font-size:12px; color:#777; margin-top:20px;">
+        This email was sent automatically by <strong>Confairo</strong>.<br/>
+        If you did not request this verification, you can safely ignore this
+        email. No changes will be made to your account.
+      </p>
+
+    </div>
+  </div>
+`;
+};

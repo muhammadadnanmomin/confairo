@@ -65,30 +65,57 @@ export default function OrganizerConferences() {
   }, [profile]);
 
   /* ================================================================ */
-  /*  Publish / Unpublish                                              */
+  /*  Publish / Unpublish — via secure server API                       */
   /* ================================================================ */
   async function togglePublish(id: string, value: boolean) {
-    const { error } = await supabase
-      .from("conferences")
-      .update({ is_published: value })
-      .eq("id", id);
-
-    if (error) {
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session?.access_token) {
       toast({
         variant: "destructive",
-        title: "Update failed",
-        description: error.message,
+        title: "Not authenticated",
+        description: "Please sign in to continue.",
       });
       return;
     }
 
-    toast({
-      title: value ? "Published" : "Unpublished",
-      description: "Conference status updated.",
-    });
+    try {
+      const res = await fetch("/api/organizer/publish", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${session.access_token}`,
+        },
+        body: JSON.stringify({ conferenceId: id, publish: value }),
+      });
 
-    loadConferences();
+      const result = await res.json();
+
+      if (!res.ok) {
+        toast({
+          variant: "destructive",
+          title: res.status === 403
+            ? "Cannot publish"
+            : "Update failed",
+          description: result.detail || result.error || "Unknown error",
+        });
+        return;
+      }
+
+      toast({
+        title: value ? "Published" : "Unpublished",
+        description: "Conference status updated.",
+      });
+
+      loadConferences();
+    } catch {
+      toast({
+        variant: "destructive",
+        title: "Network error",
+        description: "Could not reach the server. Please try again.",
+      });
+    }
   }
+
 
   /* ================================================================ */
   /*  Delete                                                           */

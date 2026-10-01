@@ -53,12 +53,28 @@ export default function AdminConferencesPage() {
     setLoading(false);
   }
 
-  /* Toggle publish */
+  /* Toggle publish — via secure server API */
   async function togglePublish(id: string, value: boolean) {
-    await supabase
-      .from("conferences")
-      .update({ is_published: value })
-      .eq("id", id);
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session?.access_token) return;
+
+    try {
+      const res = await fetch("/api/organizer/publish", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${session.access_token}`,
+        },
+        body: JSON.stringify({ conferenceId: id, publish: value }),
+      });
+
+      if (!res.ok) {
+        const result = await res.json();
+        console.error("Publish error:", result.error);
+      }
+    } catch (err) {
+      console.error("Publish network error:", err);
+    }
 
     loadConferences();
   }

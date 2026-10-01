@@ -158,35 +158,62 @@ export default function OrganizerConferences() {
     loadConferences();
   }, [profile, organization]);
 
-  /* Publish / Unpublish */
+  /* Publish / Unpublish — via secure server API */
   async function togglePublish(id: string, value: boolean) {
-    const { error } = await supabase
-      .from("conferences")
-      .update({ is_published: value })
-      .eq("id", id);
-
-    if (error) {
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session?.access_token) {
       toast({
         variant: "destructive",
-        title: "Update failed",
-        description: error.message,
+        title: "Not authenticated",
+        description: "Please sign in to continue.",
       });
       return;
     }
 
-    // On publish → show share popup instead of plain toast
-    if (value) {
-      const conf = conferences.find((c) => c.id === id);
-      setShareDialogConf({ id, title: conf?.title || "Conference" });
-    } else {
+    try {
+      const res = await fetch("/api/organizer/publish", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${session.access_token}`,
+        },
+        body: JSON.stringify({ conferenceId: id, publish: value }),
+      });
+
+      const result = await res.json();
+
+      if (!res.ok) {
+        toast({
+          variant: "destructive",
+          title: res.status === 403
+            ? "Cannot publish"
+            : "Update failed",
+          description: result.detail || result.error || "Unknown error",
+        });
+        return;
+      }
+
+      // On publish → show share popup instead of plain toast
+      if (value) {
+        const conf = conferences.find((c) => c.id === id);
+        setShareDialogConf({ id, title: conf?.title || "Conference" });
+      } else {
+        toast({
+          title: "Unpublished",
+          description: "Conference is now in draft mode.",
+        });
+      }
+
+      loadConferences();
+    } catch {
       toast({
-        title: "Unpublished",
-        description: "Conference is now in draft mode.",
+        variant: "destructive",
+        title: "Network error",
+        description: "Could not reach the server. Please try again.",
       });
     }
-
-    loadConferences();
   }
+
 
   /* Delete */
   async function deleteConference(id: string) {

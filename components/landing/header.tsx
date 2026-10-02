@@ -42,17 +42,15 @@ export function Header() {
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2.5">
+        <Link href="/" className="flex items-center">
           <Image
-            src="/logo.png"
-            alt="Confairo logo"
-            width={28}
-            height={28}
+            src="/logos/Horizontal_Logo.png"
+            alt="Confairo"
+            width={144}
+            height={48}
             priority
+            className="w-[124px] sm:w-[138px] md:w-[144px] h-auto object-contain"
           />
-          <span className="text-base font-semibold text-[var(--lp-ink)]">
-            Confairo
-          </span>
         </Link>
 
         {/* Desktop Nav */}

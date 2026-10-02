@@ -49,17 +49,15 @@ export function Footer() {
           {/* Brand — spans 2 cols */}
           <div className="lg:col-span-2">
 
-            <Link href="/" className="flex items-center gap-2.5">
+            <Link href="/" className="flex items-center">
               <Image
-                src="/logo.png"
+                src="/logos/Transparent_Logo.png"
                 alt="Confairo"
-                width={28}
-                height={28}
+                width={144}
+                height={48}
                 priority
+                className="w-[135px] md:w-[144px] h-auto object-contain"
               />
-              <span className="text-base font-semibold text-[var(--lp-ink)]">
-                Confairo
-              </span>
             </Link>
 
             <p className="mt-2.5 max-w-xs text-sm leading-relaxed text-[var(--lp-ink-tertiary)]">

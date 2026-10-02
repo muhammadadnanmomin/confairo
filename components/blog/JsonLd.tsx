@@ -30,7 +30,7 @@ export function JsonLd({ post, url }: JsonLdProps) {
       name: "Confairo",
       logo: {
         "@type": "ImageObject",
-        url: "https://confairo.com/logo.png",
+        url: "https://confairo.com/logos/Primary_Logo.png",
       },
     },
     mainEntityOfPage: {

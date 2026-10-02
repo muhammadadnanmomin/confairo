@@ -21,7 +21,6 @@ import {
   Bell,
   ChevronLeft,
   ChevronRight,
-  GraduationCap,
   LogOut,
   BarChart3,
   Shield,
@@ -190,25 +189,27 @@ export function DashboardSidebar({
           collapsed ? "justify-center" : "gap-3"
         )}
       >
-        {/* Logo */}
-        <div className="flex items-center justify-center h-9 w-9 flex-shrink-0">
-          <Image
-            src="/logo.png"
-            alt="Confairo Logo"
-            width={32}
-            height={32}
-            priority
-            className="object-contain"
-          />
-        </div>
-
-        {/* Brand Name */}
-        {!collapsed && (
-          <Link
-            href="/dashboard"
-            className="text-lg font-semibold tracking-tight leading-none text-gray-900"
-          >
-            Confairo
+        {collapsed ? (
+          <div className="flex items-center justify-center h-9 w-9 flex-shrink-0">
+            <Image
+              src="/logos/Symbol.png"
+              alt="Confairo Logo"
+              width={36}
+              height={36}
+              priority
+              className="h-8 w-8 object-contain"
+            />
+          </div>
+        ) : (
+          <Link href="/dashboard" className="flex items-center">
+            <Image
+              src="/logos/Horizontal_Logo.png"
+              alt="Confairo"
+              width={144}
+              height={48}
+              priority
+              className="w-[140px] md:w-[144px] h-auto object-contain"
+            />
           </Link>
         )}
 

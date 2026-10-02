@@ -14,6 +14,15 @@ import {
   Briefcase,
 } from "lucide-react";
 
+interface EducationEntry {
+  id: string;
+  institution: string | null;
+  degree: string | null;
+  field_of_study: string | null;
+  start_year: string | number | null;
+  end_year: string | number | null;
+}
+
 /* ------------------------------------------------------------------ */
 /*  Page                                                               */
 /* ------------------------------------------------------------------ */
@@ -35,8 +44,8 @@ export default async function PublicProfilePage({
   if (!profile) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
-        <User className="h-16 w-16 text-gray-300 mb-4" />
-        <h1 className="text-2xl font-bold text-gray-800">Profile Not Found</h1>
+        <User className="h-16 w-16 text-muted-foreground mb-4" />
+        <h1 className="text-2xl font-bold text-foreground">Profile Not Found</h1>
         <p className="text-muted-foreground mt-2 max-w-sm">
           The user <span className="font-mono font-medium">@{username}</span> does not exist on Confairo.
         </p>
@@ -62,7 +71,7 @@ export default async function PublicProfilePage({
         <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5 text-center sm:text-left">
           <Avatar className="h-24 w-24">
             <AvatarImage src={profile.avatar_url || ""} alt={profile.name || profile.username} />
-            <AvatarFallback className="bg-indigo-600 text-white text-2xl font-bold">
+            <AvatarFallback className="bg-primary text-primary-foreground text-2xl font-bold">
               {initial}
             </AvatarFallback>
           </Avatar>
@@ -93,7 +102,7 @@ export default async function PublicProfilePage({
       {profile.bio && (
         <Card className="p-6 space-y-3">
           <div className="flex items-center gap-2">
-            <User className="h-4 w-4 text-indigo-600" />
+            <User className="h-4 w-4 text-primary" />
             <h2 className="text-lg font-semibold">About</h2>
           </div>
           <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
@@ -106,7 +115,7 @@ export default async function PublicProfilePage({
       {profile.research_interests?.length > 0 && (
         <Card className="p-6 space-y-3">
           <div className="flex items-center gap-2">
-            <BookOpen className="h-4 w-4 text-indigo-600" />
+            <BookOpen className="h-4 w-4 text-primary" />
             <h2 className="text-lg font-semibold">Research Interests</h2>
           </div>
           <div className="flex flex-wrap gap-2">
@@ -123,11 +132,11 @@ export default async function PublicProfilePage({
       {education.length > 0 && (
         <Card className="p-6 space-y-4">
           <div className="flex items-center gap-2">
-            <GraduationCap className="h-4 w-4 text-indigo-600" />
+            <GraduationCap className="h-4 w-4 text-primary" />
             <h2 className="text-lg font-semibold">Education</h2>
           </div>
           <div className="space-y-3">
-            {education.map((edu: any) => (
+            {education.map((edu: EducationEntry) => (
               <div
                 key={edu.id}
                 className="border rounded-lg p-4 space-y-1"
@@ -150,7 +159,7 @@ export default async function PublicProfilePage({
       {/* ── Footer ── */}
       <p className="text-center text-xs text-muted-foreground">
         Public academic profile on{" "}
-        <span className="font-semibold text-indigo-600">Confairo</span>
+        <span className="font-semibold text-primary">Confairo</span>
       </p>
     </div>
   );

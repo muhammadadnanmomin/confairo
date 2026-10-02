@@ -4,7 +4,7 @@ import { CheckCircle2, AlertTriangle, Server, Database, Globe } from "lucide-rea
 
 export default function StatusPage() {
   return (
-    <main className="min-h-screen bg-white text-gray-900">
+    <main className="min-h-screen bg-background text-foreground">
 
       <Header />
 
@@ -14,18 +14,18 @@ export default function StatusPage() {
           System Status
         </h1>
 
-        <p className="mt-4 text-gray-600">
+        <p className="mt-4 text-muted-foreground">
           Check the current operational status of Confairo services.
         </p>
 
         {/* Overall Status */}
-        <div className="mt-8 rounded-xl border bg-green-50 p-6 flex items-center gap-4">
-          <CheckCircle2 className="h-6 w-6 text-green-600" />
+        <div className="mt-8 rounded-xl border bg-success-surface p-6 flex items-center gap-4">
+          <CheckCircle2 className="h-6 w-6 text-success" />
           <div>
-            <p className="font-semibold text-green-800">
+            <p className="font-semibold text-success">
               All Systems Operational
             </p>
-            <p className="text-sm text-green-700">
+            <p className="text-sm text-success">
               No incidents reported.
             </p>
           </div>
@@ -36,19 +36,19 @@ export default function StatusPage() {
 
           <StatusItem
             icon={<Globe className="h-5 w-5" />}
-            title="Website & Dashboard"
+            title="Website &amp; Dashboard"
             status="Operational"
           />
 
           <StatusItem
             icon={<Database className="h-5 w-5" />}
-            title="Database & Storage"
+            title="Database &amp; Storage"
             status="Operational"
           />
 
           <StatusItem
             icon={<Server className="h-5 w-5" />}
-            title="API & Backend Services"
+            title="API &amp; Backend Services"
             status="Operational"
           />
 
@@ -67,14 +67,14 @@ export default function StatusPage() {
             Incident History
           </h2>
 
-          <p className="text-gray-600 mt-2">
+          <p className="text-muted-foreground mt-2">
             No recent incidents reported.
           </p>
 
         </div>
 
         {/* Last Updated */}
-        <p className="mt-12 text-sm text-gray-500">
+        <p className="mt-12 text-sm text-muted-foreground">
           Last updated: {new Date().toLocaleString()}
         </p>
 
@@ -100,14 +100,14 @@ function StatusItem({
   return (
     <div className="flex items-center justify-between rounded-lg border p-4">
       <div className="flex items-center gap-3">
-        <div className="text-gray-500">{icon}</div>
+        <div className="text-muted-foreground">{icon}</div>
         <span className="font-medium">{title}</span>
       </div>
 
       <span
         className={`text-sm font-medium ${isOperational
-            ? "text-green-600"
-            : "text-yellow-600"
+            ? "text-success"
+            : "text-warning"
           }`}
       >
         {status}

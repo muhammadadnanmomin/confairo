@@ -8,6 +8,24 @@ import { Badge } from "@/components/ui/badge";
 import { toast } from "@/components/ui/use-toast";
 import { createClient } from "@/lib/supabase/client";
 
+interface InviteData {
+  id: string;
+  conference_id: string;
+  accepted: boolean | null;
+  expires_at: string | null;
+}
+
+interface ConferenceInfo {
+  title: string;
+  start_date: string | null;
+  end_date: string | null;
+  organizer_id: string;
+}
+
+interface OrganizerInfo {
+  name: string | null;
+}
+
 function InviteContent() {
   const supabase = createClient();
   const searchParams = useSearchParams();
@@ -17,9 +35,9 @@ function InviteContent() {
 
   const [loading, setLoading] = useState(false);
   const [initialLoading, setInitialLoading] = useState(true);
-  const [inviteData, setInviteData] = useState<any>(null);
-  const [conference, setConference] = useState<any>(null);
-  const [organizer, setOrganizer] = useState<any>(null);
+  const [inviteData, setInviteData] = useState<InviteData | null>(null);
+  const [conference, setConference] = useState<ConferenceInfo | null>(null);
+  const [organizer, setOrganizer] = useState<OrganizerInfo | null>(null);
   const [expired, setExpired] = useState(false);
   const [acceptedAnimation, setAcceptedAnimation] = useState(false);
 
@@ -68,11 +86,11 @@ function InviteContent() {
           setOrganizer(org);
         }
 
-      } catch (err: any) {
+      } catch (err: unknown) {
         toast({
           variant: "destructive",
           title: "Invite Error",
-          description: err.message,
+          description: err instanceof Error ? err.message : String(err),
         });
       } finally {
         setInitialLoading(false);
@@ -80,6 +98,7 @@ function InviteContent() {
     }
 
     loadInvite();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token]);
 
   /* ---------------- ACCEPT INVITE ---------------- */
@@ -117,11 +136,11 @@ function InviteContent() {
         router.push("/dashboard/reviewer");
       }, 2000);
 
-    } catch (err: any) {
+    } catch (err: unknown) {
       toast({
         variant: "destructive",
         title: "Failed to accept",
-        description: err.message,
+        description: err instanceof Error ? err.message : String(err),
       });
     } finally {
       setLoading(false);
@@ -144,11 +163,11 @@ function InviteContent() {
       });
 
       router.push("/");
-    } catch (err: any) {
+    } catch (err: unknown) {
       toast({
         variant: "destructive",
         title: "Failed to decline",
-        description: err.message,
+        description: err instanceof Error ? err.message : String(err),
       });
     }
   };
@@ -158,7 +177,7 @@ function InviteContent() {
   if (!token) {
     return (
       <div className="text-center mt-20">
-        <p className="text-red-500">Invalid invite link.</p>
+        <p className="text-destructive">Invalid invite link.</p>
       </div>
     );
   }
@@ -166,20 +185,20 @@ function InviteContent() {
   if (initialLoading) {
     return (
       <div className="text-center mt-20">
-        <p className="text-gray-500">Loading invitation...</p>
+        <p className="text-muted-foreground">Loading invitation...</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-muted px-4">
       <Card className="w-full max-w-lg p-8 space-y-6 shadow-2xl rounded-2xl text-center transition-all duration-500">
 
         {acceptedAnimation ? (
           <div className="animate-bounce space-y-4">
             <div className="text-5xl">🎉</div>
-            <h2 className="text-xl font-bold">You’re now a Reviewer!</h2>
-            <p className="text-gray-600">
+            <h2 className="text-xl font-bold">You&apos;re now a Reviewer!</h2>
+            <p className="text-muted-foreground">
               Redirecting to your dashboard...
             </p>
           </div>
@@ -193,12 +212,12 @@ function InviteContent() {
                   {conference.title}
                 </h2>
 
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-muted-foreground">
                   {conference.start_date} → {conference.end_date}
                 </p>
 
                 {organizer && (
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-muted-foreground">
                     Organized by <span className="font-medium">{organizer.name}</span>
                   </p>
                 )}
@@ -213,9 +232,9 @@ function InviteContent() {
 
             {/* Reviewer Benefits */}
             {!expired && !inviteData?.accepted && (
-              <div className="bg-gray-50 border rounded-lg p-4 text-left space-y-2">
+              <div className="bg-muted border border-border rounded-lg p-4 text-left space-y-2">
                 <h3 className="font-semibold text-sm">Why Review?</h3>
-                <ul className="text-sm text-gray-600 space-y-1">
+                <ul className="text-sm text-muted-foreground space-y-1">
                   <li>• Gain academic recognition</li>
                   <li>• Expand professional network</li>
                   <li>• Contribute to research quality</li>

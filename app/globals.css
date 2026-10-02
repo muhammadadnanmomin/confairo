@@ -5,39 +5,83 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(0.98 0.005 80);
-  --foreground: oklch(0.2 0.02 250);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.2 0.02 250);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.2 0.02 250);
-  --primary: oklch(0.35 0.1 250);
-  --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.95 0.01 80);
-  --secondary-foreground: oklch(0.25 0.02 250);
-  --muted: oklch(0.94 0.01 80);
-  --muted-foreground: oklch(0.5 0.02 250);
-  --accent: oklch(0.55 0.12 180);
-  --accent-foreground: oklch(0.99 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: oklch(0.9 0.01 80);
-  --input: oklch(0.92 0.01 80);
-  --ring: oklch(0.35 0.1 250);
-  --chart-1: oklch(0.35 0.1 250);
-  --chart-2: oklch(0.55 0.12 180);
-  --chart-3: oklch(0.6 0.15 140);
-  --chart-4: oklch(0.7 0.1 200);
-  --chart-5: oklch(0.45 0.08 250);
+  /* ── Core Surfaces ───────────────────────────────────────── */
+  --background: #F8FAFC;
+  --foreground: #17233D;
+  --card: #FFFFFF;
+  --card-foreground: #17233D;
+  --popover: #FFFFFF;
+  --popover-foreground: #17233D;
+
+  /* ── Interactive & Brand (Academic Ink) ──────────────────── */
+  --primary: #2D4A8A;
+  --primary-foreground: #FFFFFF;
+  --primary-hover: #1F376B;
+  --secondary: #E0E7F3;
+  --secondary-foreground: #2D4A8A;
+  --accent: #E0E7F3;
+  --accent-foreground: #2D4A8A;
+
+  /* ── Muted & Tertiary ────────────────────────────────────── */
+  --muted: #EEF2F7;
+  --muted-foreground: #52627A;
+
+  /* ── Borders & Focus ─────────────────────────────────────── */
+  --border: #D9E0EA;
+  --border-strong: #C5CEDA;
+  --input: #D9E0EA;
+  --ring: #2D4A8A;
+
+  /* ── Semantic Status ─────────────────────────────────────── */
+  --success: #1A7A4A;
+  --success-foreground: #FFFFFF;
+  --success-surface: #EAF5EE;
+
+  --warning: #B45309;
+  --warning-foreground: #FFFFFF;
+  --warning-surface: #FEF3C7;
+
+  --destructive: #DC2626;
+  --destructive-foreground: #FFFFFF;
+  --destructive-surface: #FEE2E2;
+
+  --info: #2563EB;
+  --info-foreground: #FFFFFF;
+  --info-surface: #EFF6FF;
+
+  /* ── Sidebar ─────────────────────────────────────────────── */
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #17233D;
+  --sidebar-primary: #2D4A8A;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #EEF2F7;
+  --sidebar-accent-foreground: #17233D;
+  --sidebar-border: #D9E0EA;
+  --sidebar-ring: #2D4A8A;
+
+  /* ── Charts & Metrics ────────────────────────────────────── */
+  --chart-1: #2D4A8A;
+  --chart-2: #1A7A4A;
+  --chart-3: #B45309;
+  --chart-4: #6366F1;
+  --chart-5: #0284C7;
+
   --radius: 0.5rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.2 0.02 250);
-  --sidebar-primary: oklch(0.35 0.1 250);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.95 0.01 80);
-  --sidebar-accent-foreground: oklch(0.25 0.02 250);
-  --sidebar-border: oklch(0.9 0.01 80);
-  --sidebar-ring: oklch(0.35 0.1 250);
+
+  /* ── Landing Page Academic Ink Compatibility Aliases ──────── */
+  --lp-ink: var(--foreground);
+  --lp-ink-secondary: var(--muted-foreground);
+  --lp-ink-tertiary: #718096;
+  --lp-surface: var(--card);
+  --lp-surface-subtle: var(--muted);
+  --lp-surface-muted: #F5F7FA;
+  --lp-border: var(--border);
+  --lp-border-strong: var(--border-strong);
+  --lp-accent: var(--primary);
+  --lp-accent-light: var(--secondary);
+  --lp-accent-hover: var(--primary-hover);
+  --lp-positive: var(--success);
+  --lp-warning: var(--warning);
 }
 
 .dark {
@@ -49,6 +93,7 @@
   --popover-foreground: oklch(0.985 0 0);
   --primary: oklch(0.985 0 0);
   --primary-foreground: oklch(0.205 0 0);
+  --primary-hover: oklch(0.9 0 0);
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.269 0 0);
@@ -57,9 +102,20 @@
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.396 0.141 25.723);
   --destructive-foreground: oklch(0.637 0.237 25.331);
+  --destructive-surface: oklch(0.25 0.05 25);
   --border: oklch(0.269 0 0);
+  --border-strong: oklch(0.35 0 0);
   --input: oklch(0.269 0 0);
   --ring: oklch(0.439 0 0);
+  --success: #34D399;
+  --success-foreground: #0A0F1D;
+  --success-surface: rgba(52, 211, 153, 0.15);
+  --warning: #FBBF24;
+  --warning-foreground: #0A0F1D;
+  --warning-surface: rgba(251, 191, 36, 0.15);
+  --info: #60A5FA;
+  --info-foreground: #0A0F1D;
+  --info-surface: rgba(96, 165, 250, 0.15);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
@@ -73,6 +129,21 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(0.269 0 0);
   --sidebar-ring: oklch(0.439 0 0);
+
+  /* Dark mode compatibility aliases */
+  --lp-ink: var(--foreground);
+  --lp-ink-secondary: var(--muted-foreground);
+  --lp-ink-tertiary: #94A3B8;
+  --lp-surface: var(--card);
+  --lp-surface-subtle: var(--muted);
+  --lp-surface-muted: oklch(0.18 0 0);
+  --lp-border: var(--border);
+  --lp-border-strong: var(--border-strong);
+  --lp-accent: var(--primary);
+  --lp-accent-light: var(--secondary);
+  --lp-accent-hover: var(--primary-hover);
+  --lp-positive: var(--success);
+  --lp-warning: var(--warning);
 }
 
 @theme inline {
@@ -86,6 +157,7 @@
   --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
@@ -94,9 +166,20 @@
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive-surface: var(--destructive-surface);
   --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-success-surface: var(--success-surface);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-warning-surface: var(--warning-surface);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-info-surface: var(--info-surface);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -224,27 +307,7 @@
   border-radius: 9999px;
 }
 
-/* ============================================================
-   Confairo Landing Page — Design Tokens (Academic Ink)
-   These tokens are used by landing-page components only.
-   They do NOT override dashboard or application styles.
-   ============================================================ */
 
-:root {
-  --lp-ink: #17233D;
-  --lp-ink-secondary: #52627A;
-  --lp-ink-tertiary: #718096;
-  --lp-surface: #ffffff;
-  --lp-surface-subtle: #EEF2F7;
-  --lp-surface-muted: #F5F7FA;
-  --lp-border: #D9E0EA;
-  --lp-border-strong: #C5CEDA;
-  --lp-accent: #2D4A8A;
-  --lp-accent-light: #e0e7f3;
-  --lp-accent-hover: #1F376B;
-  --lp-positive: #1a7a4a;
-  --lp-warning: #b45309;
-}
 
 /* Landing-page nav link */
 .lp-link {

@@ -17,11 +17,20 @@ export async function GET() {
 
     if (error) throw error;
 
+    const botName =
+      (data.bot_name || "Confairo AI")
+        .replace(/AcadFlow\s*AI/gi, "Confairo AI")
+        .replace(/AcadFlow/gi, "Confairo");
+    const welcomeMessage =
+      (data.welcome_message || "Hi! I'm Confairo AI 👋 How can I help you today?")
+        .replace(/AcadFlow\s*AI/gi, "Confairo AI")
+        .replace(/AcadFlow/gi, "Confairo");
+
     return NextResponse.json({
       settings: {
         enabled: data.enabled,
-        welcomeMessage: data.welcome_message,
-        botName: data.bot_name,
+        welcomeMessage,
+        botName,
         primaryColor: data.primary_color,
       },
     });

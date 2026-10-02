@@ -42,6 +42,20 @@ interface ChatbotState {
   incrementUnread: () => void;
 }
 
+// Backward-compatible migration from legacy localStorage key if present
+if (typeof window !== "undefined") {
+  try {
+    const legacyKey = "acadflow-chatbot";
+    const currentKey = "Confairo-chatbot";
+    if (!localStorage.getItem(currentKey) && localStorage.getItem(legacyKey)) {
+      const legacyVal = localStorage.getItem(legacyKey);
+      if (legacyVal) localStorage.setItem(currentKey, legacyVal);
+    }
+  } catch {
+    // Ignore localStorage access errors
+  }
+}
+
 export const useChatbotStore = create<ChatbotState>()(
   persist(
     (set) => ({

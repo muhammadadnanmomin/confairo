@@ -5,14 +5,13 @@
 // Expandable glassmorphism chat panel
 // ============================================================
 import { useRef, useEffect, useState, KeyboardEvent } from "react";
+import Image from "next/image";
 import {
-  Bot,
   X,
   Minus,
   Trash2,
   Send,
   StopCircle,
-  Sparkles,
 } from "lucide-react";
 import { MessageBubble } from "./MessageBubble";
 import { TypingIndicator } from "./TypingIndicator";
@@ -80,8 +79,20 @@ export function ChatbotWindow({
     onSendMessage(query);
   };
 
-  // Welome message (shown when no messages yet)
+  // Welcome message (shown when no messages yet)
   const showWelcome = messages.length === 0;
+
+  // Ensure user-facing branding strictly displays Confairo AI
+  const displayBotName = settings?.botName
+    ? settings.botName.replace(/AcadFlow\s*AI/gi, "Confairo AI").replace(/AcadFlow/gi, "Confairo")
+    : "Confairo AI";
+
+  const displayWelcomeMessage = (
+    settings?.welcomeMessage ??
+    "Hi! I'm Confairo AI 👋 I can help you discover conferences, track submissions, check deadlines, and navigate the platform. How can I assist you today?"
+  )
+    .replace(/AcadFlow\s*AI/gi, "Confairo AI")
+    .replace(/AcadFlow/gi, "Confairo");
 
   return (
     <div
@@ -118,14 +129,21 @@ export function ChatbotWindow({
         <div className="flex items-center gap-2.5">
           <div className="
             h-8 w-8 rounded-full
-            bg-white/20 backdrop-blur-sm
+            bg-white
             flex items-center justify-center
+            overflow-hidden shadow-sm shrink-0 p-1
           ">
-            <Bot className="h-4 w-4 text-white" />
+            <Image
+              src="/logos/Symbol.png"
+              alt="Confairo AI"
+              width={24}
+              height={24}
+              className="h-5 w-5 object-contain"
+            />
           </div>
           <div>
             <p className="text-sm font-semibold text-white leading-none">
-              {settings?.botName ?? "Confairo AI"}
+              {displayBotName}
             </p>
             <div className="flex items-center gap-1 mt-0.5">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
@@ -192,19 +210,25 @@ export function ChatbotWindow({
           <div className="flex flex-col items-center justify-center h-full px-6 text-center gap-4">
             <div className="
               h-16 w-16 rounded-2xl
-              bg-gradient-to-br from-indigo-500 to-violet-600
+              bg-white dark:bg-gray-800
+              border border-gray-100 dark:border-gray-700
               flex items-center justify-center
-              shadow-lg
+              shadow-lg p-3
             ">
-              <Sparkles className="h-8 w-8 text-white" />
+              <Image
+                src="/logos/Symbol.png"
+                alt="Confairo AI"
+                width={44}
+                height={44}
+                className="h-11 w-11 object-contain"
+              />
             </div>
             <div>
-              <p className="text-sm font-semibold text-gray-800 dark:text-gray-100">
-                {settings?.botName ?? "Confairo AI"}
+              <p className="text-base font-semibold text-gray-800 dark:text-gray-100">
+                {displayBotName}
               </p>
               <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 leading-relaxed">
-                {settings?.welcomeMessage ??
-                  "Hi! I can help you discover conferences, track submissions, check deadlines, and navigate the platform."}
+                {displayWelcomeMessage}
               </p>
             </div>
             <p className="text-[11px] text-gray-400">

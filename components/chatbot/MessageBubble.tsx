@@ -4,8 +4,9 @@
 // Confairo Chatbot — Message Bubble
 // User vs AI message bubbles with Markdown support + copy
 // ============================================================
-import { useState, useEffect } from "react";
-import { Copy, Check, Bot } from "lucide-react";
+import { useState, useMemo } from "react";
+import Image from "next/image";
+import { Copy, Check } from "lucide-react";
 import type { ChatMessage } from "@/lib/chatbot/types";
 
 // Lightweight markdown → HTML (avoids heavy deps)
@@ -46,13 +47,7 @@ function formatTime(iso: string): string {
 export function MessageBubble({ message }: MessageBubbleProps) {
   const isUser = message.role === "user";
   const [copied, setCopied] = useState(false);
-  const [html, setHtml] = useState("");
-
-  useEffect(() => {
-    if (!isUser) {
-      setHtml(parseMarkdown(message.content));
-    }
-  }, [message.content, isUser]);
+  const html = useMemo(() => (!isUser ? parseMarkdown(message.content) : ""), [message.content, isUser]);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(message.content).then(() => {
@@ -87,11 +82,17 @@ export function MessageBubble({ message }: MessageBubbleProps) {
       {/* Avatar */}
       <div className="
         shrink-0 h-7 w-7 rounded-full
-        bg-gradient-to-br from-indigo-500 to-violet-600
+        bg-white border border-gray-200 dark:border-gray-700
         flex items-center justify-center
-        shadow-sm mt-0.5
+        shadow-sm mt-0.5 p-1 overflow-hidden
       ">
-        <Bot className="h-3.5 w-3.5 text-white" />
+        <Image
+          src="/logos/Symbol.png"
+          alt="Confairo AI"
+          width={20}
+          height={20}
+          className="h-4 w-4 object-contain"
+        />
       </div>
 
       <div className="flex flex-col gap-1 max-w-[85%]">

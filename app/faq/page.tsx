@@ -86,7 +86,7 @@ const faqs = [
 
 export default function FAQPage() {
   return (
-    <main className="min-h-screen bg-white text-gray-900">
+    <main className="min-h-screen bg-background text-foreground">
 
       {/* Header */}
       <Header />
@@ -97,7 +97,7 @@ export default function FAQPage() {
           Frequently Asked Questions
         </h1>
 
-        <p className="mt-4 text-gray-600">
+        <p className="mt-4 text-muted-foreground">
           Find answers to common questions about using Confairo.
         </p>
 
@@ -108,11 +108,11 @@ export default function FAQPage() {
               key={index}
               className="rounded-xl border p-6 transition hover:shadow-sm"
             >
-              <h3 className="font-semibold text-lg text-gray-900">
+              <h3 className="font-semibold text-lg text-foreground">
                 {faq.question}
               </h3>
 
-              <p className="mt-2 text-gray-600 leading-relaxed">
+              <p className="mt-2 text-muted-foreground leading-relaxed">
                 {faq.answer}
               </p>
             </div>

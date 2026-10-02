@@ -3,7 +3,7 @@ import { Footer } from "@/components/landing/footer";
 
 export default function PrivacyPage() {
   return (
-    <main className="min-h-screen bg-white text-gray-900">
+    <main className="min-h-screen bg-background text-foreground">
 
       <Header />
 
@@ -13,14 +13,14 @@ export default function PrivacyPage() {
           Privacy Policy
         </h1>
 
-        <p className="mt-4 text-gray-600">
+        <p className="mt-4 text-muted-foreground">
           Last updated: {new Date().toLocaleDateString()}
         </p>
 
-        <div className="mt-10 space-y-8 text-gray-700 leading-relaxed">
+        <div className="mt-10 space-y-8 text-foreground leading-relaxed">
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900">
+            <h2 className="text-xl font-semibold text-foreground">
               1. Information We Collect
             </h2>
 
@@ -38,7 +38,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900">
+            <h2 className="text-xl font-semibold text-foreground">
               2. How We Use Your Information
             </h2>
 
@@ -52,8 +52,8 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900">
-              3. Payments & Financial Data
+            <h2 className="text-xl font-semibold text-foreground">
+              3. Payments &amp; Financial Data
             </h2>
 
             <p>
@@ -69,7 +69,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900">
+            <h2 className="text-xl font-semibold text-foreground">
               4. Organizer Bank Details
             </h2>
 
@@ -82,7 +82,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900">
+            <h2 className="text-xl font-semibold text-foreground">
               5. Data Sharing
             </h2>
 
@@ -103,8 +103,8 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900">
-              6. Cookies & Authentication
+            <h2 className="text-xl font-semibold text-foreground">
+              6. Cookies &amp; Authentication
             </h2>
 
             <p>
@@ -115,7 +115,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900">
+            <h2 className="text-xl font-semibold text-foreground">
               7. Data Security
             </h2>
 
@@ -128,7 +128,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900">
+            <h2 className="text-xl font-semibold text-foreground">
               8. Data Retention
             </h2>
 
@@ -140,7 +140,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900">
+            <h2 className="text-xl font-semibold text-foreground">
               9. Your Rights
             </h2>
 
@@ -152,7 +152,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900">
+            <h2 className="text-xl font-semibold text-foreground">
               10. Policy Updates
             </h2>
 
@@ -165,14 +165,14 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900">
+            <h2 className="text-xl font-semibold text-foreground">
               11. Contact Us
             </h2>
 
             <p>
               For privacy-related questions or concerns, contact us at:
               <br />
-              <span className="font-medium text-indigo-600">
+              <span className="font-medium text-primary">
                 contact@confairo.com
               </span>
             </p>

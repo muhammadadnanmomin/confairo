@@ -3,7 +3,7 @@ import { Footer } from "@/components/landing/footer";
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-white text-gray-900">
+    <main className="min-h-screen bg-background text-foreground">
 
       {/* Header */}
       <Header />
@@ -15,13 +15,13 @@ export default function AboutPage() {
           About Confairo
         </h1>
 
-        <p className="mt-6 text-lg text-gray-600">
+        <p className="mt-6 text-lg text-muted-foreground">
           Confairo is a modern platform designed to simplify how academic
           conferences are organized, reviewed, and managed.
         </p>
 
         {/* Content */}
-        <div className="mt-10 space-y-6 text-gray-700 leading-relaxed">
+        <div className="mt-10 space-y-6 text-foreground leading-relaxed">
 
           <p>
             Organizing an academic conference often involves multiple
@@ -63,12 +63,12 @@ export default function AboutPage() {
         </div>
 
         {/* Mission Section */}
-        <div className="mt-12 rounded-xl border bg-slate-50 p-6">
-          <h2 className="text-xl font-semibold text-gray-900">
+        <div className="mt-12 rounded-xl border bg-muted p-6">
+          <h2 className="text-xl font-semibold text-foreground">
             Our Mission
           </h2>
 
-          <p className="mt-3 text-gray-700 leading-relaxed">
+          <p className="mt-3 text-foreground leading-relaxed">
             To simplify academic conference management by providing a reliable,
             secure, and easy-to-use platform that supports the entire research
             event lifecycle.
@@ -76,12 +76,12 @@ export default function AboutPage() {
         </div>
 
         {/* Vision Section */}
-        <div className="mt-8 rounded-xl border bg-slate-50 p-6">
-          <h2 className="text-xl font-semibold text-gray-900">
+        <div className="mt-8 rounded-xl border bg-muted p-6">
+          <h2 className="text-xl font-semibold text-foreground">
             Our Vision
           </h2>
 
-          <p className="mt-3 text-gray-700 leading-relaxed">
+          <p className="mt-3 text-foreground leading-relaxed">
             To become a trusted digital infrastructure for academic conferences
             worldwide, helping institutions run professional, transparent,
             and well-organized research events that strengthen collaboration

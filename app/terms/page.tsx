@@ -3,36 +3,36 @@ import { Footer } from "@/components/landing/footer";
 
 export default function TermsPage() {
   return (
-    <main className="min-h-screen bg-white text-gray-900">
+    <main className="min-h-screen bg-background text-foreground">
 
       <Header />
 
       <section className="mx-auto max-w-4xl px-4 py-16">
 
         <h1 className="text-3xl font-bold">
-          Terms & Conditions
+          Terms &amp; Conditions
         </h1>
 
-        <p className="mt-4 text-gray-600">
+        <p className="mt-4 text-muted-foreground">
           Last updated: {new Date().toLocaleDateString()}
         </p>
 
-        <div className="mt-10 space-y-8 text-gray-700 leading-relaxed">
+        <div className="mt-10 space-y-8 text-foreground leading-relaxed">
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900">
+            <h2 className="text-xl font-semibold text-foreground">
               1. Acceptance of Terms
             </h2>
 
             <p>
               By accessing or using Confairo, you agree to comply with and be
-              bound by these Terms & Conditions. If you do not agree with these
+              bound by these Terms &amp; Conditions. If you do not agree with these
               terms, you should discontinue use of the platform.
             </p>
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900">
+            <h2 className="text-xl font-semibold text-foreground">
               2. Platform Purpose
             </h2>
 
@@ -49,7 +49,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900">
+            <h2 className="text-xl font-semibold text-foreground">
               3. User Accounts
             </h2>
 
@@ -62,7 +62,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900">
+            <h2 className="text-xl font-semibold text-foreground">
               4. Conference Organizer Responsibilities
             </h2>
 
@@ -85,8 +85,8 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900">
-              5. Conference Organizer Plans & Billing
+            <h2 className="text-xl font-semibold text-foreground">
+              5. Conference Organizer Plans &amp; Billing
             </h2>
 
             <p>
@@ -108,8 +108,8 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900">
-              6. Payments & Platform Processing Fee
+            <h2 className="text-xl font-semibold text-foreground">
+              6. Payments &amp; Platform Processing Fee
             </h2>
 
             <p>
@@ -131,7 +131,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900">
+            <h2 className="text-xl font-semibold text-foreground">
               7. Refund Policy
             </h2>
 
@@ -148,7 +148,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900">
+            <h2 className="text-xl font-semibold text-foreground">
               8. Platform Availability
             </h2>
 
@@ -160,7 +160,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900">
+            <h2 className="text-xl font-semibold text-foreground">
               9. Intellectual Property
             </h2>
 
@@ -172,7 +172,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900">
+            <h2 className="text-xl font-semibold text-foreground">
               10. Limitation of Liability
             </h2>
 
@@ -185,26 +185,26 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900">
+            <h2 className="text-xl font-semibold text-foreground">
               11. Changes to Terms
             </h2>
 
             <p>
-              Confairo may update these Terms & Conditions periodically.
+              Confairo may update these Terms &amp; Conditions periodically.
               Continued use of the platform after updates indicates acceptance
               of the revised terms.
             </p>
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900">
+            <h2 className="text-xl font-semibold text-foreground">
               12. Contact Information
             </h2>
 
             <p>
               For legal inquiries regarding these terms, please contact us at:
               <br />
-              <span className="font-medium text-indigo-600">
+              <span className="font-medium text-primary">
                 contact@confairo.com
               </span>
             </p>

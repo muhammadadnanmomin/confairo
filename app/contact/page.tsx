@@ -36,7 +36,7 @@ export default function ContactPage() {
   }
 
   return (
-    <main className="min-h-screen bg-white text-gray-900">
+    <main className="min-h-screen bg-background text-foreground">
 
       <Header />
 
@@ -47,9 +47,9 @@ export default function ContactPage() {
             Contact Us
           </h1>
 
-          <p className="mt-4 text-lg text-gray-600">
+          <p className="mt-4 text-lg text-muted-foreground">
             Have questions, partnership inquiries, or need support?
-            We’re here to help.
+            We&apos;re here to help.
           </p>
         </div>
 
@@ -59,40 +59,40 @@ export default function ContactPage() {
           <div className="space-y-8">
 
             <div className="flex items-start gap-4">
-              <Mail className="h-6 w-6 text-indigo-600" />
+              <Mail className="h-6 w-6 text-primary" />
               <div>
                 <p className="font-semibold">Email</p>
-                <p className="text-gray-600">
+                <p className="text-muted-foreground">
                   contact@confairo.com
                 </p>
               </div>
             </div>
 
             <div className="flex items-start gap-4">
-              <Phone className="h-6 w-6 text-indigo-600" />
+              <Phone className="h-6 w-6 text-primary" />
               <div>
                 <p className="font-semibold">Phone</p>
-                <p className="text-gray-600">
+                <p className="text-muted-foreground">
                   +91-7796453687
                 </p>
               </div>
             </div>
 
             <div className="flex items-start gap-4">
-              <MapPin className="h-6 w-6 text-indigo-600" />
+              <MapPin className="h-6 w-6 text-primary" />
               <div>
                 <p className="font-semibold">Location</p>
-                <p className="text-gray-600">
+                <p className="text-muted-foreground">
                   Maharashtra, India
                 </p>
               </div>
             </div>
 
-            <div className="rounded-xl border bg-slate-50 p-6">
+            <div className="rounded-xl border bg-muted p-6">
               <p className="font-semibold">
-                For Institutions & Universities
+                For Institutions &amp; Universities
               </p>
-              <p className="mt-2 text-sm text-gray-600 leading-relaxed">
+              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
                 Contact us for custom deployments, institutional pricing,
                 onboarding support, and academic integrations.
               </p>
@@ -101,15 +101,15 @@ export default function ContactPage() {
           </div>
 
           {/* Contact Form */}
-          <div className="rounded-xl border bg-white p-8 shadow-sm">
+          <div className="rounded-xl border bg-card p-8 shadow-sm">
 
             {sent ? (
               <div className="text-center py-10">
-                <p className="text-lg font-semibold text-indigo-600">
+                <p className="text-lg font-semibold text-primary">
                   Message Sent ✓
                 </p>
-                <p className="mt-2 text-gray-600">
-                  We’ll get back to you shortly.
+                <p className="mt-2 text-muted-foreground">
+                  We&apos;ll get back to you shortly.
                 </p>
               </div>
             ) : (

@@ -45,14 +45,14 @@ export function ShareButtons({ title, slug }: ShareButtonsProps) {
 
   return (
     <div className="flex items-center gap-2">
-      <span className="text-sm font-medium text-gray-500 mr-1">Share:</span>
+      <span className="text-sm font-medium text-muted-foreground mr-1">Share:</span>
 
       {/* X (formerly Twitter) */}
       <a
         href={`https://x.com/intent/post?text=${encodedTitle}&url=${encodedUrl}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-500 transition-all hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
+        className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-card text-muted-foreground transition-all hover:border-border-strong hover:bg-muted hover:text-foreground"
         aria-label="Share on X"
         title="Share on X"
       >
@@ -64,7 +64,7 @@ export function ShareButtons({ title, slug }: ShareButtonsProps) {
         href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-500 transition-all hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
+        className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-card text-muted-foreground transition-all hover:border-border-strong hover:bg-muted hover:text-foreground"
         aria-label="Share on LinkedIn"
         title="Share on LinkedIn"
       >
@@ -75,13 +75,13 @@ export function ShareButtons({ title, slug }: ShareButtonsProps) {
       <button
         type="button"
         onClick={handleCopyLink}
-        className="inline-flex h-9 cursor-pointer items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-3 text-sm text-gray-500 transition-all hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
+        className="inline-flex h-9 cursor-pointer items-center gap-1.5 rounded-lg border border-border bg-card px-3 text-sm text-muted-foreground transition-all hover:border-border-strong hover:bg-muted hover:text-foreground"
         title="Copy link"
       >
         {copied ? (
           <>
-            <Check className="h-4 w-4 text-emerald-500" />
-            <span className="text-emerald-600">Copied!</span>
+            <Check className="h-4 w-4 text-success" />
+            <span className="text-success">Copied!</span>
           </>
         ) : (
           <>

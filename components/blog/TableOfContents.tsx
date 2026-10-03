@@ -68,11 +68,11 @@ export function TableOfContents({ content }: TableOfContentsProps) {
       className="hidden lg:block sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto"
       aria-label="Table of contents"
     >
-      <h4 className="mb-4 text-xs font-semibold uppercase tracking-wider text-gray-400">
+      <h4 className="mb-4 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
         On this page
       </h4>
 
-      <ul className="space-y-1 border-l border-gray-200">
+      <ul className="space-y-1 border-l border-border">
         {headings.map((heading) => (
           <li key={heading.id}>
             <a
@@ -87,8 +87,8 @@ export function TableOfContents({ content }: TableOfContentsProps) {
                 "block cursor-pointer border-l-2 py-1.5 text-sm transition-all",
                 heading.level === 3 ? "pl-6" : "pl-4",
                 activeId === heading.id
-                  ? "border-indigo-600 font-medium text-indigo-600"
-                  : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                  ? "border-primary font-medium text-primary"
+                  : "border-transparent text-muted-foreground hover:border-border-strong hover:text-foreground"
               )}
             >
               {heading.text}

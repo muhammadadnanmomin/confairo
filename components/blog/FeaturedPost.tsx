@@ -22,10 +22,10 @@ export function FeaturedPost({ post }: FeaturedPostProps) {
     <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <Link
         href={`/blog/${post.slug}`}
-        className="group grid overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:shadow-lg md:grid-cols-2"
+        className="group grid overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:shadow-lg md:grid-cols-2"
       >
         {/* Image */}
-        <div className="relative aspect-[16/10] overflow-hidden bg-gray-100 md:aspect-auto md:min-h-[360px]">
+        <div className="relative aspect-[16/10] overflow-hidden bg-muted md:aspect-auto md:min-h-[360px]">
           <Image
             src={post.coverImage}
             alt={post.title}
@@ -37,7 +37,7 @@ export function FeaturedPost({ post }: FeaturedPostProps) {
 
           {/* Featured badge */}
           <div className="absolute left-4 top-4 flex items-center gap-2">
-            <span className="rounded-full bg-indigo-600 px-3 py-1 text-xs font-semibold text-white shadow-md">
+            <span className="rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground shadow-md">
               ✦ Featured
             </span>
             <span
@@ -53,16 +53,16 @@ export function FeaturedPost({ post }: FeaturedPostProps) {
 
         {/* Content */}
         <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
-          <h2 className="text-2xl font-bold leading-tight text-gray-900 group-hover:text-indigo-600 transition-colors sm:text-3xl">
+          <h2 className="text-2xl font-bold leading-tight text-foreground group-hover:text-primary transition-colors sm:text-3xl">
             {post.title}
           </h2>
 
-          <p className="mt-3 text-base leading-relaxed text-gray-600 line-clamp-3">
+          <p className="mt-3 text-base leading-relaxed text-muted-foreground line-clamp-3">
             {post.excerpt}
           </p>
 
           {/* Meta */}
-          <div className="mt-5 flex flex-wrap items-center gap-4 text-sm text-gray-400">
+          <div className="mt-5 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
             <span className="inline-flex items-center gap-1.5">
               <User className="h-4 w-4" />
               {post.author.name}
@@ -83,7 +83,7 @@ export function FeaturedPost({ post }: FeaturedPostProps) {
 
           {/* CTA */}
           <div className="mt-6">
-            <span className="inline-flex items-center gap-2 text-sm font-semibold text-indigo-600 transition-colors group-hover:text-indigo-700">
+            <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors group-hover:text-primary-hover">
               Read Article
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </span>

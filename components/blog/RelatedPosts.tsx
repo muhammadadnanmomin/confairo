@@ -12,11 +12,11 @@ export function RelatedPosts({ posts }: RelatedPostsProps) {
   if (posts.length === 0) return null;
 
   return (
-    <section className="border-t border-gray-100 pt-12">
-      <h2 className="text-xl font-bold text-gray-900">
+    <section className="border-t border-border pt-12">
+      <h2 className="text-xl font-bold text-foreground">
         More from Confairo Blog
       </h2>
-      <p className="mt-1 text-sm text-gray-500">
+      <p className="mt-1 text-sm text-muted-foreground">
         Continue exploring related articles
       </p>
 

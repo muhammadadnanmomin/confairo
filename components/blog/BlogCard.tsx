@@ -21,10 +21,10 @@ export function BlogCard({ post }: BlogCardProps) {
   return (
     <Link
       href={`/blog/${post.slug}`}
-      className="group flex flex-col overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-gray-200"
+      className="group flex flex-col overflow-hidden rounded-xl border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-border"
     >
       {/* Thumbnail */}
-      <div className="relative aspect-[16/9] w-full overflow-hidden bg-gray-100">
+      <div className="relative aspect-[16/9] w-full overflow-hidden bg-muted">
         <Image
           src={post.coverImage}
           alt={post.title}
@@ -47,17 +47,17 @@ export function BlogCard({ post }: BlogCardProps) {
       {/* Content */}
       <div className="flex flex-1 flex-col p-5">
         {/* Title (2-line clamp) */}
-        <h3 className="text-base font-semibold leading-snug text-gray-900 line-clamp-2 group-hover:text-indigo-600 transition-colors">
+        <h3 className="text-base font-semibold leading-snug text-foreground line-clamp-2 group-hover:text-primary transition-colors">
           {post.title}
         </h3>
 
         {/* Excerpt (2-line clamp) */}
-        <p className="mt-2 text-sm leading-relaxed text-gray-500 line-clamp-2">
+        <p className="mt-2 text-sm leading-relaxed text-muted-foreground line-clamp-2">
           {post.excerpt}
         </p>
 
         {/* Meta footer */}
-        <div className="mt-auto flex items-center gap-4 pt-4 text-xs text-gray-400">
+        <div className="mt-auto flex items-center gap-4 pt-4 text-xs text-muted-foreground">
           {/* Author */}
           <span className="inline-flex items-center gap-1">
             <User className="h-3.5 w-3.5" />

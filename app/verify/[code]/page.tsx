@@ -5,7 +5,6 @@
    ================================================================ */
 
 import { supabaseAdmin } from "@/lib/supabase/admin";
-import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import {
   CheckCircle2,
@@ -86,10 +85,10 @@ export default async function VerifyCertificatePage({ params }: PageProps) {
   /* ---- Invalid certificate ---- */
   if (!cert) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+      <div className="min-h-screen bg-muted flex items-center justify-center p-4">
         <div className="w-full max-w-md">
-          <div className="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
-            {/* Red header */}
+          <div className="bg-card rounded-2xl shadow-lg border border-border overflow-hidden">
+            {/* Red failure header — intentional branded state gradient, preserved per Phase C audit */}
             <div className="bg-gradient-to-r from-red-500 to-rose-500 px-6 py-8 text-center">
               <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-white/20 backdrop-blur">
                 <XCircle className="h-9 w-9 text-white" />
@@ -101,19 +100,19 @@ export default async function VerifyCertificatePage({ params }: PageProps) {
 
             {/* Body */}
             <div className="px-6 py-8 text-center">
-              <p className="text-gray-600 text-sm leading-relaxed">
+              <p className="text-muted-foreground text-sm leading-relaxed">
                 This certificate could not be verified. The verification code
                 may be incorrect or the certificate may have been revoked.
               </p>
-              <p className="text-gray-400 text-xs mt-4">
+              <p className="text-muted-foreground text-xs mt-4">
                 Code: <span className="font-mono">{code}</span>
               </p>
             </div>
           </div>
 
-          <p className="text-center text-xs text-gray-400 mt-6">
+          <p className="text-center text-xs text-muted-foreground mt-6">
             Powered by{" "}
-            <span className="font-semibold text-gray-500">Confairo</span>
+            <span className="font-semibold text-muted-foreground">Confairo</span>
           </p>
         </div>
       </div>
@@ -149,10 +148,10 @@ export default async function VerifyCertificatePage({ params }: PageProps) {
 
   /* ---- Valid certificate ---- */
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-muted flex items-center justify-center p-4">
       <div className="w-full max-w-md">
-        <div className="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
-          {/* Green header */}
+        <div className="bg-card rounded-2xl shadow-lg border border-border overflow-hidden">
+          {/* Green success header — intentional branded state gradient, preserved per Phase C audit */}
           <div className="bg-gradient-to-r from-emerald-500 to-green-500 px-6 py-8 text-center">
             <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-white/20 backdrop-blur">
               <CheckCircle2 className="h-9 w-9 text-white" />
@@ -205,7 +204,7 @@ export default async function VerifyCertificatePage({ params }: PageProps) {
             />
 
             {/* Divider */}
-            <div className="border-t border-gray-100" />
+            <div className="border-t border-border" />
 
             {/* Certificate ID */}
             <DetailRow
@@ -217,9 +216,9 @@ export default async function VerifyCertificatePage({ params }: PageProps) {
           </div>
         </div>
 
-        <p className="text-center text-xs text-gray-400 mt-6">
+        <p className="text-center text-xs text-muted-foreground mt-6">
           Powered by{" "}
-          <span className="font-semibold text-gray-500">Confairo</span>
+          <span className="font-semibold text-muted-foreground">Confairo</span>
         </p>
       </div>
     </div>
@@ -247,21 +246,21 @@ function DetailRow({
 }) {
   return (
     <div className="flex items-start gap-3">
-      <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gray-50">
-        <Icon className="h-4 w-4 text-gray-500" />
+      <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-muted">
+        <Icon className="h-4 w-4 text-muted-foreground" />
       </div>
       <div className="min-w-0">
-        <p className="text-xs text-gray-400 uppercase tracking-wider font-medium">
+        <p className="text-xs text-muted-foreground uppercase tracking-wider font-medium">
           {label}
         </p>
         <p
-          className={`text-sm text-gray-900 mt-0.5 break-words ${italic ? "italic" : ""
+          className={`text-sm text-foreground mt-0.5 break-words ${italic ? "italic" : ""
             } ${mono ? "font-mono text-xs" : ""}`}
         >
           {value}
         </p>
         {subtitle && (
-          <p className="text-xs text-gray-500 mt-0.5">{subtitle}</p>
+          <p className="text-xs text-muted-foreground mt-0.5">{subtitle}</p>
         )}
       </div>
     </div>

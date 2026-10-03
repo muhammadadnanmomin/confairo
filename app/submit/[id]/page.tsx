@@ -10,7 +10,6 @@ import { type PlanType, canSubmitPaper, formatLimit } from "@/lib/config/pricing
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { toast } from "@/components/ui/use-toast";
 
 import { AlertTriangle, FileText, Loader2 } from "lucide-react";
@@ -183,21 +182,21 @@ export default function SubmitPage() {
     return (
       <div className="max-w-3xl mx-auto p-6">
         <Card className="p-8 text-center space-y-4">
-          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-amber-100">
-            <AlertTriangle className="h-7 w-7 text-amber-600" />
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-warning-surface">
+            <AlertTriangle className="h-7 w-7 text-warning" />
           </div>
 
-          <h1 className="text-xl font-semibold text-gray-900">
+          <h1 className="text-xl font-semibold text-foreground">
             Submission Limit Reached
           </h1>
 
-          <p className="text-gray-600 max-w-md mx-auto">
+          <p className="text-muted-foreground max-w-md mx-auto">
             This conference has reached the Free plan submission limit
             ({formatLimit(submissionLimit)} papers). The organizer can upgrade
             to Pro to continue accepting submissions.
           </p>
 
-          <div className="flex items-center justify-center gap-2 text-sm text-gray-500">
+          <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
             <FileText className="h-4 w-4" />
             <span>
               {submissionCount} / {formatLimit(submissionLimit)} submissions used
@@ -223,7 +222,7 @@ export default function SubmitPage() {
 
         {/* Submission count indicator */}
         {submissionLimit !== null && (
-          <div className="flex items-center gap-2 text-sm text-gray-500 bg-gray-50 rounded-lg px-3 py-2">
+          <div className="flex items-center gap-2 text-sm text-muted-foreground bg-muted rounded-lg px-3 py-2">
             <FileText className="h-4 w-4" />
             <span>
               {submissionCount} / {formatLimit(submissionLimit)} submissions used

@@ -76,9 +76,9 @@ export function BlogList({ posts }: BlogListProps) {
       ) : (
         /* Empty state */
         <div className="mt-16 flex flex-col items-center text-center">
-          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gray-100">
+          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-muted">
             <svg
-              className="h-8 w-8 text-gray-400"
+              className="h-8 w-8 text-muted-foreground"
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth={1.5}
@@ -91,10 +91,10 @@ export function BlogList({ posts }: BlogListProps) {
               />
             </svg>
           </div>
-          <h3 className="mt-4 text-lg font-semibold text-gray-900">
+          <h3 className="mt-4 text-lg font-semibold text-foreground">
             No articles found
           </h3>
-          <p className="mt-1 text-sm text-gray-500">
+          <p className="mt-1 text-sm text-muted-foreground">
             Try adjusting your search or filter to find what you&apos;re looking
             for.
           </p>
@@ -107,7 +107,7 @@ export function BlogList({ posts }: BlogListProps) {
           <button
             type="button"
             onClick={() => setVisibleCount((c) => c + POSTS_PER_PAGE)}
-            className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-gray-200 bg-white px-6 py-2.5 text-sm font-medium text-gray-700 shadow-sm transition-all hover:border-gray-300 hover:bg-gray-50 hover:shadow"
+            className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-border bg-card px-6 py-2.5 text-sm font-medium text-foreground shadow-sm transition-all hover:border-border-strong hover:bg-muted hover:shadow"
           >
             Load More Articles
             <svg

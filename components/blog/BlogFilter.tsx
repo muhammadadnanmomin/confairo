@@ -22,8 +22,8 @@ export function BlogFilter({ selected, onChange }: BlogFilterProps) {
         className={cn(
           "cursor-pointer rounded-full px-4 py-1.5 text-sm font-medium transition-all",
           selected === "all"
-            ? "bg-indigo-600 text-white shadow-sm"
-            : "border border-gray-200 bg-white text-gray-600 hover:border-gray-300 hover:bg-gray-50"
+            ? "bg-primary text-primary-foreground shadow-sm"
+            : "border border-border bg-card text-muted-foreground hover:border-border-strong hover:bg-muted"
         )}
       >
         All
@@ -38,8 +38,8 @@ export function BlogFilter({ selected, onChange }: BlogFilterProps) {
           className={cn(
             "cursor-pointer rounded-full px-4 py-1.5 text-sm font-medium transition-all",
             selected === cat.value
-              ? "bg-indigo-600 text-white shadow-sm"
-              : "border border-gray-200 bg-white text-gray-600 hover:border-gray-300 hover:bg-gray-50"
+              ? "bg-primary text-primary-foreground shadow-sm"
+              : "border border-border bg-card text-muted-foreground hover:border-border-strong hover:bg-muted"
           )}
         >
           {cat.label}

@@ -119,17 +119,17 @@ export default async function BlogPostPage({
 
         {/* ── Meta card (overlapping header) ── */}
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <div className="-mt-12 relative z-10 rounded-2xl border border-gray-100 bg-white p-6 shadow-lg sm:p-8">
+          <div className="-mt-12 relative z-10 rounded-2xl border border-border bg-card p-6 shadow-lg sm:p-8">
             {/* Back link + category */}
             <div className="flex flex-wrap items-center gap-3 mb-5">
               <Link
                 href="/blog"
-                className="inline-flex items-center gap-1.5 text-sm font-medium text-gray-500 transition hover:text-indigo-600"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition hover:text-primary"
               >
                 <ArrowLeft className="h-4 w-4" />
                 Back to Blog
               </Link>
-              <span className="text-gray-300">|</span>
+              <span className="text-border">|</span>
               <span
                 className={cn(
                   "rounded-full px-3 py-0.5 text-xs font-semibold",
@@ -141,12 +141,12 @@ export default async function BlogPostPage({
             </div>
 
             {/* Meta row */}
-            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-gray-500">
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
               {/* Author */}
               <span className="inline-flex items-center gap-1.5">
                 <User className="h-4 w-4" />
                 <span>
-                  <strong className="font-medium text-gray-700">
+                  <strong className="font-medium text-foreground">
                     {post.author.name}
                   </strong>{" "}
                   · {post.author.role}
@@ -171,7 +171,7 @@ export default async function BlogPostPage({
 
               {/* Last updated */}
               {post.updatedAt && post.updatedAt !== post.date && (
-                <span className="inline-flex items-center gap-1.5 text-xs text-gray-400">
+                <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground">
                   <RefreshCw className="h-3.5 w-3.5" />
                   Updated{" "}
                   {new Date(post.updatedAt).toLocaleDateString("en-US", {
@@ -187,7 +187,7 @@ export default async function BlogPostPage({
 
         {/* ── Cover image ── */}
         <div className="mx-auto max-w-5xl px-4 pt-10 sm:px-6 lg:px-8">
-          <div className="relative aspect-[16/8] w-full overflow-hidden rounded-2xl bg-gray-100 shadow-md">
+          <div className="relative aspect-[16/8] w-full overflow-hidden rounded-2xl bg-muted shadow-md">
             <Image
               src={post.coverImage}
               alt={post.title}
@@ -211,7 +211,7 @@ export default async function BlogPostPage({
               />
 
               {/* Share buttons */}
-              <div className="mt-10 border-t border-gray-100 pt-6">
+              <div className="mt-10 border-t border-border pt-6">
                 <ShareButtons title={post.title} slug={post.slug} />
               </div>
 
@@ -220,7 +220,7 @@ export default async function BlogPostPage({
                 {post.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-xs font-medium text-gray-500"
+                    className="rounded-full border border-border bg-muted px-3 py-1 text-xs font-medium text-muted-foreground"
                   >
                     {tag}
                   </span>

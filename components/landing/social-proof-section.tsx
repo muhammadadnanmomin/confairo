@@ -50,18 +50,18 @@ const useCases = [
 
 export function SocialProofSection() {
   return (
-    <section id="testimonials" className="bg-gray-50 px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+    <section id="testimonials" className="bg-muted px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
 
       <div className="mx-auto max-w-7xl">
 
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
 
-          <p className="text-sm font-semibold uppercase tracking-wider text-indigo-600">
+          <p className="text-sm font-semibold uppercase tracking-wider text-primary">
             Trusted by Organizers
           </p>
 
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             What Conference Organizers Are Saying
           </h2>
 
@@ -73,7 +73,7 @@ export function SocialProofSection() {
           {testimonials.map((t) => (
             <div
               key={t.name}
-              className="group flex flex-col rounded-2xl border border-gray-200 bg-white p-8 transition hover:border-indigo-100 hover:shadow-md"
+              className="group flex flex-col rounded-2xl border border-border bg-card p-8 transition hover:border-primary/20 hover:shadow-md"
             >
 
               {/* Stars */}
@@ -85,22 +85,22 @@ export function SocialProofSection() {
 
               {/* Quote */}
               <div className="relative mt-5 flex-1">
-                <Quote className="absolute -left-1 -top-2 h-8 w-8 text-gray-100" />
-                <p className="relative z-10 leading-relaxed text-gray-700">
+                <Quote className="absolute -left-1 -top-2 h-8 w-8 text-border" />
+                <p className="relative z-10 leading-relaxed text-foreground">
                   &ldquo;{t.quote}&rdquo;
                 </p>
               </div>
 
               {/* Highlight */}
-              <div className="mt-5 inline-flex self-start rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-700">
+              <div className="mt-5 inline-flex self-start rounded-full bg-accent px-3 py-1 text-xs font-semibold text-accent-foreground">
                 {t.highlight}
               </div>
 
               {/* Author */}
-              <div className="mt-5 border-t border-gray-100 pt-5">
-                <p className="font-semibold text-gray-900">{t.name}</p>
-                <p className="text-sm text-gray-500">{t.role}</p>
-                <p className="text-sm text-gray-400">{t.institution}</p>
+              <div className="mt-5 border-t border-border pt-5">
+                <p className="font-semibold text-foreground">{t.name}</p>
+                <p className="text-sm text-muted-foreground">{t.role}</p>
+                <p className="text-sm text-muted-foreground">{t.institution}</p>
               </div>
 
             </div>
@@ -112,10 +112,10 @@ export function SocialProofSection() {
         <div className="mt-24">
 
           <div className="mx-auto max-w-3xl text-center">
-            <h3 className="text-2xl font-bold text-gray-900 sm:text-3xl">
+            <h3 className="text-2xl font-bold text-foreground sm:text-3xl">
               Built for Every Scale of Conference
             </h3>
-            <p className="mt-3 text-gray-600">
+            <p className="mt-3 text-muted-foreground">
               Whether you&apos;re running a departmental seminar or a national symposium,
               Confairo adapts to your needs.
             </p>
@@ -126,15 +126,15 @@ export function SocialProofSection() {
             {useCases.map((uc) => (
               <div
                 key={uc.type}
-                className="rounded-xl border border-gray-200 bg-white p-6 transition hover:border-indigo-100 hover:shadow-sm"
+                className="rounded-xl border border-border bg-card p-6 transition hover:border-primary/20 hover:shadow-sm"
               >
                 <div className="flex items-center justify-between">
-                  <h4 className="font-semibold text-gray-900">{uc.type}</h4>
-                  <span className="rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-600">
+                  <h4 className="font-semibold text-foreground">{uc.type}</h4>
+                  <span className="rounded-full bg-muted px-2.5 py-0.5 text-xs font-medium text-muted-foreground">
                     {uc.papers}
                   </span>
                 </div>
-                <p className="mt-3 text-sm leading-relaxed text-gray-600">
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                   {uc.description}
                 </p>
               </div>

@@ -34,14 +34,14 @@ export function BenefitsSection() {
   return (
     <section
       id="benefits"
-      className="bg-indigo-600 px-4 py-20 text-white sm:px-6 sm:py-28 lg:px-8"
+      className="bg-primary px-4 py-20 text-white sm:px-6 sm:py-28 lg:px-8"
     >
       <div className="mx-auto max-w-7xl">
 
         {/* Header */}
         <div className="mx-auto max-w-2xl text-center">
 
-          <p className="text-sm font-semibold uppercase tracking-wider text-indigo-200">
+          <p className="text-sm font-semibold uppercase tracking-wider text-primary-foreground/70">
             Who It Helps
           </p>
 
@@ -49,7 +49,7 @@ export function BenefitsSection() {
             Built for Organizers, Reviewers, and Researchers
           </h2>
 
-          <p className="mt-4 text-lg text-indigo-100">
+          <p className="mt-4 text-lg text-primary-foreground/80">
             Every role in a conference has different needs.
             Confairo gives each one a clear, focused experience.
           </p>
@@ -81,9 +81,9 @@ export function BenefitsSection() {
                     className="flex items-start gap-3"
                   >
 
-                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-indigo-200" />
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary-foreground/70" />
 
-                    <span className="text-indigo-50 leading-relaxed">
+                    <span className="text-primary-foreground/90 leading-relaxed">
                       {item}
                     </span>
 
@@ -100,7 +100,7 @@ export function BenefitsSection() {
         {/* Bottom Note */}
         <div className="mt-16 text-center">
 
-          <p className="text-sm text-indigo-200">
+          <p className="text-sm text-primary-foreground/70">
             Designed for universities, research labs, and independent conference organizers.
           </p>
 

@@ -108,8 +108,8 @@ export default async function OrganizationProfilePage({
                                 className="h-24 w-24 rounded-xl object-cover border shrink-0"
                             />
                         ) : (
-                            <div className="h-24 w-24 rounded-xl bg-indigo-50 flex items-center justify-center shrink-0">
-                                <span className="text-4xl font-bold text-indigo-600">
+                            <div className="h-24 w-24 rounded-xl bg-accent flex items-center justify-center shrink-0">
+                                <span className="text-4xl font-bold text-primary">
                                     {org.name.charAt(0).toUpperCase()}
                                 </span>
                             </div>
@@ -118,12 +118,12 @@ export default async function OrganizationProfilePage({
                         {/* Info */}
                         <div className="flex-1 space-y-3">
                             <div>
-                                <h1 className="text-3xl font-bold tracking-tight text-gray-900">
+                                <h1 className="text-3xl font-bold tracking-tight text-foreground">
                                     {org.name}
                                 </h1>
 
                                 {org.country && (
-                                    <div className="flex items-center gap-1.5 mt-1 text-gray-500 text-sm">
+                                    <div className="flex items-center gap-1.5 mt-1 text-muted-foreground text-sm">
                                         <MapPin className="h-4 w-4" />
                                         {org.country}
                                     </div>
@@ -131,7 +131,7 @@ export default async function OrganizationProfilePage({
                             </div>
 
                             {org.description && (
-                                <p className="text-gray-600 leading-relaxed max-w-2xl">
+                                <p className="text-muted-foreground leading-relaxed max-w-2xl">
                                     {org.description}
                                 </p>
                             )}
@@ -168,7 +168,7 @@ export default async function OrganizationProfilePage({
 
                         {/* Stats */}
                         <div className="flex md:flex-col gap-4 md:gap-3 md:items-end md:text-right shrink-0">
-                            <div className="flex items-center gap-2 text-sm text-gray-500">
+                            <div className="flex items-center gap-2 text-sm text-muted-foreground">
                                 <Building2 className="h-4 w-4" />
                                 <span>
                                     Since{" "}
@@ -178,7 +178,7 @@ export default async function OrganizationProfilePage({
                                     })}
                                 </span>
                             </div>
-                            <div className="flex items-center gap-2 text-sm text-gray-500">
+                            <div className="flex items-center gap-2 text-sm text-muted-foreground">
                                 <Users className="h-4 w-4" />
                                 <span>
                                     {conferences?.length || 0} conference
@@ -192,20 +192,20 @@ export default async function OrganizationProfilePage({
 
             {/* ───── Hosted Conferences ───── */}
             <div className="space-y-4">
-                <h2 className="text-2xl font-bold text-gray-900">
+                <h2 className="text-2xl font-bold text-foreground">
                     Hosted Conferences
                 </h2>
 
                 {/* Empty State */}
                 {(!conferences || conferences.length === 0) && (
                     <Card className="p-12 text-center">
-                        <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-gray-100">
-                            <Calendar className="h-7 w-7 text-gray-400" />
+                        <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-muted">
+                            <Calendar className="h-7 w-7 text-muted-foreground" />
                         </div>
-                        <h3 className="text-lg font-semibold text-gray-700">
+                        <h3 className="text-lg font-semibold text-foreground">
                             No conferences hosted yet
                         </h3>
-                        <p className="mt-1 text-sm text-gray-500 max-w-sm mx-auto">
+                        <p className="mt-1 text-sm text-muted-foreground max-w-sm mx-auto">
                             This organization hasn&apos;t published any conferences yet.
                             Check back later for upcoming events.
                         </p>
@@ -223,18 +223,18 @@ export default async function OrganizationProfilePage({
                                 <Link
                                     key={c.id}
                                     href={`/conferences/${c.id}`}
-                                    className="group rounded-xl border bg-white shadow-sm transition-all hover:shadow-lg hover:-translate-y-1 flex flex-col overflow-hidden"
+                                    className="group rounded-xl border bg-card shadow-sm transition-all hover:shadow-lg hover:-translate-y-1 flex flex-col overflow-hidden"
                                 >
                                     <div className="p-5 flex flex-col flex-1">
                                         {/* Badges */}
                                         <div className="flex flex-wrap items-center gap-2 mb-3">
-                                            <span className="inline-flex items-center gap-1 rounded-full bg-indigo-50 px-3 py-1 text-xs font-medium text-indigo-600">
+                                            <span className="inline-flex items-center gap-1 rounded-full bg-accent px-3 py-1 text-xs font-medium text-primary">
                                                 <Calendar className="h-3.5 w-3.5" />
                                                 {formatDate(c.start_date)}
                                             </span>
 
                                             {submissionsOpen && (
-                                                <Badge className="bg-green-100 text-green-700 border-green-200 hover:bg-green-100">
+                                                <Badge className="bg-success-surface text-success border-success/30 hover:bg-success-surface">
                                                     Submissions Open
                                                 </Badge>
                                             )}
@@ -247,12 +247,12 @@ export default async function OrganizationProfilePage({
                                         </div>
 
                                         {/* Title */}
-                                        <h3 className="text-lg font-semibold text-gray-900 group-hover:text-indigo-600 transition leading-snug">
+                                        <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition leading-snug">
                                             {c.title}
                                         </h3>
 
                                         {/* Details */}
-                                        <div className="mt-2 space-y-1 text-sm text-gray-500">
+                                        <div className="mt-2 space-y-1 text-sm text-muted-foreground">
                                             {c.venue && (
                                                 <div className="flex items-center gap-2">
                                                     <MapPin className="h-3.5 w-3.5" />
@@ -276,7 +276,7 @@ export default async function OrganizationProfilePage({
 
                                         {/* Footer */}
                                         <div className="mt-4 pt-3 border-t flex items-center justify-end">
-                                            <span className="flex items-center gap-1 text-sm font-medium text-indigo-600">
+                                            <span className="flex items-center gap-1 text-sm font-medium text-primary">
                                                 View Details
                                                 <ArrowRight className="h-4 w-4" />
                                             </span>

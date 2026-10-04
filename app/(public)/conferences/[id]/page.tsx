@@ -63,10 +63,10 @@ function SectionHeading({
 }) {
   return (
     <div className="flex items-center gap-2 mb-4">
-      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-50">
-        <Icon className="h-4 w-4 text-indigo-600" />
+      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent">
+        <Icon className="h-4 w-4 text-primary" />
       </div>
-      <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
+      <h3 className="text-lg font-semibold text-foreground">{title}</h3>
     </div>
   );
 }
@@ -90,13 +90,13 @@ export default async function ConferenceDetail({ params }: Props) {
   if (!conf) {
     return (
       <div className="mx-auto max-w-3xl px-4 py-20 text-center">
-        <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gray-100">
-          <BookOpen className="h-8 w-8 text-gray-400" />
+        <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-muted">
+          <BookOpen className="h-8 w-8 text-muted-foreground" />
         </div>
-        <h2 className="text-xl font-bold text-gray-900">
+        <h2 className="text-xl font-bold text-foreground">
           Conference not available
         </h2>
-        <p className="text-gray-500 mt-2">
+        <p className="text-muted-foreground mt-2">
           This conference may be unpublished or removed.
         </p>
       </div>
@@ -165,7 +165,7 @@ export default async function ConferenceDetail({ params }: Props) {
       {/* ============================================================ */}
       {/*  1. HERO SECTION                                              */}
       {/* ============================================================ */}
-      <div className="rounded-xl border bg-white overflow-hidden">
+      <div className="rounded-xl border bg-card overflow-hidden">
 
         {/* ---- Desktop Banner (hidden on mobile) ---- */}
         {conf.conference_banner_url && (
@@ -259,13 +259,13 @@ export default async function ConferenceDetail({ params }: Props) {
               <img
                 src={conf.conference_logo_url}
                 alt=""
-                className="h-16 w-16 md:h-20 md:w-20 rounded-xl border-2 border-gray-200 object-cover shrink-0"
+                className="h-16 w-16 md:h-20 md:w-20 rounded-xl border-2 border-border object-cover shrink-0"
               />
             )}
 
             <div className="min-w-0 flex-1">
               {/* Title + Short name */}
-              <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 tracking-tight">
+              <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground tracking-tight">
                 {conf.title}
                 {conf.short_name && (
                   <Badge
@@ -278,7 +278,7 @@ export default async function ConferenceDetail({ params }: Props) {
               </h1>
 
               {/* Meta row */}
-              <div className="mt-2 flex flex-wrap gap-2 md:gap-3 text-sm text-gray-500">
+              <div className="mt-2 flex flex-wrap gap-2 md:gap-3 text-sm text-muted-foreground">
                 <span className="flex items-center gap-1">
                   <Calendar className="h-4 w-4" />
                   {formatDate(conf.start_date)} →{" "}
@@ -302,14 +302,14 @@ export default async function ConferenceDetail({ params }: Props) {
                 {/* Submission Status */}
                 {conf.submission_deadline &&
                   (submissionsOpen ? (
-                    <Badge className="bg-green-100 text-green-700 border-green-200 hover:bg-green-100">
+                    <Badge className="bg-success-surface text-success border-success/30 hover:bg-success-surface">
                       <CheckCircle className="h-3 w-3" />
                       Submissions Open
                     </Badge>
                   ) : (
                     <Badge
                       variant="secondary"
-                      className="text-red-600 bg-red-50 border-red-200 hover:bg-red-50"
+                      className="text-destructive bg-destructive-surface border-destructive/30 hover:bg-destructive-surface"
                     >
                       <XCircle className="h-3 w-3" />
                       Submissions Closed
@@ -323,7 +323,7 @@ export default async function ConferenceDetail({ params }: Props) {
         {/* Description */}
         {conf.description && (
           <div className="px-4 md:px-8 pb-6 mt-6">
-            <p className="text-sm md:text-base leading-relaxed text-gray-600">
+            <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
               {conf.description}
             </p>
           </div>
@@ -342,7 +342,7 @@ export default async function ConferenceDetail({ params }: Props) {
           {/*  2. IMPORTANT DATES                                       */}
           {/* ======================================================== */}
           {deadlineEntries.length > 0 && (
-            <div className="rounded-xl border bg-white p-6">
+            <div className="rounded-xl border bg-card p-6">
               <SectionHeading icon={Clock} title="Important Dates" />
 
               <div className="grid sm:grid-cols-2 gap-3">
@@ -352,18 +352,18 @@ export default async function ConferenceDetail({ params }: Props) {
                     <div
                       key={d.label}
                       className={`flex items-center gap-3 rounded-lg border px-4 py-3 ${isPast
-                        ? "bg-gray-50 border-gray-200"
-                        : "bg-indigo-50/50 border-indigo-100"
+                        ? "bg-muted border-border"
+                        : "bg-accent/50 border-accent"
                         }`}
                     >
                       <Calendar
-                        className={`h-4 w-4 shrink-0 ${isPast ? "text-gray-400" : "text-indigo-500"
+                        className={`h-4 w-4 shrink-0 ${isPast ? "text-muted-foreground" : "text-primary"
                           }`}
                       />
                       <div className="min-w-0">
-                        <p className="text-xs text-gray-500">{d.label}</p>
+                        <p className="text-xs text-muted-foreground">{d.label}</p>
                         <p
-                          className={`text-sm font-medium ${isPast ? "text-gray-500" : "text-gray-900"
+                          className={`text-sm font-medium ${isPast ? "text-muted-foreground" : "text-foreground"
                             }`}
                         >
                           {formatDate(d.date)}
@@ -374,11 +374,11 @@ export default async function ConferenceDetail({ params }: Props) {
                 })}
 
                 {conf.max_participants && (
-                  <div className="flex items-center gap-3 rounded-lg border bg-gray-50 border-gray-200 px-4 py-3">
-                    <Users className="h-4 w-4 shrink-0 text-gray-400" />
+                  <div className="flex items-center gap-3 rounded-lg border bg-muted border-border px-4 py-3">
+                    <Users className="h-4 w-4 shrink-0 text-muted-foreground" />
                     <div className="min-w-0">
-                      <p className="text-xs text-gray-500">Max Participants</p>
-                      <p className="text-sm font-medium text-gray-900">
+                      <p className="text-xs text-muted-foreground">Max Participants</p>
+                      <p className="text-sm font-medium text-foreground">
                         {conf.max_participants}
                       </p>
                     </div>
@@ -392,7 +392,7 @@ export default async function ConferenceDetail({ params }: Props) {
           {/*  3. TRACKS / CATEGORIES                                   */}
           {/* ======================================================== */}
           {tracks.length > 0 && (
-            <div className="rounded-xl border bg-white p-6">
+            <div className="rounded-xl border bg-card p-6">
               <SectionHeading icon={Tag} title="Tracks / Categories" />
 
               <div className="flex flex-wrap gap-2">
@@ -413,7 +413,7 @@ export default async function ConferenceDetail({ params }: Props) {
           {/*  4. SUBMISSION SETTINGS                                   */}
           {/* ======================================================== */}
           {hasSubmissionSettings && (
-            <div className="rounded-xl border bg-white p-6">
+            <div className="rounded-xl border bg-card p-6">
               <SectionHeading icon={Settings} title="Submission Settings" />
 
               <div className="space-y-3">
@@ -423,7 +423,7 @@ export default async function ConferenceDetail({ params }: Props) {
                     href={conf.sample_paper_format_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-lg border border-indigo-200 bg-indigo-50 px-4 py-2.5 text-sm font-medium text-indigo-700 hover:bg-indigo-100 transition-colors"
+                    className="inline-flex items-center gap-2 rounded-lg border border-accent bg-accent px-4 py-2.5 text-sm font-medium text-primary-hover hover:bg-accent transition-colors"
                   >
                     <FileText className="h-4 w-4" />
                     Download Sample Paper Format
@@ -435,10 +435,10 @@ export default async function ConferenceDetail({ params }: Props) {
 
                   {conf.max_authors_per_paper != null && (
                     <div className="rounded-lg border px-4 py-3">
-                      <p className="text-xs text-gray-500">
+                      <p className="text-xs text-muted-foreground">
                         Max Authors per Paper
                       </p>
-                      <p className="font-medium text-gray-900">
+                      <p className="font-medium text-foreground">
                         {conf.max_authors_per_paper}
                       </p>
                     </div>
@@ -446,7 +446,7 @@ export default async function ConferenceDetail({ params }: Props) {
 
                   {conf.allowed_file_types && conf.allowed_file_types.length > 0 && (
                     <div className="rounded-lg border px-4 py-3">
-                      <p className="text-xs text-gray-500 mb-1">
+                      <p className="text-xs text-muted-foreground mb-1">
                         Allowed File Types
                       </p>
                       <div className="flex flex-wrap gap-1">
@@ -465,8 +465,8 @@ export default async function ConferenceDetail({ params }: Props) {
 
                   {conf.max_file_size_mb != null && (
                     <div className="rounded-lg border px-4 py-3">
-                      <p className="text-xs text-gray-500">Max File Size</p>
-                      <p className="font-medium text-gray-900">
+                      <p className="text-xs text-muted-foreground">Max File Size</p>
+                      <p className="font-medium text-foreground">
                         {conf.max_file_size_mb} MB
                       </p>
                     </div>
@@ -480,17 +480,17 @@ export default async function ConferenceDetail({ params }: Props) {
           {/* ======================================================== */}
           {/*  5. REGISTRATION FEES                                     */}
           {/* ======================================================== */}
-          <div className="rounded-xl border bg-white p-6">
+          <div className="rounded-xl border bg-card p-6">
             <SectionHeading icon={CreditCard} title="Registration Fees" />
 
             {conf.payment_required === false ? (
-              <div className="flex items-center gap-3 rounded-lg border border-green-200 bg-green-50 px-5 py-4">
-                <CheckCircle className="h-5 w-5 text-green-600" />
+              <div className="flex items-center gap-3 rounded-lg border border-success/30 bg-success-surface px-5 py-4">
+                <CheckCircle className="h-5 w-5 text-success" />
                 <div>
-                  <p className="font-semibold text-green-800">
+                  <p className="font-semibold text-success">
                     Free Conference
                   </p>
-                  <p className="text-sm text-green-600">
+                  <p className="text-sm text-success">
                     No registration fee required
                   </p>
                 </div>
@@ -504,14 +504,14 @@ export default async function ConferenceDetail({ params }: Props) {
                       key={cat.category_name}
                       className="rounded-lg border p-4 space-y-2"
                     >
-                      <p className="text-sm font-semibold text-gray-900">
+                      <p className="text-sm font-semibold text-foreground">
                         {cat.category_name}
                       </p>
 
                       {isListener ? (
                         <div className="flex items-center justify-between text-sm">
-                          <span className="text-gray-600">Listener Fee</span>
-                          <span className="font-medium text-gray-900">
+                          <span className="text-muted-foreground">Listener Fee</span>
+                          <span className="font-medium text-foreground">
                             {currencySymbol}{cat.listener_fee ?? 0}
                           </span>
                         </div>
@@ -519,32 +519,32 @@ export default async function ConferenceDetail({ params }: Props) {
                         <div className="space-y-1">
                           {cat.physical_presentation_fee != null && (
                             <div className="flex items-center justify-between text-sm">
-                              <span className="text-gray-600">Physical Presentation</span>
-                              <span className="font-medium text-gray-900">
+                              <span className="text-muted-foreground">Physical Presentation</span>
+                              <span className="font-medium text-foreground">
                                 {currencySymbol}{cat.physical_presentation_fee}
                               </span>
                             </div>
                           )}
                           {cat.virtual_presentation_fee != null && (
                             <div className="flex items-center justify-between text-sm">
-                              <span className="text-gray-600">Virtual Presentation</span>
-                              <span className="font-medium text-gray-900">
+                              <span className="text-muted-foreground">Virtual Presentation</span>
+                              <span className="font-medium text-foreground">
                                 {currencySymbol}{cat.virtual_presentation_fee}
                               </span>
                             </div>
                           )}
                           {cat.full_paper_publication_fee != null && (
                             <div className="flex items-center justify-between text-sm">
-                              <span className="text-gray-600">Full Paper Publication</span>
-                              <span className="font-medium text-gray-900">
+                              <span className="text-muted-foreground">Full Paper Publication</span>
+                              <span className="font-medium text-foreground">
                                 {currencySymbol}{cat.full_paper_publication_fee}
                               </span>
                             </div>
                           )}
                           {cat.abstract_publication_fee != null && (
                             <div className="flex items-center justify-between text-sm">
-                              <span className="text-gray-600">Abstract Publication</span>
-                              <span className="font-medium text-gray-900">
+                              <span className="text-muted-foreground">Abstract Publication</span>
+                              <span className="font-medium text-foreground">
                                 {currencySymbol}{cat.abstract_publication_fee}
                               </span>
                             </div>
@@ -556,7 +556,7 @@ export default async function ConferenceDetail({ params }: Props) {
                 })}
               </div>
             ) : (
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-muted-foreground">
                 Fee details will be updated soon.
               </p>
             )}
@@ -566,22 +566,22 @@ export default async function ConferenceDetail({ params }: Props) {
           {/*  6. PROCEEDINGS                                           */}
           {/* ======================================================== */}
           {conf.publish_proceedings && (
-            <div className="rounded-xl border bg-white p-6">
+            <div className="rounded-xl border bg-card p-6">
               <SectionHeading icon={BookOpen} title="Proceedings" />
 
               <div className="grid sm:grid-cols-2 gap-3">
                 {conf.proceedings_isbn && (
                   <div className="rounded-lg border px-4 py-3">
-                    <p className="text-xs text-gray-500">ISBN</p>
-                    <p className="text-sm font-medium text-gray-900">
+                    <p className="text-xs text-muted-foreground">ISBN</p>
+                    <p className="text-sm font-medium text-foreground">
                       {conf.proceedings_isbn}
                     </p>
                   </div>
                 )}
                 {conf.journal_name && (
                   <div className="rounded-lg border px-4 py-3">
-                    <p className="text-xs text-gray-500">Journal / Publisher</p>
-                    <p className="text-sm font-medium text-gray-900">
+                    <p className="text-xs text-muted-foreground">Journal / Publisher</p>
+                    <p className="text-sm font-medium text-foreground">
                       {conf.journal_name}
                     </p>
                   </div>
@@ -594,7 +594,7 @@ export default async function ConferenceDetail({ params }: Props) {
           {/*  7. CONTACT & LINKS                                       */}
           {/* ======================================================== */}
           {hasContactInfo && (
-            <div className="rounded-xl border bg-white p-6">
+            <div className="rounded-xl border bg-card p-6">
               <SectionHeading icon={Globe} title="Contact & Links" />
 
               {/* Action buttons */}
@@ -604,7 +604,7 @@ export default async function ConferenceDetail({ params }: Props) {
                     href={conf.brochure_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-lg border bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors"
+                    className="inline-flex items-center gap-2 rounded-lg border bg-muted px-4 py-2 text-sm font-medium text-foreground hover:bg-muted transition-colors"
                   >
                     <Download className="h-4 w-4" />
                     Download Brochure
@@ -629,7 +629,7 @@ export default async function ConferenceDetail({ params }: Props) {
                 {conf.contact_email && (
                   <a
                     href={`mailto:${conf.contact_email}`}
-                    className="flex items-center gap-2 text-sm text-gray-600 hover:text-indigo-600 transition-colors"
+                    className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
                     <Mail className="h-4 w-4 shrink-0" />
                     {conf.contact_email}
@@ -639,7 +639,7 @@ export default async function ConferenceDetail({ params }: Props) {
                 {conf.contact_phone && (
                   <a
                     href={`tel:${conf.contact_phone}`}
-                    className="flex items-center gap-2 text-sm text-gray-600 hover:text-indigo-600 transition-colors"
+                    className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
                     <Phone className="h-4 w-4 shrink-0" />
                     {conf.contact_phone}
@@ -651,7 +651,7 @@ export default async function ConferenceDetail({ params }: Props) {
                     href={conf.website_link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-sm text-indigo-600 hover:underline"
+                    className="flex items-center gap-2 text-sm text-primary hover:underline"
                   >
                     <Globe className="h-4 w-4 shrink-0" />
                     Official Website
@@ -666,10 +666,10 @@ export default async function ConferenceDetail({ params }: Props) {
 
         {/* ---- Right Sidebar ---- */}
         <div className="space-y-4">
-          <div className="rounded-xl border bg-white p-5 space-y-4 sticky top-24">
+          <div className="rounded-xl border bg-card p-5 space-y-4 sticky top-24">
             <h3 className="font-semibold text-lg">Participate</h3>
 
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-muted-foreground">
               Register, submit your paper, or attend this conference.
             </p>
 
@@ -677,14 +677,14 @@ export default async function ConferenceDetail({ params }: Props) {
 
             {/* Share */}
             <div className="border-t pt-3 space-y-2">
-              <p className="text-xs font-medium text-gray-500 uppercase tracking-wide">Share Conference</p>
+              <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Share Conference</p>
               <ShareConference
                 url={`${process.env.NEXT_PUBLIC_SITE_URL || ""}/conferences/${id}`}
                 title={conf.title}
               />
             </div>
 
-            <div className="flex items-center gap-2 text-xs text-gray-400 pt-2">
+            <div className="flex items-center gap-2 text-xs text-muted-foreground pt-2">
               <CreditCard className="h-4 w-4" />
               Secure Payment via Platform
             </div>

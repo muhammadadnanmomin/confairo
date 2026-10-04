@@ -28,11 +28,11 @@ export default async function ConferencesPage() {
     <div className="mx-auto max-w-7xl px-4 py-10 space-y-8">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold text-gray-900">
+        <h1 className="text-3xl font-bold text-foreground">
           Academic Conferences
         </h1>
 
-        <p className="text-gray-500 mt-1">
+        <p className="text-muted-foreground mt-1">
           Discover and register for upcoming academic events
         </p>
       </div>

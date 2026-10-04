@@ -117,7 +117,7 @@ export default function RegisterButtons({ conferenceId }: Props) {
       <div className="flex flex-col gap-3">
 
         <Link href="/dashboard/participant/submissions">
-          <Button className="w-full bg-green-600 hover:bg-green-700">
+          <Button className="w-full bg-success hover:bg-success/90">
             Submit Paper
           </Button>
         </Link>
@@ -145,7 +145,7 @@ export default function RegisterButtons({ conferenceId }: Props) {
         )}
 
         {registration.paid && (
-          <Button disabled className="w-full bg-blue-600">
+          <Button disabled className="w-full bg-info">
             Access Granted
           </Button>
         )}

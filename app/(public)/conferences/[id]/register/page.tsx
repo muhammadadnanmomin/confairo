@@ -104,8 +104,8 @@ export default function ConferenceRegisterPage() {
     return (
       <div className="min-h-[60vh] flex items-center justify-center">
         <div className="flex flex-col items-center gap-3">
-          <Loader2 className="h-8 w-8 animate-spin text-indigo-500" />
-          <p className="text-sm text-gray-500">Loading registration…</p>
+          <Loader2 className="h-8 w-8 animate-spin text-primary" />
+          <p className="text-sm text-muted-foreground">Loading registration…</p>
         </div>
       </div>
     );
@@ -221,19 +221,19 @@ export default function ConferenceRegisterPage() {
       <Card className="w-full max-w-lg shadow-sm border rounded-xl overflow-hidden">
 
         {/* Header */}
-        <div className="bg-gradient-to-br from-indigo-50 via-blue-50 to-sky-50 border-b px-6 py-8 text-center">
-          <div className="flex items-center justify-center h-14 w-14 rounded-2xl bg-indigo-100 mx-auto mb-4">
-            <Users className="h-7 w-7 text-indigo-600" />
+        <div className="bg-gradient-to-br from-accent via-info-surface to-info-surface border-b px-6 py-8 text-center">
+          <div className="flex items-center justify-center h-14 w-14 rounded-2xl bg-accent mx-auto mb-4">
+            <Users className="h-7 w-7 text-primary" />
           </div>
-          <h1 className="text-2xl font-bold text-gray-900">
+          <h1 className="text-2xl font-bold text-foreground">
             Join This Conference
           </h1>
           {conferenceTitle && (
-            <p className="text-sm font-medium text-indigo-600 mt-1">
+            <p className="text-sm font-medium text-primary mt-1">
               {conferenceTitle}
             </p>
           )}
-          <p className="text-sm text-gray-500 mt-1.5">
+          <p className="text-sm text-muted-foreground mt-1.5">
             Choose how you want to participate
           </p>
         </div>
@@ -261,8 +261,8 @@ export default function ConferenceRegisterPage() {
                     className={`
                       relative flex items-start gap-4 rounded-xl border-2 p-4 transition-all
                       ${isSelected
-                        ? "border-indigo-500 bg-indigo-50/50 shadow-sm"
-                        : "border-gray-200 bg-white hover:border-gray-300 hover:bg-gray-50/50"
+                        ? "border-primary bg-accent/50 shadow-sm"
+                        : "border-border bg-card hover:border-border-strong hover:bg-muted/50"
                       }
                     `}
                   >
@@ -275,8 +275,8 @@ export default function ConferenceRegisterPage() {
                     <div
                       className={`flex items-center justify-center h-10 w-10 rounded-lg flex-shrink-0 ${
                         isSelected
-                          ? "bg-indigo-100 text-indigo-600"
-                          : "bg-gray-100 text-gray-500"
+                          ? "bg-accent text-primary"
+                          : "bg-muted text-muted-foreground"
                       }`}
                     >
                       <Icon className="h-5 w-5" />
@@ -287,7 +287,7 @@ export default function ConferenceRegisterPage() {
                       <div className="flex items-center gap-2 flex-wrap">
                         <span
                           className={`font-semibold text-sm ${
-                            isSelected ? "text-indigo-900" : "text-gray-800"
+                            isSelected ? "text-foreground" : "text-foreground"
                           }`}
                         >
                           {r.title}
@@ -297,15 +297,15 @@ export default function ConferenceRegisterPage() {
                           <Badge
                             className={`text-[10px] px-1.5 py-0 ${
                               isSelected
-                                ? "bg-indigo-100 text-indigo-700 border-indigo-200"
-                                : "bg-amber-50 text-amber-700 border-amber-200"
+                                ? "bg-accent text-primary-hover border-accent"
+                                : "bg-warning-surface text-warning border-warning/30"
                             }`}
                           >
                             {r.badgeText}
                           </Badge>
                         )}
                       </div>
-                      <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">
+                      <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">
                         {r.description}
                       </p>
                     </div>
@@ -316,9 +316,9 @@ export default function ConferenceRegisterPage() {
           </RadioGroup>
 
           {/* Info Section */}
-          <div className="flex items-start gap-2.5 bg-blue-50 border border-blue-100 rounded-lg px-4 py-3">
-            <Info className="h-4 w-4 text-blue-500 flex-shrink-0 mt-0.5" />
-            <div className="text-xs text-blue-700 leading-relaxed space-y-1">
+          <div className="flex items-start gap-2.5 bg-info-surface border border-info/30 rounded-lg px-4 py-3">
+            <Info className="h-4 w-4 text-info flex-shrink-0 mt-0.5" />
+            <div className="text-xs text-info leading-relaxed space-y-1">
               <p>
                 <strong>Authors</strong> can submit papers and present at the conference.
               </p>
@@ -331,7 +331,7 @@ export default function ConferenceRegisterPage() {
 
           {/* Register Button */}
           <Button
-            className="w-full h-12 text-base font-semibold bg-indigo-600 hover:bg-indigo-700 text-white transition-all"
+            className="w-full h-12 text-base font-semibold transition-all"
             disabled={submitting}
             onClick={handleRegister}
           >
@@ -346,7 +346,7 @@ export default function ConferenceRegisterPage() {
           </Button>
 
           {/* Footer note */}
-          <p className="text-[11px] text-center text-gray-400 leading-relaxed">
+          <p className="text-[11px] text-center text-muted-foreground leading-relaxed">
             You can change your participation details from your dashboard after registering.
           </p>
         </div>

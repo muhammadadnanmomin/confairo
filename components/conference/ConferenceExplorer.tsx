@@ -249,14 +249,14 @@ export default function ConferenceExplorer({ conferences }: Props) {
     /* ---- If no conferences at all ---- */
     if (conferences.length === 0) {
         return (
-            <div className="rounded-xl border bg-white p-16 text-center">
-                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-indigo-50">
-                    <BookOpen className="h-8 w-8 text-indigo-400" />
+            <div className="rounded-xl border bg-card p-16 text-center">
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent">
+                    <BookOpen className="h-8 w-8 text-primary" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-800">
+                <h3 className="text-xl font-semibold text-foreground">
                     No conferences available yet
                 </h3>
-                <p className="mx-auto mt-2 max-w-md text-sm text-gray-500">
+                <p className="mx-auto mt-2 max-w-md text-sm text-muted-foreground">
                     We don&apos;t have any published conferences at the moment. Check
                     back soon — new academic events are added regularly.
                 </p>
@@ -271,7 +271,7 @@ export default function ConferenceExplorer({ conferences }: Props) {
                 <div className="space-y-3">
                     <div className="flex items-center gap-2">
                         <Flame className="h-5 w-5 text-orange-500" />
-                        <h2 className="text-lg font-semibold text-gray-900">
+                        <h2 className="text-lg font-semibold text-foreground">
                             Trending Conferences
                         </h2>
                     </div>
@@ -283,7 +283,7 @@ export default function ConferenceExplorer({ conferences }: Props) {
                                 <Link
                                     key={`trending-${c.id}`}
                                     href={`/conferences/${c.id}`}
-                                    className="group shrink-0 w-72 rounded-xl border bg-white p-4 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5"
+                                    className="group shrink-0 w-72 rounded-xl border bg-card p-4 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5"
                                 >
                                     <div className="flex items-start gap-3">
                                         {c.conference_logo_url ? (
@@ -293,22 +293,22 @@ export default function ConferenceExplorer({ conferences }: Props) {
                                                 className="h-10 w-10 rounded-lg object-cover border shrink-0"
                                             />
                                         ) : (
-                                            <div className="h-10 w-10 rounded-lg bg-indigo-50 flex items-center justify-center shrink-0">
-                                                <Calendar className="h-5 w-5 text-indigo-400" />
+                                            <div className="h-10 w-10 rounded-lg bg-accent flex items-center justify-center shrink-0">
+                                                <Calendar className="h-5 w-5 text-primary" />
                                             </div>
                                         )}
                                         <div className="min-w-0 flex-1">
-                                            <h3 className="text-sm font-semibold text-gray-900 truncate group-hover:text-indigo-600 transition">
+                                            <h3 className="text-sm font-semibold text-foreground truncate group-hover:text-primary transition">
                                                 {c.title}
                                             </h3>
-                                            <p className="text-xs text-gray-500 mt-0.5">
+                                            <p className="text-xs text-muted-foreground mt-0.5">
                                                 {formatDate(c.start_date)}
                                             </p>
                                         </div>
                                     </div>
                                     <div className="mt-3 flex items-center gap-2">
-                                        <CalendarClock className="h-3.5 w-3.5 text-amber-500" />
-                                        <span className="text-xs font-medium text-amber-600">
+                                        <CalendarClock className="h-3.5 w-3.5 text-warning" />
+                                        <span className="text-xs font-medium text-warning">
                                             {days <= 0
                                                 ? "Deadline today!"
                                                 : days === 1
@@ -317,7 +317,7 @@ export default function ConferenceExplorer({ conferences }: Props) {
                                         </span>
                                     </div>
                                     {days <= 7 && days >= 0 && (
-                                        <Badge className="mt-2 bg-red-100 text-red-700 border-red-200 text-[10px]">
+                                        <Badge className="mt-2 bg-destructive-surface text-destructive border-destructive/30 text-[10px]">
                                             <AlertTriangle className="h-3 w-3" />
                                             Closing Soon
                                         </Badge>
@@ -333,17 +333,17 @@ export default function ConferenceExplorer({ conferences }: Props) {
             <div className="space-y-3">
                 {/* Search */}
                 <div className="relative w-full">
-                    <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                    <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                     <input
                         placeholder="Search by title, tracks, venue, or description..."
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
-                        className="w-full rounded-lg border px-9 py-2.5 text-sm outline-none focus:border-indigo-500 transition"
+                        className="w-full rounded-lg border px-9 py-2.5 text-sm outline-none focus:border-ring transition"
                     />
                     {search && (
                         <button
                             onClick={() => setSearch("")}
-                            className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-400 hover:text-gray-600"
+                            className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-muted-foreground hover:text-foreground"
                         >
                             <X className="h-4 w-4" />
                         </button>
@@ -352,7 +352,7 @@ export default function ConferenceExplorer({ conferences }: Props) {
 
                 {/* Filter bar */}
                 <div className="flex flex-wrap items-center gap-3">
-                    <div className="flex items-center gap-1.5 text-sm text-gray-500">
+                    <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
                         <SlidersHorizontal className="h-4 w-4" />
                         Filters
                     </div>
@@ -411,14 +411,14 @@ export default function ConferenceExplorer({ conferences }: Props) {
                             variant="ghost"
                             size="sm"
                             onClick={clearFilters}
-                            className="text-gray-500"
+                            className="text-muted-foreground"
                         >
                             <X className="h-3.5 w-3.5" />
                             Clear
                         </Button>
                     )}
 
-                    <span className="ml-auto text-sm text-gray-400">
+                    <span className="ml-auto text-sm text-muted-foreground">
                         {filteredConferences.length} conference
                         {filteredConferences.length !== 1 && "s"}
                     </span>
@@ -427,14 +427,14 @@ export default function ConferenceExplorer({ conferences }: Props) {
 
             {/* ─── Empty filtered state ─── */}
             {filteredConferences.length === 0 && (
-                <div className="rounded-xl border bg-white p-12 text-center">
-                    <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-gray-100">
-                        <Search className="h-7 w-7 text-gray-400" />
+                <div className="rounded-xl border bg-card p-12 text-center">
+                    <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-muted">
+                        <Search className="h-7 w-7 text-muted-foreground" />
                     </div>
-                    <h3 className="text-lg font-semibold text-gray-700">
+                    <h3 className="text-lg font-semibold text-foreground">
                         No conferences match your filters
                     </h3>
-                    <p className="mt-1 text-sm text-gray-500">
+                    <p className="mt-1 text-sm text-muted-foreground">
                         Try adjusting your search or filter criteria.
                     </p>
                     <Button
@@ -465,7 +465,7 @@ export default function ConferenceExplorer({ conferences }: Props) {
                             <Link
                                 key={c.id}
                                 href={`/conferences/${c.id}`}
-                                className="group rounded-xl border bg-white shadow-sm transition-all hover:shadow-lg hover:-translate-y-1 flex flex-col overflow-hidden"
+                                className="group rounded-xl border bg-card shadow-sm transition-all hover:shadow-lg hover:-translate-y-1 flex flex-col overflow-hidden"
                             >
                                 {/* Logo + Top section */}
                                 <div className="p-5 pb-0 flex items-start gap-3">
@@ -480,13 +480,13 @@ export default function ConferenceExplorer({ conferences }: Props) {
                                     <div className="min-w-0 flex-1">
                                         {/* Date Badge */}
                                         <div className="mb-2 flex flex-wrap items-center gap-2">
-                                            <span className="inline-flex items-center gap-1 rounded-full bg-indigo-50 px-3 py-1 text-xs font-medium text-indigo-600">
+                                            <span className="inline-flex items-center gap-1 rounded-full bg-accent px-3 py-1 text-xs font-medium text-primary">
                                                 <Calendar className="h-3.5 w-3.5" />
                                                 {formatDate(c.start_date)}
                                             </span>
 
                                             {submissionsOpen && (
-                                                <Badge className="bg-green-100 text-green-700 border-green-200 hover:bg-green-100">
+                                                <Badge className="bg-success-surface text-success border-success/30 hover:bg-success-surface">
                                                     <CalendarCheck className="h-3 w-3" />
                                                     Submissions Open
                                                 </Badge>
@@ -496,7 +496,7 @@ export default function ConferenceExplorer({ conferences }: Props) {
                                                 deadlineDays !== null &&
                                                 deadlineDays <= 7 &&
                                                 deadlineDays >= 0 && (
-                                                    <Badge className="bg-red-100 text-red-700 border-red-200 hover:bg-red-100 text-[10px]">
+                                                    <Badge className="bg-destructive-surface text-destructive border-destructive/30 hover:bg-destructive-surface text-[10px]">
                                                         <AlertTriangle className="h-3 w-3" />
                                                         Closing Soon
                                                     </Badge>
@@ -504,7 +504,7 @@ export default function ConferenceExplorer({ conferences }: Props) {
                                         </div>
 
                                         {/* Title + Short name */}
-                                        <h2 className="text-lg font-semibold text-gray-900 group-hover:text-indigo-600 transition leading-snug">
+                                        <h2 className="text-lg font-semibold text-foreground group-hover:text-primary transition leading-snug">
                                             {c.title}
                                             {c.short_name && (
                                                 <Badge
@@ -518,7 +518,7 @@ export default function ConferenceExplorer({ conferences }: Props) {
 
                                         {/* Organization */}
                                         {org && (
-                                            <p className="text-xs text-gray-400 mt-1 flex items-center gap-1">
+                                            <p className="text-xs text-muted-foreground mt-1 flex items-center gap-1">
                                                 <Building2 className="h-3 w-3" />
                                                 Hosted by{" "}
                                                 <span
@@ -536,7 +536,7 @@ export default function ConferenceExplorer({ conferences }: Props) {
                                                             router.push(`/org/${org.slug}`);
                                                         }
                                                     }}
-                                                    className="text-indigo-500 hover:text-indigo-700 hover:underline transition-colors cursor-pointer"
+                                                    className="text-primary hover:text-primary-hover hover:underline transition-colors cursor-pointer"
                                                 >
                                                     {org.name}
                                                 </span>
@@ -548,14 +548,14 @@ export default function ConferenceExplorer({ conferences }: Props) {
                                 {/* Body */}
                                 <div className="px-5 pt-3 pb-5 flex flex-col flex-1">
                                     {/* Description */}
-                                    <p className="line-clamp-2 text-sm text-gray-600">
+                                    <p className="line-clamp-2 text-sm text-muted-foreground">
                                         {c.description || "No description provided."}
                                     </p>
 
                                     {/* Tracks */}
                                     {tracks.length > 0 && (
                                         <div className="mt-3 flex flex-wrap items-center gap-1.5">
-                                            <Tag className="h-3.5 w-3.5 text-gray-400" />
+                                            <Tag className="h-3.5 w-3.5 text-muted-foreground" />
                                             {tracks.slice(0, 3).map((t) => (
                                                 <Badge
                                                     key={t}
@@ -566,7 +566,7 @@ export default function ConferenceExplorer({ conferences }: Props) {
                                                 </Badge>
                                             ))}
                                             {tracks.length > 3 && (
-                                                <span className="text-[11px] text-gray-400">
+                                                <span className="text-[11px] text-muted-foreground">
                                                     +{tracks.length - 3} more
                                                 </span>
                                             )}
@@ -574,7 +574,7 @@ export default function ConferenceExplorer({ conferences }: Props) {
                                     )}
 
                                     {/* Info Row */}
-                                    <div className="mt-3 space-y-1 text-sm text-gray-500">
+                                    <div className="mt-3 space-y-1 text-sm text-muted-foreground">
                                         {c.mode && (
                                             <div className="flex items-center gap-2">
                                                 <Monitor className="h-4 w-4" />
@@ -591,7 +591,7 @@ export default function ConferenceExplorer({ conferences }: Props) {
 
                                         {/* Submission countdown */}
                                         {submissionsOpen && deadlineDays !== null && (
-                                            <div className="flex items-center gap-2 text-amber-600">
+                                            <div className="flex items-center gap-2 text-warning">
                                                 <CalendarClock className="h-4 w-4" />
                                                 <span className="text-xs font-medium">
                                                     {deadlineDays <= 0
@@ -605,7 +605,7 @@ export default function ConferenceExplorer({ conferences }: Props) {
 
                                         {/* Submission deadline date */}
                                         {c.submission_deadline && !submissionsOpen && (
-                                            <div className="flex items-center gap-2 text-gray-400">
+                                            <div className="flex items-center gap-2 text-muted-foreground">
                                                 <CalendarClock className="h-4 w-4" />
                                                 <span className="text-xs">
                                                     Deadline was {formatDate(c.submission_deadline)}
@@ -620,22 +620,22 @@ export default function ConferenceExplorer({ conferences }: Props) {
                                     {/* Footer */}
                                     <div className="mt-4 flex items-center justify-between border-t pt-3">
                                         <div className="flex items-center gap-1 text-sm">
-                                            <DollarSign className="h-3.5 w-3.5 text-gray-400" />
+                                            <DollarSign className="h-3.5 w-3.5 text-muted-foreground" />
                                             {c.payment_required === false ? (
-                                                <span className="font-medium text-green-600">
+                                                <span className="font-medium text-success">
                                                     Free
                                                 </span>
                                             ) : lowestFee != null ? (
-                                                <span className="font-medium text-gray-700">
+                                                <span className="font-medium text-foreground">
                                                     From {currencySymbol}
                                                     {lowestFee}
                                                 </span>
                                             ) : (
-                                                <span className="text-gray-400">—</span>
+                                                <span className="text-muted-foreground">—</span>
                                             )}
                                         </div>
 
-                                        <span className="flex items-center gap-1 text-sm font-medium text-indigo-600">
+                                        <span className="flex items-center gap-1 text-sm font-medium text-primary">
                                             View Details
                                             <ArrowRight className="h-4 w-4" />
                                         </span>

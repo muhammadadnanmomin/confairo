@@ -312,12 +312,12 @@ export default function OrganizerSubmissionsSummary() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold">Submissions</h1>
-          <p className="text-gray-500 mt-1">
+          <p className="text-muted-foreground mt-1">
             Overview of submitted papers & review status
           </p>
         </div>
         {activeFilterCount > 0 && (
-          <Badge className="bg-blue-100 text-blue-700 text-xs">
+          <Badge className="bg-primary/10 text-primary border-primary/20 text-xs">
             <SlidersHorizontal className="h-3 w-3 mr-1" />
             {activeFilterCount} filter{activeFilterCount > 1 ? "s" : ""} applied
           </Badge>
@@ -342,22 +342,22 @@ export default function OrganizerSubmissionsSummary() {
 
       {/* ── Filter Panel ── */}
       <Card className="p-4 space-y-4">
-        <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Filters</h3>
+        <h3 className="text-sm font-semibold text-foreground uppercase tracking-wide">Filters</h3>
 
         {/* Search */}
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <input
             type="text"
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
             placeholder="Search by title, author, or email…"
-            className="w-full pl-10 pr-10 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full pl-10 pr-10 py-2 border border-input rounded-lg text-sm bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
           />
           {searchQuery && (
             <button
               onClick={() => setSearchQuery("")}
-              className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-400 hover:text-gray-600"
+              className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-muted-foreground hover:text-foreground"
             >
               <X className="h-4 w-4" />
             </button>
@@ -367,7 +367,7 @@ export default function OrganizerSubmissionsSummary() {
         {/* Filter Dropdowns */}
         <div className="flex flex-wrap gap-3 items-end">
           <div className="flex flex-col gap-1">
-            <label className="text-xs text-gray-500">Conference</label>
+            <label className="text-xs text-muted-foreground">Conference</label>
             <FilterSelect
               label="Conference"
               value={conferenceFilter}
@@ -380,7 +380,7 @@ export default function OrganizerSubmissionsSummary() {
           </div>
 
           <div className="flex flex-col gap-1">
-            <label className="text-xs text-gray-500">Status</label>
+            <label className="text-xs text-muted-foreground">Status</label>
             <FilterSelect
               label="Status"
               value={statusFilter}
@@ -398,7 +398,7 @@ export default function OrganizerSubmissionsSummary() {
           </div>
 
           <div className="flex flex-col gap-1">
-            <label className="text-xs text-gray-500">Similarity</label>
+            <label className="text-xs text-muted-foreground">Similarity</label>
             <FilterSelect
               label="Plagiarism"
               value={plagiarismFilter}
@@ -414,7 +414,7 @@ export default function OrganizerSubmissionsSummary() {
           </div>
 
           <div className="flex flex-col gap-1">
-            <label className="text-xs text-gray-500">Reviewer</label>
+            <label className="text-xs text-muted-foreground">Reviewer</label>
             <FilterSelect
               label="Reviewer"
               value={reviewerFilter}
@@ -428,7 +428,7 @@ export default function OrganizerSubmissionsSummary() {
           </div>
 
           <div className="flex flex-col gap-1">
-            <label className="text-xs text-gray-500">Revision</label>
+            <label className="text-xs text-muted-foreground">Revision</label>
             <FilterSelect
               label="Revision"
               value={revisionFilter}
@@ -442,7 +442,7 @@ export default function OrganizerSubmissionsSummary() {
           </div>
 
           <div className="flex flex-col gap-1">
-            <label className="text-xs text-gray-500">Sort By</label>
+            <label className="text-xs text-muted-foreground">Sort By</label>
             <FilterSelect
               label="Sort"
               value={dateSort}
@@ -457,7 +457,7 @@ export default function OrganizerSubmissionsSummary() {
           {activeFilterCount > 0 && (
             <button
               onClick={clearFilters}
-              className="flex cursor-pointer items-center gap-1 text-xs text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md border border-gray-200 hover:bg-gray-50 transition-colors"
+              className="flex cursor-pointer items-center gap-1 text-xs text-muted-foreground hover:text-foreground px-3 py-2 rounded-md border border-border hover:bg-accent transition-colors"
             >
               <RotateCcw className="h-3 w-3" />
               Clear Filters
@@ -467,7 +467,7 @@ export default function OrganizerSubmissionsSummary() {
 
         {/* Results count */}
         {!loading && (
-          <p className="text-xs text-gray-400">
+          <p className="text-xs text-muted-foreground">
             Showing {filteredPapers.length} of {tabFiltered.length} submission{tabFiltered.length !== 1 ? "s" : ""}
             {activeFilterCount > 0 && ` (${activeFilterCount} filter${activeFilterCount > 1 ? "s" : ""} active)`}
           </p>
@@ -477,13 +477,13 @@ export default function OrganizerSubmissionsSummary() {
       {/* ── Submissions List ── */}
       <Card className="p-4 sm:p-6 space-y-4">
         {loading && (
-          <p className="text-sm text-gray-500">Loading submissions…</p>
+          <p className="text-sm text-muted-foreground">Loading submissions…</p>
         )}
 
         {!loading && filteredPapers.length === 0 && (
           <div className="text-center py-8">
-            <Search className="h-8 w-8 text-gray-300 mx-auto mb-3" />
-            <p className="text-sm text-gray-500 font-medium">
+            <Search className="h-8 w-8 text-muted-foreground/40 mx-auto mb-3" />
+            <p className="text-sm text-muted-foreground font-medium">
               {activeFilterCount > 0
                 ? "No submissions match current filters."
                 : "No papers in this category."}
@@ -491,7 +491,7 @@ export default function OrganizerSubmissionsSummary() {
             {activeFilterCount > 0 && (
               <button
                 onClick={clearFilters}
-                className="mt-2 cursor-pointer text-xs text-blue-600 hover:underline"
+                className="mt-2 cursor-pointer text-xs text-primary hover:underline"
               >
                 Clear all filters
               </button>
@@ -507,35 +507,35 @@ export default function OrganizerSubmissionsSummary() {
           return (
             <div
               key={p.id}
-              className={`border rounded-lg p-4 transition ${needsReviewer ? "bg-red-50" : "hover:bg-gray-50"
+              className={`border rounded-lg p-4 transition ${needsReviewer ? "bg-destructive-surface/30 border-destructive/30" : "hover:bg-muted/50 border-border"
                 }`}
             >
               <div className="flex justify-between gap-3">
                 <div className="flex gap-3">
-                  <FileText className="h-5 w-5 text-gray-400 mt-1" />
+                  <FileText className="h-5 w-5 text-muted-foreground mt-1" />
 
                   <div className="space-y-1">
-                    <p className="font-medium">
+                    <p className="font-medium text-foreground">
                       <HighlightMatch text={title} query={searchQuery} />
                     </p>
 
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-muted-foreground">
                       Conference: {p.conferences?.title || "—"}
                     </p>
 
                     {p.author_names && (
-                      <p className="text-xs text-gray-500">
+                      <p className="text-xs text-muted-foreground">
                         Authors: <HighlightMatch text={p.author_names} query={searchQuery} />
                       </p>
                     )}
 
                     {p.email && (
-                      <p className="text-xs text-gray-500">
+                      <p className="text-xs text-muted-foreground">
                         Contact: <HighlightMatch text={p.email} query={searchQuery} />
                       </p>
                     )}
 
-                    <div className="flex items-center gap-2 text-xs text-gray-500">
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
                       <Clock className="h-3 w-3" />
                       Submitted{" "}
                       {new Date(p.created_at).toLocaleDateString()}
@@ -546,47 +546,47 @@ export default function OrganizerSubmissionsSummary() {
 
                       <Badge className={
                         p.plagiarism_status === "passed"
-                          ? "bg-green-100 text-green-700"
+                          ? "bg-success-surface text-success border-success/30"
                           : p.plagiarism_status === "flagged"
-                            ? "bg-red-100 text-red-700"
-                            : "bg-yellow-100 text-yellow-700"
+                            ? "bg-destructive-surface text-destructive border-destructive/30"
+                            : "bg-warning-surface text-warning border-warning/30"
                       }>
                         Similarity: {p.plagiarism_status === "pending" || !p.plagiarism_status ? "Not analyzed yet" : p.plagiarism_status}
                       </Badge>
 
                       {needsReviewer && (
-                        <Badge className="bg-red-100 text-red-700">
+                        <Badge className="bg-destructive-surface text-destructive border-destructive/30">
                           No Reviewer
                         </Badge>
                       )}
 
                       {p.review_comment && (
-                        <Badge className="bg-purple-100 text-purple-700">
+                        <Badge className="bg-accent text-accent-foreground border-border">
                           Comment Added
                         </Badge>
                       )}
 
                       {p.presentation_fee_paid && (
-                        <Badge className="bg-green-100 text-green-700">
+                        <Badge className="bg-success-surface text-success border-success/30">
                           Presentation Paid
                         </Badge>
                       )}
 
                       {p.payment_status === "pending" && (
-                        <Badge className="bg-yellow-100 text-yellow-700">
+                        <Badge className="bg-warning-surface text-warning border-warning/30">
                           Payment Pending
                         </Badge>
                       )}
 
                       {p.revision_number > 1 && (
-                        <Badge className="bg-purple-100 text-purple-700">
+                        <Badge className="bg-accent text-accent-foreground border-border">
                           <RotateCcw className="h-3 w-3 mr-0.5" />
                           Revision v{p.revision_number}
                         </Badge>
                       )}
 
                       {p.decision_email_sent && (
-                        <Badge className="bg-green-100 text-green-700">
+                        <Badge className="bg-success-surface text-success border-success/30">
                           Email Sent
                         </Badge>
                       )}
@@ -600,7 +600,7 @@ export default function OrganizerSubmissionsSummary() {
                     onChange={(e) =>
                       assignReviewer(p.id, e.target.value)
                     }
-                    className={`cursor-pointer border rounded-md px-2 py-1 text-sm bg-white ${!p.reviewer_id ? "border-red-300" : ""
+                    className={`cursor-pointer border rounded-md px-2 py-1 text-sm bg-background text-foreground ${!p.reviewer_id ? "border-destructive/40" : "border-input"
                       }`}
                   >
                     <option value="">Assign reviewer</option>
@@ -621,7 +621,7 @@ export default function OrganizerSubmissionsSummary() {
                 </div>
               </div>
 
-              <div className="text-xs text-gray-500 mt-3 flex flex-wrap gap-4">
+              <div className="text-xs text-muted-foreground mt-3 flex flex-wrap gap-4">
                 {p.presentation_type && (
                   <span>Presentation: {p.presentation_type}</span>
                 )}
@@ -649,28 +649,28 @@ export default function OrganizerSubmissionsSummary() {
 
 function WorkflowBadge({ paper }: { paper: any }) {
   if (paper.status === "accepted")
-    return <Badge className="bg-green-100 text-green-700">Accepted</Badge>;
+    return <Badge className="bg-success-surface text-success border-success/30">Accepted</Badge>;
 
   if (paper.status === "rejected")
-    return <Badge className="bg-red-100 text-red-700">Rejected</Badge>;
+    return <Badge className="bg-destructive-surface text-destructive border-destructive/30">Rejected</Badge>;
 
   if (paper.status === "resubmitted")
-    return <Badge className="bg-purple-100 text-purple-700">Resubmitted</Badge>;
+    return <Badge className="bg-accent text-accent-foreground border-border">Resubmitted</Badge>;
 
   if (paper.status === "revision_required")
-    return <Badge className="bg-orange-100 text-orange-700">Revision Required</Badge>;
+    return <Badge className="bg-warning-surface text-warning border-warning/30">Revision Required</Badge>;
 
   if (paper.reviewed_at)
     return (
-      <Badge className="bg-yellow-100 text-yellow-700">
+      <Badge className="bg-warning-surface text-warning border-warning/30">
         Awaiting Decision
       </Badge>
     );
 
   if (paper.reviewer_id)
-    return <Badge className="bg-blue-100 text-blue-700">Under Review</Badge>;
+    return <Badge className="bg-info-surface text-info border-info/30">Under Review</Badge>;
 
-  return <Badge className="bg-gray-100 text-gray-700">Submitted</Badge>;
+  return <Badge className="bg-muted text-muted-foreground border-border">Submitted</Badge>;
 }
 
 /* ---------- TAB BUTTON ---------- */
@@ -690,8 +690,8 @@ function TabButton({
     <button
       onClick={onClick}
       className={`cursor-pointer px-4 py-2 rounded-lg text-sm font-medium border transition ${active
-        ? "bg-black text-white border-black"
-        : "bg-white hover:bg-gray-50"
+        ? "bg-primary text-primary-foreground border-primary"
+        : "bg-card text-foreground hover:bg-accent border-border"
         }`}
     >
       {label} ({count})
@@ -717,7 +717,7 @@ function FilterSelect({
     <select
       value={value}
       onChange={e => onChange(e.target.value)}
-      className={`cursor-pointer border rounded-md px-2.5 py-1.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition ${isActive ? "border-blue-400 bg-blue-50 text-blue-700" : "border-gray-200"
+      className={`cursor-pointer border rounded-md px-2.5 py-1.5 text-sm bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring transition ${isActive ? "border-primary bg-primary/10 text-primary" : "border-input"
         }`}
       title={label}
     >
@@ -746,7 +746,7 @@ function HighlightMatch({ text, query }: { text: string; query: string }) {
   return (
     <>
       {before}
-      <mark className="bg-yellow-200 text-yellow-900 rounded-sm px-0.5">{match}</mark>
+      <mark className="bg-warning-surface text-warning rounded-sm px-0.5">{match}</mark>
       {after}
     </>
   );

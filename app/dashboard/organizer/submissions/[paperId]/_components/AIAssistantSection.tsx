@@ -24,14 +24,14 @@ function AIFeatureBlock({
     <div className="space-y-3">
       {/* Sub-label */}
       <div className="flex items-start gap-3">
-        <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-indigo-50 to-purple-50 border border-indigo-100 flex items-center justify-center flex-shrink-0">
+        <div className="h-8 w-8 rounded-lg bg-accent border border-border flex items-center justify-center flex-shrink-0">
           {icon}
         </div>
         <div className="min-w-0">
-          <p className="text-sm font-semibold text-gray-800">{label}</p>
-          <p className="text-xs text-gray-500 mt-0.5">{description}</p>
+          <p className="text-sm font-semibold text-foreground">{label}</p>
+          <p className="text-xs text-muted-foreground mt-0.5">{description}</p>
           {note && (
-            <p className="text-[10px] text-amber-600 mt-1 flex items-center gap-1">
+            <p className="text-[10px] text-warning mt-1 flex items-center gap-1">
               💡 {note}
             </p>
           )}
@@ -66,8 +66,8 @@ export default function AIAssistantSection({
           <Brain className="h-5 w-5 text-white" />
         </div>
         <div>
-          <h2 className="text-base font-bold text-gray-900">AI Assistant</h2>
-          <p className="text-xs text-gray-500">Intelligent tools to assist your review process</p>
+          <h2 className="text-base font-bold text-foreground">AI Assistant</h2>
+          <p className="text-xs text-muted-foreground">Intelligent tools to assist your review process</p>
         </div>
       </div>
 
@@ -77,11 +77,11 @@ export default function AIAssistantSection({
       )}
 
       {/* Divider */}
-      <div className="border-t border-gray-100" />
+      <div className="border-t border-border" />
 
       {/* 1. Reviewer Suggestions */}
       <AIFeatureBlock
-        icon={<Users className="h-4 w-4 text-indigo-600" />}
+        icon={<Users className="h-4 w-4 text-primary" />}
         label="Reviewer Suggestions"
         description="Automatically match papers with the most relevant reviewers"
       >
@@ -94,11 +94,11 @@ export default function AIAssistantSection({
       </AIFeatureBlock>
 
       {/* Divider */}
-      <div className="border-t border-gray-100" />
+      <div className="border-t border-border" />
 
       {/* 2. Paper Analysis */}
       <AIFeatureBlock
-        icon={<Sparkles className="h-4 w-4 text-purple-600" />}
+        icon={<Sparkles className="h-4 w-4 text-primary" />}
         label="Paper Analysis"
         description="Get summary, strengths, weaknesses, and a suggested decision"
       >
@@ -106,11 +106,11 @@ export default function AIAssistantSection({
       </AIFeatureBlock>
 
       {/* Divider */}
-      <div className="border-t border-gray-100" />
+      <div className="border-t border-border" />
 
       {/* 3. Similarity Check */}
       <AIFeatureBlock
-        icon={<Search className="h-4 w-4 text-indigo-600" />}
+        icon={<Search className="h-4 w-4 text-primary" />}
         label="Similarity Check"
         description="Detect similarity patterns and repeated phrasing"
         note="Recommended before final decision"

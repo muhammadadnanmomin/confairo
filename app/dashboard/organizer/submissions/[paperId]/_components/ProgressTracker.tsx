@@ -15,15 +15,15 @@ function StepPill({
   variant?: "green" | "red" | "orange" | "purple";
 }) {
   const base = done
-    ? variant === "red" ? "bg-red-100 text-red-700 border-red-200"
-      : variant === "green" ? "bg-green-100 text-green-700 border-green-200"
-        : variant === "orange" ? "bg-orange-100 text-orange-700 border-orange-200"
-          : variant === "purple" ? "bg-purple-100 text-purple-700 border-purple-200"
-            : "bg-blue-100 text-blue-700 border-blue-200"
-    : "bg-gray-100 text-gray-400 border-gray-200";
+    ? variant === "red" ? "bg-destructive-surface text-destructive border-destructive/30"
+      : variant === "green" ? "bg-success-surface text-success border-success/30"
+        : variant === "orange" ? "bg-warning-surface text-warning border-warning/30"
+          : variant === "purple" ? "bg-accent text-accent-foreground border-border"
+            : "bg-primary/10 text-primary border-primary/30"
+    : "bg-muted text-muted-foreground border-border";
 
   return (
-    <div className={`flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full border ${base} ${active ? "ring-2 ring-blue-300 ring-offset-1" : ""}`}>
+    <div className={`flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full border ${base} ${active ? "ring-2 ring-ring ring-offset-1" : ""}`}>
       {done ? <CheckCircle2 className="h-3 w-3" /> : <Clock className="h-3 w-3" />}
       <span>{label}</span>
     </div>
@@ -33,7 +33,7 @@ function StepPill({
 /* ─── Connector ─── */
 function StepConnector({ done }: { done: boolean }) {
   return (
-    <div className={`hidden sm:block w-6 h-0.5 ${done ? "bg-blue-300" : "bg-gray-200"} rounded-full`} />
+    <div className={`hidden sm:block w-6 h-0.5 ${done ? "bg-primary/40" : "bg-border"} rounded-full`} />
   );
 }
 

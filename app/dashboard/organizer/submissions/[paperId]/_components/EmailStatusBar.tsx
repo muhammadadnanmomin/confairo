@@ -13,8 +13,8 @@ export default function EmailStatusBar({ paper, submitting, onResend }: EmailSta
   if (!paper.decision_email_sent) return null;
 
   return (
-    <div className="flex items-center justify-between bg-green-50 border border-green-200 rounded-lg px-4 py-3">
-      <div className="flex items-center gap-2 text-sm text-green-700">
+    <div className="flex items-center justify-between bg-success-surface border border-success/30 rounded-lg px-4 py-3">
+      <div className="flex items-center gap-2 text-sm text-success">
         <Mail className="h-4 w-4" />
         Decision email has been sent to all authors.
       </div>

@@ -31,42 +31,42 @@ export default function NextStepGuidance({ paper, reviewCount }: NextStepGuidanc
   if (isFinalDecision) {
     // Success — finalized
     icon = paper.status === "accepted"
-      ? <CheckCircle2 className="h-4 w-4 text-green-600 flex-shrink-0" />
-      : <XCircle className="h-4 w-4 text-red-600 flex-shrink-0" />;
+      ? <CheckCircle2 className="h-4 w-4 text-success flex-shrink-0" />
+      : <XCircle className="h-4 w-4 text-destructive flex-shrink-0" />;
     text = paper.status === "accepted"
       ? "This paper has been accepted — further reviewing is locked."
       : "This paper has been rejected — further reviewing is locked.";
-    bgClass = paper.status === "accepted" ? "bg-green-50" : "bg-red-50";
-    textClass = paper.status === "accepted" ? "text-green-800" : "text-red-800";
-    borderClass = paper.status === "accepted" ? "border-green-200" : "border-red-200";
+    bgClass = paper.status === "accepted" ? "bg-success-surface" : "bg-destructive-surface";
+    textClass = paper.status === "accepted" ? "text-success" : "text-destructive";
+    borderClass = paper.status === "accepted" ? "border-success/30" : "border-destructive/30";
   } else if (paper.status === "resubmitted") {
     // Info — resubmitted, needs re-review
-    icon = <Info className="h-4 w-4 text-blue-600 flex-shrink-0" />;
+    icon = <Info className="h-4 w-4 text-info flex-shrink-0" />;
     text = `Revised paper (v${paper.revision_number}) received — re-review or make a decision.`;
-    bgClass = "bg-blue-50";
-    textClass = "text-blue-800";
-    borderClass = "border-blue-200";
+    bgClass = "bg-info-surface";
+    textClass = "text-info";
+    borderClass = "border-info/30";
   } else if (hasReviews && !isFinalDecision) {
     // Warning — reviews ready, needs decision
-    icon = <AlertTriangle className="h-4 w-4 text-amber-600 flex-shrink-0" />;
+    icon = <AlertTriangle className="h-4 w-4 text-warning flex-shrink-0" />;
     text = `${reviewCount} review${reviewCount > 1 ? "s" : ""} submitted — make a final decision or request revisions.`;
-    bgClass = "bg-amber-50";
-    textClass = "text-amber-800";
-    borderClass = "border-amber-200";
+    bgClass = "bg-warning-surface";
+    textClass = "text-warning";
+    borderClass = "border-warning/30";
   } else if (hasReviewer && !hasReviews) {
     // Info — waiting
-    icon = <ArrowRight className="h-4 w-4 text-blue-600 flex-shrink-0" />;
+    icon = <ArrowRight className="h-4 w-4 text-info flex-shrink-0" />;
     text = "Waiting for reviewer feedback, or run AI analysis while you wait.";
-    bgClass = "bg-blue-50";
-    textClass = "text-blue-800";
-    borderClass = "border-blue-200";
+    bgClass = "bg-info-surface";
+    textClass = "text-info";
+    borderClass = "border-info/30";
   } else {
     // Default — no reviewer
-    icon = <ArrowRight className="h-4 w-4 text-indigo-600 flex-shrink-0" />;
+    icon = <ArrowRight className="h-4 w-4 text-primary flex-shrink-0" />;
     text = "Assign a reviewer or analyze this paper using AI.";
-    bgClass = "bg-indigo-50";
-    textClass = "text-indigo-800";
-    borderClass = "border-indigo-200";
+    bgClass = "bg-accent/60";
+    textClass = "text-foreground";
+    borderClass = "border-border";
   }
 
   return (
@@ -84,9 +84,9 @@ export default function NextStepGuidance({ paper, reviewCount }: NextStepGuidanc
 
       {/* Similarity flag warning — separate visual */}
       {isFlagged && !isFinalDecision && (
-        <div className="bg-red-50 border border-red-200 rounded-lg px-4 py-2.5 flex items-center gap-2">
-          <AlertTriangle className="h-4 w-4 text-red-600 flex-shrink-0" />
-          <span className="text-sm text-red-800 font-medium">
+        <div className="bg-destructive-surface border border-destructive/30 rounded-lg px-4 py-2.5 flex items-center gap-2">
+          <AlertTriangle className="h-4 w-4 text-destructive flex-shrink-0" />
+          <span className="text-sm text-destructive font-medium">
             Similarity flagged — review carefully before making a decision.
           </span>
         </div>

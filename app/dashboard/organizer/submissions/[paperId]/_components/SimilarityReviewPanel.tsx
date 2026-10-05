@@ -19,10 +19,10 @@ export default function SimilarityReviewPanel({
   paper, plagiarismStatus, onStatusChange, onSave, saving, plagiarismNote, onNoteChange,
 }: SimilarityReviewPanelProps) {
   const st = paper.plagiarism_status;
-  const statusStyle = st === "passed" ? "bg-green-50 text-green-700 border-green-200"
-    : st === "flagged" ? "bg-red-50 text-red-700 border-red-200"
-    : st === "checking" ? "bg-blue-50 text-blue-700 border-blue-200"
-    : "bg-yellow-50 text-yellow-700 border-yellow-200";
+  const statusStyle = st === "passed" ? "bg-success-surface text-success border-success/30"
+    : st === "flagged" ? "bg-destructive-surface text-destructive border-destructive/30"
+    : st === "checking" ? "bg-info-surface text-info border-info/30"
+    : "bg-warning-surface text-warning border-warning/30";
   const statusIcon = st === "passed" ? <CheckCircle2 className="h-4 w-4" />
     : st === "flagged" ? <AlertTriangle className="h-4 w-4" />
     : st === "checking" ? <Loader2 className="h-4 w-4 animate-spin" />
@@ -31,7 +31,7 @@ export default function SimilarityReviewPanel({
 
   return (
     <Card className="p-5 space-y-4">
-      <h3 className="text-sm font-semibold text-gray-700 flex items-center gap-2">
+      <h3 className="text-sm font-semibold text-foreground flex items-center gap-2">
         <ShieldCheck className="h-4 w-4" /> Similarity Review
       </h3>
       <div className={`rounded-md p-3 text-sm flex items-center gap-2 border ${statusStyle}`}>
@@ -39,15 +39,15 @@ export default function SimilarityReviewPanel({
         Current Status: <strong className="ml-1">{statusLabel}</strong>
       </div>
       {st === "flagged" && (
-        <div className="bg-red-50 border border-red-300 rounded-md p-3 text-sm text-red-800">
+        <div className="bg-destructive-surface border border-destructive/30 rounded-md p-3 text-sm text-destructive">
           ⚠ This submission is flagged for similarity. Review carefully before acceptance.
         </div>
       )}
       <div className="flex flex-col sm:flex-row gap-3">
         <div className="flex-1">
-          <label className="text-xs text-gray-500 block mb-1">Update Status</label>
+          <label className="text-xs text-muted-foreground block mb-1">Update Status</label>
           <select value={plagiarismStatus} onChange={e => onStatusChange(e.target.value)}
-            className="w-full cursor-pointer border border-gray-300 rounded-md px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+            className="w-full cursor-pointer border border-input rounded-md px-3 py-2 text-sm bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring">
             <option value="pending">Not Analyzed</option>
             <option value="checking">Checking</option>
             <option value="passed">Passed</option>
@@ -61,10 +61,10 @@ export default function SimilarityReviewPanel({
         </div>
       </div>
       <div>
-        <label className="text-xs text-gray-500 block mb-1">Similarity Notes (optional)</label>
+        <label className="text-xs text-muted-foreground block mb-1">Similarity Notes (optional)</label>
         <Textarea value={plagiarismNote} onChange={e => onNoteChange(e.target.value)}
           placeholder="Add notes about the similarity review…" rows={2} className="text-sm" />
-        <p className="text-xs text-gray-400 mt-1">Notes are stored locally and will be saved when the database column is added.</p>
+        <p className="text-xs text-muted-foreground mt-1">Notes are stored locally and will be saved when the database column is added.</p>
       </div>
     </Card>
   );

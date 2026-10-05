@@ -14,7 +14,7 @@ interface PaperFilesCardProps {
 export default function PaperFilesCard({ paper, onUploadCameraReady }: PaperFilesCardProps) {
   return (
     <Card className="p-5 space-y-3">
-      <h2 className="text-sm font-semibold text-gray-700 flex items-center gap-2">
+      <h2 className="text-sm font-semibold text-foreground flex items-center gap-2">
         <FileText className="h-4 w-4" /> 📎 Paper Files
       </h2>
 
@@ -43,13 +43,13 @@ export default function PaperFilesCard({ paper, onUploadCameraReady }: PaperFile
       </div>
 
       {paper.revision_number > 1 && (
-        <p className="text-xs text-gray-400">Currently viewing revision v{paper.revision_number}</p>
+        <p className="text-xs text-muted-foreground">Currently viewing revision v{paper.revision_number}</p>
       )}
 
       {/* Camera-ready upload (organizer) */}
       {paper.status === "accepted" && (
         <div className="pt-2 border-t">
-          <label className="text-blue-600 cursor-pointer hover:underline text-sm flex items-center gap-1">
+          <label className="text-primary cursor-pointer hover:underline text-sm flex items-center gap-1">
             <Upload size={14} />
             {paper.camera_ready_url ? "Replace Camera Ready" : "Upload Camera Ready"}
             <input
@@ -59,7 +59,7 @@ export default function PaperFilesCard({ paper, onUploadCameraReady }: PaperFile
             />
           </label>
           {paper.camera_ready_url && (
-            <p className="text-xs text-green-600 mt-1">✓ Camera-ready version uploaded</p>
+            <p className="text-xs text-success mt-1">✓ Camera-ready version uploaded</p>
           )}
         </div>
       )}

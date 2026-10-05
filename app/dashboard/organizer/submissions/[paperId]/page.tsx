@@ -333,8 +333,8 @@ export default function OrganizerPaperReviewPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <Loader2 className="h-6 w-6 animate-spin text-gray-400" />
-        <span className="ml-2 text-gray-500 text-sm">Loading paper…</span>
+        <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
+        <span className="ml-2 text-muted-foreground text-sm">Loading paper…</span>
       </div>
     );
   }
@@ -342,8 +342,8 @@ export default function OrganizerPaperReviewPage() {
   if (!paper) {
     return (
       <div className="flex flex-col items-center justify-center py-20">
-        <FileText className="h-10 w-10 text-gray-300 mb-3" />
-        <p className="text-gray-500">Paper not found.</p>
+        <FileText className="h-10 w-10 text-muted-foreground/40 mb-3" />
+        <p className="text-muted-foreground">Paper not found.</p>
       </div>
     );
   }
@@ -355,7 +355,7 @@ export default function OrganizerPaperReviewPage() {
     <div className="max-w-4xl mx-auto px-4 py-8 space-y-6 pb-28">
 
       {/* ── Back Button ── */}
-      <Button variant="ghost" size="sm" className="mb-2 text-gray-500" onClick={() => router.push("/dashboard/organizer/submissions")}>
+      <Button variant="ghost" size="sm" className="mb-2 text-muted-foreground hover:text-foreground" onClick={() => router.push("/dashboard/organizer/submissions")}>
         ← Back to Submissions
       </Button>
 
@@ -369,7 +369,7 @@ export default function OrganizerPaperReviewPage() {
       <NextStepGuidance paper={paper} reviewCount={reviewHistory.length} />
 
       {/* ── 4. AI Assistant Section ── */}
-      <div className="bg-gradient-to-br from-purple-50/30 via-indigo-50/20 to-transparent border border-purple-100/60 rounded-xl p-5">
+      <div className="bg-accent/20 border border-border rounded-xl p-5">
         <AIAssistantSection
           paperId={paperId as string}
           paper={paper}
@@ -447,21 +447,21 @@ export default function OrganizerPaperReviewPage() {
             </div>
 
             {paper.plagiarism_status === "flagged" && (
-              <div className="bg-red-50 border border-red-200 rounded p-2 text-sm text-red-700 flex items-center gap-2">
+              <div className="bg-destructive-surface border border-destructive/30 rounded p-2 text-sm text-destructive flex items-center gap-2">
                 <AlertTriangle className="h-4 w-4 flex-shrink-0" />
                 Similarity is flagged for this paper.
               </div>
             )}
 
             {reviewHistory.length === 0 && paper.review_comment === null && confirmAction !== "revision_required" && (
-              <div className="bg-amber-50 border border-amber-200 rounded p-2 text-sm text-amber-700 flex items-center gap-2">
+              <div className="bg-warning-surface border border-warning/30 rounded p-2 text-sm text-warning flex items-center gap-2">
                 <AlertTriangle className="h-4 w-4 flex-shrink-0" />
                 No reviews have been submitted for this paper yet.
               </div>
             )}
 
             {(confirmAction === "accepted" || confirmAction === "rejected") && (
-              <div className="bg-blue-50 border border-blue-200 rounded p-2 text-sm text-blue-700 flex items-center gap-2">
+              <div className="bg-info-surface border border-info/30 rounded p-2 text-sm text-info flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4 flex-shrink-0" />
                 This is a final decision and will lock further reviewing.
               </div>
@@ -483,23 +483,23 @@ export default function OrganizerPaperReviewPage() {
       )}
 
       {/* ── Sticky Action Bar ── */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur border-t shadow-lg z-40">
+      <div className="fixed bottom-0 left-0 right-0 bg-card/95 backdrop-blur border-t border-border shadow-lg z-40">
         <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
-          <div className="text-sm text-gray-500 hidden sm:block">
-            <span className="font-medium text-gray-700">{title}</span>
+          <div className="text-sm text-muted-foreground hidden sm:block">
+            <span className="font-medium text-foreground">{title}</span>
             <span className="mx-2">·</span>
             <StatusBadge status={paper.status} />
             {paper.revision_number > 1 && (
               <>
                 <span className="mx-2">·</span>
-                <Badge className="bg-purple-100 text-purple-700 text-xs">v{paper.revision_number}</Badge>
+                <Badge className="bg-accent text-accent-foreground border-border text-xs">v{paper.revision_number}</Badge>
               </>
             )}
           </div>
 
           <div className="flex gap-2 ml-auto">
             {isFinalDecision ? (
-              <Badge className={paper.status === "accepted" ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}>
+              <Badge className={paper.status === "accepted" ? "bg-success-surface text-success border-success/30" : "bg-destructive-surface text-destructive border-destructive/30"}>
                 <CheckCircle2 className="h-3 w-3 mr-1" />
                 {paper.status === "accepted" ? "Accepted" : "Rejected"} — Locked
               </Badge>
@@ -509,7 +509,7 @@ export default function OrganizerPaperReviewPage() {
                   <XCircle className="h-4 w-4 mr-1" /> Reject
                 </Button>
                 <Button variant="outline" size="sm" disabled={submitting}
-                  className="border-orange-300 text-orange-700 hover:bg-orange-400"
+                  className="border-warning/40 text-warning hover:bg-warning-surface"
                   onClick={() => setConfirmAction("revision_required")}>
                   <RotateCcw className="h-4 w-4 mr-1" /> Revision
                 </Button>

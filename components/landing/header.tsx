@@ -108,7 +108,7 @@ export function Header() {
                 variant="outline"
                 size="sm"
                 onClick={logout}
-                className="text-[13px] hover:bg-red-50 hover:text-red-600 hover:border-red-200 transition-colors duration-200"
+                className="text-[13px] hover:bg-destructive-surface hover:text-destructive hover:border-destructive/30 transition-colors duration-200"
               >
                 Logout
               </Button>

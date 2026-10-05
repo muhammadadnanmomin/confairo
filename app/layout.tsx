@@ -44,7 +44,7 @@ export default function RootLayout({
           ${geist.variable}
           ${geistMono.variable}
           font-sans antialiased
-          bg-white text-gray-900
+          bg-background text-foreground
         `}
       >
         {children}

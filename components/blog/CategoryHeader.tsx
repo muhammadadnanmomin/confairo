@@ -96,7 +96,7 @@ const headerStyles: Record<
       "bg-[radial-gradient(circle_at_1px_1px,rgba(99,102,241,0.08)_1px,transparent_0)] bg-[size:24px_24px]",
     badge:
       "bg-indigo-100 text-indigo-700 border border-indigo-200",
-    title: "text-gray-900",
+    title: "text-foreground",
     icon: (
       <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
@@ -117,7 +117,7 @@ const headerStyles: Record<
       "bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:1px_28px]",
     badge:
       "bg-teal-100 text-teal-700 border border-teal-200",
-    title: "text-gray-900 font-serif",
+    title: "text-foreground font-serif",
     icon: (
       <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
@@ -138,7 +138,7 @@ const headerStyles: Record<
     pattern: "bg-transparent",
     badge:
       "bg-amber-100 text-amber-700 border border-amber-200",
-    title: "text-gray-900",
+    title: "text-foreground",
     icon: (
       <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />

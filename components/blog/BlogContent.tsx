@@ -15,12 +15,12 @@ export function BlogContent({ content }: BlogContentProps) {
         prose-headings:font-semibold prose-headings:tracking-tight
         prose-h2:text-xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:scroll-mt-24
         prose-h3:text-lg prose-h3:mt-8 prose-h3:mb-3 prose-h3:scroll-mt-24
-        prose-p:leading-relaxed prose-p:text-gray-600
-        prose-a:text-indigo-600 prose-a:no-underline hover:prose-a:underline
-        prose-strong:text-gray-900
-        prose-ul:text-gray-600
-        prose-blockquote:border-indigo-200 prose-blockquote:text-gray-600 prose-blockquote:not-italic
-        prose-li:marker:text-indigo-400"
+        prose-p:leading-relaxed prose-p:text-muted-foreground
+        prose-a:text-primary prose-a:no-underline hover:prose-a:underline
+        prose-strong:text-foreground
+        prose-ul:text-muted-foreground
+        prose-blockquote:border-accent prose-blockquote:text-muted-foreground prose-blockquote:not-italic
+        prose-li:marker:text-primary"
       dangerouslySetInnerHTML={{ __html: content }}
     />
   );

@@ -13,7 +13,7 @@ export function BlogHero() {
 
       <div className="mx-auto max-w-4xl text-center">
         {/* Badge */}
-        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-indigo-100 bg-indigo-50/80 px-4 py-1.5 text-sm font-medium text-indigo-700">
+        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-accent bg-accent/80 px-4 py-1.5 text-sm font-medium text-primary-hover">
           <svg
             className="h-4 w-4"
             fill="none"
@@ -31,7 +31,7 @@ export function BlogHero() {
         </div>
 
         {/* Title */}
-        <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+        <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
           Confairo{" "}
           <span className="bg-gradient-to-r from-indigo-600 to-indigo-500 bg-clip-text text-transparent">
             Blog
@@ -39,7 +39,7 @@ export function BlogHero() {
         </h1>
 
         {/* Subtitle */}
-        <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-gray-600 sm:text-xl">
+        <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
           Insights on AI, academic workflows, conferences, and productivity —
           helping you run better conferences and publish better research.
         </p>

@@ -87,7 +87,7 @@ export function GuideAccordion({ sections, color }: GuideAccordionProps) {
                   <Icon className={`h-4 w-4 ${c.iconColor}`} />
                 </div>
                 <div>
-                  <h3 className="text-[0.938rem] font-semibold text-gray-900 sm:text-base">
+                  <h3 className="text-[0.938rem] font-semibold text-foreground sm:text-base">
                     {section.title}
                   </h3>
                   <p className="mt-0.5 text-xs text-gray-500">
@@ -97,7 +97,7 @@ export function GuideAccordion({ sections, color }: GuideAccordionProps) {
               </div>
 
               <ChevronDown
-                className={`h-5 w-5 shrink-0 text-gray-400 transition-transform duration-300 ${
+                className={`h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-300 ${
                   isOpen ? "rotate-180" : ""
                 }`}
               />
@@ -110,7 +110,7 @@ export function GuideAccordion({ sections, color }: GuideAccordionProps) {
                 ${isOpen ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"}
               `}
             >
-              <div className="border-t border-gray-100 px-5 py-6">
+              <div className="border-t border-border px-5 py-6">
                 <StepTimeline steps={section.steps} color={color} />
               </div>
             </div>

@@ -45,14 +45,14 @@ export default function DashboardRootLayout({
 
   if (loading || !profile) {
     return (
-      <div className="flex min-h-screen items-center justify-center text-gray-500">
+      <div className="flex min-h-screen items-center justify-center text-muted-foreground">
         Loading dashboard...
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-muted/30">
 
       {/* Mobile overlay */}
       {mobileOpen && (

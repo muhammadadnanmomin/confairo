@@ -157,10 +157,10 @@ export function DashboardHeader({
       <div className="flex items-center gap-2">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="flex items-center gap-2 text-gray-800 hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900">
+            <Button variant="ghost" className="flex items-center gap-2 text-foreground hover:bg-accent hover:text-foreground focus:bg-accent focus:text-foreground">
               <Avatar className="h-8 w-8">
                 <AvatarImage src={userAvatar || ""} />
-                <AvatarFallback className="bg-indigo-600 text-white text-sm">
+                <AvatarFallback className="bg-primary text-white text-sm">
                   {userName
                     .split(" ")
                     .map((n) => n[0])
@@ -170,12 +170,12 @@ export function DashboardHeader({
 
               <div className="hidden md:flex flex-col text-left">
                 <span className="text-sm font-medium">{userName}</span>
-                <span className="text-xs text-indigo-600 font-medium capitalize">
+                <span className="text-xs text-primary font-medium capitalize">
                   {activeRole}
                 </span>
               </div>
 
-              <ChevronDown className="h-4 w-4 text-gray-400" />
+              <ChevronDown className="h-4 w-4 text-muted-foreground" />
             </Button>
           </DropdownMenuTrigger>
 
@@ -184,7 +184,7 @@ export function DashboardHeader({
             <DropdownMenuLabel>
               <div className="flex flex-col space-y-1">
                 <p className="text-sm font-medium">{userName}</p>
-                <p className="text-xs text-gray-500">{userEmail}</p>
+                <p className="text-xs text-muted-foreground">{userEmail}</p>
               </div>
             </DropdownMenuLabel>
 
@@ -193,7 +193,7 @@ export function DashboardHeader({
             {/* Role Switcher */}
             {availableRoles.length > 1 && (
               <>
-                <DropdownMenuLabel className="text-xs text-gray-400">
+                <DropdownMenuLabel className="text-xs text-muted-foreground">
                   Switch Role
                 </DropdownMenuLabel>
 
@@ -238,7 +238,7 @@ export function DashboardHeader({
             {/* Logout */}
             <DropdownMenuItem
               onClick={handleLogout}
-              className="text-red-600 cursor-pointer hover:bg-red-500 focus:bg-red-500 hover:text-red-50 focus:text-red-50"
+              className="text-destructive cursor-pointer hover:bg-destructive-surface focus:bg-destructive-surface hover:text-destructive focus:text-destructive"
             >
               <LogOut className="mr-2 h-4 w-4" />
               Log out

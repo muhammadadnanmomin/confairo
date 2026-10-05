@@ -216,9 +216,9 @@ export function DashboardSidebar({
         {/* Mobile Close Button */}
         <button
           onClick={onMobileClose}
-          className="ml-auto cursor-pointer md:hidden p-1 rounded-md hover:bg-gray-100 transition"
+          className="ml-auto cursor-pointer md:hidden p-1 rounded-md hover:bg-accent transition"
         >
-          <X className="h-5 w-5 text-gray-600" />
+          <X className="h-5 w-5 text-muted-foreground" />
         </button>
       </div>
 
@@ -226,7 +226,7 @@ export function DashboardSidebar({
       {organization && (
         <div className="px-3 pt-4 pb-2">
           {!collapsed && (
-            <p className="text-[10px] font-semibold tracking-wider text-gray-400 uppercase mb-2">
+            <p className="text-[10px] font-semibold tracking-wider text-muted-foreground uppercase mb-2">
               Organization
             </p>
           )}
@@ -235,13 +235,13 @@ export function DashboardSidebar({
             href="/dashboard/organizer"
             onClick={() => localStorage.setItem("activeRole", "organizer")}
             className={cn(
-              "flex items-center gap-3 rounded-lg px-3 py-2 transition hover:bg-gray-100",
+              "flex items-center gap-3 rounded-lg px-3 py-2 transition hover:bg-accent",
               collapsed && "justify-center"
             )}
             title={organization.name}
           >
             {/* Avatar */}
-            <div className="flex h-9 w-9 items-center justify-center rounded-md bg-indigo-100 text-indigo-600 font-semibold shrink-0">
+            <div className="flex h-9 w-9 items-center justify-center rounded-md bg-primary/10 text-primary font-semibold shrink-0">
               {organization.name.charAt(0)}
             </div>
 
@@ -270,7 +270,7 @@ export function DashboardSidebar({
               </Link>
             )}
 
-          <div className="mx-3 my-3 border-t border-gray-200" />
+          <div className="mx-3 my-3 border-t border-border" />
         </div>
       )}
 
@@ -288,10 +288,10 @@ export function DashboardSidebar({
                 className={cn(
                   "flex items-center rounded-lg py-2.5 text-sm font-medium transition",
                   active
-                    ? "bg-indigo-50 text-indigo-600"
+                    ? "bg-accent text-accent-foreground"
                     : item.name === "Create Organization"
-                      ? "text-indigo-600 bg-indigo-50 font-semibold"
-                      : "text-gray-600 hover:bg-gray-100",
+                      ? "text-primary bg-primary/10 font-semibold"
+                      : "text-muted-foreground hover:bg-accent",
                   collapsed ? "justify-center px-0" : "gap-3 px-3"
                 )}
               >
@@ -339,7 +339,7 @@ export function DashboardSidebar({
         <Button
           variant="ghost"
           onClick={handleLogout}
-          className="w-full justify-start gap-2 text-red-600 hover:bg-red-500"
+          className="w-full justify-start gap-2 text-destructive hover:bg-destructive-surface hover:text-destructive"
         >
           <LogOut className="h-4 w-4" />
           {!collapsed && "Logout"}

@@ -75,21 +75,21 @@ export default function ParticipantConferencesPage() {
           My Conferences
         </h1>
 
-        <p className="text-gray-500 mt-1">
+        <p className="text-muted-foreground mt-1">
           Conferences you are registered for
         </p>
       </div>
 
       {/* Loading */}
       {loading && (
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-muted-foreground">
           Loading conferences...
         </p>
       )}
 
       {/* Empty */}
       {!loading && registrations.length === 0 && (
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-muted-foreground">
           You haven’t registered for any conferences yet.
         </p>
       )}
@@ -119,7 +119,7 @@ export default function ParticipantConferencesPage() {
                 </div>
 
                 {/* Dates */}
-                <div className="flex items-center gap-2 text-sm text-gray-500">
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <Calendar className="h-4 w-4" />
                   <span>
                     {conf?.start_date} → {conf?.end_date}
@@ -212,7 +212,7 @@ function PaymentBadge({
 }) {
   if (role === "author") {
     return (
-      <Badge className="bg-blue-100 text-blue-700">
+      <Badge className="bg-info-surface text-info">
         Author
       </Badge>
     );
@@ -220,14 +220,14 @@ function PaymentBadge({
 
   if (paid) {
     return (
-      <Badge className="bg-green-100 text-green-700">
+      <Badge className="bg-success-surface text-success">
         Paid
       </Badge>
     );
   }
 
   return (
-    <Badge className="bg-yellow-100 text-yellow-700">
+    <Badge className="bg-warning-surface text-warning">
       Payment Pending
     </Badge>
   );

@@ -139,10 +139,10 @@ export default function ParticipantProceedingsListPage() {
     return (
       <div className="space-y-6 max-w-4xl mx-auto">
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-50">
-            <BookOpen className="h-5 w-5 text-indigo-600" />
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/5">
+            <BookOpen className="h-5 w-5 text-primary" />
           </div>
-          <h1 className="text-2xl font-bold tracking-tight text-gray-900">
+          <h1 className="text-2xl font-bold tracking-tight text-foreground">
             Conference Proceedings
           </h1>
         </div>
@@ -151,19 +151,19 @@ export default function ParticipantProceedingsListPage() {
         <div className="space-y-4">
           {[1, 2].map((i) => (
             <Card key={i} className="p-6 animate-pulse">
-              <div className="h-1.5 bg-gray-200 rounded w-full mb-4" />
+              <div className="h-1.5 bg-muted rounded w-full mb-4" />
               <div className="flex items-center gap-3 mb-3">
-                <div className="h-11 w-11 bg-gray-200 rounded-xl" />
+                <div className="h-11 w-11 bg-muted rounded-xl" />
                 <div className="space-y-2 flex-1">
-                  <div className="h-4 bg-gray-200 rounded w-48" />
-                  <div className="h-3 bg-gray-100 rounded w-32" />
+                  <div className="h-4 bg-muted rounded w-48" />
+                  <div className="h-3 bg-muted rounded w-32" />
                 </div>
               </div>
-              <div className="h-3 bg-gray-100 rounded w-full mt-4" />
-              <div className="h-3 bg-gray-100 rounded w-3/4 mt-2" />
+              <div className="h-3 bg-muted rounded w-full mt-4" />
+              <div className="h-3 bg-muted rounded w-3/4 mt-2" />
               <div className="flex gap-3 mt-6">
-                <div className="h-10 bg-gray-200 rounded-lg flex-1" />
-                <div className="h-10 bg-gray-100 rounded-lg flex-1" />
+                <div className="h-10 bg-muted rounded-lg flex-1" />
+                <div className="h-10 bg-muted rounded-lg flex-1" />
               </div>
             </Card>
           ))}
@@ -181,21 +181,21 @@ export default function ParticipantProceedingsListPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-50">
-            <BookOpen className="h-5 w-5 text-indigo-600" />
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/5">
+            <BookOpen className="h-5 w-5 text-primary" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold tracking-tight text-gray-900">
+            <h1 className="text-2xl font-bold tracking-tight text-foreground">
               Conference Proceedings
             </h1>
-            <p className="text-sm text-gray-500 mt-0.5">
+            <p className="text-sm text-muted-foreground mt-0.5">
               Secure access to published conference papers
             </p>
           </div>
         </div>
 
         {accessibleItems.length > 0 && (
-          <Badge className="bg-indigo-50 text-indigo-700 border-indigo-200 hover:bg-indigo-50 text-xs">
+          <Badge className="bg-primary/5 text-primary border-primary/20 hover:bg-primary/5 text-xs">
             {accessibleItems.length} Available
           </Badge>
         )}
@@ -204,13 +204,13 @@ export default function ParticipantProceedingsListPage() {
       {/* Empty state */}
       {items.length === 0 && (
         <Card className="p-12 text-center">
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gray-50">
-            <FileX className="h-8 w-8 text-gray-300" />
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-muted">
+            <FileX className="h-8 w-8 text-muted-foreground" />
           </div>
-          <h3 className="text-lg font-semibold text-gray-900">
+          <h3 className="text-lg font-semibold text-foreground">
             No proceedings available
           </h3>
-          <p className="text-sm text-gray-500 mt-1 max-w-md mx-auto">
+          <p className="text-sm text-muted-foreground mt-1 max-w-md mx-auto">
             Proceedings will appear here once your conferences conclude and
             organizers publish them.
           </p>
@@ -239,7 +239,7 @@ export default function ParticipantProceedingsListPage() {
       {/* Locked conferences */}
       {lockedItems.length > 0 && (
         <div className="space-y-3">
-          <h2 className="text-sm font-semibold text-gray-400 uppercase tracking-wider">
+          <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">
             Locked Proceedings
           </h2>
 
@@ -250,14 +250,14 @@ export default function ParticipantProceedingsListPage() {
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-amber-50">
-                    <BookOpen className="h-4 w-4 text-amber-500" />
+                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-warning-surface">
+                    <BookOpen className="h-4 w-4 text-warning" />
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-gray-700">
+                    <p className="text-sm font-medium text-foreground">
                       {item.conference.title}
                     </p>
-                    <p className="text-xs text-gray-400 flex items-center gap-1 mt-0.5">
+                    <p className="text-xs text-muted-foreground flex items-center gap-1 mt-0.5">
                       <Calendar className="h-3 w-3" />
                       Ended{" "}
                       {item.conference.end_date
@@ -272,7 +272,7 @@ export default function ParticipantProceedingsListPage() {
 
                 <Badge
                   variant="outline"
-                  className="text-[11px] text-amber-600 border-amber-200 bg-amber-50 gap-1"
+                  className="text-[11px] text-warning border-warning/20 bg-warning-surface gap-1"
                 >
                   🔒 Locked
                 </Badge>

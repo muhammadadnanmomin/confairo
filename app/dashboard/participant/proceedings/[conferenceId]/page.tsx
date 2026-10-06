@@ -52,7 +52,7 @@ export default function ParticipantProceedingsPage() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center py-20 text-gray-500">
+      <div className="flex items-center justify-center py-20 text-muted-foreground">
         Loading proceedings…
       </div>
     );
@@ -63,7 +63,7 @@ export default function ParticipantProceedingsPage() {
       {/* Back link */}
       <Link
         href="/dashboard/participant/conferences"
-        className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-indigo-600 transition-colors"
+        className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors"
       >
         <ArrowLeft className="h-4 w-4" />
         Back to Conferences
@@ -72,11 +72,11 @@ export default function ParticipantProceedingsPage() {
       {/* Header */}
       <div className="text-center">
         <h1 className="text-2xl font-bold tracking-tight flex items-center justify-center gap-2">
-          <BookOpen className="h-6 w-6 text-indigo-600" />
+          <BookOpen className="h-6 w-6 text-primary" />
           Conference Proceedings
         </h1>
         {conference && (
-          <p className="text-gray-500 mt-1">
+          <p className="text-muted-foreground mt-1">
             {conference.title}
             {conference.short_name && (
               <Badge variant="secondary" className="ml-2 text-[11px]">

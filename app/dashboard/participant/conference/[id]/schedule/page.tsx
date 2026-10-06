@@ -156,13 +156,13 @@ export default function ParticipantSchedulePage() {
         return (
             <div className="flex items-center justify-center min-h-[60vh]">
                 <Card className="max-w-md w-full p-8 text-center">
-                    <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-red-50">
-                        <ShieldAlert className="h-8 w-8 text-red-400" />
+                    <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-destructive-surface">
+                        <ShieldAlert className="h-8 w-8 text-destructive" />
                     </div>
-                    <h2 className="text-xl font-bold text-gray-900 mb-2">
+                    <h2 className="text-xl font-bold text-foreground mb-2">
                         Access Restricted
                     </h2>
-                    <p className="text-sm text-gray-500 mb-6">
+                    <p className="text-sm text-muted-foreground mb-6">
                         You are not registered for this conference. Only registered
                         participants can view the schedule.
                     </p>
@@ -187,11 +187,11 @@ export default function ParticipantSchedulePage() {
             {/* Page Header */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
-                    <div className="h-10 w-10 rounded-xl bg-indigo-50 flex items-center justify-center">
-                        <CalendarClock className="h-5 w-5 text-indigo-600" />
+                    <div className="h-10 w-10 rounded-xl bg-primary/5 flex items-center justify-center">
+                        <CalendarClock className="h-5 w-5 text-primary" />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-bold tracking-tight text-gray-900">
+                        <h1 className="text-2xl font-bold tracking-tight text-foreground">
                             Schedule
                         </h1>
                         {conferenceTitle && (
@@ -216,13 +216,13 @@ export default function ParticipantSchedulePage() {
             {/* Empty schedule state */}
             {scheduleEmpty && !loading && (
                 <Card className="p-12 text-center">
-                    <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gray-50">
-                        <CalendarX className="h-8 w-8 text-gray-300" />
+                    <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-muted">
+                        <CalendarX className="h-8 w-8 text-muted-foreground" />
                     </div>
-                    <h3 className="text-lg font-semibold text-gray-900">
+                    <h3 className="text-lg font-semibold text-foreground">
                         Schedule has not been published yet.
                     </h3>
-                    <p className="text-sm text-gray-500 mt-1 max-w-md mx-auto">
+                    <p className="text-sm text-muted-foreground mt-1 max-w-md mx-auto">
                         The conference organizer hasn&apos;t published the schedule yet.
                         Please check back later.
                     </p>
@@ -247,8 +247,8 @@ export default function ParticipantSchedulePage() {
                         <button
                             className={`cursor-pointer px-3 py-1.5 rounded-lg text-sm font-medium transition whitespace-nowrap ${
                                 !selectedDayId
-                                    ? "bg-indigo-100 text-indigo-700"
-                                    : "text-muted-foreground hover:bg-gray-100"
+                                    ? "bg-primary/10 text-primary"
+                                    : "text-muted-foreground hover:bg-muted"
                             }`}
                             onClick={() => setSelectedDayId("")}
                         >
@@ -259,8 +259,8 @@ export default function ParticipantSchedulePage() {
                                 key={day.id}
                                 className={`cursor-pointer px-3 py-1.5 rounded-lg text-sm font-medium transition whitespace-nowrap ${
                                     selectedDayId === day.id
-                                        ? "bg-indigo-100 text-indigo-700"
-                                        : "text-muted-foreground hover:bg-gray-100"
+                                        ? "bg-primary/10 text-primary"
+                                        : "text-muted-foreground hover:bg-muted"
                                 }`}
                                 onClick={() => setSelectedDayId(day.id)}
                             >
@@ -275,14 +275,14 @@ export default function ParticipantSchedulePage() {
                     </div>
 
                     {/* View Toggle + Stats */}
-                    <div className="flex items-center gap-1 rounded-lg bg-gray-100 p-1 w-fit">
+                    <div className="flex items-center gap-1 rounded-lg bg-muted p-1 w-fit">
                         {VIEW_TABS.map((tab) => (
                             <button
                                 key={tab.key}
                                 onClick={() => setActiveView(tab.key)}
                                 className={`flex cursor-pointer items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition ${
                                     activeView === tab.key
-                                        ? "bg-white shadow-sm text-foreground"
+                                        ? "bg-card shadow-sm text-foreground"
                                         : "text-muted-foreground hover:text-foreground"
                                 }`}
                             >

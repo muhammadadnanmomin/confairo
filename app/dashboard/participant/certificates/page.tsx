@@ -132,12 +132,12 @@ export default function ParticipantCertificatesPage() {
 
       {/* Header */}
       <div className="flex items-center gap-3">
-        <div className="bg-indigo-50 p-2.5 rounded-lg">
-          <Award className="h-6 w-6 text-indigo-600" />
+        <div className="bg-primary/5 p-2.5 rounded-lg">
+          <Award className="h-6 w-6 text-primary" />
         </div>
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Certificates</h1>
-          <p className="text-gray-500 mt-0.5">
+          <p className="text-muted-foreground mt-0.5">
             Download your conference participation certificates
           </p>
         </div>
@@ -149,29 +149,29 @@ export default function ParticipantCertificatesPage() {
           title="Total Certificates"
           value={loading ? "—" : totalCertificates}
           icon={Award}
-          iconBg="bg-blue-50"
-          iconColor="text-blue-600"
+          iconBg="bg-info-surface"
+          iconColor="text-info"
         />
         <StatCard
           title="Latest Certificate"
           value={loading ? "—" : latestIssuedDate}
           icon={Calendar}
-          iconBg="bg-green-50"
-          iconColor="text-green-600"
+          iconBg="bg-success-surface"
+          iconColor="text-success"
         />
       </div>
 
       {/* Filters */}
       {!loading && certificates.length > 0 && (
         <Card className="p-4">
-          <div className="flex items-center gap-2 mb-3 text-sm font-medium text-gray-700">
-            <Filter className="h-4 w-4 text-gray-400" />
+          <div className="flex items-center gap-2 mb-3 text-sm font-medium text-foreground">
+            <Filter className="h-4 w-4 text-muted-foreground" />
             Filters
           </div>
 
           <div className="grid sm:grid-cols-2 gap-3">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
                 placeholder="Search by conference title…"
                 value={searchQuery}
@@ -183,7 +183,7 @@ export default function ParticipantCertificatesPage() {
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="cursor-pointer rounded-md border border-gray-200 bg-white px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="cursor-pointer rounded-md border border-border bg-card px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
             >
               <option value="all">All Statuses</option>
               <option value="available">Available</option>
@@ -219,13 +219,13 @@ export default function ParticipantCertificatesPage() {
       {/* Empty State */}
       {!loading && certificates.length === 0 && (
         <Card className="p-12 text-center">
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-indigo-50">
-            <Award className="h-8 w-8 text-indigo-400" />
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/5">
+            <Award className="h-8 w-8 text-primary" />
           </div>
-          <h2 className="text-xl font-semibold text-gray-900">
+          <h2 className="text-xl font-semibold text-foreground">
             No certificates yet
           </h2>
-          <p className="text-gray-500 mt-2 max-w-sm mx-auto">
+          <p className="text-muted-foreground mt-2 max-w-sm mx-auto">
             Certificates will appear here after your paper is presented and
             approved.
           </p>
@@ -234,7 +234,7 @@ export default function ParticipantCertificatesPage() {
 
       {/* No filter results */}
       {!loading && certificates.length > 0 && filteredCertificates.length === 0 && (
-        <p className="text-sm text-gray-500 py-8 text-center">
+        <p className="text-sm text-muted-foreground py-8 text-center">
           No certificates match the current filters.
         </p>
       )}
@@ -271,7 +271,7 @@ function StatCard({
   return (
     <Card className="p-5 flex items-center justify-between hover:shadow-md transition-shadow">
       <div>
-        <p className="text-sm text-gray-500">{title}</p>
+        <p className="text-sm text-muted-foreground">{title}</p>
         <p className="text-2xl font-bold mt-1">{value}</p>
       </div>
 
@@ -295,21 +295,21 @@ function CertificateCard({ certificate: c }: { certificate: any }) {
       {/* Top row */}
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-start gap-2 min-w-0">
-          <Award className="h-5 w-5 text-yellow-500 shrink-0 mt-0.5" />
-          <span className="font-semibold text-gray-900 line-clamp-2">
+          <Award className="h-5 w-5 text-warning shrink-0 mt-0.5" />
+          <span className="font-semibold text-foreground line-clamp-2">
             {conf?.title}
           </span>
         </div>
 
         <div className="flex items-center gap-2 shrink-0">
           {c.certificate_type === "best_paper" && (
-            <Badge className="bg-yellow-100 text-yellow-800 border-yellow-300 hover:bg-yellow-100 gap-1">
+            <Badge className="bg-warning-surface text-warning border-warning/30 hover:bg-warning-surface gap-1">
               <Trophy className="h-3 w-3" />
               Best Paper
             </Badge>
           )}
           {hasFile ? (
-            <Badge className="bg-green-100 text-green-700 border-green-200 hover:bg-green-100 gap-1 shrink-0">
+            <Badge className="bg-success-surface text-success border-success/20 hover:bg-success-surface gap-1 shrink-0">
               <CheckCircle className="h-3 w-3" />
               Available
             </Badge>
@@ -323,23 +323,23 @@ function CertificateCard({ certificate: c }: { certificate: any }) {
       </div>
 
       {/* Conference dates */}
-      <div className="flex items-center gap-2 text-sm text-gray-500">
+      <div className="flex items-center gap-2 text-sm text-muted-foreground">
         <Calendar className="h-4 w-4 shrink-0" />
         {formatDate(conf?.start_date)} → {formatDate(conf?.end_date)}
       </div>
 
       {/* Paper title */}
       {c.paper_submissions?.title && (
-        <p className="text-sm text-gray-600">
-          <span className="text-gray-400">Paper:</span>{" "}
+        <p className="text-sm text-muted-foreground">
+          <span className="text-muted-foreground">Paper:</span>{" "}
           <span className="font-medium">{c.paper_submissions.title}</span>
         </p>
       )}
 
       {/* Issued date */}
-      <p className="text-sm text-gray-500">
+      <p className="text-sm text-muted-foreground">
         Certificate issued on:{" "}
-        <span className="text-gray-700 font-medium">{formatDate(c.issued_at)}</span>
+        <span className="text-foreground font-medium">{formatDate(c.issued_at)}</span>
       </p>
 
       {/* Action row — participants can only download PDF */}

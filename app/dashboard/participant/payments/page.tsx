@@ -564,26 +564,26 @@ export default function ParticipantPaymentsPage() {
       {/* ── Success Overlay ── */}
       {paymentSuccess && (
         <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50 p-4">
-          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full overflow-hidden">
-            <div className="bg-gradient-to-br from-green-500 to-emerald-600 p-8 text-center text-white">
-              <div className="flex items-center justify-center h-16 w-16 rounded-full bg-white/20 mx-auto mb-4">
+          <div className="bg-card rounded-2xl shadow-2xl max-w-md w-full overflow-hidden">
+            <div className="bg-gradient-to-br from-success to-success p-8 text-center text-white">
+              <div className="flex items-center justify-center h-16 w-16 rounded-full bg-card/20 mx-auto mb-4">
                 <CheckCircle className="h-10 w-10 text-white" />
               </div>
               <h2 className="text-2xl font-bold">Payment Successful! 🎉</h2>
-              <p className="text-green-100 mt-2 text-sm">
+              <p className="text-success-surface mt-2 text-sm">
                 Your conference fee has been confirmed.
               </p>
             </div>
             <div className="p-6 text-center space-y-3">
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-muted-foreground">
                 Your presentation slot is now confirmed. A receipt has been downloaded automatically.
               </p>
-              <p className="text-xs text-gray-400">
+              <p className="text-xs text-muted-foreground">
                 You can also download it anytime from Payment History below.
               </p>
               <Button
                 onClick={() => setPaymentSuccess(false)}
-                className="w-full bg-indigo-600 hover:bg-indigo-700 text-white"
+                className="w-full bg-primary hover:bg-primary-hover text-white"
               >
                 Continue
               </Button>
@@ -594,8 +594,8 @@ export default function ParticipantPaymentsPage() {
 
       {/* ── Page Header ── */}
       <div>
-        <h1 className="text-3xl font-bold text-gray-900">Payments</h1>
-        <p className="text-gray-500 mt-1 text-sm">
+        <h1 className="text-3xl font-bold text-foreground">Payments</h1>
+        <p className="text-muted-foreground mt-1 text-sm">
           Manage your conference presentation & publication fee payments
         </p>
       </div>
@@ -603,19 +603,19 @@ export default function ParticipantPaymentsPage() {
       {/* ── Loading State ── */}
       {loading && (
         <div className="flex flex-col items-center justify-center py-16 gap-3">
-          <Loader2 className="h-8 w-8 animate-spin text-indigo-500" />
-          <p className="text-gray-500 text-sm">Loading payment details…</p>
+          <Loader2 className="h-8 w-8 animate-spin text-primary" />
+          <p className="text-muted-foreground text-sm">Loading payment details…</p>
         </div>
       )}
 
       {/* ── Empty State ── */}
       {!loading && acceptedPapers.length === 0 && (
         <Card className="p-10 text-center shadow-sm">
-          <div className="flex items-center justify-center h-16 w-16 rounded-full bg-gray-100 mx-auto mb-4">
-            <CreditCard className="h-8 w-8 text-gray-400" />
+          <div className="flex items-center justify-center h-16 w-16 rounded-full bg-muted mx-auto mb-4">
+            <CreditCard className="h-8 w-8 text-muted-foreground" />
           </div>
-          <p className="text-gray-500 font-medium text-lg">No payments due at this time</p>
-          <p className="text-xs text-gray-400 mt-2 max-w-sm mx-auto">
+          <p className="text-muted-foreground font-medium text-lg">No payments due at this time</p>
+          <p className="text-xs text-muted-foreground mt-2 max-w-sm mx-auto">
             Once your papers are accepted or you register as a listener, payment options will appear here.
           </p>
         </Card>
@@ -634,26 +634,26 @@ export default function ParticipantPaymentsPage() {
           <Card key={row.id} className="overflow-hidden shadow-sm hover:shadow-md transition-shadow">
 
             {/* Card Header */}
-            <div className={`flex flex-col sm:flex-row sm:items-center justify-between p-5 border-b gap-3 ${alreadyPaid ? "bg-gradient-to-r from-green-50 to-emerald-50" : "bg-gray-50/60"
+            <div className={`flex flex-col sm:flex-row sm:items-center justify-between p-5 border-b gap-3 ${alreadyPaid ? "bg-gradient-to-r from-success-surface to-success-surface" : "bg-muted/50"
               }`}>
               <div className="flex items-center gap-2.5 min-w-0">
-                <div className={`flex items-center justify-center h-8 w-8 rounded-lg flex-shrink-0 ${alreadyPaid ? "bg-green-100" : "bg-indigo-100"
+                <div className={`flex items-center justify-center h-8 w-8 rounded-lg flex-shrink-0 ${alreadyPaid ? "bg-success-surface" : "bg-primary/10"
                   }`}>
-                  <FileText className={`h-4 w-4 ${alreadyPaid ? "text-green-600" : "text-indigo-600"}`} />
+                  <FileText className={`h-4 w-4 ${alreadyPaid ? "text-success" : "text-primary"}`} />
                 </div>
                 <div className="min-w-0">
-                  <span className="font-semibold text-gray-800 block truncate">{fees[confId]?.title}</span>
-                  <span className="text-xs text-gray-400">Conference Fee Payment</span>
+                  <span className="font-semibold text-foreground block truncate">{fees[confId]?.title}</span>
+                  <span className="text-xs text-muted-foreground">Conference Fee Payment</span>
                 </div>
               </div>
 
               {/* Status Badge */}
               {alreadyPaid ? (
-                <Badge className="bg-green-100 text-green-700 border border-green-200 self-start sm:self-auto gap-1">
+                <Badge className="bg-success-surface text-success border border-success/20 self-start sm:self-auto gap-1">
                   <CheckCircle2 className="h-3 w-3" /> Paid
                 </Badge>
               ) : (
-                <Badge className="bg-yellow-100 text-yellow-700 border border-yellow-200 self-start sm:self-auto gap-1">
+                <Badge className="bg-warning-surface text-warning border border-warning/20 self-start sm:self-auto gap-1">
                   <Clock className="h-3 w-3" /> Payment Pending
                 </Badge>
               )}
@@ -667,27 +667,27 @@ export default function ParticipantPaymentsPage() {
                   {/* Selected Options */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {row.presentation_type && (
-                      <div className="bg-gray-50 rounded-lg p-3">
-                        <p className="text-xs text-gray-400 uppercase tracking-wide">Presentation Type</p>
-                        <p className="text-sm font-medium text-gray-700 mt-0.5">{row.presentation_type}</p>
+                      <div className="bg-muted rounded-lg p-3">
+                        <p className="text-xs text-muted-foreground uppercase tracking-wide">Presentation Type</p>
+                        <p className="text-sm font-medium text-foreground mt-0.5">{row.presentation_type}</p>
                       </div>
                     )}
                     {row.publication_type && (
-                      <div className="bg-gray-50 rounded-lg p-3">
-                        <p className="text-xs text-gray-400 uppercase tracking-wide">Publication Type</p>
-                        <p className="text-sm font-medium text-gray-700 mt-0.5">{row.publication_type}</p>
+                      <div className="bg-muted rounded-lg p-3">
+                        <p className="text-xs text-muted-foreground uppercase tracking-wide">Publication Type</p>
+                        <p className="text-sm font-medium text-foreground mt-0.5">{row.publication_type}</p>
                       </div>
                     )}
                   </div>
 
                   {/* Success Message */}
-                  <div className="flex items-center gap-3 bg-green-50 border border-green-200 rounded-xl px-4 py-3">
-                    <div className="flex items-center justify-center h-9 w-9 rounded-full bg-green-100 flex-shrink-0">
-                      <CheckCircle2 className="h-5 w-5 text-green-600" />
+                  <div className="flex items-center gap-3 bg-success-surface border border-success/20 rounded-xl px-4 py-3">
+                    <div className="flex items-center justify-center h-9 w-9 rounded-full bg-success-surface flex-shrink-0">
+                      <CheckCircle2 className="h-5 w-5 text-success" />
                     </div>
                     <div>
-                      <p className="font-semibold text-green-800 text-sm">Payment Completed Successfully</p>
-                      <p className="text-xs text-green-600">Your presentation & publication slot is confirmed.</p>
+                      <p className="font-semibold text-success text-sm">Payment Completed Successfully</p>
+                      <p className="text-xs text-success">Your presentation & publication slot is confirmed.</p>
                     </div>
                   </div>
 
@@ -702,9 +702,9 @@ export default function ParticipantPaymentsPage() {
                   <div className="space-y-3">
                     {/* Category dropdown */}
                     <div>
-                      <label className="text-xs font-medium text-gray-500 uppercase tracking-wide block mb-1.5">Participant Category</label>
+                      <label className="text-xs font-medium text-muted-foreground uppercase tracking-wide block mb-1.5">Participant Category</label>
                       <select
-                        className="cursor-pointer border border-gray-200 rounded-lg px-3 py-2.5 w-full text-sm bg-white focus:ring-2 focus:ring-indigo-200 focus:border-indigo-400 outline-none transition-all"
+                        className="cursor-pointer border border-border rounded-lg px-3 py-2.5 w-full text-sm bg-card focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
                         value={selectedCategory[confId] || ""}
                         onChange={(e) =>
                           setSelectedCategory({
@@ -724,9 +724,9 @@ export default function ParticipantPaymentsPage() {
 
                     {/* Listener: no further options */}
                     {selectedCategory[confId] === "Listener" && (
-                      <div className="bg-blue-50 border border-blue-200 rounded-lg px-4 py-3 text-sm text-blue-700">
+                      <div className="bg-info-surface border border-info/20 rounded-lg px-4 py-3 text-sm text-info">
                         <p className="font-medium">Listener Category</p>
-                        <p className="text-xs mt-1 text-blue-600">
+                        <p className="text-xs mt-1 text-info">
                           As a listener, you do not present or publish. Only the listener fee applies.
                         </p>
                       </div>
@@ -736,9 +736,9 @@ export default function ParticipantPaymentsPage() {
                     {selectedCategory[confId] && selectedCategory[confId] !== "Listener" && (
                       <>
                         <div>
-                          <label className="text-xs font-medium text-gray-500 uppercase tracking-wide block mb-1.5">Presentation Type</label>
+                          <label className="text-xs font-medium text-muted-foreground uppercase tracking-wide block mb-1.5">Presentation Type</label>
                           <select
-                            className="cursor-pointer border border-gray-200 rounded-lg px-3 py-2.5 w-full text-sm bg-white focus:ring-2 focus:ring-indigo-200 focus:border-indigo-400 outline-none transition-all"
+                            className="cursor-pointer border border-border rounded-lg px-3 py-2.5 w-full text-sm bg-card focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
                             value={presentationType[confId] || ""}
                             onChange={(e) =>
                               setPresentationType({
@@ -758,9 +758,9 @@ export default function ParticipantPaymentsPage() {
                         </div>
 
                         <div>
-                          <label className="text-xs font-medium text-gray-500 uppercase tracking-wide block mb-1.5">Publication Option</label>
+                          <label className="text-xs font-medium text-muted-foreground uppercase tracking-wide block mb-1.5">Publication Option</label>
                           <select
-                            className="cursor-pointer border border-gray-200 rounded-lg px-3 py-2.5 w-full text-sm bg-white focus:ring-2 focus:ring-indigo-200 focus:border-indigo-400 outline-none transition-all"
+                            className="cursor-pointer border border-border rounded-lg px-3 py-2.5 w-full text-sm bg-card focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
                             value={publicationType[confId] || ""}
                             onChange={(e) =>
                               setPublicationType({
@@ -780,13 +780,13 @@ export default function ParticipantPaymentsPage() {
 
                   {/* ── Fee Breakdown Card ── */}
                   {breakdown.conferenceFee > 0 && (
-                    <div className="bg-gradient-to-br from-indigo-50 via-blue-50 to-sky-50 border border-indigo-200 rounded-xl overflow-hidden">
+                    <div className="bg-gradient-to-br from-primary/5 via-primary/5 to-primary/5 border border-primary/20 rounded-xl overflow-hidden">
                       {/* Header */}
-                      <div className="flex items-center gap-2 px-4 py-3 border-b border-indigo-100">
-                        <CreditCard className="h-4 w-4 text-indigo-600" />
-                        <span className="text-sm font-semibold text-gray-800">Fee Breakdown</span>
+                      <div className="flex items-center gap-2 px-4 py-3 border-b border-primary/10">
+                        <CreditCard className="h-4 w-4 text-primary" />
+                        <span className="text-sm font-semibold text-foreground">Fee Breakdown</span>
                         {selectedCategory[confId] && (
-                          <Badge className="ml-auto bg-indigo-100 text-indigo-700 border border-indigo-200 text-xs">
+                          <Badge className="ml-auto bg-primary/10 text-primary border border-primary/20 text-xs">
                             {selectedCategory[confId]}
                           </Badge>
                         )}
@@ -797,8 +797,8 @@ export default function ParticipantPaymentsPage() {
                         {/* Listener fee */}
                         {selectedCategory[confId] === "Listener" && breakdown.conferenceFee > 0 && (
                           <div className="flex items-center justify-between text-sm">
-                            <span className="text-gray-600">Listener Fee</span>
-                            <span className="text-gray-700 font-medium tabular-nums">
+                            <span className="text-muted-foreground">Listener Fee</span>
+                            <span className="text-foreground font-medium tabular-nums">
                               ₹{formatINR(breakdown.conferenceFee)}
                             </span>
                           </div>
@@ -807,10 +807,10 @@ export default function ParticipantPaymentsPage() {
                         {/* Presentation fee */}
                         {selectedCategory[confId] !== "Listener" && presFee > 0 && (
                           <div className="flex items-center justify-between text-sm">
-                            <span className="text-gray-600">
+                            <span className="text-muted-foreground">
                               {presentationType[confId]} Fee
                             </span>
-                            <span className="text-gray-700 font-medium tabular-nums">
+                            <span className="text-foreground font-medium tabular-nums">
                               ₹{formatINR(presFee)}
                             </span>
                           </div>
@@ -819,20 +819,20 @@ export default function ParticipantPaymentsPage() {
                         {/* Publication fee */}
                         {selectedCategory[confId] !== "Listener" && pubFee > 0 && (
                           <div className="flex items-center justify-between text-sm">
-                            <span className="text-gray-600">
+                            <span className="text-muted-foreground">
                               {publicationType[confId]} Fee
                             </span>
-                            <span className="text-gray-700 font-medium tabular-nums">
+                            <span className="text-foreground font-medium tabular-nums">
                               ₹{formatINR(pubFee)}
                             </span>
                           </div>
                         )}
 
                         {/* Subtotal divider */}
-                        <div className="border-t border-dashed border-indigo-200 pt-2 mt-1">
+                        <div className="border-t border-dashed border-primary/20 pt-2 mt-1">
                           <div className="flex items-center justify-between text-sm">
-                            <span className="text-gray-600 font-medium">Conference Fee</span>
-                            <span className="text-gray-800 font-semibold tabular-nums">
+                            <span className="text-muted-foreground font-medium">Conference Fee</span>
+                            <span className="text-foreground font-semibold tabular-nums">
                               ₹{formatINR(breakdown.conferenceFee)}
                             </span>
                           </div>
@@ -840,22 +840,22 @@ export default function ParticipantPaymentsPage() {
 
                         {/* Platform processing fee */}
                         <div className="flex items-center justify-between text-sm">
-                          <span className="text-gray-500">
+                          <span className="text-muted-foreground">
                             Platform Processing Fee ({PLATFORM_FEE_PERCENT}%)
                           </span>
-                          <span className="text-gray-600 tabular-nums">
+                          <span className="text-muted-foreground tabular-nums">
                             ₹{formatINR(breakdown.processingFee)}
                           </span>
                         </div>
                       </div>
 
                       {/* Total */}
-                      <div className="bg-indigo-100/60 border-t border-indigo-200 px-4 py-3">
+                      <div className="bg-primary/10 border-t border-primary/20 px-4 py-3">
                         <div className="flex items-center justify-between">
-                          <span className="text-sm font-semibold text-gray-800">
+                          <span className="text-sm font-semibold text-foreground">
                             Total Payable
                           </span>
-                          <span className="text-xl font-bold text-indigo-700 tabular-nums">
+                          <span className="text-xl font-bold text-primary tabular-nums">
                             ₹{formatINR(breakdown.total)}
                           </span>
                         </div>
@@ -864,35 +864,35 @@ export default function ParticipantPaymentsPage() {
                   )}
 
                   {/* Deadline Warning */}
-                  <div className="flex items-start gap-2 text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">
+                  <div className="flex items-start gap-2 text-xs text-warning bg-warning-surface border border-warning/20 rounded-lg px-3 py-2">
                     <AlertTriangle className="h-3.5 w-3.5 flex-shrink-0 mt-0.5" />
                     <span>Complete your payment to secure your presentation slot. Unpaid papers may not be included in the conference proceedings.</span>
                   </div>
 
                   {/* Payment Transparency Block */}
-                  <div className="border border-gray-200 rounded-xl p-4 space-y-2.5 bg-white">
+                  <div className="border border-border rounded-xl p-4 space-y-2.5 bg-card">
                     <div className="flex items-center gap-2">
-                      <Info className="h-4 w-4 text-indigo-500" />
-                      <span className="text-sm font-semibold text-gray-800">Payment Transparency</span>
+                      <Info className="h-4 w-4 text-primary" />
+                      <span className="text-sm font-semibold text-foreground">Payment Transparency</span>
                     </div>
-                    <div className="space-y-1.5 text-sm text-gray-600">
+                    <div className="space-y-1.5 text-sm text-muted-foreground">
                       <p>
-                        <span className="text-gray-400">Conference Organized By:</span>{" "}
-                        <span className="font-medium text-gray-700">{fees[confId]?.organizer_name || "Conference Organizer"}</span>
+                        <span className="text-muted-foreground">Conference Organized By:</span>{" "}
+                        <span className="font-medium text-foreground">{fees[confId]?.organizer_name || "Conference Organizer"}</span>
                       </p>
                       <p>
-                        <span className="text-gray-400">Payment Recipient:</span>{" "}
-                        <span className="font-medium text-gray-700">{fees[confId]?.organizer_name || "Conference Organizer"}</span>
+                        <span className="text-muted-foreground">Payment Recipient:</span>{" "}
+                        <span className="font-medium text-foreground">{fees[confId]?.organizer_name || "Conference Organizer"}</span>
                       </p>
                     </div>
-                    <p className="text-xs text-gray-400 leading-relaxed">
+                    <p className="text-xs text-muted-foreground leading-relaxed">
                       Confairo charges a small platform processing fee to support secure payment infrastructure and platform operations. The conference fee (₹{formatINR(breakdown.conferenceFee)}) goes directly to the organizer.
                     </p>
                   </div>
 
                   {/* Pay Button */}
                   <Button
-                    className="w-full bg-indigo-600 hover:bg-indigo-700 text-white h-12 text-base font-semibold transition-all"
+                    className="w-full bg-primary hover:bg-primary-hover text-white h-12 text-base font-semibold transition-all"
                     disabled={isProcessing || breakdown.conferenceFee <= 0}
                     onClick={() => openPayment(row)}
                   >
@@ -912,7 +912,7 @@ export default function ParticipantPaymentsPage() {
                   </Button>
 
                   {/* Legal Confirmation */}
-                  <p className="text-xs text-center text-gray-400 leading-relaxed">
+                  <p className="text-xs text-center text-muted-foreground leading-relaxed">
                     By proceeding, you agree that the conference fee will be transferred to the organizer.
                     A small platform processing fee is charged by Confairo.
                   </p>
@@ -925,28 +925,28 @@ export default function ParticipantPaymentsPage() {
 
       {/* ── Trust Section ── */}
       {!loading && acceptedPapers.length > 0 && (
-        <div className="border border-gray-100 rounded-xl p-4 bg-gray-50/50">
+        <div className="border border-border rounded-xl p-4 bg-muted/50">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-2 text-xs text-gray-500">
-              <ShieldCheck className="h-4 w-4 text-green-500" />
-              <span>Secure payment powered by <strong className="text-gray-700">Razorpay</strong> · Encrypted & safe</span>
+            <div className="flex items-center gap-2 text-xs text-muted-foreground">
+              <ShieldCheck className="h-4 w-4 text-success" />
+              <span>Secure payment powered by <strong className="text-foreground">Razorpay</strong> · Encrypted & safe</span>
             </div>
-            <div className="flex items-center gap-3 text-gray-400">
+            <div className="flex items-center gap-3 text-muted-foreground">
               <div className="flex items-center gap-1 text-xs" title="UPI">
                 <Smartphone className="h-3.5 w-3.5" />
                 <span>UPI</span>
               </div>
-              <div className="h-3 w-px bg-gray-300" />
+              <div className="h-3 w-px bg-muted-foreground/30" />
               <div className="flex items-center gap-1 text-xs" title="Cards">
                 <CreditCard className="h-3.5 w-3.5" />
                 <span>Cards</span>
               </div>
-              <div className="h-3 w-px bg-gray-300" />
+              <div className="h-3 w-px bg-muted-foreground/30" />
               <div className="flex items-center gap-1 text-xs" title="Net Banking">
                 <Landmark className="h-3.5 w-3.5" />
                 <span>Net Banking</span>
               </div>
-              <div className="h-3 w-px bg-gray-300" />
+              <div className="h-3 w-px bg-muted-foreground/30" />
               <div className="flex items-center gap-1 text-xs" title="Wallets">
                 <Wallet className="h-3.5 w-3.5" />
                 <span>Wallets</span>
@@ -960,14 +960,14 @@ export default function ParticipantPaymentsPage() {
       {/*  Payment History                                              */}
       {/* ============================================================ */}
       <Card className="overflow-hidden">
-        <div className="flex items-center justify-between p-5 border-b bg-gray-50/60">
+        <div className="flex items-center justify-between p-5 border-b bg-muted/50">
           <div className="flex items-center gap-2.5">
-            <div className="flex items-center justify-center h-8 w-8 rounded-lg bg-indigo-100">
-              <Receipt className="h-4 w-4 text-indigo-600" />
+            <div className="flex items-center justify-center h-8 w-8 rounded-lg bg-primary/10">
+              <Receipt className="h-4 w-4 text-primary" />
             </div>
             <div>
-              <span className="font-semibold text-gray-800 block">Payment History</span>
-              <span className="text-xs text-gray-400">
+              <span className="font-semibold text-foreground block">Payment History</span>
+              <span className="text-xs text-muted-foreground">
                 {paymentHistory.length} payment{paymentHistory.length !== 1 ? "s" : ""}
               </span>
             </div>
@@ -977,18 +977,18 @@ export default function ParticipantPaymentsPage() {
         {/* Loading */}
         {historyLoading && (
           <div className="flex items-center justify-center py-8">
-            <Loader2 className="h-5 w-5 animate-spin text-gray-400" />
+            <Loader2 className="h-5 w-5 animate-spin text-muted-foreground" />
           </div>
         )}
 
         {/* Empty */}
         {!historyLoading && paymentHistory.length === 0 && (
           <div className="py-10 text-center">
-            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-gray-100 mb-3">
-              <CreditCard className="h-6 w-6 text-gray-400" />
+            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-muted mb-3">
+              <CreditCard className="h-6 w-6 text-muted-foreground" />
             </div>
-            <p className="text-sm text-gray-500 font-medium">No payments yet</p>
-            <p className="text-xs text-gray-400 mt-1">
+            <p className="text-sm text-muted-foreground font-medium">No payments yet</p>
+            <p className="text-xs text-muted-foreground mt-1">
               Your completed payments will appear here.
             </p>
           </div>
@@ -999,7 +999,7 @@ export default function ParticipantPaymentsPage() {
           <div className="hidden md:block overflow-x-auto">
             <table className="w-full border-collapse text-sm">
               <thead>
-                <tr className="border-b bg-gray-50/80 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <tr className="border-b bg-muted/80 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                   <th className="py-3 px-4">Conference</th>
                   <th className="py-3 px-4">Amount</th>
                   <th className="py-3 px-4">Date</th>
@@ -1011,26 +1011,26 @@ export default function ParticipantPaymentsPage() {
                 {paymentHistory.map((h, i) => (
                   <tr
                     key={h.id}
-                    className={`border-b last:border-0 hover:bg-gray-50 transition-colors ${i % 2 === 1 ? "bg-gray-50/40" : ""}`}
+                    className={`border-b last:border-0 hover:bg-muted transition-colors ${i % 2 === 1 ? "bg-muted/40" : ""}`}
                   >
                     <td className="py-3 px-4">
-                      <p className="font-medium text-gray-900 truncate max-w-[200px]">{h.conferenceName}</p>
-                      <p className="text-xs text-gray-400">{h.type === "listener" ? "Listener" : "Paper"} Fee</p>
+                      <p className="font-medium text-foreground truncate max-w-[200px]">{h.conferenceName}</p>
+                      <p className="text-xs text-muted-foreground">{h.type === "listener" ? "Listener" : "Paper"} Fee</p>
                     </td>
-                    <td className="py-3 px-4 font-semibold text-gray-900">
+                    <td className="py-3 px-4 font-semibold text-foreground">
                       ₹{formatINR(h.total)}
                     </td>
-                    <td className="py-3 px-4 text-gray-500">
+                    <td className="py-3 px-4 text-muted-foreground">
                       {new Date(h.paidAt).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}
                     </td>
-                    <td className="py-3 px-4 font-mono text-xs text-gray-500">
+                    <td className="py-3 px-4 font-mono text-xs text-muted-foreground">
                       {h.paymentId}
                     </td>
                     <td className="py-3 px-4">
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="h-7 gap-1 text-indigo-600 hover:text-indigo-700 hover:bg-indigo-50 text-xs"
+                        className="h-7 gap-1 text-primary hover:text-primary hover:bg-primary/5 text-xs"
                         onClick={() =>
                           generatePaymentReceipt({
                             paymentId: h.paymentId,
@@ -1062,22 +1062,22 @@ export default function ParticipantPaymentsPage() {
               <div key={h.id} className="p-4 space-y-2">
                 <div className="flex items-start justify-between gap-2">
                   <div className="min-w-0">
-                    <p className="text-sm font-medium text-gray-900 truncate">{h.conferenceName}</p>
-                    <p className="text-xs text-gray-400 mt-0.5">{h.type === "listener" ? "Listener" : "Paper"} Fee</p>
+                    <p className="text-sm font-medium text-foreground truncate">{h.conferenceName}</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">{h.type === "listener" ? "Listener" : "Paper"} Fee</p>
                   </div>
-                  <span className="text-sm font-semibold text-gray-900 shrink-0">
+                  <span className="text-sm font-semibold text-foreground shrink-0">
                     ₹{formatINR(h.total)}
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-xs text-gray-400">
+                  <span className="text-xs text-muted-foreground">
                     <Clock className="h-3 w-3 inline mr-1" />
                     {new Date(h.paidAt).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}
                   </span>
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="h-6 gap-1 text-indigo-600 text-[11px] px-2"
+                    className="h-6 gap-1 text-primary text-[11px] px-2"
                     onClick={() =>
                       generatePaymentReceipt({
                         paymentId: h.paymentId,

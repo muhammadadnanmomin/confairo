@@ -136,8 +136,8 @@ export default function DashboardOverview() {
       <div className="space-y-6 max-w-6xl animate-in fade-in duration-300">
         {/* Greeting skeleton */}
         <div className="space-y-2">
-          <div className="h-8 w-72 bg-gray-200 rounded-lg animate-pulse" />
-          <div className="h-4 w-56 bg-gray-100 rounded animate-pulse" />
+          <div className="h-8 w-72 bg-muted rounded-lg animate-pulse" />
+          <div className="h-4 w-56 bg-muted rounded animate-pulse" />
         </div>
 
         {/* Quick actions skeleton */}
@@ -145,7 +145,7 @@ export default function DashboardOverview() {
           {[...Array(3)].map((_, i) => (
             <div
               key={i}
-              className="h-9 w-40 bg-gray-200 rounded-md animate-pulse"
+              className="h-9 w-40 bg-muted rounded-md animate-pulse"
             />
           ))}
         </div>
@@ -154,12 +154,12 @@ export default function DashboardOverview() {
         {[...Array(4)].map((_, i) => (
           <div
             key={i}
-            className="rounded-xl border bg-white p-6 space-y-4"
+            className="rounded-xl border bg-card p-6 space-y-4"
           >
-            <div className="h-5 w-48 bg-gray-200 rounded animate-pulse" />
+            <div className="h-5 w-48 bg-muted rounded animate-pulse" />
             <div className="space-y-3">
-              <div className="h-4 w-full bg-gray-100 rounded animate-pulse" />
-              <div className="h-4 w-3/4 bg-gray-100 rounded animate-pulse" />
+              <div className="h-4 w-full bg-muted rounded animate-pulse" />
+              <div className="h-4 w-3/4 bg-muted rounded animate-pulse" />
             </div>
           </div>
         ))}
@@ -176,7 +176,7 @@ export default function DashboardOverview() {
         <h1 className="text-3xl font-bold tracking-tight">
           Welcome back {profile?.name || "Researcher"} 👋
         </h1>
-        <p className="text-gray-500 mt-1">
+        <p className="text-muted-foreground mt-1">
           Here&apos;s what&apos;s happening today.
         </p>
       </div>
@@ -184,7 +184,7 @@ export default function DashboardOverview() {
       {/* Quick Actions */}
       <Section
         title="Quick Actions"
-        icon={<ArrowRight className="h-5 w-5 text-blue-600" />}
+        icon={<ArrowRight className="h-5 w-5 text-info" />}
       >
         <div className="flex flex-wrap gap-3">
           <Button variant="outline" asChild>
@@ -211,7 +211,7 @@ export default function DashboardOverview() {
       {/* Upcoming Deadlines */}
       <Section
         title="Upcoming Deadlines"
-        icon={<AlertCircle className="h-5 w-5 text-red-500" />}
+        icon={<AlertCircle className="h-5 w-5 text-destructive" />}
       >
         {deadlines.length === 0 ? (
           <Empty text="No upcoming deadlines. You're all caught up!" />
@@ -229,7 +229,7 @@ export default function DashboardOverview() {
       {/* Submission Status */}
       <Section
         title="Submission Status"
-        icon={<FileText className="h-5 w-5 text-indigo-600" />}
+        icon={<FileText className="h-5 w-5 text-primary" />}
       >
         {submissions.length === 0 ? (
           <Empty text="No submissions yet. Submit your first paper." />
@@ -248,7 +248,7 @@ export default function DashboardOverview() {
       {reviewTasks.length > 0 && (
         <Section
           title="Review Tasks"
-          icon={<UserCheck className="h-5 w-5 text-amber-500" />}
+          icon={<UserCheck className="h-5 w-5 text-warning" />}
         >
           {reviewTasks.map((r) => (
             <Row
@@ -263,7 +263,7 @@ export default function DashboardOverview() {
       {/* Recommended Conferences */}
       <Section
         title="Recommended Conferences"
-        icon={<Calendar className="h-5 w-5 text-green-600" />}
+        icon={<Calendar className="h-5 w-5 text-success" />}
       >
         {recommended.length === 0 ? (
           <Empty text="No conferences available right now." />
@@ -282,10 +282,10 @@ export default function DashboardOverview() {
       {/* Certificates / Achievements */}
       <Section
         title="Achievements"
-        icon={<Award className="h-5 w-5 text-purple-600" />}
+        icon={<Award className="h-5 w-5 text-primary" />}
       >
         <div className="flex items-center gap-3 p-2">
-          <CheckCircle2 className="text-green-600 h-5 w-5" />
+          <CheckCircle2 className="text-success h-5 w-5" />
           <p className="font-medium">
             You have earned {certificates} certificate
             {certificates !== 1 && "s"}
@@ -324,10 +324,10 @@ interface RowProps {
 
 function Row({ title, subtitle, badge, link }: RowProps) {
   const content = (
-    <div className="flex justify-between items-center hover:bg-gray-50 transition rounded p-2 -mx-2">
+    <div className="flex justify-between items-center hover:bg-muted transition rounded p-2 -mx-2">
       <div>
         <p className="font-medium">{title}</p>
-        {subtitle && <p className="text-sm text-gray-500">{subtitle}</p>}
+        {subtitle && <p className="text-sm text-muted-foreground">{subtitle}</p>}
       </div>
       {badge}
     </div>
@@ -342,14 +342,14 @@ function Row({ title, subtitle, badge, link }: RowProps) {
 
 function Empty({ text }: { text: string }) {
   return (
-    <p className="text-sm text-gray-500 py-2 italic">{text}</p>
+    <p className="text-sm text-muted-foreground py-2 italic">{text}</p>
   );
 }
 
 function StatusBadge({ status }: { status: string }) {
   if (status === "accepted")
-    return <Badge className="bg-green-100 text-green-700">Accepted</Badge>;
+    return <Badge className="bg-success-surface text-success">Accepted</Badge>;
   if (status === "rejected")
-    return <Badge className="bg-red-100 text-red-700">Rejected</Badge>;
-  return <Badge className="bg-yellow-100 text-yellow-700">Pending</Badge>;
+    return <Badge className="bg-destructive-surface text-destructive">Rejected</Badge>;
+  return <Badge className="bg-warning-surface text-warning">Pending</Badge>;
 }

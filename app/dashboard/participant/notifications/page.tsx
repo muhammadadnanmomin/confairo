@@ -101,7 +101,7 @@ export default function ParticipantNotificationsPage() {
           <h1 className="text-3xl font-bold">
             Notifications
           </h1>
-          <p className="text-gray-500 mt-1">
+          <p className="text-muted-foreground mt-1">
             Stay updated with your activities
           </p>
         </div>
@@ -117,10 +117,10 @@ export default function ParticipantNotificationsPage() {
       </div>
 
       <Card className="p-6">
-        {loading && <p className="text-sm text-gray-500">Loading...</p>}
+        {loading && <p className="text-sm text-muted-foreground">Loading...</p>}
 
         {!loading && notifications.length === 0 && (
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-muted-foreground">
             No notifications yet.
           </p>
         )}
@@ -131,7 +131,7 @@ export default function ParticipantNotificationsPage() {
               key={n.id}
               onClick={() => markRead(n.id)}
               className={`cursor-pointer flex gap-4 rounded-lg border p-4 transition ${
-                n.is_read ? "bg-white" : "bg-muted/40"
+                n.is_read ? "bg-card" : "bg-muted/40"
               }`}
             >
               <NotificationIcon type={n.type} />
@@ -142,11 +142,11 @@ export default function ParticipantNotificationsPage() {
                   {!n.is_read && <Badge>New</Badge>}
                 </div>
 
-                <p className="mt-1 text-sm text-gray-600">
+                <p className="mt-1 text-sm text-muted-foreground">
                   {n.message}
                 </p>
 
-                <p className="mt-2 text-xs text-gray-400">
+                <p className="mt-2 text-xs text-muted-foreground">
                   {new Date(n.created_at).toLocaleString()}
                 </p>
               </div>
@@ -160,10 +160,10 @@ export default function ParticipantNotificationsPage() {
 
 function NotificationIcon({ type }: { type: string }) {
   if (type === "success") {
-    return <CheckCircle className="h-5 w-5 text-green-600" />;
+    return <CheckCircle className="h-5 w-5 text-success" />;
   }
   if (type === "warning") {
-    return <AlertTriangle className="h-5 w-5 text-yellow-600" />;
+    return <AlertTriangle className="h-5 w-5 text-warning" />;
   }
-  return <Info className="h-5 w-5 text-blue-600" />;
+  return <Info className="h-5 w-5 text-info" />;
 }

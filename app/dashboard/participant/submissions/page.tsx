@@ -451,8 +451,8 @@ export default function ParticipantSubmissionsPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <Loader2 className="h-6 w-6 animate-spin text-gray-400" />
-        <span className="ml-2 text-gray-500 text-sm">Loading submissions…</span>
+        <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
+        <span className="ml-2 text-muted-foreground text-sm">Loading submissions…</span>
       </div>
     );
   }
@@ -461,16 +461,16 @@ export default function ParticipantSubmissionsPage() {
     <div className="space-y-8 max-w-5xl mx-auto">
       <div>
         <h1 className="text-3xl font-bold">My Submissions</h1>
-        <p className="text-gray-500 mt-1">
+        <p className="text-muted-foreground mt-1">
           Upload and track your paper submissions
         </p>
       </div>
 
       {registrations.length === 0 && (
         <Card className="p-8 text-center">
-          <FileText className="h-10 w-10 text-gray-300 mx-auto mb-3" />
-          <p className="text-gray-500">No conference registrations found.</p>
-          <p className="text-xs text-gray-400 mt-1">Register for a conference as an author to submit papers.</p>
+          <FileText className="h-10 w-10 text-muted-foreground mx-auto mb-3" />
+          <p className="text-muted-foreground">No conference registrations found.</p>
+          <p className="text-xs text-muted-foreground mt-1">Register for a conference as an author to submit papers.</p>
         </Card>
       )}
 
@@ -485,9 +485,9 @@ export default function ParticipantSubmissionsPage() {
           <Card key={reg.id} className="overflow-hidden">
 
             {/* ── Conference Header ── */}
-            <div className="flex justify-between items-center p-5 border-b bg-gray-50/50">
+            <div className="flex justify-between items-center p-5 border-b bg-muted/50">
               <div className="flex items-center gap-2">
-                <FileText className="h-4 w-4 text-gray-500" />
+                <FileText className="h-4 w-4 text-muted-foreground" />
                 <span className="font-semibold">{confTitle}</span>
               </div>
               {submission && <StatusBadge status={submission.status} />}
@@ -506,16 +506,16 @@ export default function ParticipantSubmissionsPage() {
                   </div>
 
                   {/* ── Authors Section ── */}
-                  <div className="border border-gray-200 rounded-lg p-4 space-y-4 bg-gray-50/50">
+                  <div className="border border-border rounded-lg p-4 space-y-4 bg-muted/50">
                     <h3 className="font-semibold text-base flex items-center gap-2">
-                      <Users className="h-4 w-4 text-gray-600" />
+                      <Users className="h-4 w-4 text-muted-foreground" />
                       Authors
                     </h3>
 
                     {/* Primary Author */}
-                    <div className="space-y-3 bg-white border border-blue-100 rounded-lg p-4">
+                    <div className="space-y-3 bg-card border border-info/10 rounded-lg p-4">
                       <div className="flex items-center gap-2">
-                        <Badge className="bg-blue-100 text-blue-700 border-blue-200 text-xs">Primary Author</Badge>
+                        <Badge className="bg-info-surface text-info border-info/20 text-xs">Primary Author</Badge>
                       </div>
 
                       <div>
@@ -525,7 +525,7 @@ export default function ParticipantSubmissionsPage() {
                           value={authorNames[confId] || ""}
                           onChange={e => setAuthorNames(p => ({ ...p, [confId]: e.target.value }))}
                         />
-                        <p className="text-xs text-gray-500 mt-1">
+                        <p className="text-xs text-muted-foreground mt-1">
                           Enter the full name exactly as it should appear on the certificate.
                         </p>
                       </div>
@@ -568,20 +568,20 @@ export default function ParticipantSubmissionsPage() {
                     {/* Co-Authors */}
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
-                        <h4 className="text-sm font-semibold text-gray-700">Co-Authors (Optional)</h4>
+                        <h4 className="text-sm font-semibold text-foreground">Co-Authors (Optional)</h4>
                         <Button size="sm" variant="outline" onClick={() => addAuthor(confId)} className="text-xs">
                           + Add Co-Author
                         </Button>
                       </div>
-                      <p className="text-xs text-gray-500">
+                      <p className="text-xs text-muted-foreground">
                         Add co-authors in the order they should appear in the publication.
                       </p>
 
                       {(coAuthors[confId] || []).map((a, i) => (
-                        <div key={i} className="bg-white border border-gray-200 rounded-lg p-3 space-y-2">
+                        <div key={i} className="bg-card border border-border rounded-lg p-3 space-y-2">
                           <div className="flex items-center justify-between">
                             <Badge variant="secondary" className="text-xs">Co-Author {i + 1}</Badge>
-                            <Button size="sm" variant="ghost" className="h-7 w-7 p-0 text-gray-400 hover:text-red-500" onClick={() => removeAuthor(confId, i)}>✕</Button>
+                            <Button size="sm" variant="ghost" className="h-7 w-7 p-0 text-muted-foreground hover:text-destructive" onClick={() => removeAuthor(confId, i)}>✕</Button>
                           </div>
                           <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                             <Input
@@ -621,7 +621,7 @@ export default function ParticipantSubmissionsPage() {
 
                   <div>
                     <h3 className="font-semibold mt-3">Author Declaration</h3>
-                    <p className="text-xs text-gray-500 mb-1">
+                    <p className="text-xs text-muted-foreground mb-1">
                       Please confirm the following before submission.
                     </p>
 
@@ -665,32 +665,32 @@ export default function ParticipantSubmissionsPage() {
                   {/* ── Submission Overview ── */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-1">
-                      <p className="text-xs text-gray-400 uppercase tracking-wide">Paper Title</p>
+                      <p className="text-xs text-muted-foreground uppercase tracking-wide">Paper Title</p>
                       <p className="font-semibold text-lg">{submission.title}</p>
                     </div>
                     <div className="grid grid-cols-2 gap-3">
                       <div>
-                        <p className="text-xs text-gray-400 uppercase tracking-wide">Submission ID</p>
-                        <p className="text-sm font-mono text-gray-600">{submission.id?.slice(0, 8)}</p>
+                        <p className="text-xs text-muted-foreground uppercase tracking-wide">Submission ID</p>
+                        <p className="text-sm font-mono text-muted-foreground">{submission.id?.slice(0, 8)}</p>
                       </div>
                       <div>
-                        <p className="text-xs text-gray-400 uppercase tracking-wide">Submitted</p>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-xs text-muted-foreground uppercase tracking-wide">Submitted</p>
+                        <p className="text-sm text-muted-foreground">
                           {new Date(submission.created_at).toLocaleDateString()}
                         </p>
                       </div>
                       {submission.revision_number > 1 && (
                         <div>
-                          <p className="text-xs text-gray-400 uppercase tracking-wide">Revision</p>
-                          <p className="text-sm text-gray-600">v{submission.revision_number}</p>
+                          <p className="text-xs text-muted-foreground uppercase tracking-wide">Revision</p>
+                          <p className="text-sm text-muted-foreground">v{submission.revision_number}</p>
                         </div>
                       )}
                     </div>
                   </div>
 
                   {/* ── Status Timeline ── */}
-                  <div className="bg-gray-50 rounded-lg p-4">
-                    <h3 className="text-sm font-semibold text-gray-700 mb-3">Progress Timeline</h3>
+                  <div className="bg-muted rounded-lg p-4">
+                    <h3 className="text-sm font-semibold text-foreground mb-3">Progress Timeline</h3>
                     <div className="flex flex-wrap gap-2">
                       <TimelineStep
                         label="Submitted"
@@ -777,14 +777,14 @@ export default function ParticipantSubmissionsPage() {
 
                   {/* ── Plagiarism Status ── */}
                   <div className="flex items-center gap-2 text-sm">
-                    <ShieldCheck className="h-4 w-4 text-gray-500" />
-                    <span className="text-gray-600">Similarity Check:</span>
+                    <ShieldCheck className="h-4 w-4 text-muted-foreground" />
+                    <span className="text-muted-foreground">Similarity Check:</span>
                     <PlagiarismBadge status={submission.plagiarism_status} />
                   </div>
 
                   {/* ── Email Notification ── */}
                   {submission.decision_email_sent && (
-                    <div className="flex items-center gap-2 text-sm text-green-700 bg-green-50 px-3 py-2 rounded">
+                    <div className="flex items-center gap-2 text-sm text-success bg-success-surface px-3 py-2 rounded">
                       <Mail className="h-4 w-4" />
                       Decision email has been sent.
                     </div>
@@ -800,12 +800,12 @@ export default function ParticipantSubmissionsPage() {
                       toggle={toggleSection}
                     >
                       {submission.review_comment && (
-                        <div className="bg-white border rounded p-3 mb-3">
-                          <p className="text-xs text-gray-400 uppercase tracking-wide mb-1">Reviewer Comments</p>
-                          <p className="text-sm text-gray-700 whitespace-pre-wrap">{submission.review_comment}</p>
+                        <div className="bg-card border rounded p-3 mb-3">
+                          <p className="text-xs text-muted-foreground uppercase tracking-wide mb-1">Reviewer Comments</p>
+                          <p className="text-sm text-foreground whitespace-pre-wrap">{submission.review_comment}</p>
                         </div>
                       )}
-                      <div className="flex gap-6 text-sm text-gray-600">
+                      <div className="flex gap-6 text-sm text-muted-foreground">
                         {submission.reviewed_at && (
                           <span>Reviewed: {new Date(submission.reviewed_at).toLocaleDateString()}</span>
                         )}
@@ -827,18 +827,18 @@ export default function ParticipantSubmissionsPage() {
                     >
                       <div className="space-y-2">
                         {authors[submission.id].map((a: any, i: number) => (
-                          <div key={i} className={`flex items-center justify-between text-sm rounded-md px-3 py-2 ${a.is_primary ? "bg-blue-50 border border-blue-100" : "bg-gray-50"}`}>
+                          <div key={i} className={`flex items-center justify-between text-sm rounded-md px-3 py-2 ${a.is_primary ? "bg-info-surface border border-info/10" : "bg-muted"}`}>
                             <div className="flex items-center gap-2 min-w-0">
-                              <span className="font-medium text-gray-900">{a.name}</span>
+                              <span className="font-medium text-foreground">{a.name}</span>
                               {a.is_primary ? (
-                                <Badge className="bg-blue-100 text-blue-700 border-blue-200 text-xs shrink-0">Primary Author</Badge>
+                                <Badge className="bg-info-surface text-info border-info/20 text-xs shrink-0">Primary Author</Badge>
                               ) : (
                                 <Badge variant="secondary" className="text-xs shrink-0">Co-Author</Badge>
                               )}
                             </div>
-                            <div className="flex items-center gap-3 text-xs text-gray-500 shrink-0">
+                            <div className="flex items-center gap-3 text-xs text-muted-foreground shrink-0">
                               {a.affiliation && <span>{a.affiliation}</span>}
-                              {a.email && <span className="text-gray-400">{a.email}</span>}
+                              {a.email && <span className="text-muted-foreground">{a.email}</span>}
                             </div>
                           </div>
                         ))}
@@ -847,10 +847,10 @@ export default function ParticipantSubmissionsPage() {
                       {/* Corresponding Author */}
                       {submission.email && (
                         <div className="mt-3 pt-3 border-t text-sm">
-                          <span className="text-gray-400">Corresponding Author:</span>{" "}
-                          <span className="text-gray-700">{submission.email}</span>
+                          <span className="text-muted-foreground">Corresponding Author:</span>{" "}
+                          <span className="text-foreground">{submission.email}</span>
                           {submission.contact_number && (
-                            <span className="text-gray-400 ml-3">| {submission.contact_number}</span>
+                            <span className="text-muted-foreground ml-3">| {submission.contact_number}</span>
                           )}
                         </div>
                       )}
@@ -877,7 +877,7 @@ export default function ParticipantSubmissionsPage() {
                           <InfoItem label="Fee" value={`₹${Number(submission.presentation_fee).toLocaleString("en-IN")}`} />
                         )}
                         <div>
-                          <p className="text-xs text-gray-400 uppercase tracking-wide">Payment</p>
+                          <p className="text-xs text-muted-foreground uppercase tracking-wide">Payment</p>
                           <PaymentBadge status={submission.payment_status} />
                         </div>
                       </div>
@@ -887,10 +887,10 @@ export default function ParticipantSubmissionsPage() {
                   {/* ── Revision Upload (only when revision_required) ── */}
                   {(submission.status === "revision_required" || expandedSections[`rev-${confId}`]) &&
                     submission.status === "revision_required" && (
-                      <div className="border border-orange-200 bg-orange-50 rounded-lg p-4 space-y-3">
+                      <div className="border border-warning/20 bg-warning-surface rounded-lg p-4 space-y-3">
                         <div className="flex items-center gap-2">
-                          <AlertTriangle className="h-4 w-4 text-orange-600" />
-                          <p className="font-semibold text-sm text-orange-700">
+                          <AlertTriangle className="h-4 w-4 text-warning" />
+                          <p className="font-semibold text-sm text-warning">
                             Revision Required — please upload your updated paper
                           </p>
                         </div>
@@ -919,26 +919,26 @@ export default function ParticipantSubmissionsPage() {
 
                   {/* ── Acceptance Congratulations Banner ── */}
                   {submission.status === "accepted" && (
-                    <div className="border border-green-200 bg-gradient-to-r from-green-50 via-emerald-50 to-green-50 rounded-xl p-5 shadow-sm">
+                    <div className="border border-success/20 bg-gradient-to-r from-success-surface via-success-surface to-success-surface rounded-xl p-5 shadow-sm">
                       <div className="flex items-start gap-3">
-                        <div className="flex items-center justify-center h-10 w-10 rounded-full bg-green-100 flex-shrink-0">
-                          <PartyPopper className="h-5 w-5 text-green-600" />
+                        <div className="flex items-center justify-center h-10 w-10 rounded-full bg-success-surface flex-shrink-0">
+                          <PartyPopper className="h-5 w-5 text-success" />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h3 className="font-bold text-green-800 text-base">🎉 Your paper has been accepted!</h3>
-                          <p className="text-sm text-green-700 mt-1">
+                          <h3 className="font-bold text-success text-base">🎉 Your paper has been accepted!</h3>
+                          <p className="text-sm text-success mt-1">
                             {submission.payment_status === "paid"
                               ? "Payment completed. You are confirmed for the conference."
                               : "Complete payment to confirm your presentation & publication slot."}
                           </p>
                           <div className="flex items-center gap-2 mt-2">
-                            <span className="text-xs text-gray-500">Payment Status:</span>
+                            <span className="text-xs text-muted-foreground">Payment Status:</span>
                             {submission.payment_status === "paid" ? (
-                              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold bg-green-100 text-green-700 border border-green-200">
+                              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold bg-success-surface text-success border border-success/20">
                                 <CheckCircle2 className="h-3 w-3" /> Payment Completed
                               </span>
                             ) : (
-                              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold bg-yellow-100 text-yellow-700 border border-yellow-200">
+                              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold bg-warning-surface text-warning border border-warning/20">
                                 <Clock className="h-3 w-3" /> Payment Required
                               </span>
                             )}
@@ -952,26 +952,26 @@ export default function ParticipantSubmissionsPage() {
                   {submission.status === "accepted" &&
                     submission.presentation_fee > 0 &&
                     submission.payment_status !== "paid" && (
-                      <div className="border border-indigo-200 bg-indigo-50 rounded-xl p-5 space-y-4 shadow-sm">
+                      <div className="border border-primary/20 bg-primary/5 rounded-xl p-5 space-y-4 shadow-sm">
                         <div className="flex items-center justify-between flex-wrap gap-2">
                           <div className="flex items-center gap-2">
-                            <CreditCard className="h-5 w-5 text-indigo-600" />
-                            <span className="font-semibold text-indigo-700">Presentation / Publication Fee</span>
+                            <CreditCard className="h-5 w-5 text-primary" />
+                            <span className="font-semibold text-primary">Presentation / Publication Fee</span>
                           </div>
-                          <span className="text-xl font-bold text-indigo-800">
+                          <span className="text-xl font-bold text-foreground">
                             ₹{Number(submission.presentation_fee).toLocaleString("en-IN")}
                           </span>
                         </div>
 
                         {/* Reminder notice */}
-                        <div className="flex items-start gap-2 text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">
+                        <div className="flex items-start gap-2 text-xs text-warning bg-warning-surface border border-warning/20 rounded-lg px-3 py-2">
                           <AlertTriangle className="h-3.5 w-3.5 flex-shrink-0 mt-0.5" />
                           <span>Payment is required to include your paper in the conference schedule and proceedings.</span>
                         </div>
 
                         <div className="flex flex-col sm:flex-row gap-2">
                           <Button
-                            className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white"
+                            className="flex-1 bg-primary hover:bg-primary-hover text-white"
                             disabled={paying === confId}
                             onClick={() => handlePayment(confId, submission)}
                           >
@@ -995,17 +995,17 @@ export default function ParticipantSubmissionsPage() {
                   {/* ── Payment Completed Success State ── */}
                   {submission.status === "accepted" &&
                     submission.payment_status === "paid" && (
-                      <div className="border border-green-200 bg-green-50 rounded-xl p-5 space-y-3 shadow-sm">
+                      <div className="border border-success/20 bg-success-surface rounded-xl p-5 space-y-3 shadow-sm">
                         <div className="flex items-center gap-3">
-                          <div className="flex items-center justify-center h-10 w-10 rounded-full bg-green-100 flex-shrink-0">
-                            <CheckCircle2 className="h-6 w-6 text-green-600" />
+                          <div className="flex items-center justify-center h-10 w-10 rounded-full bg-success-surface flex-shrink-0">
+                            <CheckCircle2 className="h-6 w-6 text-success" />
                           </div>
                           <div>
-                            <p className="font-semibold text-green-800">✔ Payment Completed</p>
-                            <p className="text-sm text-green-700">Your presentation slot is confirmed. Ready for the conference!</p>
+                            <p className="font-semibold text-success">✔ Payment Completed</p>
+                            <p className="text-sm text-success">Your presentation slot is confirmed. Ready for the conference!</p>
                           </div>
                         </div>
-                        <div className="flex items-center gap-2 text-xs text-green-600 pt-1 border-t border-green-200">
+                        <div className="flex items-center gap-2 text-xs text-success pt-1 border-t border-success/20">
                           <ShieldCheck className="h-3.5 w-3.5" />
                           <span>Presentation & publication registration is complete.</span>
                         </div>
@@ -1016,10 +1016,10 @@ export default function ParticipantSubmissionsPage() {
                   {submission.status === "accepted" &&
                     submission.payment_status === "paid" &&
                     !submission.camera_ready_url && (
-                      <div className="border border-blue-200 bg-blue-50 rounded-lg p-4 space-y-3">
+                      <div className="border border-info/20 bg-info-surface rounded-lg p-4 space-y-3">
                         <div className="flex items-center gap-2">
-                          <Upload className="h-4 w-4 text-blue-600" />
-                          <p className="font-semibold text-sm text-blue-700">
+                          <Upload className="h-4 w-4 text-info" />
+                          <p className="font-semibold text-sm text-info">
                             Upload your final camera-ready paper
                           </p>
                         </div>
@@ -1038,12 +1038,12 @@ export default function ParticipantSubmissionsPage() {
 
                   {/* ── Final Submitted Confirmation ── */}
                   {submission.status === "final_submitted" && (
-                    <div className="border border-green-200 bg-green-50 rounded-lg p-4">
+                    <div className="border border-success/20 bg-success-surface rounded-lg p-4">
                       <div className="flex items-center gap-2">
-                        <GraduationCap className="h-5 w-5 text-green-700" />
-                        <h3 className="font-semibold text-green-800">Registration Complete</h3>
+                        <GraduationCap className="h-5 w-5 text-success" />
+                        <h3 className="font-semibold text-success">Registration Complete</h3>
                       </div>
-                      <p className="text-sm text-green-700 mt-1">
+                      <p className="text-sm text-success mt-1">
                         Your final paper has been submitted. Thank you for your contribution!
                       </p>
                     </div>
@@ -1051,10 +1051,10 @@ export default function ParticipantSubmissionsPage() {
 
                   {/* ── Certificate & Acceptance ── */}
                   {submission.certificate_generated && (
-                    <div className="border border-amber-200 bg-amber-50 rounded-lg p-4 space-y-2">
+                    <div className="border border-warning/20 bg-warning-surface rounded-lg p-4 space-y-2">
                       <div className="flex items-center gap-2">
-                        <GraduationCap className="h-4 w-4 text-amber-700" />
-                        <h3 className="font-semibold text-sm text-amber-800">Downloads Available</h3>
+                        <GraduationCap className="h-4 w-4 text-warning" />
+                        <h3 className="font-semibold text-sm text-warning">Downloads Available</h3>
                       </div>
                       <div className="flex gap-2">
                         <Button size="sm" variant="outline">
@@ -1081,28 +1081,28 @@ export default function ParticipantSubmissionsPage() {
 
 function StatusBadge({ status }: { status: string }) {
   const map: Record<string, { label: string; cls: string }> = {
-    submitted: { label: "Submitted", cls: "bg-blue-100 text-blue-700" },
-    under_review: { label: "Under Review", cls: "bg-blue-100 text-blue-700" },
-    resubmitted: { label: "Resubmitted", cls: "bg-purple-100 text-purple-700" },
-    revision_required: { label: "Revision Required", cls: "bg-orange-100 text-orange-700" },
-    accepted: { label: "Accepted", cls: "bg-green-100 text-green-700" },
-    rejected: { label: "Rejected", cls: "bg-red-100 text-red-700" },
-    final_submitted: { label: "Final Submitted", cls: "bg-green-100 text-green-700" },
+    submitted: { label: "Submitted", cls: "bg-info-surface text-info" },
+    under_review: { label: "Under Review", cls: "bg-info-surface text-info" },
+    resubmitted: { label: "Resubmitted", cls: "bg-primary/10 text-primary" },
+    revision_required: { label: "Revision Required", cls: "bg-warning-surface text-warning" },
+    accepted: { label: "Accepted", cls: "bg-success-surface text-success" },
+    rejected: { label: "Rejected", cls: "bg-destructive-surface text-destructive" },
+    final_submitted: { label: "Final Submitted", cls: "bg-success-surface text-success" },
   };
-  const s = map[status] || { label: status || "Pending", cls: "bg-yellow-100 text-yellow-700" };
+  const s = map[status] || { label: status || "Pending", cls: "bg-warning-surface text-warning" };
   return <Badge className={s.cls}>{s.label}</Badge>;
 }
 
 function PlagiarismBadge({ status }: { status?: string }) {
-  if (status === "passed") return <Badge className="bg-green-100 text-green-700">Passed</Badge>;
-  if (status === "flagged") return <Badge className="bg-red-100 text-red-700">Flagged</Badge>;
-  return <Badge className="bg-yellow-100 text-yellow-700">Not Analyzed</Badge>;
+  if (status === "passed") return <Badge className="bg-success-surface text-success">Passed</Badge>;
+  if (status === "flagged") return <Badge className="bg-destructive-surface text-destructive">Flagged</Badge>;
+  return <Badge className="bg-warning-surface text-warning">Not Analyzed</Badge>;
 }
 
 function PaymentBadge({ status }: { status?: string }) {
-  if (status === "paid") return <Badge className="bg-green-100 text-green-700"><CheckCircle2 className="h-3 w-3 mr-1" />Paid</Badge>;
-  if (status === "failed") return <Badge className="bg-red-100 text-red-700">Failed</Badge>;
-  return <Badge className="bg-yellow-100 text-yellow-700">Pending</Badge>;
+  if (status === "paid") return <Badge className="bg-success-surface text-success"><CheckCircle2 className="h-3 w-3 mr-1" />Paid</Badge>;
+  if (status === "failed") return <Badge className="bg-destructive-surface text-destructive">Failed</Badge>;
+  return <Badge className="bg-warning-surface text-warning">Pending</Badge>;
 }
 
 function TimelineStep({ label, done, date, variant }: {
@@ -1113,11 +1113,11 @@ function TimelineStep({ label, done, date, variant }: {
 }) {
   const base = done
     ? variant === "red"
-      ? "bg-red-100 text-red-700 border-red-200"
+      ? "bg-destructive-surface text-destructive border-destructive/20"
       : variant === "green"
-        ? "bg-green-100 text-green-700 border-green-200"
-        : "bg-blue-100 text-blue-700 border-blue-200"
-    : "bg-gray-100 text-gray-400 border-gray-200";
+        ? "bg-success-surface text-success border-success/20"
+        : "bg-info-surface text-info border-info/20"
+    : "bg-muted text-muted-foreground border-border";
 
   return (
     <div className={`flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full border ${base}`}>
@@ -1135,8 +1135,8 @@ function TimelineStep({ label, done, date, variant }: {
 function InfoItem({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <p className="text-xs text-gray-400 uppercase tracking-wide">{label}</p>
-      <p className="text-sm font-medium text-gray-700">{value}</p>
+      <p className="text-xs text-muted-foreground uppercase tracking-wide">{label}</p>
+      <p className="text-sm font-medium text-foreground">{value}</p>
     </div>
   );
 }
@@ -1162,14 +1162,14 @@ function CollapsibleSection({
   return (
     <div className="border rounded-lg overflow-hidden">
       <button
-        className="w-full cursor-pointer flex items-center justify-between px-4 py-3 bg-gray-50 hover:bg-gray-100 transition-colors text-left"
+        className="w-full cursor-pointer flex items-center justify-between px-4 py-3 bg-muted hover:bg-muted transition-colors text-left"
         onClick={() => toggle(id)}
       >
-        <div className="flex items-center gap-2 text-sm font-semibold text-gray-700">
+        <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
           {icon}
           {title}
         </div>
-        {isOpen ? <ChevronUp className="h-4 w-4 text-gray-400" /> : <ChevronDown className="h-4 w-4 text-gray-400" />}
+        {isOpen ? <ChevronUp className="h-4 w-4 text-muted-foreground" /> : <ChevronDown className="h-4 w-4 text-muted-foreground" />}
       </button>
       {isOpen && (
         <div className="px-4 py-3">

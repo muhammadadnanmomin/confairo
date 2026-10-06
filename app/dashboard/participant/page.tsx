@@ -87,33 +87,33 @@ export default function ParticipantDashboard() {
       <div className="space-y-8 max-w-6xl animate-in fade-in duration-300">
         {/* Greeting skeleton */}
         <div className="space-y-2">
-          <div className="h-8 w-80 bg-gray-200 rounded-lg animate-pulse" />
-          <div className="h-4 w-56 bg-gray-100 rounded animate-pulse" />
+          <div className="h-8 w-80 bg-muted rounded-lg animate-pulse" />
+          <div className="h-4 w-56 bg-muted rounded animate-pulse" />
         </div>
 
         {/* Stat cards skeleton */}
         <div className="grid gap-6 sm:grid-cols-3">
           {[...Array(3)].map((_, i) => (
-            <div key={i} className="rounded-xl border bg-white p-5 space-y-3">
+            <div key={i} className="rounded-xl border bg-card p-5 space-y-3">
               <div className="flex items-center justify-between">
                 <div className="space-y-2">
-                  <div className="h-4 w-28 bg-gray-200 rounded animate-pulse" />
-                  <div className="h-7 w-12 bg-gray-200 rounded animate-pulse" />
+                  <div className="h-4 w-28 bg-muted rounded animate-pulse" />
+                  <div className="h-7 w-12 bg-muted rounded animate-pulse" />
                 </div>
-                <div className="h-10 w-10 bg-gray-100 rounded-lg animate-pulse" />
+                <div className="h-10 w-10 bg-muted rounded-lg animate-pulse" />
               </div>
             </div>
           ))}
         </div>
 
         {/* Quick actions skeleton */}
-        <div className="rounded-xl border bg-white p-6 space-y-4">
-          <div className="h-5 w-32 bg-gray-200 rounded animate-pulse" />
+        <div className="rounded-xl border bg-card p-6 space-y-4">
+          <div className="h-5 w-32 bg-muted rounded animate-pulse" />
           <div className="flex flex-wrap gap-3">
             {[...Array(5)].map((_, i) => (
               <div
                 key={i}
-                className="h-9 w-36 bg-gray-100 rounded-md animate-pulse"
+                className="h-9 w-36 bg-muted rounded-md animate-pulse"
               />
             ))}
           </div>
@@ -121,9 +121,9 @@ export default function ParticipantDashboard() {
 
         {/* Cards skeleton */}
         {[...Array(2)].map((_, i) => (
-          <div key={i} className="rounded-xl border bg-white p-6 space-y-3">
-            <div className="h-5 w-44 bg-gray-200 rounded animate-pulse" />
-            <div className="h-4 w-full bg-gray-100 rounded animate-pulse" />
+          <div key={i} className="rounded-xl border bg-card p-6 space-y-3">
+            <div className="h-5 w-44 bg-muted rounded animate-pulse" />
+            <div className="h-4 w-full bg-muted rounded animate-pulse" />
           </div>
         ))}
       </div>
@@ -140,7 +140,7 @@ export default function ParticipantDashboard() {
           Welcome back {profile?.name || "Researcher"} 👋
         </h1>
 
-        <p className="text-gray-500 mt-1">
+        <p className="text-muted-foreground mt-1">
           Manage your submissions, registrations, and certificates.
         </p>
       </div>
@@ -211,15 +211,15 @@ export default function ParticipantDashboard() {
 
       {/* Create Organization CTA */}
       {!organization && (
-        <Card className="p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-indigo-100 bg-indigo-50">
+        <Card className="p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-primary/10 bg-primary/5">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <Rocket className="h-5 w-5 text-indigo-600" />
-              <p className="text-lg font-semibold text-indigo-900">
+              <Rocket className="h-5 w-5 text-primary" />
+              <p className="text-lg font-semibold text-foreground">
                 Start Hosting Conferences
               </p>
             </div>
-            <p className="text-sm text-indigo-700">
+            <p className="text-sm text-primary">
               Create an organization and start managing conferences,
               submissions, and reviewers.
             </p>
@@ -236,12 +236,12 @@ export default function ParticipantDashboard() {
 
       {/* Organization Workspace */}
       {organization && (
-        <Card className="p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-indigo-100 bg-indigo-50">
+        <Card className="p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-primary/10 bg-primary/5">
           <div>
-            <p className="text-lg font-semibold text-indigo-900">
+            <p className="text-lg font-semibold text-foreground">
               {organization.name}
             </p>
-            <p className="text-sm text-indigo-700">
+            <p className="text-sm text-primary">
               Manage conferences and your organization workspace.
             </p>
           </div>
@@ -258,11 +258,11 @@ export default function ParticipantDashboard() {
       {/* Recent Activity */}
       <Card className="p-6 space-y-4">
         <div className="flex items-center gap-2">
-          <Clock className="h-5 w-5 text-gray-500" />
+          <Clock className="h-5 w-5 text-muted-foreground" />
           <h2 className="text-xl font-semibold">Recent Activity</h2>
         </div>
 
-        <p className="text-sm text-gray-500 italic py-2">
+        <p className="text-sm text-muted-foreground italic py-2">
           No recent activity yet.
         </p>
       </Card>
@@ -272,9 +272,9 @@ export default function ParticipantDashboard() {
         <h2 className="text-xl font-semibold mb-4">Account Status</h2>
 
         <div className="flex items-center gap-4">
-          <Badge className="bg-green-100 text-green-700">Active</Badge>
+          <Badge className="bg-success-surface text-success">Active</Badge>
 
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-muted-foreground">
             Your account is in good standing
           </p>
         </div>
@@ -303,10 +303,10 @@ function StatCard({
       <Card className="p-5 cursor-pointer transition-all hover:shadow-lg hover:-translate-y-1">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-sm text-gray-500">{title}</p>
+            <p className="text-sm text-muted-foreground">{title}</p>
             <p className="mt-1 text-2xl font-bold">{value}</p>
             {value === 0 && helperText && (
-              <p className="mt-1 text-xs text-gray-400">{helperText}</p>
+              <p className="mt-1 text-xs text-muted-foreground">{helperText}</p>
             )}
           </div>
 

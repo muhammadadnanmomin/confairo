@@ -22,14 +22,14 @@ function AIFeatureBlock({
   return (
     <div className="space-y-3">
       <div className="flex items-start gap-3">
-        <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-indigo-50 to-purple-50 border border-indigo-100 flex items-center justify-center flex-shrink-0">
+        <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-primary/5 to-primary/5 border border-primary/10 flex items-center justify-center flex-shrink-0">
           {icon}
         </div>
         <div className="min-w-0">
-          <p className="text-sm font-semibold text-gray-800">{label}</p>
-          <p className="text-xs text-gray-500 mt-0.5">{description}</p>
+          <p className="text-sm font-semibold text-foreground">{label}</p>
+          <p className="text-xs text-muted-foreground mt-0.5">{description}</p>
           {note && (
-            <p className="text-[10px] text-amber-600 mt-1 flex items-center gap-1">
+            <p className="text-[10px] text-warning mt-1 flex items-center gap-1">
               💡 {note}
             </p>
           )}
@@ -65,8 +65,8 @@ export default function ReviewerAIAssistant({
           <Brain className="h-5 w-5 text-white" />
         </div>
         <div>
-          <h2 className="text-base font-bold text-gray-900">AI Assistant</h2>
-          <p className="text-xs text-gray-500">AI-powered tools to help you write better reviews</p>
+          <h2 className="text-base font-bold text-foreground">AI Assistant</h2>
+          <p className="text-xs text-muted-foreground">AI-powered tools to help you write better reviews</p>
         </div>
       </div>
 
@@ -75,11 +75,11 @@ export default function ReviewerAIAssistant({
         <AIUsageBanner conferenceId={paper.conference_id} />
       )}
 
-      <div className="border-t border-gray-100" />
+      <div className="border-t border-border" />
 
       {/* 1. Paper Analysis */}
       <AIFeatureBlock
-        icon={<Sparkles className="h-4 w-4 text-purple-600" />}
+        icon={<Sparkles className="h-4 w-4 text-primary" />}
         label="Paper Analysis"
         description="Get summary, strengths, weaknesses, and decision support"
       >
@@ -90,11 +90,11 @@ export default function ReviewerAIAssistant({
         />
       </AIFeatureBlock>
 
-      <div className="border-t border-gray-100" />
+      <div className="border-t border-border" />
 
       {/* 2. Similarity Check */}
       <AIFeatureBlock
-        icon={<Search className="h-4 w-4 text-indigo-600" />}
+        icon={<Search className="h-4 w-4 text-primary" />}
         label="Similarity Check"
         description="Detect similarity patterns and repeated phrasing"
         note="Recommended before submitting your review"

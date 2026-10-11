@@ -117,7 +117,7 @@ export default function ReviewerDashboard() {
 
       <div>
         <h1 className="text-3xl font-bold">Reviewer Dashboard</h1>
-        <p className="text-gray-500 mt-1">
+        <p className="text-muted-foreground mt-1">
           Review assigned papers (blind review)
         </p>
       </div>
@@ -134,11 +134,11 @@ export default function ReviewerDashboard() {
       <Card className="p-4 sm:p-6">
 
         {loading && (
-          <p className="text-sm text-gray-500">Loading papers...</p>
+          <p className="text-sm text-muted-foreground">Loading papers...</p>
         )}
 
         {!loading && papers.length === 0 && (
-          <p className="text-sm text-gray-500">No assigned papers.</p>
+          <p className="text-sm text-muted-foreground">No assigned papers.</p>
         )}
 
         {!loading && papers.length > 0 && (
@@ -150,12 +150,12 @@ export default function ReviewerDashboard() {
                 <div
                   key={p.id}
                   className={`border rounded-lg p-4 space-y-3 ${
-                    needsReview ? "bg-yellow-50" : ""
+                    needsReview ? "bg-warning-surface" : ""
                   }`}
                 >
                   <div className="flex items-center justify-between gap-2">
                     <div className="flex items-center gap-2">
-                      <FileText className="h-4 w-4 text-gray-400" />
+                      <FileText className="h-4 w-4 text-muted-foreground" />
                       <span className="font-semibold">
                         Paper #{p.id.slice(0, 6)}
                       </span>
@@ -163,17 +163,17 @@ export default function ReviewerDashboard() {
                     <StatusBadge status={p.status} />
                   </div>
 
-                  <div className="text-sm text-gray-500">
+                  <div className="text-sm text-muted-foreground">
                     Conference: {p.conferences?.title}
                   </div>
 
-                  <div className="flex items-center gap-2 text-xs text-gray-500">
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
                     <Clock className="h-3 w-3" />
                     Submitted {new Date(p.created_at).toLocaleDateString()}
                   </div>
 
                   {p.reviewed_at && (
-                    <div className="text-xs text-gray-500">
+                    <div className="text-xs text-muted-foreground">
                       Reviewed on {new Date(p.reviewed_at).toLocaleDateString()}
                     </div>
                   )}
@@ -199,7 +199,7 @@ export default function ReviewerDashboard() {
 
                   {activePaper === p.id && needsReview && (
                     <div className="space-y-3 bg-muted/40 p-4 rounded-lg">
-                      <div className="text-xs text-gray-500">
+                      <div className="text-xs text-muted-foreground">
                         Score: 1 (poor) → 5 (excellent)
                       </div>
 
@@ -218,7 +218,7 @@ export default function ReviewerDashboard() {
                         onChange={(e) => setReviewText(e.target.value)}
                       />
 
-                      <div className="flex justify-between text-xs text-gray-500">
+                      <div className="flex justify-between text-xs text-muted-foreground">
                         <span>Include strengths & suggestions</span>
                         <span>
                           {
@@ -254,7 +254,7 @@ export default function ReviewerDashboard() {
                   )}
 
                   {!needsReview && (
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-muted-foreground">
                       Review submitted. Editing locked.
                     </p>
                   )}
@@ -272,7 +272,7 @@ export default function ReviewerDashboard() {
 function StatCard({ title, value }: { title: string; value: number }) {
   return (
     <Card className="p-4">
-      <p className="text-sm text-gray-500">{title}</p>
+      <p className="text-sm text-muted-foreground">{title}</p>
       <p className="mt-1 text-2xl font-bold">{value}</p>
     </Card>
   );
@@ -282,7 +282,7 @@ function StatCard({ title, value }: { title: string; value: number }) {
 function StatusBadge({ status }: { status: string }) {
   if (status === "accepted") {
     return (
-      <Badge className="bg-green-100 text-green-700">
+      <Badge className="bg-success-surface text-success">
         Accepted
       </Badge>
     );
@@ -290,14 +290,14 @@ function StatusBadge({ status }: { status: string }) {
 
   if (status === "rejected") {
     return (
-      <Badge className="bg-red-100 text-red-700">
+      <Badge className="bg-destructive-surface text-destructive">
         Rejected
       </Badge>
     );
   }
 
   return (
-    <Badge className="bg-blue-100 text-blue-700">
+    <Badge className="bg-info-surface text-info">
       Under Review
     </Badge>
   );

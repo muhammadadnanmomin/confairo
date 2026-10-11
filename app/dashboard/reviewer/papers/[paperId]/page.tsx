@@ -213,8 +213,8 @@ export default function ReviewerReviewPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <Loader2 className="h-6 w-6 animate-spin text-gray-400" />
-        <span className="ml-2 text-gray-500 text-sm">Loading paper…</span>
+        <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
+        <span className="ml-2 text-muted-foreground text-sm">Loading paper…</span>
       </div>
     );
   }
@@ -222,8 +222,8 @@ export default function ReviewerReviewPage() {
   if (!paper) {
     return (
       <div className="flex flex-col items-center justify-center py-20">
-        <FileText className="h-10 w-10 text-gray-300 mb-3" />
-        <p className="text-gray-500">Paper not found.</p>
+        <FileText className="h-10 w-10 text-muted-foreground mb-3" />
+        <p className="text-muted-foreground">Paper not found.</p>
       </div>
     );
   }
@@ -237,7 +237,7 @@ export default function ReviewerReviewPage() {
     <div className="max-w-4xl mx-auto px-4 py-8 space-y-6 pb-28">
 
       {/* ── Back Button ── */}
-      <Button variant="ghost" size="sm" className="mb-2 text-gray-500" onClick={() => router.push("/dashboard/reviewer/papers")}>
+      <Button variant="ghost" size="sm" className="mb-2 text-muted-foreground" onClick={() => router.push("/dashboard/reviewer/papers")}>
         ← Back to Papers
       </Button>
 
@@ -255,7 +255,7 @@ export default function ReviewerReviewPage() {
       />
 
       {/* ── 4. AI Assistant ── */}
-      <div className="bg-gradient-to-br from-purple-50/30 via-indigo-50/20 to-transparent border border-purple-100/60 rounded-xl p-5">
+      <div className="bg-gradient-to-br from-primary/5/30 via-primary/5 to-transparent border border-primary/10/60 rounded-xl p-5">
         <ReviewerAIAssistant
           paperId={paperId as string}
           paper={paper}
@@ -302,13 +302,13 @@ export default function ReviewerReviewPage() {
             </div>
 
             {paper.plagiarism_status === "flagged" && (
-              <div className="bg-red-50 border border-red-200 rounded p-2 text-sm text-red-700 flex items-center gap-2">
+              <div className="bg-destructive-surface border border-destructive/20 rounded p-2 text-sm text-destructive flex items-center gap-2">
                 <AlertTriangle className="h-4 w-4 flex-shrink-0" />
                 Similarity is flagged for this paper.
               </div>
             )}
 
-            <div className="bg-amber-50 border border-amber-200 rounded p-2 text-sm text-amber-700 flex items-center gap-2">
+            <div className="bg-warning-surface border border-warning/20 rounded p-2 text-sm text-warning flex items-center gap-2">
               <AlertTriangle className="h-4 w-4 flex-shrink-0" />
               This decision will be sent to the conference organizer.
             </div>
@@ -329,16 +329,16 @@ export default function ReviewerReviewPage() {
       )}
 
       {/* ── Sticky Action Bar ── */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur border-t shadow-lg z-40">
+      <div className="fixed bottom-0 left-0 right-0 bg-card/95 backdrop-blur border-t shadow-lg z-40">
         <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
-          <div className="text-sm text-gray-500 hidden sm:block">
-            <span className="font-medium text-gray-700">{title}</span>
+          <div className="text-sm text-muted-foreground hidden sm:block">
+            <span className="font-medium text-foreground">{title}</span>
             <span className="mx-2">·</span>
             <StatusBadge status={paper.status} />
             {paper.revision_number > 1 && (
               <>
                 <span className="mx-2">·</span>
-                <Badge className="bg-purple-100 text-purple-700 text-xs">v{paper.revision_number}</Badge>
+                <Badge className="bg-primary/10 text-primary text-xs">v{paper.revision_number}</Badge>
               </>
             )}
           </div>
@@ -350,7 +350,7 @@ export default function ReviewerReviewPage() {
                   <XCircle className="h-4 w-4 mr-1" /> Reject
                 </Button>
                 <Button variant="outline" size="sm" disabled={submitting || !comments.trim()}
-                  className="border-orange-300 text-orange-700 hover:bg-orange-50"
+                  className="border-warning/30 text-warning hover:bg-warning-surface"
                   onClick={() => setConfirmAction("revision_required")}>
                   <RotateCcw className="h-4 w-4 mr-1" /> Revision
                 </Button>
@@ -359,17 +359,17 @@ export default function ReviewerReviewPage() {
                 </Button>
               </>
             ) : isFinalDecision ? (
-              <Badge className={paper.status === "accepted" ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}>
+              <Badge className={paper.status === "accepted" ? "bg-success-surface text-success" : "bg-destructive-surface text-destructive"}>
                 <CheckCircle2 className="h-3 w-3 mr-1" />
                 {paper.status === "accepted" ? "Accepted" : "Rejected"} — Locked
               </Badge>
             ) : paper.status === "revision_required" ? (
-              <Badge className="bg-orange-100 text-orange-700">
+              <Badge className="bg-warning-surface text-warning">
                 <RotateCcw className="h-3 w-3 mr-1" />
                 Awaiting Author Revision
               </Badge>
             ) : (
-              <Badge className="bg-gray-100 text-gray-700">
+              <Badge className="bg-muted text-foreground">
                 <Clock className="h-3 w-3 mr-1" />
                 Waiting
               </Badge>

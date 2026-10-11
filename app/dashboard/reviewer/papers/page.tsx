@@ -161,12 +161,12 @@ export default function ReviewerPapersPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold">Assigned Papers</h1>
-          <p className="text-gray-500 mt-1">
+          <p className="text-muted-foreground mt-1">
             Manage your review workload
           </p>
         </div>
         {activeFilterCount > 0 && (
-          <Badge className="bg-blue-100 text-blue-700 text-xs">
+          <Badge className="bg-info-surface text-info text-xs">
             <SlidersHorizontal className="h-3 w-3 mr-1" />
             {activeFilterCount} filter{activeFilterCount > 1 ? "s" : ""} applied
           </Badge>
@@ -197,22 +197,22 @@ export default function ReviewerPapersPage() {
 
       {/* ── Filter Panel ── */}
       <Card className="p-4 space-y-4">
-        <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Filters</h3>
+        <h3 className="text-sm font-semibold text-foreground uppercase tracking-wide">Filters</h3>
 
         {/* Search */}
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <input
             type="text"
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
             placeholder="Search by title or conference…"
-            className="w-full pl-10 pr-10 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full pl-10 pr-10 py-2 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
           />
           {searchQuery && (
             <button
               onClick={() => setSearchQuery("")}
-              className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-400 hover:text-gray-600"
+              className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-muted-foreground hover:text-muted-foreground"
             >
               <X className="h-4 w-4" />
             </button>
@@ -222,7 +222,7 @@ export default function ReviewerPapersPage() {
         {/* Filter Dropdowns */}
         <div className="flex flex-wrap gap-3 items-end">
           <div className="flex flex-col gap-1">
-            <label className="text-xs text-gray-500">Status</label>
+            <label className="text-xs text-muted-foreground">Status</label>
             <FilterSelect
               value={statusFilter}
               onChange={setStatusFilter}
@@ -239,7 +239,7 @@ export default function ReviewerPapersPage() {
           </div>
 
           <div className="flex flex-col gap-1">
-            <label className="text-xs text-gray-500">Conference</label>
+            <label className="text-xs text-muted-foreground">Conference</label>
             <FilterSelect
               value={conferenceFilter}
               onChange={setConferenceFilter}
@@ -251,7 +251,7 @@ export default function ReviewerPapersPage() {
           </div>
 
           <div className="flex flex-col gap-1">
-            <label className="text-xs text-gray-500">Revision</label>
+            <label className="text-xs text-muted-foreground">Revision</label>
             <FilterSelect
               value={revisionFilter}
               onChange={setRevisionFilter}
@@ -264,7 +264,7 @@ export default function ReviewerPapersPage() {
           </div>
 
           <div className="flex flex-col gap-1">
-            <label className="text-xs text-gray-500">Sort By</label>
+            <label className="text-xs text-muted-foreground">Sort By</label>
             <FilterSelect
               value={dateSort}
               onChange={(v) => setDateSort(v as "newest" | "oldest")}
@@ -278,7 +278,7 @@ export default function ReviewerPapersPage() {
           {activeFilterCount > 0 && (
             <button
               onClick={clearFilters}
-              className="flex cursor-pointer items-center gap-1 text-xs text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md border border-gray-200 hover:bg-gray-50 transition-colors"
+              className="flex cursor-pointer items-center gap-1 text-xs text-muted-foreground hover:text-foreground px-3 py-2 rounded-md border border-border hover:bg-muted transition-colors"
             >
               <RotateCcw className="h-3 w-3" />
               Clear Filters
@@ -288,7 +288,7 @@ export default function ReviewerPapersPage() {
 
         {/* Results count */}
         {!loading && (
-          <p className="text-xs text-gray-400">
+          <p className="text-xs text-muted-foreground">
             Showing {filteredPapers.length} of {visiblePapers.length} paper{visiblePapers.length !== 1 ? "s" : ""}
             {activeFilterCount > 0 && ` (${activeFilterCount} filter${activeFilterCount > 1 ? "s" : ""} active)`}
           </p>
@@ -299,13 +299,13 @@ export default function ReviewerPapersPage() {
       <Card className="p-4 sm:p-6 space-y-4">
 
         {loading && (
-          <p className="text-sm text-gray-500">Loading papers…</p>
+          <p className="text-sm text-muted-foreground">Loading papers…</p>
         )}
 
         {!loading && filteredPapers.length === 0 && (
           <div className="text-center py-8">
-            <Search className="h-8 w-8 text-gray-300 mx-auto mb-3" />
-            <p className="text-sm text-gray-500 font-medium">
+            <Search className="h-8 w-8 text-muted-foreground mx-auto mb-3" />
+            <p className="text-sm text-muted-foreground font-medium">
               {activeFilterCount > 0
                 ? "No papers match current filters."
                 : "No papers in this category."}
@@ -313,7 +313,7 @@ export default function ReviewerPapersPage() {
             {activeFilterCount > 0 && (
               <button
                 onClick={clearFilters}
-                className="mt-2 cursor-pointer text-xs text-blue-600 hover:underline"
+                className="mt-2 cursor-pointer text-xs text-info hover:underline"
               >
                 Clear all filters
               </button>
@@ -328,13 +328,13 @@ export default function ReviewerPapersPage() {
           return (
             <div
               key={p.id}
-              className={`flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border rounded-lg p-4 transition ${isResubmitted ? "bg-purple-50 border-purple-200"
-                : tab === "action" ? "bg-yellow-50"
-                  : "hover:bg-gray-50"
+              className={`flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border rounded-lg p-4 transition ${isResubmitted ? "bg-primary/5 border-primary/20"
+                : tab === "action" ? "bg-warning-surface"
+                  : "hover:bg-muted"
                 }`}
             >
               <div className="flex items-start gap-3">
-                <FileText className="h-5 w-5 text-gray-400 mt-1" />
+                <FileText className="h-5 w-5 text-muted-foreground mt-1" />
 
                 <div>
                   <div className="flex items-center gap-2">
@@ -342,24 +342,24 @@ export default function ReviewerPapersPage() {
                       <HighlightMatch text={title} query={searchQuery} />
                     </p>
                     {p.revision_number > 1 && (
-                      <Badge className="bg-purple-100 text-purple-700 text-xs">
+                      <Badge className="bg-primary/10 text-primary text-xs">
                         <RotateCcw className="h-3 w-3 mr-0.5" />
                         v{p.revision_number}
                       </Badge>
                     )}
                   </div>
 
-                  <p className="text-xs text-gray-500">
+                  <p className="text-xs text-muted-foreground">
                     Conference: <HighlightMatch text={p.conferences?.title || "—"} query={searchQuery} />
                   </p>
 
-                  <div className="flex items-center gap-2 text-xs text-gray-500">
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
                     <Clock className="h-3 w-3" />
                     Submitted {new Date(p.created_at).toLocaleDateString()}
                   </div>
 
                   {p.reviewed_at && (
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-muted-foreground">
                       Last reviewed{" "}
                       {new Date(p.reviewed_at).toLocaleDateString()}
                     </p>
@@ -370,7 +370,7 @@ export default function ReviewerPapersPage() {
                   </div>
 
                   {isResubmitted && (
-                    <div className="flex items-center gap-1 mt-1 text-xs text-purple-700">
+                    <div className="flex items-center gap-1 mt-1 text-xs text-primary">
                       <AlertTriangle className="h-3 w-3" />
                       Revised paper ready for re-review
                     </div>
@@ -412,7 +412,7 @@ function TabButton({
       onClick={onClick}
       className={`cursor-pointer px-4 py-2 rounded-lg text-sm font-medium border transition ${active
         ? "bg-black text-white border-black"
-        : "bg-white hover:bg-gray-50"
+        : "bg-card hover:bg-muted"
         }`}
     >
       {label} ({count})
@@ -424,14 +424,14 @@ function TabButton({
 
 function StatusBadge({ status }: { status: string }) {
   const map: Record<string, { label: string; cls: string }> = {
-    submitted: { label: "Pending Review", cls: "bg-yellow-100 text-yellow-700" },
-    under_review: { label: "Under Review", cls: "bg-blue-100 text-blue-700" },
-    resubmitted: { label: "Resubmitted — Re-review", cls: "bg-purple-100 text-purple-700" },
-    revision_required: { label: "Revision Requested", cls: "bg-orange-100 text-orange-700" },
-    accepted: { label: "Accepted", cls: "bg-green-100 text-green-700" },
-    rejected: { label: "Rejected", cls: "bg-red-100 text-red-700" },
+    submitted: { label: "Pending Review", cls: "bg-warning-surface text-warning" },
+    under_review: { label: "Under Review", cls: "bg-info-surface text-info" },
+    resubmitted: { label: "Resubmitted — Re-review", cls: "bg-primary/10 text-primary" },
+    revision_required: { label: "Revision Requested", cls: "bg-warning-surface text-warning" },
+    accepted: { label: "Accepted", cls: "bg-success-surface text-success" },
+    rejected: { label: "Rejected", cls: "bg-destructive-surface text-destructive" },
   };
-  const s = map[status] || { label: status || "Pending", cls: "bg-gray-100 text-gray-700" };
+  const s = map[status] || { label: status || "Pending", cls: "bg-muted text-foreground" };
   return <Badge className={s.cls}>{s.label}</Badge>;
 }
 
@@ -451,7 +451,7 @@ function FilterSelect({
     <select
       value={value}
       onChange={e => onChange(e.target.value)}
-      className={`cursor-pointer border rounded-md px-2.5 py-1.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition ${isActive ? "border-blue-400 bg-blue-50 text-blue-700" : "border-gray-200"
+      className={`cursor-pointer border rounded-md px-2.5 py-1.5 text-sm bg-card focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition ${isActive ? "border-primary bg-info-surface text-info" : "border-border"
         }`}
     >
       {options.map(o => (

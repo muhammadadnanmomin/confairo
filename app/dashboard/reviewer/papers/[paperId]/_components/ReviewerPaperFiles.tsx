@@ -11,7 +11,7 @@ interface ReviewerPaperFilesProps {
 export default function ReviewerPaperFiles({ paper }: ReviewerPaperFilesProps) {
   return (
     <Card className="p-5 space-y-3">
-      <h2 className="text-sm font-semibold text-gray-700 flex items-center gap-2">
+      <h2 className="text-sm font-semibold text-foreground flex items-center gap-2">
         <FileText className="h-4 w-4" /> 📎 Paper Files
       </h2>
 
@@ -40,7 +40,7 @@ export default function ReviewerPaperFiles({ paper }: ReviewerPaperFilesProps) {
       </div>
 
       {paper.revision_number > 1 && (
-        <p className="text-xs text-gray-400">Currently viewing revision v{paper.revision_number}</p>
+        <p className="text-xs text-muted-foreground">Currently viewing revision v{paper.revision_number}</p>
       )}
     </Card>
   );

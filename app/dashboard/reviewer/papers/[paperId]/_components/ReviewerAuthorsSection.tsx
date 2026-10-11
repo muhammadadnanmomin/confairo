@@ -18,34 +18,34 @@ export default function ReviewerAuthorsSection({ authors, paper }: ReviewerAutho
       {/* Authors */}
       <Card className="overflow-hidden">
         <button
-          className="w-full cursor-pointer flex items-center justify-between px-5 py-4 bg-gray-50/50 hover:bg-gray-100/50 transition-colors text-left"
+          className="w-full cursor-pointer flex items-center justify-between px-5 py-4 bg-muted/50 hover:bg-muted/50 transition-colors text-left"
           onClick={() => setExpanded(!expanded)}
         >
-          <div className="flex items-center gap-2 text-sm font-semibold text-gray-700">
+          <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
             <Users className="h-4 w-4" />
             👤 Authors
           </div>
-          {expanded ? <ChevronUp className="h-4 w-4 text-gray-400" /> : <ChevronDown className="h-4 w-4 text-gray-400" />}
+          {expanded ? <ChevronUp className="h-4 w-4 text-muted-foreground" /> : <ChevronDown className="h-4 w-4 text-muted-foreground" />}
         </button>
 
         {expanded && (
           <div className="px-5 py-4 border-t">
             {authors.length === 0 ? (
-              <p className="text-sm text-gray-500">No author data available</p>
+              <p className="text-sm text-muted-foreground">No author data available</p>
             ) : (
               <div className="space-y-2">
                 {authors.map((a, i) => (
                   <div
                     key={i}
-                    className={`border rounded-md p-3 ${a.is_primary ? "bg-blue-50 border-blue-200" : ""}`}
+                    className={`border rounded-md p-3 ${a.is_primary ? "bg-info-surface border-info/20" : ""}`}
                   >
                     <p className="font-medium text-sm">
                       {a.author_order}. {a.name}
                       {a.is_primary && (
-                        <Badge className="ml-2 bg-blue-100 text-blue-700 text-xs">Primary</Badge>
+                        <Badge className="ml-2 bg-info-surface text-info text-xs">Primary</Badge>
                       )}
                     </p>
-                    {a.affiliation && <p className="text-xs text-gray-500 mt-1">{a.affiliation}</p>}
+                    {a.affiliation && <p className="text-xs text-muted-foreground mt-1">{a.affiliation}</p>}
                   </div>
                 ))}
               </div>
@@ -56,7 +56,7 @@ export default function ReviewerAuthorsSection({ authors, paper }: ReviewerAutho
 
       {/* Declarations */}
       <Card className="p-5 space-y-2">
-        <h3 className="text-sm font-semibold text-gray-700 flex items-center gap-2">
+        <h3 className="text-sm font-semibold text-foreground flex items-center gap-2">
           <ShieldCheck className="h-4 w-4" /> Author Declarations
         </h3>
         <div className="space-y-1">
@@ -71,7 +71,7 @@ export default function ReviewerAuthorsSection({ authors, paper }: ReviewerAutho
 
 function Declaration({ ok, text }: { ok: boolean; text: string }) {
   return (
-    <p className={`text-sm ${ok ? "text-green-600" : "text-red-600"}`}>
+    <p className={`text-sm ${ok ? "text-success" : "text-destructive"}`}>
       {ok ? "✔" : "✖"} {text}
     </p>
   );

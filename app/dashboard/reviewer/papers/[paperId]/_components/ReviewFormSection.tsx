@@ -8,11 +8,11 @@ import { History, MessageSquare, CheckCircle2, PenLine } from "lucide-react";
 /* ─── Decision Badge ─── */
 function DecisionBadge({ decision }: { decision: string }) {
   const map: Record<string, { label: string; cls: string }> = {
-    accepted: { label: "Accepted", cls: "bg-green-100 text-green-700" },
-    rejected: { label: "Rejected", cls: "bg-red-100 text-red-700" },
-    revision_required: { label: "Revision Required", cls: "bg-orange-100 text-orange-700" },
+    accepted: { label: "Accepted", cls: "bg-success-surface text-success" },
+    rejected: { label: "Rejected", cls: "bg-destructive-surface text-destructive" },
+    revision_required: { label: "Revision Required", cls: "bg-warning-surface text-warning" },
   };
-  const d = map[decision] || { label: decision, cls: "bg-gray-100 text-gray-700" };
+  const d = map[decision] || { label: decision, cls: "bg-muted text-foreground" };
   return <Badge className={d.cls}>{d.label}</Badge>;
 }
 
@@ -43,14 +43,14 @@ export default function ReviewFormSection({
   return (
     <div className="space-y-4">
       {/* Section header */}
-      <h2 className="text-base font-bold text-gray-900 flex items-center gap-2">
-        <PenLine className="h-4.5 w-4.5 text-blue-600" />
+      <h2 className="text-base font-bold text-foreground flex items-center gap-2">
+        <PenLine className="h-4.5 w-4.5 text-info" />
         ✍️ Your Review
       </h2>
 
       {/* Review form */}
       <Card className="p-5 space-y-4">
-        <h3 className="text-sm font-semibold text-gray-700">
+        <h3 className="text-sm font-semibold text-foreground">
           {isReviewable ? `Review Comments — Round ${currentRound}` : "Review Comments"}
         </h3>
 
@@ -63,7 +63,7 @@ export default function ReviewFormSection({
               rows={8}
             />
 
-            <div className="flex justify-between text-xs text-gray-500">
+            <div className="flex justify-between text-xs text-muted-foreground">
               <span>Provide constructive feedback. Comments are required when requesting revisions.</span>
               <span className="tabular-nums">
                 {comments.trim().split(/\s+/).filter(Boolean).length} words
@@ -71,8 +71,8 @@ export default function ReviewFormSection({
             </div>
           </>
         ) : (
-          <div className="bg-gray-50 rounded-md p-4">
-            <p className="text-sm text-gray-500 italic">
+          <div className="bg-muted rounded-md p-4">
+            <p className="text-sm text-muted-foreground italic">
               {paper.status === "revision_required"
                 ? "Waiting for the author to submit a revised version before you can review again."
                 : isFinalDecision
@@ -87,10 +87,10 @@ export default function ReviewFormSection({
       {reviewHistory.length > 0 && (
         <Card className="p-5 space-y-4">
           <div className="flex items-center justify-between">
-            <h3 className="text-sm font-semibold text-gray-700 flex items-center gap-2">
+            <h3 className="text-sm font-semibold text-foreground flex items-center gap-2">
               <History className="h-4 w-4" /> Previous Reviews
             </h3>
-            <span className="text-xs text-gray-400">
+            <span className="text-xs text-muted-foreground">
               {reviewHistory.length} round{reviewHistory.length > 1 ? "s" : ""}
             </span>
           </div>
@@ -100,23 +100,23 @@ export default function ReviewFormSection({
               <div key={review.id} className="border rounded-lg p-4 space-y-2">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <Badge className="bg-blue-100 text-blue-700 text-xs">
+                    <Badge className="bg-info-surface text-info text-xs">
                       Round {index + 1}
                     </Badge>
                     {review.revision_number > 1 && (
-                      <Badge className="bg-purple-100 text-purple-700 text-xs">
+                      <Badge className="bg-primary/10 text-primary text-xs">
                         v{review.revision_number}
                       </Badge>
                     )}
                     <DecisionBadge decision={review.decision} />
                   </div>
-                  <span className="text-xs text-gray-400">
+                  <span className="text-xs text-muted-foreground">
                     {new Date(review.created_at).toLocaleDateString()}
                   </span>
                 </div>
                 {review.comments && (
-                  <div className="bg-gray-50 rounded-md p-3">
-                    <p className="text-sm text-gray-700 whitespace-pre-wrap">{review.comments}</p>
+                  <div className="bg-muted rounded-md p-3">
+                    <p className="text-sm text-foreground whitespace-pre-wrap">{review.comments}</p>
                   </div>
                 )}
               </div>
@@ -128,19 +128,19 @@ export default function ReviewFormSection({
       {/* Legacy review comment */}
       {paper.review_comment && reviewHistory.length === 0 && isFinalDecision && (
         <Card className="p-5 space-y-2">
-          <h3 className="text-sm font-semibold text-gray-700 flex items-center gap-2">
+          <h3 className="text-sm font-semibold text-foreground flex items-center gap-2">
             <MessageSquare className="h-4 w-4" /> Previous Review
           </h3>
-          <div className="bg-gray-50 rounded-md p-4">
-            <p className="text-sm text-gray-700 whitespace-pre-wrap">{paper.review_comment}</p>
+          <div className="bg-muted rounded-md p-4">
+            <p className="text-sm text-foreground whitespace-pre-wrap">{paper.review_comment}</p>
           </div>
           <div className="flex items-center justify-between">
-            <Badge className="bg-gray-100 text-gray-700">
+            <Badge className="bg-muted text-foreground">
               <CheckCircle2 className="h-3 w-3 mr-1" />
               Review submitted — editing locked
             </Badge>
             {paper.reviewed_at && (
-              <span className="text-xs text-gray-400">
+              <span className="text-xs text-muted-foreground">
                 Reviewed on {new Date(paper.reviewed_at).toLocaleDateString()}
               </span>
             )}

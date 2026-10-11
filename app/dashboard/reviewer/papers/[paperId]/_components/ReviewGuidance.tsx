@@ -32,47 +32,47 @@ export default function ReviewGuidance({ paper, reviewCount, hasComments }: Revi
 
   if (isFinalDecision) {
     icon = paper.status === "accepted"
-      ? <CheckCircle2 className="h-4 w-4 text-green-600 flex-shrink-0" />
-      : <XCircle className="h-4 w-4 text-red-600 flex-shrink-0" />;
+      ? <CheckCircle2 className="h-4 w-4 text-success flex-shrink-0" />
+      : <XCircle className="h-4 w-4 text-destructive flex-shrink-0" />;
     text = paper.status === "accepted"
       ? "This paper has been accepted — no further reviews needed."
       : "This paper has been rejected — no further reviews needed.";
-    bgClass = paper.status === "accepted" ? "bg-green-50" : "bg-red-50";
-    textClass = paper.status === "accepted" ? "text-green-800" : "text-red-800";
-    borderClass = paper.status === "accepted" ? "border-green-200" : "border-red-200";
+    bgClass = paper.status === "accepted" ? "bg-success-surface" : "bg-destructive-surface";
+    textClass = paper.status === "accepted" ? "text-success" : "text-destructive";
+    borderClass = paper.status === "accepted" ? "border-success/20" : "border-destructive/20";
   } else if (paper.status === "revision_required") {
-    icon = <RotateCcw className="h-4 w-4 text-orange-600 flex-shrink-0" />;
+    icon = <RotateCcw className="h-4 w-4 text-warning flex-shrink-0" />;
     text = "Waiting for the author to submit a revised version.";
-    bgClass = "bg-orange-50";
-    textClass = "text-orange-800";
-    borderClass = "border-orange-200";
+    bgClass = "bg-warning-surface";
+    textClass = "text-warning";
+    borderClass = "border-warning/20";
   } else if (paper.status === "resubmitted") {
-    icon = <PenLine className="h-4 w-4 text-blue-600 flex-shrink-0" />;
+    icon = <PenLine className="h-4 w-4 text-info flex-shrink-0" />;
     text = `Revised paper (v${paper.revision_number}) received — please review and submit your decision.`;
     helperText = "Focus on strengths, weaknesses, and constructive suggestions";
-    bgClass = "bg-blue-50";
-    textClass = "text-blue-800";
-    borderClass = "border-blue-200";
+    bgClass = "bg-info-surface";
+    textClass = "text-info";
+    borderClass = "border-info/20";
   } else if (canReview && hasComments) {
-    icon = <PenLine className="h-4 w-4 text-amber-600 flex-shrink-0" />;
+    icon = <PenLine className="h-4 w-4 text-warning flex-shrink-0" />;
     text = "Complete your review and submit your decision.";
     helperText = "Focus on strengths, weaknesses, and constructive suggestions";
-    bgClass = "bg-amber-50";
-    textClass = "text-amber-800";
-    borderClass = "border-amber-200";
+    bgClass = "bg-warning-surface";
+    textClass = "text-warning";
+    borderClass = "border-warning/20";
   } else if (canReview) {
-    icon = <ArrowRight className="h-4 w-4 text-indigo-600 flex-shrink-0" />;
+    icon = <ArrowRight className="h-4 w-4 text-primary flex-shrink-0" />;
     text = "Read the paper and submit your review.";
     helperText = "Focus on strengths, weaknesses, and constructive suggestions";
-    bgClass = "bg-indigo-50";
-    textClass = "text-indigo-800";
-    borderClass = "border-indigo-200";
+    bgClass = "bg-primary/5";
+    textClass = "text-primary";
+    borderClass = "border-primary/20";
   } else {
-    icon = <ArrowRight className="h-4 w-4 text-gray-500 flex-shrink-0" />;
+    icon = <ArrowRight className="h-4 w-4 text-muted-foreground flex-shrink-0" />;
     text = "No review action available at this time.";
-    bgClass = "bg-gray-50";
-    textClass = "text-gray-700";
-    borderClass = "border-gray-200";
+    bgClass = "bg-muted";
+    textClass = "text-foreground";
+    borderClass = "border-border";
   }
 
   return (
@@ -88,16 +88,16 @@ export default function ReviewGuidance({ paper, reviewCount, hasComments }: Revi
               {text}
             </p>
             {helperText && (
-              <p className="text-xs text-gray-500 mt-1">{helperText}</p>
+              <p className="text-xs text-muted-foreground mt-1">{helperText}</p>
             )}
           </div>
         </div>
       </div>
 
       {isFlagged && !isFinalDecision && (
-        <div className="bg-red-50 border border-red-200 rounded-lg px-4 py-2.5 flex items-center gap-2">
-          <AlertTriangle className="h-4 w-4 text-red-600 flex-shrink-0" />
-          <span className="text-sm text-red-800 font-medium">
+        <div className="bg-destructive-surface border border-destructive/20 rounded-lg px-4 py-2.5 flex items-center gap-2">
+          <AlertTriangle className="h-4 w-4 text-destructive flex-shrink-0" />
+          <span className="text-sm text-destructive font-medium">
             Similarity flagged — review carefully before submitting your decision.
           </span>
         </div>

@@ -101,7 +101,7 @@ export default function ReviewerReviewsPage() {
 
       <div>
         <h1 className="text-3xl font-bold">My Reviews</h1>
-        <p className="text-gray-500 mt-1">
+        <p className="text-muted-foreground mt-1">
           Review and evaluate assigned papers
         </p>
       </div>
@@ -109,13 +109,13 @@ export default function ReviewerReviewsPage() {
       <Card className="p-6">
 
         {loading && (
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-muted-foreground">
             Loading reviews...
           </p>
         )}
 
         {!loading && papers.length === 0 && (
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-muted-foreground">
             No papers assigned for review.
           </p>
         )}
@@ -139,7 +139,7 @@ export default function ReviewerReviewsPage() {
                   <div className="flex items-center justify-between">
 
                     <div className="flex items-center gap-2">
-                      <FileText className="h-4 w-4 text-gray-400" />
+                      <FileText className="h-4 w-4 text-muted-foreground" />
                       <span className="font-semibold">
                         Paper #{index + 1}
                       </span>
@@ -149,7 +149,7 @@ export default function ReviewerReviewsPage() {
 
                   </div>
 
-                  <div className="text-sm text-gray-500">
+                  <div className="text-sm text-muted-foreground">
                     <p>
                       Conference: {p.conferences?.title}
                     </p>
@@ -212,7 +212,7 @@ export default function ReviewerReviewsPage() {
                   )}
 
                   {isReviewed && (
-                    <p className="text-sm text-green-600 font-medium">
+                    <p className="text-sm text-success font-medium">
                       Review submitted ✓
                     </p>
                   )}
@@ -234,16 +234,16 @@ export default function ReviewerReviewsPage() {
 function StatusBadge({ status }: { status: string }) {
 
   if (status === "accepted") {
-    return <Badge className="bg-green-100 text-green-700">Accepted</Badge>;
+    return <Badge className="bg-success-surface text-success">Accepted</Badge>;
   }
 
   if (status === "rejected") {
-    return <Badge className="bg-red-100 text-red-700">Rejected</Badge>;
+    return <Badge className="bg-destructive-surface text-destructive">Rejected</Badge>;
   }
 
   if (status === "Submitted" || status === "under_review") {
-    return <Badge className="bg-blue-100 text-blue-700">Under Review</Badge>;
+    return <Badge className="bg-info-surface text-info">Under Review</Badge>;
   }
 
-  return <Badge className="bg-yellow-100 text-yellow-700">Pending</Badge>;
+  return <Badge className="bg-warning-surface text-warning">Pending</Badge>;
 }

@@ -294,7 +294,7 @@ export default function OrganizerConferences() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Conferences</h1>
-          <p className="text-gray-500 mt-1">
+          <p className="text-muted-foreground mt-1">
             Manage your academic events
           </p>
         </div>
@@ -308,7 +308,7 @@ export default function OrganizerConferences() {
           </Link>
         ) : (
           <Button
-            className="gap-2 bg-indigo-600 hover:bg-indigo-700"
+            className="gap-2 bg-primary hover:bg-primary-hover"
             onClick={() => setShowUpgradeModal(true)}
           >
             <Sparkles className="h-4 w-4" />
@@ -319,19 +319,19 @@ export default function OrganizerConferences() {
 
       {/* Conference Limit Banner */}
       {!plan.loading && !plan.canCreateConference && (
-        <div className="flex items-center gap-3 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3">
-          <Lock className="h-5 w-5 text-amber-600 shrink-0" />
+        <div className="flex items-center gap-3 rounded-lg border border-warning/30 bg-warning-surface px-4 py-3">
+          <Lock className="h-5 w-5 text-warning shrink-0" />
           <div className="flex-1">
-            <p className="text-sm font-medium text-amber-800">
+            <p className="text-sm font-medium text-warning-foreground">
               Conference limit reached
             </p>
-            <p className="text-xs text-amber-600 mt-0.5">
+            <p className="text-xs text-warning mt-0.5">
               You have used all {plan.conferenceLimit ?? 0} conference slot{(plan.conferenceLimit ?? 0) !== 1 ? "s" : ""}. Purchase another slot to create more conferences.
             </p>
           </div>
           <Button
             size="sm"
-            className="bg-amber-600 hover:bg-amber-700 shrink-0"
+            className="bg-warning hover:bg-warning/90 text-warning-foreground shrink-0"
             onClick={() => setShowUpgradeModal(true)}
           >
             Buy Slot
@@ -344,7 +344,7 @@ export default function OrganizerConferences() {
       {/* ============================================================ */}
       <div className="space-y-3">
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
             placeholder="Search by title, short name, or venue…"
             value={searchQuery}
@@ -354,7 +354,7 @@ export default function OrganizerConferences() {
         </div>
 
         {/* Role filter tabs */}
-        <div className="flex items-center gap-1 rounded-lg border bg-gray-50 p-1 w-fit">
+        <div className="flex items-center gap-1 rounded-lg border bg-muted/50 p-1 w-fit">
           {[
             { key: "all" as const, label: "All" },
             { key: "owned" as const, label: "Owned", icon: <Crown className="h-3 w-3" /> },
@@ -364,16 +364,16 @@ export default function OrganizerConferences() {
               key={tab.key}
               onClick={() => setRoleFilter(tab.key)}
               className={`flex cursor-pointer items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all ${roleFilter === tab.key
-                  ? "bg-white text-gray-900 shadow-sm"
-                  : "text-gray-500 hover:text-gray-700"
+                  ? "bg-card text-foreground shadow-sm"
+                  : "text-muted-foreground hover:text-foreground"
                 }`}
             >
               {tab.icon}
               {tab.label}
               {tab.key !== "all" && (
                 <span className={`text-[10px] rounded-full px-1.5 py-0.5 ${roleFilter === tab.key
-                    ? "bg-gray-100 text-gray-700"
-                    : "bg-gray-200/60 text-gray-400"
+                    ? "bg-muted text-foreground"
+                    : "bg-muted/60 text-muted-foreground"
                   }`}>
                   {tab.key === "owned"
                     ? conferences.filter((c) => ownerConferenceIds.has(c.id)).length
@@ -390,7 +390,7 @@ export default function OrganizerConferences() {
       {/*  Loading State                                                */}
       {/* ============================================================ */}
       {loading && (
-        <p className="text-sm text-gray-500 py-8 text-center">
+        <p className="text-sm text-muted-foreground py-8 text-center">
           Loading conferences…
         </p>
       )}
@@ -400,13 +400,13 @@ export default function OrganizerConferences() {
       {/* ============================================================ */}
       {!loading && conferences.length === 0 && (
         <Card className="p-12 text-center">
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-indigo-50">
-            <Calendar className="h-8 w-8 text-indigo-400" />
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent">
+            <Calendar className="h-8 w-8 text-primary" />
           </div>
-          <h2 className="text-xl font-semibold text-gray-900">
+          <h2 className="text-xl font-semibold text-foreground">
             No conferences yet
           </h2>
-          <p className="text-gray-500 mt-2 max-w-sm mx-auto">
+          <p className="text-muted-foreground mt-2 max-w-sm mx-auto">
             You haven&apos;t created any conferences yet. Get started by
             creating your first academic event.
           </p>
@@ -423,7 +423,7 @@ export default function OrganizerConferences() {
       {/*  No search results                                            */}
       {/* ============================================================ */}
       {!loading && conferences.length > 0 && filtered.length === 0 && (
-        <p className="text-sm text-gray-500 py-8 text-center">
+        <p className="text-sm text-muted-foreground py-8 text-center">
           No conferences match &ldquo;{searchQuery}&rdquo;
         </p>
       )}
@@ -454,11 +454,11 @@ export default function OrganizerConferences() {
                     <img
                       src={c.conference_logo_url}
                       alt=""
-                      className="h-12 w-12 rounded-lg border border-gray-200 object-cover shrink-0"
+                      className="h-12 w-12 rounded-lg border border-border object-cover shrink-0"
                     />
                   ) : (
-                    <div className="h-12 w-12 rounded-lg bg-indigo-50 flex items-center justify-center shrink-0">
-                      <Calendar className="h-5 w-5 text-indigo-400" />
+                    <div className="h-12 w-12 rounded-lg bg-accent flex items-center justify-center shrink-0">
+                      <Calendar className="h-5 w-5 text-primary" />
                     </div>
                   )}
 
@@ -468,7 +468,7 @@ export default function OrganizerConferences() {
                     <div className="flex flex-wrap items-center gap-2">
                       <Link
                         href={`/dashboard/organizer/conferences/${c.id}`}
-                        className="font-semibold text-gray-900 hover:text-indigo-600 transition-colors truncate"
+                        className="font-semibold text-foreground hover:text-primary transition-colors truncate"
                       >
                         {c.title}
                       </Link>
@@ -481,13 +481,13 @@ export default function OrganizerConferences() {
 
                       {/* Role badge */}
                       {ownerConferenceIds.has(c.id) ? (
-                        <Badge className="text-[10px] shrink-0 bg-emerald-100 text-emerald-700 border-emerald-200 hover:bg-emerald-100 gap-1">
+                        <Badge className="text-[10px] shrink-0 bg-success-surface text-success border-success/30 hover:bg-success-surface gap-1">
                           <Crown className="h-2.5 w-2.5" />
                           Owner
                         </Badge>
                       ) : (
                         <Badge
-                          className="text-[10px] shrink-0 bg-blue-100 text-blue-700 border-blue-200 hover:bg-blue-100 gap-1"
+                          className="text-[10px] shrink-0 bg-info-surface text-info border-info/30 hover:bg-info-surface gap-1"
                           title="You are a co-organizer of this conference"
                         >
                           <UserCheck className="h-2.5 w-2.5" />
@@ -498,8 +498,8 @@ export default function OrganizerConferences() {
                       {/* Published / Draft */}
                       <Badge
                         className={`text-xs shrink-0 ${c.is_published
-                          ? "bg-green-100 text-green-700 border-green-200 hover:bg-green-100"
-                          : "bg-gray-100 text-gray-600 border-gray-200 hover:bg-gray-100"
+                          ? "bg-success-surface text-success border-success/30 hover:bg-success-surface"
+                          : "bg-muted text-muted-foreground border-border hover:bg-muted"
                           }`}
                       >
                         {c.is_published ? "Published" : "Draft"}
@@ -507,7 +507,7 @@ export default function OrganizerConferences() {
                     </div>
 
                     {/* Date + Meta Row */}
-                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-500">
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted-foreground">
 
                       {/* Date */}
                       <span className="flex items-center gap-1">
@@ -533,13 +533,13 @@ export default function OrganizerConferences() {
 
                       {/* Submission status */}
                       {submissionsOpen && (
-                        <Badge className="text-xs bg-green-100 text-green-700 border-green-200 hover:bg-green-100">
+                        <Badge className="text-xs bg-success-surface text-success border-success/30 hover:bg-success-surface">
                           <CheckCircle className="h-3 w-3" />
                           Submissions Open
                         </Badge>
                       )}
                       {submissionsClosed && (
-                        <Badge variant="secondary" className="text-xs text-red-600 bg-red-50 border-red-200 hover:bg-red-50">
+                        <Badge variant="secondary" className="text-xs text-destructive bg-destructive-surface border-destructive/30 hover:bg-destructive-surface">
                           <XCircle className="h-3 w-3" />
                           Closed
                         </Badge>
@@ -547,7 +547,7 @@ export default function OrganizerConferences() {
                     </div>
 
                     {/* Quick Stats Row */}
-                    <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-gray-400">
+                    <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground">
                       {c.max_participants && (
                         <span className="flex items-center gap-1">
                           <Users className="h-3 w-3" />
@@ -556,7 +556,7 @@ export default function OrganizerConferences() {
                       )}
 
                       {c.payment_required === false ? (
-                        <span className="flex items-center gap-1 text-green-600">
+                        <span className="flex items-center gap-1 text-success">
                           <CheckCircle className="h-3 w-3" />
                           Free
                         </span>
@@ -571,7 +571,7 @@ export default function OrganizerConferences() {
                     {/* Tracks */}
                     {tracks.length > 0 && (
                       <div className="flex flex-wrap items-center gap-1.5 pt-1">
-                        <Tag className="h-3 w-3 text-gray-400 shrink-0" />
+                        <Tag className="h-3 w-3 text-muted-foreground shrink-0" />
                         {tracks.slice(0, 3).map((t) => (
                           <Badge
                             key={t}
@@ -582,7 +582,7 @@ export default function OrganizerConferences() {
                           </Badge>
                         ))}
                         {tracks.length > 3 && (
-                          <span className="text-xs text-gray-400">
+                          <span className="text-xs text-muted-foreground">
                             +{tracks.length - 3} more
                           </span>
                         )}
@@ -662,9 +662,9 @@ export default function OrganizerConferences() {
           {shareDialogConf && (
             <div className="space-y-4">
               {/* Public URL */}
-              <div className="rounded-lg border bg-gray-50 px-4 py-3">
-                <p className="text-xs text-gray-500 mb-1">Public Conference URL</p>
-                <p className="text-sm font-medium text-indigo-600 break-all">
+              <div className="rounded-lg border bg-muted/50 px-4 py-3">
+                <p className="text-xs text-muted-foreground mb-1">Public Conference URL</p>
+                <p className="text-sm font-medium text-primary break-all">
                   {`${process.env.NEXT_PUBLIC_SITE_URL || window.location.origin}/conferences/${shareDialogConf.id}`}
                 </p>
               </div>

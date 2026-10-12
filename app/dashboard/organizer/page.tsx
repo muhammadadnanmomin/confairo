@@ -239,12 +239,12 @@ export default function OrganizerDashboard() {
           </h1>
 
           {organization ? (
-            <p className="text-gray-500 mt-1 flex items-center gap-2">
+            <p className="text-muted-foreground mt-1 flex items-center gap-2">
               <Building2 className="h-4 w-4" />
               {organization.name}
             </p>
           ) : (
-            <p className="text-amber-600 mt-1">
+            <p className="text-warning mt-1">
               No organization found
             </p>
           )}
@@ -276,27 +276,27 @@ export default function OrganizerDashboard() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <div className={`flex h-10 w-10 items-center justify-center rounded-lg ${plan.planType === "free"
-                ? "bg-gray-100"
+                ? "bg-muted"
                 : plan.planType === "pro"
-                  ? "bg-indigo-100"
-                  : "bg-purple-100"
+                  ? "bg-accent"
+                  : "bg-primary/20"
                 }`}>
                 <Crown className={`h-5 w-5 ${plan.planType === "free"
-                  ? "text-gray-500"
+                  ? "text-muted-foreground"
                   : plan.planType === "pro"
-                    ? "text-indigo-600"
-                    : "text-purple-600"
+                    ? "text-primary"
+                    : "text-foreground"
                   }`} />
               </div>
 
               <div>
                 <div className="flex items-center gap-2">
-                  <p className="text-sm text-gray-500">Current Plan</p>
+                  <p className="text-sm text-muted-foreground">Current Plan</p>
                   <Badge className={`text-[11px] ${plan.planType === "free"
-                    ? "bg-gray-100 text-gray-700 border-gray-200 hover:bg-gray-100"
+                    ? "bg-muted text-muted-foreground border-border hover:bg-muted"
                     : plan.planType === "pro"
-                      ? "bg-indigo-100 text-indigo-700 border-indigo-200 hover:bg-indigo-100"
-                      : "bg-purple-100 text-purple-700 border-purple-200 hover:bg-purple-100"
+                      ? "bg-accent text-accent-foreground border-accent hover:bg-accent"
+                      : "bg-primary text-primary-foreground border-primary hover:bg-primary"
                     }`}>
                     {PLAN_LABELS[plan.planType]}
                   </Badge>
@@ -305,15 +305,15 @@ export default function OrganizerDashboard() {
                 <div className="flex flex-wrap items-center gap-x-6 gap-y-1 mt-1">
                   {/* Conference usage */}
                   <div className="flex items-center gap-2">
-                    <span className="text-sm font-medium text-gray-700">
+                    <span className="text-sm font-medium text-foreground">
                       Conferences: {plan.conferencesUsed} / {formatLimit(plan.conferenceLimit)}
                     </span>
                     {plan.conferenceLimit !== null && (
-                      <div className="w-20 h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                      <div className="w-20 h-1.5 bg-muted rounded-full overflow-hidden">
                         <div
                           className={`h-full rounded-full transition-all ${plan.conferencesUsed >= plan.conferenceLimit
-                            ? "bg-red-500"
-                            : "bg-indigo-500"
+                            ? "bg-destructive"
+                            : "bg-primary"
                             }`}
                           style={{ width: `${Math.min(100, (plan.conferencesUsed / plan.conferenceLimit) * 100)}%` }}
                         />
@@ -324,15 +324,15 @@ export default function OrganizerDashboard() {
                   {/* Submission usage – only shown for free plan */}
                   {plan.planType === "free" && (
                     <div className="flex items-center gap-2">
-                      <span className="text-sm font-medium text-gray-700">
+                      <span className="text-sm font-medium text-foreground">
                         Submissions: {plan.submissionsUsed} / {formatLimit(plan.submissionLimit)}
                       </span>
                       {plan.submissionLimit !== null && (
-                        <div className="w-20 h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                        <div className="w-20 h-1.5 bg-muted rounded-full overflow-hidden">
                           <div
                             className={`h-full rounded-full transition-all ${plan.submissionsUsed >= plan.submissionLimit
-                              ? "bg-red-500"
-                              : "bg-blue-500"
+                              ? "bg-destructive"
+                              : "bg-info"
                               }`}
                             style={{ width: `${Math.min(100, (plan.submissionsUsed / plan.submissionLimit) * 100)}%` }}
                           />
@@ -347,7 +347,7 @@ export default function OrganizerDashboard() {
             {plan.planType !== "institutional" && (
               <Button
                 onClick={() => setShowUpgradeModal(true)}
-                className="bg-indigo-600 hover:bg-indigo-700 gap-2 shrink-0"
+                className="bg-primary hover:bg-primary-hover gap-2 shrink-0"
               >
                 <Sparkles className="h-4 w-4" />
                 {plan.planType === "free" ? "Upgrade Plan" : "Buy Conference Slot"}
@@ -365,36 +365,36 @@ export default function OrganizerDashboard() {
           title="Total Conferences"
           value={stats.conferences}
           icon={Calendar}
-          iconBg="bg-indigo-50"
-          iconColor="text-indigo-600"
+          iconBg="bg-accent"
+          iconColor="text-primary"
         />
         <StatCard
           title="Active Now"
           value={stats.activeConferences}
           icon={Zap}
-          iconBg="bg-purple-50"
-          iconColor="text-purple-600"
+          iconBg="bg-accent"
+          iconColor="text-primary"
         />
         <StatCard
           title="Submissions"
           value={stats.submissions}
           icon={FileText}
-          iconBg="bg-blue-50"
-          iconColor="text-blue-600"
+          iconBg="bg-info-surface"
+          iconColor="text-info"
         />
         <StatCard
           title="Reviewers"
           value={stats.reviewers}
           icon={Users}
-          iconBg="bg-green-50"
-          iconColor="text-green-600"
+          iconBg="bg-success-surface"
+          iconColor="text-success"
         />
         <StatCard
           title="Total Collections"
           value={`₹${stats.revenue.toLocaleString()}`}
           icon={IndianRupee}
-          iconBg="bg-emerald-50"
-          iconColor="text-emerald-600"
+          iconBg="bg-success-surface"
+          iconColor="text-success"
         />
       </div>
 
@@ -406,32 +406,32 @@ export default function OrganizerDashboard() {
         {/* Submission Overview */}
         <Card className="p-6">
           <div className="flex items-center gap-2 mb-4">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50">
-              <BarChart3 className="h-4 w-4 text-blue-600" />
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-info-surface">
+              <BarChart3 className="h-4 w-4 text-info" />
             </div>
-            <h3 className="text-lg font-semibold text-gray-900">
+            <h3 className="text-lg font-semibold text-foreground">
               Submission Overview
             </h3>
           </div>
 
           <div className="grid grid-cols-2 gap-3">
-            <div className="flex items-center gap-3 rounded-lg border border-green-200 bg-green-50 px-4 py-3">
-              <CheckCircle className="h-5 w-5 text-green-600 shrink-0" />
+            <div className="flex items-center gap-3 rounded-lg border border-success/30 bg-success-surface px-4 py-3">
+              <CheckCircle className="h-5 w-5 text-success shrink-0" />
               <div>
-                <p className="text-2xl font-bold text-green-800">
+                <p className="text-2xl font-bold text-success">
                   {stats.openSubmissions}
                 </p>
-                <p className="text-xs text-green-600">Open</p>
+                <p className="text-xs text-success">Open</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3 rounded-lg border border-red-200 bg-red-50 px-4 py-3">
-              <XCircle className="h-5 w-5 text-red-500 shrink-0" />
+            <div className="flex items-center gap-3 rounded-lg border border-destructive/30 bg-destructive-surface px-4 py-3">
+              <XCircle className="h-5 w-5 text-destructive shrink-0" />
               <div>
-                <p className="text-2xl font-bold text-red-800">
+                <p className="text-2xl font-bold text-destructive">
                   {stats.closedSubmissions}
                 </p>
-                <p className="text-xs text-red-500">Closed</p>
+                <p className="text-xs text-destructive">Closed</p>
               </div>
             </div>
           </div>
@@ -440,10 +440,10 @@ export default function OrganizerDashboard() {
         {/* Quick Actions */}
         <Card className="p-6">
           <div className="flex items-center gap-2 mb-4">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-50">
-              <Zap className="h-4 w-4 text-indigo-600" />
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent">
+              <Zap className="h-4 w-4 text-primary" />
             </div>
-            <h3 className="text-lg font-semibold text-gray-900">
+            <h3 className="text-lg font-semibold text-foreground">
               Quick Actions
             </h3>
           </div>
@@ -451,35 +451,35 @@ export default function OrganizerDashboard() {
           <div className="grid grid-cols-2 gap-2">
             <Link href="/dashboard/organizer/conferences/new">
               <Button variant="outline" className="w-full justify-start gap-2 h-auto py-3">
-                <Plus className="h-4 w-4 text-indigo-500" />
+                <Plus className="h-4 w-4 text-primary" />
                 <span className="text-sm">New Conference</span>
               </Button>
             </Link>
 
             <Link href="/dashboard/organizer/conferences">
               <Button variant="outline" className="w-full justify-start gap-2 h-auto py-3">
-                <ClipboardList className="h-4 w-4 text-blue-500" />
+                <ClipboardList className="h-4 w-4 text-info" />
                 <span className="text-sm">Manage Conferences</span>
               </Button>
             </Link>
 
             <Link href="/dashboard/organizer/reviewers">
               <Button variant="outline" className="w-full justify-start gap-2 h-auto py-3">
-                <UserCheck className="h-4 w-4 text-green-500" />
+                <UserCheck className="h-4 w-4 text-success" />
                 <span className="text-sm">Manage Reviewers</span>
               </Button>
             </Link>
 
             <Link href="/dashboard/organizer/submissions">
               <Button variant="outline" className="w-full justify-start gap-2 h-auto py-3">
-                <FileText className="h-4 w-4 text-purple-500" />
+                <FileText className="h-4 w-4 text-primary" />
                 <span className="text-sm">View Submissions</span>
               </Button>
             </Link>
 
             <Link href="/dashboard/organizer/schedule">
               <Button variant="outline" className="w-full justify-start gap-2 h-auto py-3">
-                <CalendarClock className="h-4 w-4 text-orange-500" />
+                <CalendarClock className="h-4 w-4 text-warning" />
                 <span className="text-sm">Manage Schedule</span>
               </Button>
             </Link>
@@ -494,14 +494,14 @@ export default function OrganizerDashboard() {
       <Card className="p-6">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-orange-50">
-              <CalendarClock className="h-4 w-4 text-orange-600" />
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-warning-surface">
+              <CalendarClock className="h-4 w-4 text-warning" />
             </div>
-            <h3 className="text-lg font-semibold text-gray-900">
+            <h3 className="text-lg font-semibold text-foreground">
               Schedule Overview
             </h3>
             {scheduleStats.totalSessions > 0 && (
-              <Badge className="bg-green-100 text-green-700 border-green-200 hover:bg-green-100 text-[11px]">
+              <Badge className="bg-success-surface text-success border-success/30 hover:bg-success-surface text-[11px]">
                 <CheckCircle className="h-3 w-3" />
                 Schedule Ready
               </Badge>
@@ -510,7 +510,7 @@ export default function OrganizerDashboard() {
 
           <Link
             href="/dashboard/organizer/schedule"
-            className="text-sm text-indigo-600 hover:underline flex items-center gap-1"
+            className="text-sm text-primary hover:underline flex items-center gap-1"
           >
             Manage Schedule
             <ArrowRight className="h-3.5 w-3.5" />
@@ -520,14 +520,14 @@ export default function OrganizerDashboard() {
         {scheduleStats.totalDays === 0 &&
           scheduleStats.totalTracks === 0 &&
           scheduleStats.totalSessions === 0 ? (
-          <div className="rounded-lg border-2 border-dashed border-gray-200 py-8 text-center">
-            <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-orange-50">
-              <CalendarClock className="h-6 w-6 text-orange-400" />
+          <div className="rounded-lg border-2 border-dashed border-border py-8 text-center">
+            <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-warning-surface">
+              <CalendarClock className="h-6 w-6 text-warning" />
             </div>
-            <p className="text-sm font-medium text-gray-700">
+            <p className="text-sm font-medium text-foreground">
               You haven&apos;t configured any schedule yet.
             </p>
-            <p className="text-xs text-gray-500 mt-1">
+            <p className="text-xs text-muted-foreground mt-1">
               Set up days, tracks, and sessions for your conferences.
             </p>
             <Link href="/dashboard/organizer/schedule" className="mt-4 inline-block">
@@ -539,23 +539,23 @@ export default function OrganizerDashboard() {
           </div>
         ) : (
           <div className="grid grid-cols-3 gap-3">
-            <div className="rounded-lg border bg-orange-50/50 border-orange-100 px-4 py-3 text-center">
-              <p className="text-2xl font-bold text-gray-900">
+            <div className="rounded-lg border bg-warning-surface/50 border-warning/20 px-4 py-3 text-center">
+              <p className="text-2xl font-bold text-foreground">
                 {scheduleStats.totalDays}
               </p>
-              <p className="text-xs text-gray-500 mt-0.5">Days Configured</p>
+              <p className="text-xs text-muted-foreground mt-0.5">Days Configured</p>
             </div>
-            <div className="rounded-lg border bg-violet-50/50 border-violet-100 px-4 py-3 text-center">
-              <p className="text-2xl font-bold text-gray-900">
+            <div className="rounded-lg border bg-accent/50 border-accent px-4 py-3 text-center">
+              <p className="text-2xl font-bold text-foreground">
                 {scheduleStats.totalTracks}
               </p>
-              <p className="text-xs text-gray-500 mt-0.5">Tracks Configured</p>
+              <p className="text-xs text-muted-foreground mt-0.5">Tracks Configured</p>
             </div>
-            <div className="rounded-lg border bg-cyan-50/50 border-cyan-100 px-4 py-3 text-center">
-              <p className="text-2xl font-bold text-gray-900">
+            <div className="rounded-lg border bg-info-surface/50 border-info/20 px-4 py-3 text-center">
+              <p className="text-2xl font-bold text-foreground">
                 {scheduleStats.totalSessions}
               </p>
-              <p className="text-xs text-gray-500 mt-0.5">Total Sessions</p>
+              <p className="text-xs text-muted-foreground mt-0.5">Total Sessions</p>
             </div>
           </div>
         )}
@@ -566,13 +566,13 @@ export default function OrganizerDashboard() {
       {/* ============================================================ */}
       <Card className="p-6">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-semibold text-gray-900">
+          <h2 className="text-lg font-semibold text-foreground">
             Recent Conferences
           </h2>
 
           <Link
             href="/dashboard/organizer/conferences"
-            className="text-sm text-indigo-600 hover:underline flex items-center gap-1"
+            className="text-sm text-primary hover:underline flex items-center gap-1"
           >
             View all
             <ArrowRight className="h-3.5 w-3.5" />
@@ -580,7 +580,7 @@ export default function OrganizerDashboard() {
         </div>
 
         {loading && (
-          <p className="text-sm text-gray-500 py-6 text-center">
+          <p className="text-sm text-muted-foreground py-6 text-center">
             Loading…
           </p>
         )}
@@ -588,13 +588,13 @@ export default function OrganizerDashboard() {
         {!loading && recent.length === 0 ? (
           /* Empty state */
           <div className="py-10 text-center">
-            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-indigo-50">
-              <Calendar className="h-8 w-8 text-indigo-400" />
+            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent">
+              <Calendar className="h-8 w-8 text-primary" />
             </div>
-            <h3 className="text-lg font-semibold text-gray-900">
+            <h3 className="text-lg font-semibold text-foreground">
               No conferences yet
             </h3>
-            <p className="text-gray-500 mt-1 max-w-sm mx-auto">
+            <p className="text-muted-foreground mt-1 max-w-sm mx-auto">
               You haven&apos;t created any conferences yet. Get started
               by creating your first academic event.
             </p>
@@ -617,12 +617,12 @@ export default function OrganizerDashboard() {
                 <Link
                   key={c.id}
                   href={`/dashboard/organizer/conferences/${c.id}`}
-                  className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 rounded-lg border px-4 py-3 hover:bg-gray-50 transition-colors group"
+                  className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 rounded-lg border px-4 py-3 hover:bg-muted/50 transition-colors group"
                 >
                   <div className="min-w-0 flex-1 space-y-1">
                     {/* Title row */}
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="font-medium text-gray-900 group-hover:text-indigo-600 transition-colors truncate">
+                      <span className="font-medium text-foreground group-hover:text-primary transition-colors truncate">
                         {c.title}
                       </span>
 
@@ -634,8 +634,8 @@ export default function OrganizerDashboard() {
 
                       <Badge
                         className={`text-[11px] shrink-0 ${c.is_published
-                          ? "bg-green-100 text-green-700 border-green-200 hover:bg-green-100"
-                          : "bg-gray-100 text-gray-600 border-gray-200 hover:bg-gray-100"
+                          ? "bg-success-surface text-success border-success/30 hover:bg-success-surface"
+                          : "bg-muted text-muted-foreground border-border hover:bg-muted"
                           }`}
                       >
                         {c.is_published ? "Published" : "Draft"}
@@ -643,7 +643,7 @@ export default function OrganizerDashboard() {
                     </div>
 
                     {/* Meta row */}
-                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-gray-500">
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
                       <span className="flex items-center gap-1">
                         <Calendar className="h-3 w-3" />
                         {formatDate(c.start_date)} → {formatDate(c.end_date)}
@@ -664,13 +664,13 @@ export default function OrganizerDashboard() {
                       )}
 
                       {submissionsOpen && (
-                        <Badge className="text-[11px] bg-green-100 text-green-700 border-green-200 hover:bg-green-100">
+                        <Badge className="text-[11px] bg-success-surface text-success border-success/30 hover:bg-success-surface">
                           <CheckCircle className="h-3 w-3" />
                           Open
                         </Badge>
                       )}
                       {submissionsClosed && (
-                        <Badge variant="secondary" className="text-[11px] text-red-600 bg-red-50 border-red-200 hover:bg-red-50">
+                        <Badge variant="secondary" className="text-[11px] text-destructive bg-destructive-surface border-destructive/30 hover:bg-destructive-surface">
                           <XCircle className="h-3 w-3" />
                           Closed
                         </Badge>
@@ -678,7 +678,7 @@ export default function OrganizerDashboard() {
                     </div>
                   </div>
 
-                  <ArrowRight className="h-4 w-4 text-gray-300 group-hover:text-indigo-500 transition-colors shrink-0 hidden sm:block" />
+                  <ArrowRight className="h-4 w-4 text-muted-foreground/40 group-hover:text-primary transition-colors shrink-0 hidden sm:block" />
                 </Link>
               );
             })}
@@ -722,7 +722,7 @@ function StatCard({
   return (
     <Card className="p-5 flex items-center justify-between hover:shadow-md transition-shadow">
       <div>
-        <p className="text-sm text-gray-500">{title}</p>
+        <p className="text-sm text-muted-foreground">{title}</p>
         <p className="text-2xl font-bold mt-1">{value}</p>
       </div>
 

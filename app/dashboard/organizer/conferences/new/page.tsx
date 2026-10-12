@@ -154,7 +154,7 @@ export default function OrganizerConferences() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold">Create Conference</h1>
-          <p className="text-gray-500 mt-1">
+          <p className="text-muted-foreground mt-1">
             Set up a new academic event
           </p>
         </div>
@@ -171,15 +171,15 @@ export default function OrganizerConferences() {
       {/* ============================================================ */}
       {!plan.loading && !plan.canCreateConference ? (
         <Card className="p-8 text-center space-y-4">
-          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-amber-50">
-            <Lock className="h-8 w-8 text-amber-500" />
+          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-warning-surface">
+            <Lock className="h-8 w-8 text-warning" />
           </div>
 
           <div>
-            <h2 className="text-xl font-semibold text-gray-900">
+            <h2 className="text-xl font-semibold text-foreground">
               Conference limit reached
             </h2>
-            <p className="text-gray-500 mt-2 max-w-md mx-auto">
+            <p className="text-muted-foreground mt-2 max-w-md mx-auto">
               You have used all {plan.conferenceLimit ?? 0} conference
               slot{(plan.conferenceLimit ?? 0) !== 1 ? "s" : ""} on your{" "}
               {plan.planType === "free" ? "Free" : "Pro"} plan.
@@ -188,7 +188,7 @@ export default function OrganizerConferences() {
           </div>
 
           <Button
-            className="bg-indigo-600 hover:bg-indigo-700 gap-2"
+            className="bg-primary hover:bg-primary-hover gap-2"
             onClick={() => setShowUpgradeModal(true)}
           >
             <Sparkles className="h-4 w-4" />

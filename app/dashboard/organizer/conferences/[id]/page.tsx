@@ -79,10 +79,10 @@ function SectionHeading({
 }) {
   return (
     <div className="flex items-center gap-2 mb-4">
-      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-50">
-        <Icon className="h-4 w-4 text-indigo-600" />
+      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent">
+        <Icon className="h-4 w-4 text-primary" />
       </div>
-      <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
+      <h3 className="text-lg font-semibold text-foreground">{title}</h3>
     </div>
   );
 }
@@ -243,7 +243,7 @@ export default function ConferenceDetails() {
               </Button>
             </PopoverTrigger>
             <PopoverContent align="end" className="w-auto p-4">
-              <p className="text-sm font-medium text-gray-800 mb-2">Share Conference</p>
+              <p className="text-sm font-medium text-foreground mb-2">Share Conference</p>
               <ShareConference
                 url={`${process.env.NEXT_PUBLIC_SITE_URL || (typeof window !== "undefined" ? window.location.origin : "")}/conferences/${id}`}
                 title={conf.title}
@@ -279,13 +279,13 @@ export default function ConferenceDetails() {
               <img
                 src={conf.conference_logo_url}
                 alt=""
-                className="h-16 w-16 rounded-full border-2 border-gray-200 shadow object-cover shrink-0"
+                className="h-16 w-16 rounded-full border-2 border-border shadow object-cover shrink-0"
               />
             )}
 
             <div className="min-w-0 flex-1 space-y-2">
               {/* Title */}
-              <h1 className="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">
+              <h1 className="text-2xl md:text-3xl font-bold text-foreground tracking-tight">
                 {conf.title}
                 {conf.short_name && (
                   <Badge
@@ -298,7 +298,7 @@ export default function ConferenceDetails() {
               </h1>
 
               {/* Meta badges row */}
-              <div className="flex flex-wrap items-center gap-2 text-sm text-gray-500">
+              <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
                 {/* Date range */}
                 <span className="flex items-center gap-1">
                   <Calendar className="h-4 w-4" />
@@ -317,8 +317,8 @@ export default function ConferenceDetails() {
                 <Badge
                   className={
                     conf.is_published
-                      ? "bg-green-100 text-green-700 border-green-200 hover:bg-green-100"
-                      : "bg-gray-100 text-gray-600 border-gray-200 hover:bg-gray-100"
+                      ? "bg-success-surface text-success border-success/30 hover:bg-success-surface"
+                      : "bg-muted text-muted-foreground border-border hover:bg-muted"
                   }
                 >
                   {conf.is_published ? "Published" : "Draft"}
@@ -334,7 +334,7 @@ export default function ConferenceDetails() {
 
                 {/* Venue */}
                 {conf.venue && (
-                  <span className="flex items-center gap-1 text-gray-500">
+                  <span className="flex items-center gap-1 text-muted-foreground">
                     <Globe className="h-3.5 w-3.5" />
                     {conf.venue}
                   </span>
@@ -345,7 +345,7 @@ export default function ConferenceDetails() {
 
           {/* Description */}
           {conf.description && (
-            <p className="text-sm leading-relaxed text-gray-600 border-t pt-4">
+            <p className="text-sm leading-relaxed text-muted-foreground border-t pt-4">
               {conf.description}
             </p>
           )}
@@ -366,18 +366,18 @@ export default function ConferenceDetails() {
                 <div
                   key={d.label}
                   className={`flex items-center gap-3 rounded-lg border px-4 py-3 ${isPast
-                    ? "bg-gray-50 border-gray-200"
-                    : "bg-indigo-50/50 border-indigo-100"
+                    ? "bg-muted/50 border-border"
+                    : "bg-accent/50 border-accent"
                     }`}
                 >
                   <Calendar
-                    className={`h-4 w-4 shrink-0 ${isPast ? "text-gray-400" : "text-indigo-500"
+                    className={`h-4 w-4 shrink-0 ${isPast ? "text-muted-foreground" : "text-primary"
                       }`}
                   />
                   <div className="min-w-0">
-                    <p className="text-xs text-gray-500">{d.label}</p>
+                    <p className="text-xs text-muted-foreground">{d.label}</p>
                     <p
-                      className={`text-sm font-medium ${isPast ? "text-gray-500" : "text-gray-900"
+                      className={`text-sm font-medium ${isPast ? "text-muted-foreground" : "text-foreground"
                         }`}
                     >
                       {formatDate(d.date)}
@@ -388,11 +388,11 @@ export default function ConferenceDetails() {
             })}
 
             {conf.max_participants && (
-              <div className="flex items-center gap-3 rounded-lg border bg-gray-50 border-gray-200 px-4 py-3">
-                <Users className="h-4 w-4 shrink-0 text-gray-400" />
+              <div className="flex items-center gap-3 rounded-lg border bg-muted/50 border-border px-4 py-3">
+                <Users className="h-4 w-4 shrink-0 text-muted-foreground" />
                 <div className="min-w-0">
-                  <p className="text-xs text-gray-500">Max Participants</p>
-                  <p className="text-sm font-medium text-gray-900">
+                  <p className="text-xs text-muted-foreground">Max Participants</p>
+                  <p className="text-sm font-medium text-foreground">
                     {conf.max_participants}
                   </p>
                 </div>
@@ -421,7 +421,7 @@ export default function ConferenceDetails() {
             ))}
           </div>
         ) : (
-          <p className="text-sm text-gray-500">No tracks added</p>
+          <p className="text-sm text-muted-foreground">No tracks added</p>
         )}
       </Card>
 
@@ -438,7 +438,7 @@ export default function ConferenceDetails() {
             {conf.allowed_submission_types &&
               conf.allowed_submission_types.length > 0 && (
                 <div>
-                  <p className="text-xs text-gray-500 mb-1.5">
+                  <p className="text-xs text-muted-foreground mb-1.5">
                     Allowed Submission Types
                   </p>
                   <div className="flex flex-wrap gap-1.5">
@@ -458,10 +458,10 @@ export default function ConferenceDetails() {
             <div className="grid sm:grid-cols-3 gap-3 text-sm">
               {conf.max_authors_per_paper != null && (
                 <div className="rounded-lg border px-4 py-3">
-                  <p className="text-xs text-gray-500">
+                  <p className="text-xs text-muted-foreground">
                     Max Authors per Paper
                   </p>
-                  <p className="font-medium text-gray-900">
+                  <p className="font-medium text-foreground">
                     {conf.max_authors_per_paper}
                   </p>
                 </div>
@@ -470,7 +470,7 @@ export default function ConferenceDetails() {
               {conf.allowed_file_types &&
                 conf.allowed_file_types.length > 0 && (
                   <div className="rounded-lg border px-4 py-3">
-                    <p className="text-xs text-gray-500 mb-1">
+                    <p className="text-xs text-muted-foreground mb-1">
                       Allowed File Types
                     </p>
                     <div className="flex flex-wrap gap-1">
@@ -489,8 +489,8 @@ export default function ConferenceDetails() {
 
               {conf.max_file_size_mb != null && (
                 <div className="rounded-lg border px-4 py-3">
-                  <p className="text-xs text-gray-500">Max File Size</p>
-                  <p className="font-medium text-gray-900">
+                  <p className="text-xs text-muted-foreground">Max File Size</p>
+                  <p className="font-medium text-foreground">
                     {conf.max_file_size_mb} MB
                   </p>
                 </div>
@@ -503,7 +503,7 @@ export default function ConferenceDetails() {
                 href={conf.sample_paper_format_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg border border-indigo-200 bg-indigo-50 px-4 py-2.5 text-sm font-medium text-indigo-700 hover:bg-indigo-100 transition-colors"
+                className="inline-flex items-center gap-2 rounded-lg border border-primary/20 bg-accent px-4 py-2.5 text-sm font-medium text-primary hover:bg-accent/80 transition-colors"
               >
                 <FileText className="h-4 w-4" />
                 Download Sample Paper Format
@@ -521,13 +521,13 @@ export default function ConferenceDetails() {
         <SectionHeading icon={CreditCard} title="Payment Settings" />
 
         {conf.payment_required === false ? (
-          <div className="flex items-center gap-3 rounded-lg border border-green-200 bg-green-50 px-5 py-4">
-            <CheckCircle className="h-5 w-5 text-green-600" />
+          <div className="flex items-center gap-3 rounded-lg border border-success/30 bg-success-surface px-5 py-4">
+            <CheckCircle className="h-5 w-5 text-success" />
             <div>
-              <p className="font-semibold text-green-800">
+              <p className="font-semibold text-success">
                 Free Conference
               </p>
-              <p className="text-sm text-green-600">
+              <p className="text-sm text-success">
                 No registration fee required
               </p>
             </div>
@@ -541,14 +541,14 @@ export default function ConferenceDetails() {
                   key={cat.category_name}
                   className="rounded-lg border p-4 space-y-2"
                 >
-                  <p className="text-sm font-semibold text-gray-900">
+                  <p className="text-sm font-semibold text-foreground">
                     {cat.category_name}
                   </p>
 
                   {isListener ? (
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-gray-600">Listener Fee</span>
-                      <span className="font-medium text-gray-900">
+                      <span className="text-muted-foreground">Listener Fee</span>
+                      <span className="font-medium text-foreground">
                         {currencySymbol}{cat.listener_fee ?? 0}
                       </span>
                     </div>
@@ -556,32 +556,32 @@ export default function ConferenceDetails() {
                     <div className="space-y-1">
                       {cat.physical_presentation_fee != null && (
                         <div className="flex items-center justify-between text-sm">
-                          <span className="text-gray-600">Physical Presentation</span>
-                          <span className="font-medium text-gray-900">
+                          <span className="text-muted-foreground">Physical Presentation</span>
+                          <span className="font-medium text-foreground">
                             {currencySymbol}{cat.physical_presentation_fee}
                           </span>
                         </div>
                       )}
                       {cat.virtual_presentation_fee != null && (
                         <div className="flex items-center justify-between text-sm">
-                          <span className="text-gray-600">Virtual Presentation</span>
-                          <span className="font-medium text-gray-900">
+                          <span className="text-muted-foreground">Virtual Presentation</span>
+                          <span className="font-medium text-foreground">
                             {currencySymbol}{cat.virtual_presentation_fee}
                           </span>
                         </div>
                       )}
                       {cat.full_paper_publication_fee != null && (
                         <div className="flex items-center justify-between text-sm">
-                          <span className="text-gray-600">Full Paper Publication</span>
-                          <span className="font-medium text-gray-900">
+                          <span className="text-muted-foreground">Full Paper Publication</span>
+                          <span className="font-medium text-foreground">
                             {currencySymbol}{cat.full_paper_publication_fee}
                           </span>
                         </div>
                       )}
                       {cat.abstract_publication_fee != null && (
                         <div className="flex items-center justify-between text-sm">
-                          <span className="text-gray-600">Abstract Publication</span>
-                          <span className="font-medium text-gray-900">
+                          <span className="text-muted-foreground">Abstract Publication</span>
+                          <span className="font-medium text-foreground">
                             {currencySymbol}{cat.abstract_publication_fee}
                           </span>
                         </div>
@@ -593,7 +593,7 @@ export default function ConferenceDetails() {
             })}
           </div>
         ) : (
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-muted-foreground">
             Fee details will be updated soon.
           </p>
         )}
@@ -609,16 +609,16 @@ export default function ConferenceDetails() {
           <div className="grid sm:grid-cols-2 gap-3">
             {conf.proceedings_isbn && (
               <div className="rounded-lg border px-4 py-3">
-                <p className="text-xs text-gray-500">ISBN</p>
-                <p className="text-sm font-medium text-gray-900">
+                <p className="text-xs text-muted-foreground">ISBN</p>
+                <p className="text-sm font-medium text-foreground">
                   {conf.proceedings_isbn}
                 </p>
               </div>
             )}
             {conf.journal_name && (
               <div className="rounded-lg border px-4 py-3">
-                <p className="text-xs text-gray-500">Journal / Publisher</p>
-                <p className="text-sm font-medium text-gray-900">
+                <p className="text-xs text-muted-foreground">Journal / Publisher</p>
+                <p className="text-sm font-medium text-foreground">
                   {conf.journal_name}
                 </p>
               </div>
@@ -635,7 +635,7 @@ export default function ConferenceDetails() {
 
         {conf.end_date && conf.end_date < today ? (
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-muted-foreground">
               Upload and publish conference proceedings for authorized
               participants.
             </p>
@@ -643,19 +643,19 @@ export default function ConferenceDetails() {
               onClick={() =>
                 router.push(`/dashboard/organizer/proceedings/${id}`)
               }
-              className="gap-2 bg-indigo-600 hover:bg-indigo-700 shrink-0"
+              className="gap-2 bg-primary hover:bg-primary-hover shrink-0"
             >
               <BookOpen className="h-4 w-4" />
               Manage Proceedings
             </Button>
           </div>
         ) : (
-          <div className="flex items-center gap-3 rounded-lg border border-gray-200 bg-gray-50 px-5 py-4">
-            <BookOpen className="h-5 w-5 text-gray-400 shrink-0" />
-            <p className="text-sm text-gray-500">
+          <div className="flex items-center gap-3 rounded-lg border border-border bg-muted/50 px-5 py-4">
+            <BookOpen className="h-5 w-5 text-muted-foreground shrink-0" />
+            <p className="text-sm text-muted-foreground">
               Proceedings can be uploaded after the conference ends
               {conf.end_date && (
-                <span className="text-gray-400">
+                <span className="text-muted-foreground">
                   {" "}
                   ({formatDate(conf.end_date)})
                 </span>
@@ -670,12 +670,12 @@ export default function ConferenceDetails() {
       {/* ============================================================ */}
       <Card className="p-6">
         <div className="flex items-center gap-2 mb-4">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-50">
-            <PenLine className="h-4 w-4 text-indigo-600" />
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent">
+            <PenLine className="h-4 w-4 text-primary" />
           </div>
           <div>
-            <h3 className="text-lg font-semibold text-gray-900">Certificate Signatures</h3>
-            <p className="text-xs text-gray-500 mt-0.5">Configure 2–3 signatures to appear on generated certificates</p>
+            <h3 className="text-lg font-semibold text-foreground">Certificate Signatures</h3>
+            <p className="text-xs text-muted-foreground mt-0.5">Configure 2–3 signatures to appear on generated certificates</p>
           </div>
         </div>
         <SignatureManager conferenceId={id} />
@@ -686,12 +686,12 @@ export default function ConferenceDetails() {
       {/* ============================================================ */}
       <Card className="p-6">
         <div className="flex items-center gap-2 mb-4">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-50">
-            <Users className="h-4 w-4 text-indigo-600" />
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent">
+            <Users className="h-4 w-4 text-primary" />
           </div>
           <div>
-            <h3 className="text-lg font-semibold text-gray-900">Co-Organizers</h3>
-            <p className="text-xs text-gray-500 mt-0.5">Manage who can collaborate on this conference</p>
+            <h3 className="text-lg font-semibold text-foreground">Co-Organizers</h3>
+            <p className="text-xs text-muted-foreground mt-0.5">Manage who can collaborate on this conference</p>
           </div>
         </div>
         <CoOrganizerManager conferenceId={id} />
@@ -711,7 +711,7 @@ export default function ConferenceDetails() {
                 href={conf.brochure_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg border bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors"
+                className="inline-flex items-center gap-2 rounded-lg border bg-muted/50 px-4 py-2 text-sm font-medium text-foreground hover:bg-accent transition-colors"
               >
                 <Download className="h-4 w-4" />
                 Download Brochure
@@ -736,7 +736,7 @@ export default function ConferenceDetails() {
             {conf.contact_email && (
               <a
                 href={`mailto:${conf.contact_email}`}
-                className="flex items-center gap-2 text-sm text-gray-600 hover:text-indigo-600 transition-colors"
+                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
               >
                 <Mail className="h-4 w-4 shrink-0" />
                 {conf.contact_email}
@@ -746,7 +746,7 @@ export default function ConferenceDetails() {
             {conf.contact_phone && (
               <a
                 href={`tel:${conf.contact_phone}`}
-                className="flex items-center gap-2 text-sm text-gray-600 hover:text-indigo-600 transition-colors"
+                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
               >
                 <Phone className="h-4 w-4 shrink-0" />
                 {conf.contact_phone}
@@ -758,7 +758,7 @@ export default function ConferenceDetails() {
                 href={conf.website_link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm text-indigo-600 hover:underline"
+                className="flex items-center gap-2 text-sm text-primary hover:underline"
               >
                 <Globe className="h-4 w-4 shrink-0" />
                 Official Website

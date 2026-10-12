@@ -52,7 +52,7 @@ export default function ProceedingsActions({ conferenceId, title }: Props) {
       <Button
         onClick={handleView}
         disabled={loading}
-        className="flex-1 gap-2 bg-indigo-600 hover:bg-indigo-700 shadow-sm"
+        className="flex-1 gap-2 bg-primary hover:bg-primary-hover text-primary-foreground shadow-sm"
       >
         {loading ? (
           <RefreshCw className="h-4 w-4 animate-spin" />
@@ -66,7 +66,7 @@ export default function ProceedingsActions({ conferenceId, title }: Props) {
         onClick={handleDownload}
         disabled={loading}
         variant="outline"
-        className="flex-1 gap-2 border-gray-300"
+        className="flex-1 gap-2 border-border"
       >
         {loading ? (
           <RefreshCw className="h-4 w-4 animate-spin" />

@@ -52,7 +52,7 @@ export default function AILimitModal({ onClose, used, total }: AILimitModalProps
 
         {/* Body */}
         <div className="px-6 py-5 space-y-4">
-          <p className="text-sm text-gray-600 leading-relaxed">
+          <p className="text-sm text-muted-foreground leading-relaxed">
             You&apos;ve used all AI analyses for this conference. Purchase
             additional analyses or upgrade your plan to continue using AI-powered
             paper reviews and similarity detection.
@@ -68,7 +68,7 @@ export default function AILimitModal({ onClose, used, total }: AILimitModalProps
                 );
                 onClose();
               }}
-              className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white gap-2 h-11 shadow-lg shadow-purple-200/50"
+              className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white gap-2 h-11 shadow-lg shadow-primary/20"
             >
               <Sparkles className="h-4 w-4" />
               Buy 100 Analyses — ₹499
@@ -79,7 +79,7 @@ export default function AILimitModal({ onClose, used, total }: AILimitModalProps
                 window.location.href = "/dashboard/organizer/billing";
               }}
               variant="outline"
-              className="w-full gap-2 h-10 border-amber-300 text-amber-700 hover:bg-amber-50"
+              className="w-full gap-2 h-10 border-warning text-warning hover:bg-warning-surface"
             >
               <Crown className="h-4 w-4" />
               Upgrade to Pro — 100 Analyses Included
@@ -94,7 +94,7 @@ export default function AILimitModal({ onClose, used, total }: AILimitModalProps
               );
               onClose();
             }}
-            className="w-full cursor-pointer text-center text-xs text-gray-400 hover:text-gray-600 transition-colors py-1"
+            className="w-full cursor-pointer text-center text-xs text-muted-foreground hover:text-foreground transition-colors py-1"
           >
             Or buy 50 analyses for ₹299 →
           </button>

@@ -58,31 +58,31 @@ export default function AIUsageBanner({ conferenceId }: AIUsageBannerProps) {
   // Color thresholds: green <70%, yellow 70-90%, red >90%
   const barColor =
     percentage > 90
-      ? "bg-gradient-to-r from-red-400 to-red-600"
+      ? "bg-gradient-to-r from-destructive/80 to-destructive"
       : percentage > 70
-        ? "bg-gradient-to-r from-amber-400 to-amber-500"
-        : "bg-gradient-to-r from-emerald-400 to-emerald-600";
+        ? "bg-gradient-to-r from-warning/80 to-warning"
+        : "bg-gradient-to-r from-success/80 to-success";
 
   const textColor =
     percentage > 90
-      ? "text-red-700"
+      ? "text-destructive"
       : percentage > 70
-        ? "text-amber-700"
-        : "text-emerald-700";
+        ? "text-warning"
+        : "text-success";
 
   const bgColor =
     percentage > 90
-      ? "bg-red-50 border-red-200"
+      ? "bg-destructive-surface border-destructive/20"
       : percentage > 70
-        ? "bg-amber-50 border-amber-200"
-        : "bg-emerald-50 border-emerald-200";
+        ? "bg-warning-surface border-warning/20"
+        : "bg-success-surface border-success/20";
 
   const glowColor =
     percentage > 90
-      ? "shadow-red-200/40"
+      ? "shadow-destructive/20"
       : percentage > 70
-        ? "shadow-amber-200/40"
-        : "shadow-emerald-200/40";
+        ? "shadow-warning/20"
+        : "shadow-success/20";
 
   return (
     <div
@@ -91,11 +91,11 @@ export default function AIUsageBanner({ conferenceId }: AIUsageBannerProps) {
     >
       <div className="flex items-center justify-between mb-2.5">
         <div className="flex items-center gap-2">
-          <div className={`h-7 w-7 rounded-lg flex items-center justify-center ${percentage > 90 ? "bg-red-100" : percentage > 70 ? "bg-amber-100" : "bg-emerald-100"}`}>
+          <div className={`h-7 w-7 rounded-lg flex items-center justify-center ${percentage > 90 ? "bg-destructive/10" : percentage > 70 ? "bg-warning/10" : "bg-success/10"}`}>
             <Brain className={`h-4 w-4 ${textColor}`} />
           </div>
           <div>
-            <p className="text-sm font-semibold text-gray-800 flex items-center gap-1.5">
+            <p className="text-sm font-semibold text-foreground flex items-center gap-1.5">
               🧠 AI Usage
             </p>
           </div>
@@ -105,12 +105,12 @@ export default function AIUsageBanner({ conferenceId }: AIUsageBannerProps) {
             {used} / {total}
           </span>
           {remaining <= 2 && remaining > 0 && (
-            <span className="text-[10px] font-medium text-red-600 bg-red-100 px-1.5 py-0.5 rounded-full animate-pulse">
+            <span className="text-[10px] font-medium text-destructive bg-destructive/10 px-1.5 py-0.5 rounded-full animate-pulse">
               {remaining} left
             </span>
           )}
           {remaining === 0 && (
-            <span className="text-[10px] font-medium text-red-700 bg-red-200 px-1.5 py-0.5 rounded-full">
+            <span className="text-[10px] font-medium text-destructive bg-destructive/15 px-1.5 py-0.5 rounded-full">
               Exhausted
             </span>
           )}
@@ -118,7 +118,7 @@ export default function AIUsageBanner({ conferenceId }: AIUsageBannerProps) {
       </div>
 
       {/* Progress bar */}
-      <div className="w-full bg-white/70 rounded-full h-2.5 overflow-hidden border border-gray-200/50 shadow-inner">
+      <div className="w-full bg-white/70 rounded-full h-2.5 overflow-hidden border border-border/50 shadow-inner">
         <div
           className={`h-full rounded-full ${barColor} transition-all duration-1000 ease-out`}
           style={{ width: `${Math.min(percentage, 100)}%` }}
@@ -128,17 +128,17 @@ export default function AIUsageBanner({ conferenceId }: AIUsageBannerProps) {
       {/* Footer */}
       <div className="flex flex-col gap-1.5 mt-2">
         <div className="flex items-center justify-between">
-          <p className="text-[11px] text-gray-500 flex items-center gap-1">
+          <p className="text-[11px] text-muted-foreground flex items-center gap-1">
             <Zap className="h-3 w-3" />
             {remaining > 0
               ? `${remaining} ${remaining !== 1 ? "analyses" : "analysis"} remaining`
               : "Purchase additional analyses to continue"}
           </p>
-          <p className="text-[11px] text-gray-400">{percentage}% used</p>
+          <p className="text-[11px] text-muted-foreground">{percentage}% used</p>
         </div>
-        <p className="text-[10px] text-gray-400">Each AI action uses 1 analysis</p>
+        <p className="text-[10px] text-muted-foreground">Each AI action uses 1 analysis</p>
         {percentage >= 80 && remaining > 0 && (
-          <p className="text-[10px] text-yellow-600 flex items-center gap-1">
+          <p className="text-[10px] text-warning flex items-center gap-1">
             ⚠️ You&apos;re running low on AI analyses
           </p>
         )}

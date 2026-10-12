@@ -44,22 +44,22 @@ interface AIReviewCardProps {
 function decisionStyle(decision: string) {
   const d = decision.toLowerCase();
   if (d.includes("reject"))
-    return { bg: "bg-red-100", text: "text-red-700", border: "border-red-200", ring: "ring-red-400/30" };
+    return { bg: "bg-destructive-surface", text: "text-destructive", border: "border-destructive/30", ring: "ring-destructive/20" };
   if (d.includes("major"))
-    return { bg: "bg-orange-100", text: "text-orange-700", border: "border-orange-200", ring: "ring-orange-400/30" };
+    return { bg: "bg-warning-surface", text: "text-warning", border: "border-warning/30", ring: "ring-warning/20" };
   if (d.includes("minor"))
-    return { bg: "bg-yellow-100", text: "text-yellow-700", border: "border-yellow-200", ring: "ring-yellow-400/30" };
+    return { bg: "bg-warning-surface", text: "text-warning", border: "border-warning/30", ring: "ring-warning/20" };
   if (d.includes("accept"))
-    return { bg: "bg-green-100", text: "text-green-700", border: "border-green-200", ring: "ring-green-400/30" };
-  return { bg: "bg-gray-100", text: "text-gray-700", border: "border-gray-200", ring: "ring-gray-400/30" };
+    return { bg: "bg-success-surface", text: "text-success", border: "border-success/30", ring: "ring-success/20" };
+  return { bg: "bg-muted", text: "text-muted-foreground", border: "border-border", ring: "ring-border/20" };
 }
 
 /* ─── Confidence bar color ─────────────────────────────────── */
 function confidenceColor(score: number) {
-  if (score >= 80) return "bg-green-500";
-  if (score >= 60) return "bg-blue-500";
-  if (score >= 40) return "bg-yellow-500";
-  return "bg-red-500";
+  if (score >= 80) return "bg-success";
+  if (score >= 60) return "bg-info";
+  if (score >= 40) return "bg-warning";
+  return "bg-destructive";
 }
 
 /* ─── Section Component ────────────────────────────────────── */
@@ -85,7 +85,7 @@ function ReviewSection({
     >
       <div className="flex items-center gap-2 mb-2">
         <span className="text-base">{emoji}</span>
-        <h3 className="text-sm font-semibold text-gray-700 flex items-center gap-1.5">
+        <h3 className="text-sm font-semibold text-foreground flex items-center gap-1.5">
           {icon}
           {title}
         </h3>
@@ -97,12 +97,12 @@ function ReviewSection({
 
 /* ─── Bullet List ──────────────────────────────────────────── */
 function BulletList({ items }: { items: string[] }) {
-  if (!items || items.length === 0) return <p className="text-sm text-gray-400 italic">None identified</p>;
+  if (!items || items.length === 0) return <p className="text-sm text-muted-foreground italic">None identified</p>;
   return (
     <ul className="space-y-1.5">
       {items.map((item, i) => (
-        <li key={i} className="text-sm text-gray-600 flex items-start gap-2">
-          <span className="text-gray-300 mt-1 flex-shrink-0">•</span>
+        <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
+          <span className="text-muted-foreground/60 mt-1 flex-shrink-0">•</span>
           <span>{item}</span>
         </li>
       ))}
@@ -225,34 +225,34 @@ export default function AIReviewCard({ submissionId, onUseDecision, readOnly }: 
     return (
       <Card className="p-5 space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-            <Brain className="h-4 w-4 text-purple-600" />
+          <h2 className="text-sm font-semibold text-foreground flex items-center gap-2">
+            <Brain className="h-4 w-4 text-primary" />
             <span>🧠 AI Paper Reviewer</span>
           </h2>
         </div>
 
-        <div className="flex flex-col items-center justify-center py-8 bg-gradient-to-b from-purple-50/50 to-transparent rounded-lg border border-dashed border-purple-200/60">
-          <div className="h-12 w-12 rounded-full bg-purple-100 flex items-center justify-center mb-4">
-            <Sparkles className="h-6 w-6 text-purple-600" />
+        <div className="flex flex-col items-center justify-center py-8 bg-gradient-to-b from-primary/5 to-transparent rounded-lg border border-dashed border-primary/20">
+          <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+            <Sparkles className="h-6 w-6 text-primary" />
           </div>
-          <p className="text-sm font-medium text-gray-800 mb-1 text-center max-w-xs">
+          <p className="text-sm font-medium text-foreground mb-1 text-center max-w-xs">
             Get instant feedback including summary, strengths, weaknesses, and a suggested decision
           </p>
-          <p className="text-xs text-gray-400 mb-4 text-center max-w-xs">
+          <p className="text-xs text-muted-foreground mb-4 text-center max-w-xs">
             AI analyzes the full paper content and generates a detailed review
           </p>
           <Button
             onClick={() => limitReached ? setShowLimitModal(true) : analyzeePaper(false)}
             className={limitReached
-              ? "bg-gray-400 hover:bg-gray-400 text-white gap-2 cursor-not-allowed"
-              : "bg-purple-600 hover:bg-purple-700 text-white gap-2"}
+              ? "bg-muted-foreground/40 hover:bg-muted-foreground/40 text-white gap-2 cursor-not-allowed"
+              : "bg-primary hover:bg-primary-hover text-primary-foreground gap-2"}
             size="sm"
             disabled={limitReached}
           >
             <Sparkles className="h-4 w-4" />
             {limitReached ? "Limit Reached" : "Analyze Paper"}
           </Button>
-          <p className="text-[10px] text-gray-400 mt-2 flex items-center gap-1">
+          <p className="text-[10px] text-muted-foreground mt-2 flex items-center gap-1">
             ⚡ Uses 1 AI analysis
           </p>
         </div>
@@ -265,21 +265,21 @@ export default function AIReviewCard({ submissionId, onUseDecision, readOnly }: 
     return (
       <Card className="p-5 space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-            <Brain className="h-4 w-4 text-purple-600" />
+          <h2 className="text-sm font-semibold text-foreground flex items-center gap-2">
+            <Brain className="h-4 w-4 text-primary" />
             <span>🧠 AI Paper Reviewer</span>
           </h2>
         </div>
 
         <div className="flex flex-col items-center justify-center py-12">
           <div className="relative">
-            <div className="h-14 w-14 rounded-full bg-purple-100 flex items-center justify-center">
-              <Loader2 className="h-7 w-7 text-purple-600 animate-spin" />
+            <div className="h-14 w-14 rounded-full bg-primary/10 flex items-center justify-center">
+              <Loader2 className="h-7 w-7 text-primary animate-spin" />
             </div>
-            <div className="absolute inset-0 rounded-full border-2 border-purple-300/40 animate-ping" />
+            <div className="absolute inset-0 rounded-full border-2 border-primary/30 animate-ping" />
           </div>
-          <p className="text-sm text-gray-600 mt-5 font-medium">Analyzing paper with AI…</p>
-          <p className="text-xs text-gray-400 mt-1">This may take 15–30 seconds for larger documents</p>
+          <p className="text-sm text-muted-foreground mt-5 font-medium">Analyzing paper with AI…</p>
+          <p className="text-xs text-muted-foreground mt-1">This may take 15–30 seconds for larger documents</p>
         </div>
       </Card>
     );
@@ -291,20 +291,20 @@ export default function AIReviewCard({ submissionId, onUseDecision, readOnly }: 
     return (
       <Card className="p-5 space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-            <Brain className="h-4 w-4 text-purple-600" />
+          <h2 className="text-sm font-semibold text-foreground flex items-center gap-2">
+            <Brain className="h-4 w-4 text-primary" />
             <span>🧠 AI Paper Reviewer</span>
           </h2>
         </div>
 
-        <div className={`border rounded-lg p-4 ${isAccessError ? "bg-amber-50 border-amber-200" : "bg-red-50 border-red-200"}`}>
+        <div className={`border rounded-lg p-4 ${isAccessError ? "bg-warning-surface border-warning/30" : "bg-destructive-surface border-destructive/30"}`}>
           <div className="flex items-start gap-3">
-            <AlertTriangle className={`h-5 w-5 flex-shrink-0 mt-0.5 ${isAccessError ? "text-amber-500" : "text-red-500"}`} />
+            <AlertTriangle className={`h-5 w-5 flex-shrink-0 mt-0.5 ${isAccessError ? "text-warning" : "text-destructive"}`} />
             <div>
-              <p className={`text-sm font-medium ${isAccessError ? "text-amber-700" : "text-red-700"}`}>
+              <p className={`text-sm font-medium ${isAccessError ? "text-warning" : "text-destructive"}`}>
                 {isAccessError ? "Access Restricted" : "Analysis Failed"}
               </p>
-              <p className={`text-sm mt-1 ${isAccessError ? "text-amber-600" : "text-red-600"}`}>
+              <p className={`text-sm mt-1 ${isAccessError ? "text-warning" : "text-destructive"}`}>
                 {isAccessError ? "You don't have access to this action. Contact the conference organizer." : error}
               </p>
             </div>
@@ -347,12 +347,12 @@ export default function AIReviewCard({ submissionId, onUseDecision, readOnly }: 
       <Card className="p-5 space-y-5 overflow-hidden" ref={resultRef}>
         {/* Header */}
         <div className="flex items-center justify-between">
-          <h2 className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-            <Brain className="h-4 w-4 text-purple-600" />
+          <h2 className="text-sm font-semibold text-foreground flex items-center gap-2">
+            <Brain className="h-4 w-4 text-primary" />
             <span>🧠 AI Paper Reviewer</span>
           </h2>
           <div className="flex items-center gap-2">
-            <Badge className="bg-purple-50 text-purple-600 text-[10px] tracking-wider uppercase border border-purple-200">
+            <Badge className="bg-primary/10 text-primary text-[10px] tracking-wider uppercase border border-primary/20">
               AI Analysis
             </Badge>
             {!readOnly && (
@@ -372,7 +372,7 @@ export default function AIReviewCard({ submissionId, onUseDecision, readOnly }: 
 
         {/* Cache indicator */}
         {cached && cachedAt && (
-          <div className="bg-blue-50 border border-blue-200 rounded-md px-3 py-2 text-xs text-blue-600 flex items-center gap-1.5">
+          <div className="bg-info-surface border border-info/30 rounded-md px-3 py-2 text-xs text-info flex items-center gap-1.5">
             <CheckCircle2 className="h-3.5 w-3.5" />
             Instant result (optimized) — analyzed {new Date(cachedAt).toLocaleDateString("en-US", {
               month: "short",
@@ -390,7 +390,7 @@ export default function AIReviewCard({ submissionId, onUseDecision, readOnly }: 
           <div className={`rounded-lg p-4 ${ds.bg} ${ds.border} border flex flex-col sm:flex-row sm:items-center gap-4`}>
             {/* Decision */}
             <div className="flex-1">
-              <p className="text-xs text-gray-500 uppercase tracking-wider mb-1.5 flex items-center gap-1">
+              <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1.5 flex items-center gap-1">
                 <Award className="h-3 w-3" /> 🧾 Final Decision
               </p>
               <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-semibold ${ds.bg} ${ds.text} ring-2 ${ds.ring}`}>
@@ -400,17 +400,17 @@ export default function AIReviewCard({ submissionId, onUseDecision, readOnly }: 
 
             {/* Confidence Score */}
             <div className="flex-1">
-              <p className="text-xs text-gray-500 uppercase tracking-wider mb-1.5 flex items-center gap-1">
+              <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1.5 flex items-center gap-1">
                 <BarChart3 className="h-3 w-3" /> 📊 Confidence Score
               </p>
               <div className="flex items-center gap-3">
-                <div className="flex-1 bg-white/60 rounded-full h-3 overflow-hidden border border-gray-200/50">
+                <div className="flex-1 bg-white/60 rounded-full h-3 overflow-hidden border border-border/50">
                   <div
                     className={`h-full rounded-full ${confidenceColor(score)} transition-all duration-1000 ease-out`}
                     style={{ width: `${score}%` }}
                   />
                 </div>
-                <span className="text-sm font-bold text-gray-700 tabular-nums w-10 text-right">
+                <span className="text-sm font-bold text-foreground tabular-nums w-10 text-right">
                   {score}%
                 </span>
               </div>
@@ -419,21 +419,21 @@ export default function AIReviewCard({ submissionId, onUseDecision, readOnly }: 
         </div>
 
         {/* Divider */}
-        <div className="border-t border-gray-100" />
+        <div className="border-t border-border" />
 
         {/* Summary */}
         <ReviewSection
-          icon={<FileText className="h-3.5 w-3.5 text-blue-500" />}
+          icon={<FileText className="h-3.5 w-3.5 text-info" />}
           emoji="📄"
           title="Summary"
           delay={100}
         >
-          <p className="text-sm text-gray-600 leading-relaxed">{result.summary}</p>
+          <p className="text-sm text-muted-foreground leading-relaxed">{result.summary}</p>
         </ReviewSection>
 
         {/* Key Contributions */}
         <ReviewSection
-          icon={<Lightbulb className="h-3.5 w-3.5 text-amber-500" />}
+          icon={<Lightbulb className="h-3.5 w-3.5 text-warning" />}
           emoji="💡"
           title="Key Contributions"
           delay={200}
@@ -443,7 +443,7 @@ export default function AIReviewCard({ submissionId, onUseDecision, readOnly }: 
 
         {/* Strengths */}
         <ReviewSection
-          icon={<CheckCircle2 className="h-3.5 w-3.5 text-green-500" />}
+          icon={<CheckCircle2 className="h-3.5 w-3.5 text-success" />}
           emoji="✅"
           title="Strengths"
           delay={300}
@@ -453,7 +453,7 @@ export default function AIReviewCard({ submissionId, onUseDecision, readOnly }: 
 
         {/* Weaknesses */}
         <ReviewSection
-          icon={<AlertCircle className="h-3.5 w-3.5 text-orange-500" />}
+          icon={<AlertCircle className="h-3.5 w-3.5 text-warning" />}
           emoji="⚠️"
           title="Weaknesses"
           delay={400}
@@ -463,7 +463,7 @@ export default function AIReviewCard({ submissionId, onUseDecision, readOnly }: 
 
         {/* Grammar Issues */}
         <ReviewSection
-          icon={<PenLine className="h-3.5 w-3.5 text-violet-500" />}
+          icon={<PenLine className="h-3.5 w-3.5 text-primary" />}
           emoji="✍️"
           title="Grammar Issues"
           delay={500}
@@ -489,7 +489,7 @@ export default function AIReviewCard({ submissionId, onUseDecision, readOnly }: 
               }}
               variant="outline"
               size="sm"
-              className="w-full gap-2 border-purple-300 text-purple-700 hover:bg-purple-50"
+              className="w-full gap-2 border-primary/30 text-primary hover:bg-accent"
             >
               <Wand2 className="h-3.5 w-3.5" />
               Use AI Decision — Prefill "{result.final_decision}"
@@ -499,12 +499,12 @@ export default function AIReviewCard({ submissionId, onUseDecision, readOnly }: 
 
         {/* Footer meta */}
         <div
-          className="opacity-0 border-t border-gray-100 pt-3"
+          className="opacity-0 border-t border-border pt-3"
           style={{ animation: "fadeInUp 0.5s ease-out 600ms forwards" }}
         >
           {/* Fallback banner */}
           {fallback && (
-            <div className="bg-amber-50 border border-amber-200 rounded-md px-3 py-2 text-xs text-amber-700 flex items-center gap-1.5 mb-2">
+            <div className="bg-warning-surface border border-warning/30 rounded-md px-3 py-2 text-xs text-warning flex items-center gap-1.5 mb-2">
               <AlertTriangle className="h-3.5 w-3.5 flex-shrink-0" />
               ⚠️ Limited analysis — showing basic results. Try again shortly.
             </div>
@@ -512,14 +512,14 @@ export default function AIReviewCard({ submissionId, onUseDecision, readOnly }: 
 
           {/* Cooldown message */}
           {cooldownMsg && (
-            <div className="bg-blue-50 border border-blue-200 rounded-md px-3 py-2 text-xs text-blue-600 flex items-center gap-1.5 mb-2">
+            <div className="bg-info-surface border border-info/30 rounded-md px-3 py-2 text-xs text-info flex items-center gap-1.5 mb-2">
               ⏳ {cooldownMsg}
             </div>
           )}
 
-          <div className="flex items-center justify-between text-xs text-gray-400">
+          <div className="flex items-center justify-between text-xs text-muted-foreground">
             <span className="flex items-center gap-1.5">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-purple-400" />
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary" />
               Advanced AI analysis
             </span>
             <span>{new Date().toLocaleDateString("en-US", {
@@ -528,7 +528,7 @@ export default function AIReviewCard({ submissionId, onUseDecision, readOnly }: 
               year: "numeric",
             })}</span>
           </div>
-          <p className="text-[10px] text-gray-400 mt-2">
+          <p className="text-[10px] text-muted-foreground mt-2">
             AI-assisted insights. Final decisions should be reviewed by humans.
           </p>
         </div>

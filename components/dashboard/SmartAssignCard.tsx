@@ -38,21 +38,21 @@ interface SmartAssignCardProps {
 
 /* ─── Score color helpers ──────────────────────────────────── */
 function scoreColor(score: number) {
-  if (score >= 80) return { bar: "bg-emerald-500", text: "text-emerald-700", bg: "bg-emerald-50", ring: "ring-emerald-200" };
-  if (score >= 60) return { bar: "bg-blue-500", text: "text-blue-700", bg: "bg-blue-50", ring: "ring-blue-200" };
-  if (score >= 40) return { bar: "bg-amber-500", text: "text-amber-700", bg: "bg-amber-50", ring: "ring-amber-200" };
-  return { bar: "bg-red-400", text: "text-red-700", bg: "bg-red-50", ring: "ring-red-200" };
+  if (score >= 80) return { bar: "bg-success", text: "text-success", bg: "bg-success-surface", ring: "ring-success/20" };
+  if (score >= 60) return { bar: "bg-info", text: "text-info", bg: "bg-info-surface", ring: "ring-info/20" };
+  if (score >= 40) return { bar: "bg-warning", text: "text-warning", bg: "bg-warning-surface", ring: "ring-warning/20" };
+  return { bar: "bg-destructive", text: "text-destructive", bg: "bg-destructive-surface", ring: "ring-destructive/20" };
 }
 
 function rankBadge(index: number) {
   if (index === 0)
     return (
-      <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-700 border border-amber-200">
+      <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-warning-surface text-warning border border-warning/30">
         <Crown className="h-2.5 w-2.5" /> #1
       </span>
     );
   return (
-    <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full text-[10px] font-semibold bg-gray-100 text-gray-500 border border-gray-200">
+    <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full text-[10px] font-semibold bg-muted text-muted-foreground border border-border">
       #{index + 1}
     </span>
   );
@@ -194,31 +194,31 @@ export default function SmartAssignCard({
     return (
       <Card className="p-5 space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-            <Users className="h-4 w-4 text-indigo-600" />
+          <h2 className="text-sm font-semibold text-foreground flex items-center gap-2">
+            <Users className="h-4 w-4 text-primary" />
             <span>🤖 AI Reviewer Suggestions</span>
           </h2>
         </div>
 
-        <div className="flex flex-col items-center justify-center py-8 bg-gradient-to-b from-indigo-50/50 to-transparent rounded-lg border border-dashed border-indigo-200/60">
-          <div className="h-12 w-12 rounded-full bg-indigo-100 flex items-center justify-center mb-4">
-            <Sparkles className="h-6 w-6 text-indigo-600" />
+        <div className="flex flex-col items-center justify-center py-8 bg-gradient-to-b from-primary/5 to-transparent rounded-lg border border-dashed border-primary/20">
+          <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+            <Sparkles className="h-6 w-6 text-primary" />
           </div>
-          <p className="text-sm font-medium text-gray-800 mb-1 text-center max-w-xs">
+          <p className="text-sm font-medium text-foreground mb-1 text-center max-w-xs">
             Automatically match papers with the most relevant reviewers
           </p>
-          <p className="text-xs text-gray-400 mb-4 text-center max-w-xs">
+          <p className="text-xs text-muted-foreground mb-4 text-center max-w-xs">
             Analyzes paper content and matches it with reviewer expertise and past assignments
           </p>
           <Button
             onClick={fetchSuggestions}
-            className="bg-indigo-600 hover:bg-indigo-700 text-white gap-2"
+            className="bg-primary hover:bg-primary-hover text-primary-foreground gap-2"
             size="sm"
           >
             <Sparkles className="h-4 w-4" />
             ⚡ Smart Assign Reviewers
           </Button>
-          <p className="text-[10px] text-gray-400 mt-2 flex items-center gap-1">
+          <p className="text-[10px] text-muted-foreground mt-2 flex items-center gap-1">
             <Zap className="h-3 w-3" /> Uses 1 AI analysis
           </p>
         </div>
@@ -231,21 +231,21 @@ export default function SmartAssignCard({
     return (
       <Card className="p-5 space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-            <Users className="h-4 w-4 text-indigo-600" />
+          <h2 className="text-sm font-semibold text-foreground flex items-center gap-2">
+            <Users className="h-4 w-4 text-primary" />
             <span>🤖 AI Reviewer Suggestions</span>
           </h2>
         </div>
 
         <div className="flex flex-col items-center justify-center py-12">
           <div className="relative">
-            <div className="h-14 w-14 rounded-full bg-indigo-100 flex items-center justify-center">
-              <Loader2 className="h-7 w-7 text-indigo-600 animate-spin" />
+            <div className="h-14 w-14 rounded-full bg-primary/10 flex items-center justify-center">
+              <Loader2 className="h-7 w-7 text-primary animate-spin" />
             </div>
-            <div className="absolute inset-0 rounded-full border-2 border-indigo-300/40 animate-ping" />
+            <div className="absolute inset-0 rounded-full border-2 border-primary/30/40 animate-ping" />
           </div>
-          <p className="text-sm text-gray-600 mt-5 font-medium">Finding best reviewers…</p>
-          <p className="text-xs text-gray-400 mt-1">Analyzing paper content &amp; reviewer expertise</p>
+          <p className="text-sm text-muted-foreground mt-5 font-medium">Finding best reviewers…</p>
+          <p className="text-xs text-muted-foreground mt-1">Analyzing paper content &amp; reviewer expertise</p>
         </div>
       </Card>
     );
@@ -257,20 +257,20 @@ export default function SmartAssignCard({
     return (
       <Card className="p-5 space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-            <Users className="h-4 w-4 text-indigo-600" />
+          <h2 className="text-sm font-semibold text-foreground flex items-center gap-2">
+            <Users className="h-4 w-4 text-primary" />
             <span>🤖 AI Reviewer Suggestions</span>
           </h2>
         </div>
 
-        <div className={`border rounded-lg p-4 ${isAccessError ? "bg-amber-50 border-amber-200" : "bg-red-50 border-red-200"}`}>
+        <div className={`border rounded-lg p-4 ${isAccessError ? "bg-warning-surface border-warning/30" : "bg-destructive-surface border-destructive/30"}`}>
           <div className="flex items-start gap-3">
-            <AlertTriangle className={`h-5 w-5 flex-shrink-0 mt-0.5 ${isAccessError ? "text-amber-500" : "text-red-500"}`} />
+            <AlertTriangle className={`h-5 w-5 flex-shrink-0 mt-0.5 ${isAccessError ? "text-warning" : "text-destructive"}`} />
             <div>
-              <p className={`text-sm font-medium ${isAccessError ? "text-amber-700" : "text-red-700"}`}>
+              <p className={`text-sm font-medium ${isAccessError ? "text-warning" : "text-destructive"}`}>
                 {isAccessError ? "Access Restricted" : "Suggestion Failed"}
               </p>
-              <p className={`text-sm mt-1 ${isAccessError ? "text-amber-600" : "text-red-600"}`}>
+              <p className={`text-sm mt-1 ${isAccessError ? "text-warning" : "text-destructive"}`}>
                 {isAccessError ? "You don't have access to assign reviewers." : error}
               </p>
             </div>
@@ -308,12 +308,12 @@ export default function SmartAssignCard({
       <Card className="p-5 space-y-4 overflow-hidden" ref={resultRef}>
         {/* Header */}
         <div className="flex items-center justify-between">
-          <h2 className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-            <Users className="h-4 w-4 text-indigo-600" />
+          <h2 className="text-sm font-semibold text-foreground flex items-center gap-2">
+            <Users className="h-4 w-4 text-primary" />
             <span>🤖 AI Reviewer Suggestions</span>
           </h2>
           <div className="flex items-center gap-2">
-            <Badge className="bg-indigo-50 text-indigo-600 text-[10px] tracking-wider uppercase border border-indigo-200">
+            <Badge className="bg-accent text-primary text-[10px] tracking-wider uppercase border border-primary/20">
               Top Reviewer Matches
             </Badge>
             <Button
@@ -331,7 +331,7 @@ export default function SmartAssignCard({
 
         {/* Fallback warning */}
         {fallback && (
-          <div className="bg-amber-50 border border-amber-200 rounded-md px-3 py-2 text-xs text-amber-700 flex items-center gap-1.5">
+          <div className="bg-warning-surface border border-warning/30 rounded-md px-3 py-2 text-xs text-warning flex items-center gap-1.5">
             <AlertTriangle className="h-3.5 w-3.5 flex-shrink-0" />
             AI temporarily unavailable — showing keyword-based suggestions.
           </div>
@@ -360,7 +360,7 @@ export default function SmartAssignCard({
                   <div className="flex items-start gap-3 flex-1 min-w-0">
                     {/* Avatar */}
                     <div className="relative flex-shrink-0">
-                      <div className="h-10 w-10 rounded-full bg-gradient-to-br from-indigo-100 to-indigo-200 flex items-center justify-center text-indigo-700 font-bold text-sm">
+                      <div className="h-10 w-10 rounded-full bg-gradient-to-br from-primary/10 to-primary/20 flex items-center justify-center text-primary font-bold text-sm">
                         {r.reviewer_name?.charAt(0)?.toUpperCase() || "R"}
                       </div>
                       <div className="absolute -top-1 -right-1">
@@ -371,23 +371,23 @@ export default function SmartAssignCard({
                     {/* Name + Details */}
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 flex-wrap">
-                        <p className="text-sm font-semibold text-gray-800 truncate">
+                        <p className="text-sm font-semibold text-foreground truncate">
                           {r.reviewer_name}
                         </p>
                         {isCurrentReviewer && (
-                          <Badge className="bg-blue-100 text-blue-700 text-[10px]">
+                          <Badge className="bg-info-surface text-info border border-info/30 text-[10px]">
                             Currently Assigned
                           </Badge>
                         )}
                       </div>
 
                       {r.reviewer_email && (
-                        <p className="text-xs text-gray-400 truncate mt-0.5">{r.reviewer_email}</p>
+                        <p className="text-xs text-muted-foreground truncate mt-0.5">{r.reviewer_email}</p>
                       )}
 
                       {/* Score Bar */}
                       <div className="mt-2 flex items-center gap-2">
-                        <div className="flex-1 bg-gray-100 rounded-full h-2 overflow-hidden">
+                        <div className="flex-1 bg-muted rounded-full h-2 overflow-hidden">
                           <div
                             className={`h-full rounded-full ${sc.bar} transition-all duration-700 ease-out`}
                             style={{ width: `${r.score}%` }}
@@ -400,7 +400,7 @@ export default function SmartAssignCard({
 
                       {/* Match label + workload */}
                       <div className="flex items-center gap-3 mt-2">
-                        <span className="text-[10px] text-gray-400 flex items-center gap-1">
+                        <span className="text-[10px] text-muted-foreground flex items-center gap-1">
                           📋 {r.current_workload} paper{r.current_workload !== 1 ? "s" : ""} assigned
                         </span>
                         <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${sc.bg} ${sc.text} font-medium`}>
@@ -410,10 +410,10 @@ export default function SmartAssignCard({
 
                       {/* Why this match? — expandable */}
                       <details className="mt-2 group">
-                        <summary className="text-[11px] text-indigo-500 cursor-pointer hover:text-indigo-700 transition-colors select-none">
+                        <summary className="text-[11px] text-primary cursor-pointer hover:text-primary-hover transition-colors select-none">
                           Why this match?
                         </summary>
-                        <p className="text-xs text-gray-500 mt-1 leading-relaxed pl-1 border-l-2 border-indigo-100">
+                        <p className="text-xs text-muted-foreground mt-1 leading-relaxed pl-1 border-l-2 border-primary/20">
                           {r.reason || "Relevant experience in similar research topics"}
                         </p>
                       </details>
@@ -429,8 +429,8 @@ export default function SmartAssignCard({
                         disabled
                         className={`gap-1.5 ${
                           isCurrentReviewer && !isAssigned
-                            ? "border-blue-200 text-blue-700 bg-blue-50"
-                            : "border-green-200 text-green-700 bg-green-50"
+                            ? "border-info/30 text-info bg-info-surface"
+                            : "border-success/30 text-success bg-success-surface"
                         }`}
                       >
                         <CheckCircle2 className="h-3.5 w-3.5" />
@@ -441,7 +441,7 @@ export default function SmartAssignCard({
                         size="sm"
                         onClick={() => handleAssign(r.reviewer_id)}
                         disabled={!!assigning || assigningAll}
-                        className="gap-1.5 bg-indigo-600 hover:bg-indigo-700 text-white"
+                        className="gap-1.5 bg-primary hover:bg-primary-hover text-primary-foreground"
                       >
                         {isAssigningThis ? (
                           <Loader2 className="h-3.5 w-3.5 animate-spin" />
@@ -468,7 +468,7 @@ export default function SmartAssignCard({
               onClick={handleAssignAll}
               disabled={assigningAll || !!assigning || allTopAssigned}
               variant="outline"
-              className="w-full gap-2 border-indigo-300 text-indigo-700 hover:bg-indigo-50"
+              className="w-full gap-2 border-primary/30 text-primary hover:bg-accent"
             >
               {assigningAll ? (
                 <Loader2 className="h-4 w-4 animate-spin" />
@@ -484,12 +484,12 @@ export default function SmartAssignCard({
 
         {/* Footer meta */}
         <div
-          className="opacity-0 border-t border-gray-100 pt-3"
+          className="opacity-0 border-t border-border pt-3"
           style={{ animation: `smartFadeIn 0.4s ease-out ${reviewers.length * 100 + 200}ms forwards` }}
         >
-          <div className="flex items-center justify-between text-xs text-gray-400">
+          <div className="flex items-center justify-between text-xs text-muted-foreground">
             <span className="flex items-center gap-1.5">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-indigo-400" />
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary" />
               AI-powered analysis
             </span>
             <span>

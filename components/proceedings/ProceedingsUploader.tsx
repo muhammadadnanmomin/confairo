@@ -97,8 +97,8 @@ export default function ProceedingsUploader({
 
   return (
     <Card className="p-6">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-        <Upload className="h-5 w-5 text-indigo-600" />
+      <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
+        <Upload className="h-5 w-5 text-primary" />
         {existingTitle ? "Replace Proceedings" : "Upload Proceedings"}
       </h3>
 
@@ -110,10 +110,10 @@ export default function ProceedingsUploader({
         onClick={() => inputRef.current?.click()}
         className={`cursor-pointer rounded-lg border-2 border-dashed p-8 text-center transition-colors ${
           dragOver
-            ? "border-indigo-400 bg-indigo-50"
+            ? "border-primary bg-primary/10"
             : file
-              ? "border-green-300 bg-green-50"
-              : "border-gray-300 hover:border-indigo-300 hover:bg-indigo-50/50"
+              ? "border-success bg-success-surface"
+              : "border-border hover:border-primary/40 hover:bg-accent"
         }`}
       >
         <input
@@ -126,49 +126,49 @@ export default function ProceedingsUploader({
 
         {file ? (
           <div className="flex items-center justify-center gap-3">
-            <FileText className="h-8 w-8 text-green-600" />
+            <FileText className="h-8 w-8 text-success" />
             <div className="text-left">
-              <p className="font-medium text-gray-900 text-sm">{file.name}</p>
-              <p className="text-xs text-gray-500">
+              <p className="font-medium text-foreground text-sm">{file.name}</p>
+              <p className="text-xs text-muted-foreground">
                 {(file.size / (1024 * 1024)).toFixed(2)} MB
               </p>
             </div>
             <button
               type="button"
               onClick={(e) => { e.stopPropagation(); setFile(null); }}
-              className="ml-2 cursor-pointer p-1 rounded hover:bg-gray-200"
+              className="ml-2 cursor-pointer p-1 rounded hover:bg-muted"
             >
-              <X className="h-4 w-4 text-gray-500" />
+              <X className="h-4 w-4 text-muted-foreground" />
             </button>
           </div>
         ) : (
           <>
-            <Upload className="mx-auto h-10 w-10 text-gray-400 mb-2" />
-            <p className="text-sm text-gray-600">
-              Drag & drop a PDF here, or <span className="text-indigo-600 font-medium">browse</span>
+            <Upload className="mx-auto h-10 w-10 text-muted-foreground mb-2" />
+            <p className="text-sm text-muted-foreground">
+              Drag & drop a PDF here, or <span className="text-primary font-medium">browse</span>
             </p>
-            <p className="text-xs text-gray-400 mt-1">PDF, max 50 MB</p>
+            <p className="text-xs text-muted-foreground mt-1">PDF, max 50 MB</p>
           </>
         )}
       </div>
 
       {/* Title */}
       <div className="mt-4">
-        <label className="block text-sm font-medium text-gray-700 mb-1">
-          Title <span className="text-red-500">*</span>
+        <label className="block text-sm font-medium text-foreground mb-1">
+          Title <span className="text-destructive">*</span>
         </label>
         <input
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="e.g. ICML 2026 Conference Proceedings"
-          className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none"
+          className="w-full rounded-lg border border-input px-3 py-2 text-sm focus:border-primary focus:ring-1 focus:ring-ring outline-none"
         />
       </div>
 
       {/* Description */}
       <div className="mt-3">
-        <label className="block text-sm font-medium text-gray-700 mb-1">
+        <label className="block text-sm font-medium text-foreground mb-1">
           Description
         </label>
         <textarea
@@ -176,20 +176,20 @@ export default function ProceedingsUploader({
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Optional description..."
           rows={2}
-          className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none resize-none"
+          className="w-full rounded-lg border border-input px-3 py-2 text-sm focus:border-primary focus:ring-1 focus:ring-ring outline-none resize-none"
         />
       </div>
 
       {/* Status */}
       {status === "error" && (
-        <div className="mt-3 flex items-center gap-2 rounded-lg bg-red-50 border border-red-200 px-3 py-2 text-sm text-red-700">
+        <div className="mt-3 flex items-center gap-2 rounded-lg bg-destructive-surface border border-destructive/30 px-3 py-2 text-sm text-destructive">
           <AlertCircle className="h-4 w-4 shrink-0" />
           {errorMsg}
         </div>
       )}
 
       {status === "success" && (
-        <div className="mt-3 flex items-center gap-2 rounded-lg bg-green-50 border border-green-200 px-3 py-2 text-sm text-green-700">
+        <div className="mt-3 flex items-center gap-2 rounded-lg bg-success-surface border border-success/30 px-3 py-2 text-sm text-success">
           <CheckCircle className="h-4 w-4 shrink-0" />
           Proceedings uploaded and published successfully!
         </div>
@@ -199,7 +199,7 @@ export default function ProceedingsUploader({
       <Button
         onClick={handleUpload}
         disabled={!file || !title.trim() || uploading}
-        className="mt-4 w-full gap-2 bg-indigo-600 hover:bg-indigo-700"
+        className="mt-4 w-full gap-2 bg-primary hover:bg-primary-hover text-primary-foreground"
       >
         {uploading ? (
           <>

@@ -26,12 +26,12 @@ interface ListViewProps {
 }
 
 const TYPE_COLORS: Record<string, string> = {
-    keynote: "bg-purple-100 text-purple-700",
-    technical: "bg-blue-100 text-blue-700",
-    invited: "bg-teal-100 text-teal-700",
-    workshop: "bg-orange-100 text-orange-700",
-    ceremony: "bg-pink-100 text-pink-700",
-    break: "bg-gray-100 text-gray-600",
+    keynote: "bg-primary/10 text-primary border border-primary/20",
+    technical: "bg-info-surface text-info border border-info/30",
+    invited: "bg-success-surface text-success border border-success/30",
+    workshop: "bg-warning-surface text-warning border border-warning/30",
+    ceremony: "bg-accent text-accent-foreground border border-border",
+    break: "bg-muted text-muted-foreground border border-border",
 };
 
 const MODE_ICONS = {
@@ -207,7 +207,7 @@ export function ListView({
                                                         <Button
                                                             size="icon"
                                                             variant="ghost"
-                                                            className="h-7 w-7 text-red-500 hover:text-red-700"
+                                                            className="h-7 w-7 text-destructive hover:text-destructive"
                                                             onClick={() => handleDelete(session.id)}
                                                         >
                                                             <Trash2 className="h-3.5 w-3.5" />

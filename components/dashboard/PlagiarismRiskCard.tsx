@@ -53,39 +53,39 @@ interface PlagiarismRiskCardProps {
 function riskColors(level: string) {
   if (level === "High")
     return {
-      bg: "bg-red-100",
-      text: "text-red-700",
-      border: "border-red-200",
-      bar: "bg-gradient-to-r from-red-400 to-red-600",
-      ring: "ring-red-400/30",
-      glow: "shadow-red-200/50",
-      lightBg: "bg-red-50",
+      bg: "bg-destructive-surface",
+      text: "text-destructive",
+      border: "border-destructive/30",
+      bar: "bg-gradient-to-r from-destructive/80 to-destructive",
+      ring: "ring-destructive/20",
+      glow: "shadow-destructive/20",
+      lightBg: "bg-destructive-surface",
     };
   if (level === "Medium")
     return {
-      bg: "bg-amber-100",
-      text: "text-amber-700",
-      border: "border-amber-200",
-      bar: "bg-gradient-to-r from-amber-400 to-amber-600",
-      ring: "ring-amber-400/30",
-      glow: "shadow-amber-200/50",
-      lightBg: "bg-amber-50",
+      bg: "bg-warning-surface",
+      text: "text-warning",
+      border: "border-warning/30",
+      bar: "bg-gradient-to-r from-warning/80 to-warning",
+      ring: "ring-warning/20",
+      glow: "shadow-warning/20",
+      lightBg: "bg-warning-surface",
     };
   return {
-    bg: "bg-green-100",
-    text: "text-green-700",
-    border: "border-green-200",
-    bar: "bg-gradient-to-r from-green-400 to-green-600",
-    ring: "ring-green-400/30",
+    bg: "bg-success-surface",
+    text: "text-success",
+    border: "border-success/30",
+    bar: "bg-gradient-to-r from-success/80 to-success",
+    ring: "ring-success/20",
     glow: "shadow-green-200/50",
-    lightBg: "bg-green-50",
+    lightBg: "bg-success-surface",
   };
 }
 
 function riskIcon(level: string) {
-  if (level === "High") return <FileWarning className="h-5 w-5 text-red-600" />;
-  if (level === "Medium") return <AlertTriangle className="h-5 w-5 text-amber-600" />;
-  return <CheckCircle2 className="h-5 w-5 text-green-600" />;
+  if (level === "High") return <FileWarning className="h-5 w-5 text-destructive" />;
+  if (level === "Medium") return <AlertTriangle className="h-5 w-5 text-warning" />;
+  return <CheckCircle2 className="h-5 w-5 text-success" />;
 }
 
 /* ─── Animated Section ─────────────────────────────────────── */
@@ -127,7 +127,7 @@ function FullReportModal({
         {/* Header */}
         <div className="flex items-center justify-between">
           <h2 className="font-bold text-lg flex items-center gap-2">
-            <Search className="h-5 w-5 text-indigo-600" />
+            <Search className="h-5 w-5 text-primary" />
             Full Similarity Report
           </h2>
           <Button variant="ghost" size="sm" onClick={onClose}>
@@ -140,30 +140,30 @@ function FullReportModal({
           <div className="flex items-center gap-3 mb-3">
             {riskIcon(result.risk_level)}
             <div>
-              <p className="font-semibold text-gray-800">
+              <p className="font-semibold text-foreground">
                 Risk Score: {result.risk_score}/100 — {result.risk_level} Risk
               </p>
-              <p className="text-sm text-gray-600 mt-0.5">{result.actionable_message}</p>
+              <p className="text-sm text-muted-foreground mt-0.5">{result.actionable_message}</p>
             </div>
           </div>
 
           {/* Score breakdown */}
           <div className="grid grid-cols-2 gap-3 mt-3">
             <div className="bg-white/60 rounded-md p-3">
-              <p className="text-xs text-gray-500 uppercase tracking-wide">Pattern Analysis</p>
-              <p className="text-lg font-bold text-gray-700">{sa.score}/100</p>
+              <p className="text-xs text-muted-foreground uppercase tracking-wide">Pattern Analysis</p>
+              <p className="text-lg font-bold text-foreground">{sa.score}/100</p>
             </div>
             <div className="bg-white/60 rounded-md p-3">
-              <p className="text-xs text-gray-500 uppercase tracking-wide">Content Analysis</p>
-              <p className="text-lg font-bold text-gray-700">{result.llm_score}/100</p>
+              <p className="text-xs text-muted-foreground uppercase tracking-wide">Content Analysis</p>
+              <p className="text-lg font-bold text-foreground">{result.llm_score}/100</p>
             </div>
           </div>
         </div>
 
         {/* Structural Details */}
         <div>
-          <h3 className="text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
-            <BarChart3 className="h-4 w-4 text-indigo-500" />
+          <h3 className="text-sm font-semibold text-foreground mb-2 flex items-center gap-2">
+            <BarChart3 className="h-4 w-4 text-primary" />
             📊 Detailed Analysis
           </h3>
           <div className="grid grid-cols-2 gap-3">
@@ -193,20 +193,20 @@ function FullReportModal({
         {/* Suspicious Sections */}
         {result.suspicious_sections.length > 0 && (
           <div>
-            <h3 className="text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
-              <Flag className="h-4 w-4 text-red-500" />
+            <h3 className="text-sm font-semibold text-foreground mb-2 flex items-center gap-2">
+              <Flag className="h-4 w-4 text-destructive" />
               🚩 Flagged Sections
             </h3>
             <div className="space-y-2">
               {result.suspicious_sections.map((section, i) => (
                 <div
                   key={i}
-                  className="border border-red-100 bg-red-50/50 rounded-lg p-3"
+                  className="border border-destructive/20 bg-destructive-surface rounded-lg p-3"
                 >
-                  <p className="text-sm text-gray-700 italic border-l-2 border-red-300 pl-3">
+                  <p className="text-sm text-foreground italic border-l-2 border-destructive/40 pl-3">
                     &ldquo;{section.text}&rdquo;
                   </p>
-                  <p className="text-xs text-red-600 mt-1.5 flex items-center gap-1">
+                  <p className="text-xs text-destructive mt-1.5 flex items-center gap-1">
                     <AlertTriangle className="h-3 w-3 flex-shrink-0" />
                     {section.reason}
                   </p>
@@ -218,19 +218,19 @@ function FullReportModal({
 
         {/* Insights */}
         <div>
-          <h3 className="text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
-            <Brain className="h-4 w-4 text-purple-500" />
+          <h3 className="text-sm font-semibold text-foreground mb-2 flex items-center gap-2">
+            <Brain className="h-4 w-4 text-primary" />
             🧠 AI Insights
           </h3>
-          <p className="text-sm text-gray-600 leading-relaxed">{result.insights}</p>
+          <p className="text-sm text-muted-foreground leading-relaxed">{result.insights}</p>
           {result.writing_quality && (
-            <p className="text-sm text-gray-500 mt-2 italic">{result.writing_quality}</p>
+            <p className="text-sm text-muted-foreground mt-2 italic">{result.writing_quality}</p>
           )}
         </div>
 
         {/* Disclaimer */}
         <div className="border-t pt-3 space-y-2">
-          <p className="text-xs text-gray-400 flex items-center gap-1">
+          <p className="text-xs text-muted-foreground flex items-center gap-1">
             <Info className="h-3 w-3" />
             AI-based similarity detection. Not a definitive plagiarism check. Results are
             indicative and should be reviewed by a human.
@@ -258,10 +258,10 @@ function MetricCard({
   description: string;
 }) {
   return (
-    <div className="bg-gray-50 rounded-md p-3 border border-gray-100">
-      <p className="text-xs text-gray-500 uppercase tracking-wide">{label}</p>
-      <p className="text-lg font-bold text-gray-700 mt-0.5">{value}</p>
-      <p className="text-xs text-gray-400 mt-0.5">{description}</p>
+    <div className="bg-muted rounded-md p-3 border border-border">
+      <p className="text-xs text-muted-foreground uppercase tracking-wide">{label}</p>
+      <p className="text-lg font-bold text-foreground mt-0.5">{value}</p>
+      <p className="text-xs text-muted-foreground mt-0.5">{description}</p>
     </div>
   );
 }
@@ -381,23 +381,23 @@ export default function PlagiarismRiskCard({ submissionId }: PlagiarismRiskCardP
     return (
       <Card className="p-5 space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-            <ShieldCheck className="h-4 w-4 text-indigo-600" />
+          <h2 className="text-sm font-semibold text-foreground flex items-center gap-2">
+            <ShieldCheck className="h-4 w-4 text-primary" />
             <span>🔍 AI Plagiarism Check</span>
           </h2>
 
         </div>
 
-        <div className="flex flex-col items-center justify-center py-8 bg-gradient-to-b from-indigo-50/50 to-transparent rounded-lg border border-dashed border-indigo-200/60">
-          <div className="h-12 w-12 rounded-full bg-indigo-100 flex items-center justify-center mb-4">
-            <Search className="h-6 w-6 text-indigo-600" />
+        <div className="flex flex-col items-center justify-center py-8 bg-gradient-to-b from-primary/5 to-transparent rounded-lg border border-dashed border-primary/20">
+          <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+            <Search className="h-6 w-6 text-primary" />
           </div>
 
           <div className="text-center mb-4">
-            <p className="text-sm font-medium text-gray-800 mb-1">
-              Status: <span className="text-gray-500">Not analyzed yet</span>
+            <p className="text-sm font-medium text-foreground mb-1">
+              Status: <span className="text-muted-foreground">Not analyzed yet</span>
             </p>
-            <p className="text-xs text-gray-400 max-w-xs">
+            <p className="text-xs text-muted-foreground max-w-xs">
               Detect similarity patterns, repeated phrasing, and generic content using AI
             </p>
           </div>
@@ -405,8 +405,8 @@ export default function PlagiarismRiskCard({ submissionId }: PlagiarismRiskCardP
           <Button
             onClick={() => limitReached ? setShowLimitModal(true) : analyzeSimilarity(false)}
             className={limitReached
-              ? "bg-gray-400 hover:bg-gray-400 text-white gap-2 cursor-not-allowed"
-              : "bg-indigo-600 hover:bg-indigo-700 text-white gap-2"}
+              ? "bg-muted-foreground/40 hover:bg-muted-foreground/40 text-white gap-2 cursor-not-allowed"
+              : "bg-primary hover:bg-primary-hover text-white gap-2"}
             size="sm"
             disabled={limitReached}
           >
@@ -414,10 +414,10 @@ export default function PlagiarismRiskCard({ submissionId }: PlagiarismRiskCardP
             {limitReached ? "Limit Reached" : "Analyze Similarity"}
           </Button>
 
-          <p className="text-[10px] text-gray-400 mt-2 flex items-center gap-1">
+          <p className="text-[10px] text-muted-foreground mt-2 flex items-center gap-1">
             ⚡ Uses 1 AI analysis
           </p>
-          <p className="text-[10px] text-gray-400 mt-1 text-center max-w-[280px]">
+          <p className="text-[10px] text-muted-foreground mt-1 text-center max-w-[280px]">
             This is an AI-based similarity check, not a definitive plagiarism result
           </p>
         </div>
@@ -430,8 +430,8 @@ export default function PlagiarismRiskCard({ submissionId }: PlagiarismRiskCardP
     return (
       <Card className="p-5 space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-            <ShieldCheck className="h-4 w-4 text-indigo-600" />
+          <h2 className="text-sm font-semibold text-foreground flex items-center gap-2">
+            <ShieldCheck className="h-4 w-4 text-primary" />
             <span>🔍 AI Plagiarism Check</span>
           </h2>
 
@@ -439,15 +439,15 @@ export default function PlagiarismRiskCard({ submissionId }: PlagiarismRiskCardP
 
         <div className="flex flex-col items-center justify-center py-12">
           <div className="relative">
-            <div className="h-14 w-14 rounded-full bg-indigo-100 flex items-center justify-center">
-              <Loader2 className="h-7 w-7 text-indigo-600 animate-spin" />
+            <div className="h-14 w-14 rounded-full bg-primary/10 flex items-center justify-center">
+              <Loader2 className="h-7 w-7 text-primary animate-spin" />
             </div>
-            <div className="absolute inset-0 rounded-full border-2 border-indigo-300/40 animate-ping" />
+            <div className="absolute inset-0 rounded-full border-2 border-primary/30 animate-ping" />
           </div>
-          <p className="text-sm text-gray-600 mt-5 font-medium">
+          <p className="text-sm text-muted-foreground mt-5 font-medium">
             Analyzing similarity patterns…
           </p>
-          <p className="text-xs text-gray-400 mt-1">
+          <p className="text-xs text-muted-foreground mt-1">
             This may take a moment for thorough analysis
           </p>
         </div>
@@ -461,20 +461,20 @@ export default function PlagiarismRiskCard({ submissionId }: PlagiarismRiskCardP
     return (
       <Card className="p-5 space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-            <ShieldCheck className="h-4 w-4 text-indigo-600" />
+          <h2 className="text-sm font-semibold text-foreground flex items-center gap-2">
+            <ShieldCheck className="h-4 w-4 text-primary" />
             <span>🔍 AI Plagiarism Check</span>
           </h2>
         </div>
 
-        <div className={`border rounded-lg p-4 ${isAccessError ? "bg-amber-50 border-amber-200" : "bg-red-50 border-red-200"}`}>
+        <div className={`border rounded-lg p-4 ${isAccessError ? "bg-warning-surface border-warning/30" : "bg-destructive-surface border-destructive/30"}`}>
           <div className="flex items-start gap-3">
-            <AlertTriangle className={`h-5 w-5 flex-shrink-0 mt-0.5 ${isAccessError ? "text-amber-500" : "text-red-500"}`} />
+            <AlertTriangle className={`h-5 w-5 flex-shrink-0 mt-0.5 ${isAccessError ? "text-warning" : "text-destructive"}`} />
             <div>
-              <p className={`text-sm font-medium ${isAccessError ? "text-amber-700" : "text-red-700"}`}>
+              <p className={`text-sm font-medium ${isAccessError ? "text-warning" : "text-destructive"}`}>
                 {isAccessError ? "Access Restricted" : "Analysis Failed"}
               </p>
-              <p className={`text-sm mt-1 ${isAccessError ? "text-amber-600" : "text-red-600"}`}>
+              <p className={`text-sm mt-1 ${isAccessError ? "text-warning" : "text-destructive"}`}>
                 {isAccessError ? "You don't have access to this action. Contact the conference organizer." : error}
               </p>
             </div>
@@ -520,12 +520,12 @@ export default function PlagiarismRiskCard({ submissionId }: PlagiarismRiskCardP
       <Card className="p-5 space-y-5 overflow-hidden" ref={resultRef}>
         {/* Header */}
         <div className="flex items-center justify-between">
-          <h2 className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-            <ShieldCheck className="h-4 w-4 text-indigo-600" />
+          <h2 className="text-sm font-semibold text-foreground flex items-center gap-2">
+            <ShieldCheck className="h-4 w-4 text-primary" />
             <span>🔍 AI Plagiarism Check</span>
           </h2>
           <div className="flex items-center gap-2">
-            <Badge className="bg-indigo-50 text-indigo-600 text-[10px] tracking-wider uppercase border border-indigo-200">
+            <Badge className="bg-primary/10 text-primary text-[10px] tracking-wider uppercase border border-primary/20">
               AI Analysis
             </Badge>
             <Button
@@ -544,7 +544,7 @@ export default function PlagiarismRiskCard({ submissionId }: PlagiarismRiskCardP
         {/* Cache indicator */}
         {cached && cachedAt && (
           <FadeInSection>
-            <div className="bg-blue-50 border border-blue-200 rounded-md px-3 py-2 text-xs text-blue-600 flex items-center gap-1.5">
+            <div className="bg-info-surface border border-info/30 rounded-md px-3 py-2 text-xs text-info flex items-center gap-1.5">
               <CheckCircle2 className="h-3.5 w-3.5" />
               Instant result (optimized) — analyzed{" "}
               {new Date(cachedAt).toLocaleDateString("en-US", {
@@ -562,7 +562,7 @@ export default function PlagiarismRiskCard({ submissionId }: PlagiarismRiskCardP
             <div className="flex items-center gap-2 mb-3">
               {riskIcon(result.risk_level)}
               <div className="flex-1">
-                <p className="text-xs text-gray-500 uppercase tracking-wider flex items-center gap-1">
+                <p className="text-xs text-muted-foreground uppercase tracking-wider flex items-center gap-1">
                   <BarChart3 className="h-3 w-3" />
                   📊 Risk Score
                 </p>
@@ -574,7 +574,7 @@ export default function PlagiarismRiskCard({ submissionId }: PlagiarismRiskCardP
 
             {/* Progress bar */}
             <div className="flex items-center gap-3">
-              <div className="flex-1 bg-white/60 rounded-full h-4 overflow-hidden border border-gray-200/50 shadow-inner">
+              <div className="flex-1 bg-white/60 rounded-full h-4 overflow-hidden border border-border/50 shadow-inner">
                 <div
                   className={`h-full rounded-full ${rc.bar} shadow-sm`}
                   style={{
@@ -583,18 +583,18 @@ export default function PlagiarismRiskCard({ submissionId }: PlagiarismRiskCardP
                   }}
                 />
               </div>
-              <span className="text-lg font-bold text-gray-700 tabular-nums w-14 text-right">
+              <span className="text-lg font-bold text-foreground tabular-nums w-14 text-right">
                 {result.risk_score}%
               </span>
             </div>
 
             {/* Score context */}
-            <div className="mt-2 text-xs text-gray-500">
+            <div className="mt-2 text-xs text-muted-foreground">
               <span>Detailed similarity analysis available</span>
               <span className="mx-2">•</span>
               <button
                 onClick={() => setShowFullReport(true)}
-                className="cursor-pointer text-indigo-500 hover:text-indigo-700 underline underline-offset-2 transition-colors"
+                className="cursor-pointer text-primary hover:text-primary-hover underline underline-offset-2 transition-colors"
               >
                 View Details
               </button>
@@ -611,7 +611,7 @@ export default function PlagiarismRiskCard({ submissionId }: PlagiarismRiskCardP
         </FadeInSection>
 
         {/* Divider */}
-        <div className="border-t border-gray-100" />
+        <div className="border-t border-border" />
 
         {/* ── Suspicious Sections ──────────────────────────── */}
         {result.suspicious_sections.length > 0 && (
@@ -619,11 +619,11 @@ export default function PlagiarismRiskCard({ submissionId }: PlagiarismRiskCardP
             <div>
               <div className="flex items-center gap-2 mb-3">
                 <span className="text-base">🚩</span>
-                <h3 className="text-sm font-semibold text-gray-700 flex items-center gap-1.5">
-                  <Flag className="h-3.5 w-3.5 text-red-500" />
+                <h3 className="text-sm font-semibold text-foreground flex items-center gap-1.5">
+                  <Flag className="h-3.5 w-3.5 text-destructive" />
                   Flagged Sections
                 </h3>
-                <Badge className="bg-gray-100 text-gray-500 text-[10px]">
+                <Badge className="bg-muted text-muted-foreground text-[10px]">
                   {result.suspicious_sections.length}
                 </Badge>
               </div>
@@ -632,15 +632,15 @@ export default function PlagiarismRiskCard({ submissionId }: PlagiarismRiskCardP
                 {result.suspicious_sections.map((section, i) => (
                   <div
                     key={i}
-                    className="border border-red-100 bg-red-50/30 rounded-lg p-3 opacity-0"
+                    className="border border-destructive/20 bg-destructive-surface rounded-lg p-3 opacity-0"
                     style={{
                       animation: `plagiarismFadeInUp 0.4s ease-out ${350 + i * 80}ms forwards`,
                     }}
                   >
-                    <p className="text-sm text-gray-700 italic border-l-2 border-red-300 pl-3 leading-relaxed">
+                    <p className="text-sm text-foreground italic border-l-2 border-destructive/40 pl-3 leading-relaxed">
                       &ldquo;{section.text}&rdquo;
                     </p>
-                    <p className="text-xs text-red-600 mt-1.5 flex items-center gap-1">
+                    <p className="text-xs text-destructive mt-1.5 flex items-center gap-1">
                       <AlertTriangle className="h-3 w-3 flex-shrink-0" />
                       {section.reason}
                     </p>
@@ -656,17 +656,17 @@ export default function PlagiarismRiskCard({ submissionId }: PlagiarismRiskCardP
           <div>
             <div className="flex items-center gap-2 mb-2">
               <span className="text-base">🧠</span>
-              <h3 className="text-sm font-semibold text-gray-700 flex items-center gap-1.5">
-                <Brain className="h-3.5 w-3.5 text-purple-500" />
+              <h3 className="text-sm font-semibold text-foreground flex items-center gap-1.5">
+                <Brain className="h-3.5 w-3.5 text-primary" />
                 AI Insights
               </h3>
             </div>
             <div className="pl-7">
-              <p className="text-sm text-gray-600 leading-relaxed">{result.insights}</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">{result.insights}</p>
               {result.writing_quality && (
-                <p className="text-sm text-gray-500 mt-2 italic">{result.writing_quality}</p>
+                <p className="text-sm text-muted-foreground mt-2 italic">{result.writing_quality}</p>
               )}
-              <p className="text-xs text-gray-400 mt-2">
+              <p className="text-xs text-muted-foreground mt-2">
                 This section shows similarity patterns often found in reused or templated content.
               </p>
             </div>
@@ -700,10 +700,10 @@ export default function PlagiarismRiskCard({ submissionId }: PlagiarismRiskCardP
 
         {/* ── Footer ───────────────────────────────────────── */}
         <FadeInSection delay={700}>
-          <div className="border-t border-gray-100 pt-3 space-y-1">
+          <div className="border-t border-border pt-3 space-y-1">
             {/* Fallback banner */}
             {fallback && (
-              <div className="bg-amber-50 border border-amber-200 rounded-md px-3 py-2 text-xs text-amber-700 flex items-center gap-1.5 mb-2">
+              <div className="bg-warning-surface border border-warning/30 rounded-md px-3 py-2 text-xs text-warning flex items-center gap-1.5 mb-2">
                 <AlertTriangle className="h-3.5 w-3.5 flex-shrink-0" />
                 ⚠️ Limited analysis — showing basic results. Try again shortly.
               </div>
@@ -711,18 +711,18 @@ export default function PlagiarismRiskCard({ submissionId }: PlagiarismRiskCardP
 
             {/* Cooldown message */}
             {cooldownMsg && (
-              <div className="bg-blue-50 border border-blue-200 rounded-md px-3 py-2 text-xs text-blue-600 flex items-center gap-1.5 mb-2">
+              <div className="bg-info-surface border border-info/30 rounded-md px-3 py-2 text-xs text-info flex items-center gap-1.5 mb-2">
                 ⏳ {cooldownMsg}
               </div>
             )}
 
-            <p className="text-xs text-gray-400 flex items-center gap-1">
+            <p className="text-xs text-muted-foreground flex items-center gap-1">
               <Info className="h-3 w-3" />
               AI-based similarity detection. Not a definitive plagiarism check.
             </p>
-            <div className="flex items-center justify-between text-xs text-gray-400">
+            <div className="flex items-center justify-between text-xs text-muted-foreground">
               <span className="flex items-center gap-1.5">
-                <span className="inline-block h-1.5 w-1.5 rounded-full bg-indigo-400" />
+                <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary" />
                 Advanced AI analysis
               </span>
               <span>

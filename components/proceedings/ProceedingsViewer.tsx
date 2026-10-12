@@ -64,14 +64,14 @@ export default function ProceedingsViewer({
     <Card className="mx-auto max-w-lg p-8">
       {/* Header */}
       <div className="flex items-center gap-3 mb-4">
-        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-indigo-50">
-          <BookOpen className="h-6 w-6 text-indigo-600" />
+        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent">
+          <BookOpen className="h-6 w-6 text-primary" />
         </div>
         <div>
-          <h2 className="text-xl font-semibold text-gray-900">
+          <h2 className="text-xl font-semibold text-foreground">
             📚 Conference Proceedings
           </h2>
-          <p className="text-xs text-gray-400 mt-0.5">
+          <p className="text-xs text-muted-foreground mt-0.5">
             Published {new Date(createdAt).toLocaleDateString("en-IN", {
               day: "numeric",
               month: "short",
@@ -83,9 +83,9 @@ export default function ProceedingsViewer({
 
       {/* Title & Description */}
       <div className="mb-6">
-        <h3 className="text-lg font-medium text-gray-800">{title}</h3>
+        <h3 className="text-lg font-medium text-foreground">{title}</h3>
         {description && (
-          <p className="mt-1 text-sm text-gray-500 leading-relaxed">
+          <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
             {description}
           </p>
         )}
@@ -96,7 +96,7 @@ export default function ProceedingsViewer({
         <Button
           onClick={handleView}
           disabled={loading}
-          className="flex-1 gap-2 bg-indigo-600 hover:bg-indigo-700"
+          className="flex-1 gap-2 bg-primary hover:bg-primary-hover text-primary-foreground"
         >
           {loading ? (
             <RefreshCw className="h-4 w-4 animate-spin" />
@@ -122,7 +122,7 @@ export default function ProceedingsViewer({
       </div>
 
       {/* Security note */}
-      <p className="mt-4 text-[11px] text-gray-400 text-center">
+      <p className="mt-4 text-[11px] text-muted-foreground text-center">
         Links expire after 5 minutes and are regenerated on each request.
       </p>
     </Card>

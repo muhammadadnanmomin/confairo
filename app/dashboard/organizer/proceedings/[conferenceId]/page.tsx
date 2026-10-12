@@ -88,7 +88,7 @@ export default function OrganizerProceedingsPage() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center py-20 text-gray-500">
+      <div className="flex items-center justify-center py-20 text-muted-foreground">
         Loading proceedings…
       </div>
     );
@@ -99,7 +99,7 @@ export default function OrganizerProceedingsPage() {
       {/* Back link */}
       <Link
         href="/dashboard/organizer/conferences"
-        className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-indigo-600 transition-colors"
+        className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors"
       >
         <ArrowLeft className="h-4 w-4" />
         Back to Conferences
@@ -108,11 +108,11 @@ export default function OrganizerProceedingsPage() {
       {/* Header */}
       <div>
         <h1 className="text-2xl font-bold tracking-tight flex items-center gap-2">
-          <BookOpen className="h-6 w-6 text-indigo-600" />
+          <BookOpen className="h-6 w-6 text-primary" />
           Manage Proceedings
         </h1>
         {conference && (
-          <p className="text-gray-500 mt-1">
+          <p className="text-muted-foreground mt-1">
             {conference.title}
             {conference.short_name && (
               <Badge variant="secondary" className="ml-2 text-[11px]">
@@ -128,25 +128,25 @@ export default function OrganizerProceedingsPage() {
         <Card className="p-5">
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-green-50">
-                <FileText className="h-5 w-5 text-green-600" />
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-success-surface">
+                <FileText className="h-5 w-5 text-success" />
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <h3 className="font-medium text-gray-900">
+                  <h3 className="font-medium text-foreground">
                     {proceedings.title}
                   </h3>
-                  <Badge className="bg-green-100 text-green-700 border-green-200 hover:bg-green-100 text-[11px]">
+                  <Badge className="bg-success-surface text-success border-success/30 hover:bg-success-surface text-[11px]">
                     <CheckCircle className="h-3 w-3" />
                     Published
                   </Badge>
                 </div>
                 {proceedings.description && (
-                  <p className="text-sm text-gray-500 mt-0.5">
+                  <p className="text-sm text-muted-foreground mt-0.5">
                     {proceedings.description}
                   </p>
                 )}
-                <p className="text-xs text-gray-400 mt-1">
+                <p className="text-xs text-muted-foreground mt-1">
                   Uploaded {new Date(proceedings.created_at).toLocaleDateString("en-IN", {
                     day: "numeric",
                     month: "short",

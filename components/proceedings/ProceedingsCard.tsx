@@ -43,23 +43,23 @@ export default function ProceedingsCard({
   return (
     <Card className="overflow-hidden">
       {/* Gradient header strip */}
-      <div className="h-1.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-600" />
+      <div className="h-1.5 bg-gradient-to-r from-primary via-primary-hover to-primary" />
 
       <div className="p-6 space-y-5">
         {/* Top row: icon + conference name + badge */}
         <div className="flex items-start justify-between gap-3">
           <div className="flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-50 shrink-0">
-              <BookOpen className="h-5 w-5 text-indigo-600" />
+            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-accent shrink-0">
+              <BookOpen className="h-5 w-5 text-primary" />
             </div>
             <div>
-              <h2 className="text-lg font-semibold text-gray-900 leading-tight">
+              <h2 className="text-lg font-semibold text-foreground leading-tight">
                 📚 Conference Proceedings
               </h2>
-              <p className="text-sm text-gray-500 mt-0.5">
+              <p className="text-sm text-muted-foreground mt-0.5">
                 {conferenceTitle}
                 {conferenceShortName && (
-                  <span className="ml-1 text-gray-400">
+                  <span className="ml-1 text-muted-foreground">
                     ({conferenceShortName})
                   </span>
                 )}
@@ -72,15 +72,15 @@ export default function ProceedingsCard({
 
         {/* Title & Description */}
         <div className="space-y-1">
-          <h3 className="text-base font-medium text-gray-800">
+          <h3 className="text-base font-medium text-foreground">
             {proceedingsTitle}
           </h3>
           {proceedingsDescription && (
-            <p className="text-sm text-gray-500 leading-relaxed">
+            <p className="text-sm text-muted-foreground leading-relaxed">
               {proceedingsDescription}
             </p>
           )}
-          <p className="text-xs text-gray-400 pt-1 flex items-center gap-1">
+          <p className="text-xs text-muted-foreground pt-1 flex items-center gap-1">
             <Clock className="h-3 w-3" />
             Published{" "}
             {new Date(proceedingsCreatedAt).toLocaleDateString("en-IN", {
@@ -92,8 +92,8 @@ export default function ProceedingsCard({
         </div>
 
         {/* Security notice */}
-        <div className="flex items-center gap-2 rounded-lg bg-slate-50 border border-slate-200 px-4 py-3 text-xs text-slate-600">
-          <ShieldCheck className="h-4 w-4 text-indigo-500 shrink-0" />
+        <div className="flex items-center gap-2 rounded-lg bg-muted/50 border border-border px-4 py-3 text-xs text-muted-foreground">
+          <ShieldCheck className="h-4 w-4 text-primary shrink-0" />
           <span>
             🔐 This document is protected. Access is logged and links expire
             after 5 minutes.
@@ -107,7 +107,7 @@ export default function ProceedingsCard({
         />
 
         {/* Footer meta */}
-        <div className="flex items-center justify-between text-[11px] text-gray-400 pt-1 border-t">
+        <div className="flex items-center justify-between text-[11px] text-muted-foreground pt-1 border-t">
           {lastAccessedAt ? (
             <span>Last accessed: {timeAgo(lastAccessedAt)}</span>
           ) : (

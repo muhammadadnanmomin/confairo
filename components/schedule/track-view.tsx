@@ -155,7 +155,7 @@ export function TrackView({
                                 {timeSlots.map((slot) => (
                                     <div
                                         key={slot.hour}
-                                        className="absolute w-full border-t border-dashed border-gray-100"
+                                        className="absolute w-full border-t border-dashed border-border"
                                         style={{ top: (slot.hour - 8) * SLOT_HEIGHT }}
                                     />
                                 ))}

@@ -12,19 +12,19 @@ const config = {
     label: "Access: Author",
     icon: UserCheck,
     className:
-      "bg-emerald-50 text-emerald-700 border-emerald-200 hover:bg-emerald-50",
+      "bg-success-surface text-success border-success/30 hover:bg-success-surface",
   },
   attendee: {
     label: "Access: Attendee",
     icon: Users,
     className:
-      "bg-blue-50 text-blue-700 border-blue-200 hover:bg-blue-50",
+      "bg-info-surface text-info border-info/30 hover:bg-info-surface",
   },
   organizer: {
     label: "Access: Organizer",
     icon: Shield,
     className:
-      "bg-purple-50 text-purple-700 border-purple-200 hover:bg-purple-50",
+      "bg-primary/10 text-primary border-primary/20 hover:bg-primary/10",
   },
 };
 

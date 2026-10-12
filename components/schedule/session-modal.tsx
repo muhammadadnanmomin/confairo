@@ -298,13 +298,13 @@ export function SessionModal({
                 <div className="space-y-4">
                     {/* Conflict warnings */}
                     {conflicts.length > 0 && (
-                        <div className="rounded-lg border border-amber-200 bg-amber-50 p-3 space-y-1">
-                            <div className="flex items-center gap-2 text-amber-700 font-medium text-sm">
+                        <div className="rounded-lg border border-warning/30 bg-warning-surface p-3 space-y-1">
+                            <div className="flex items-center gap-2 text-warning font-medium text-sm">
                                 <AlertTriangle className="h-4 w-4" />
                                 {conflicts.length} conflict(s) detected
                             </div>
                             {conflicts.map((c, i) => (
-                                <p key={i} className="text-xs text-amber-600 ml-6">
+                                <p key={i} className="text-xs text-warning ml-6">
                                     • {c.message}
                                 </p>
                             ))}
@@ -445,7 +445,7 @@ export function SessionModal({
 
                     {/* Dynamic: Offline fields */}
                     {showOfflineFields && (
-                        <div className="grid grid-cols-2 gap-4 rounded-lg border border-blue-100 bg-blue-50/50 p-3">
+                        <div className="grid grid-cols-2 gap-4 rounded-lg border border-info/20 bg-info-surface/50 p-3">
                             <div>
                                 <Label className="text-xs font-medium">Venue *</Label>
                                 <Input
@@ -467,7 +467,7 @@ export function SessionModal({
 
                     {/* Dynamic: Online fields */}
                     {showOnlineFields && (
-                        <div className="space-y-3 rounded-lg border border-green-100 bg-green-50/50 p-3">
+                        <div className="space-y-3 rounded-lg border border-success/20 bg-success-surface/50 p-3">
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
                                     <Label className="text-xs font-medium">Meeting Link *</Label>
@@ -510,8 +510,8 @@ export function SessionModal({
                     )}
 
                     {/* Session Leadership — Manual Entry */}
-                    <div className="rounded-lg border border-violet-100 bg-violet-50/50 p-3 space-y-3">
-                        <p className="text-xs font-semibold text-violet-700">Session Leadership</p>
+                    <div className="rounded-lg border border-primary/20 bg-primary/5 p-3 space-y-3">
+                        <p className="text-xs font-semibold text-primary">Session Leadership</p>
                         <div className="grid grid-cols-2 gap-4">
                             <div>
                                 <Label className="text-xs font-medium">Chairperson Name</Label>
@@ -567,8 +567,8 @@ export function SessionModal({
                                             type="button"
                                             onClick={() => togglePaper(paper.id)}
                                             className={`w-full cursor-pointer text-left text-sm px-2 py-1.5 rounded transition ${selected
-                                                ? "bg-indigo-50 text-indigo-700 font-medium"
-                                                : "hover:bg-gray-50"
+                                                ? "bg-accent text-accent-foreground font-medium"
+                                                : "hover:bg-muted"
                                                 }`}
                                         >
                                             <span className="mr-2">{selected ? "✓" : "○"}</span>

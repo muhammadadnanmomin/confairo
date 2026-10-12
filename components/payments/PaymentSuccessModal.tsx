@@ -63,62 +63,62 @@ export default function PaymentSuccessModal({
             <DialogContent className="sm:max-w-md">
                 <DialogHeader className="text-center sm:text-center">
                     {/* Success icon */}
-                    <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-100 mb-3">
-                        <CheckCircle2 className="h-9 w-9 text-green-600" />
+                    <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-success-surface mb-3">
+                        <CheckCircle2 className="h-9 w-9 text-success" />
                     </div>
 
                     <DialogTitle className="text-xl text-center">
                         Payment Successful!
                     </DialogTitle>
                     <DialogDescription className="text-center pt-1">
-                        Your payment of <strong className="text-gray-900">{formattedAmount}</strong> has
+                        Your payment of <strong className="text-foreground">{formattedAmount}</strong> has
                         been verified and confirmed.
                     </DialogDescription>
                 </DialogHeader>
 
                 {/* Payment details card */}
-                <div className="rounded-lg border bg-gray-50/50 p-4 space-y-3 text-sm">
+                <div className="rounded-lg border border-border bg-muted/30 p-4 space-y-3 text-sm">
                     <div className="flex items-center justify-between">
-                        <span className="text-gray-500">Description</span>
-                        <span className="font-medium text-gray-900 text-right max-w-[200px] truncate">
+                        <span className="text-muted-foreground">Description</span>
+                        <span className="font-medium text-foreground text-right max-w-[200px] truncate">
                             {receipt.description}
                         </span>
                     </div>
 
                     {receipt.conferenceName && (
                         <div className="flex items-center justify-between">
-                            <span className="text-gray-500">Conference</span>
-                            <span className="font-medium text-gray-900 text-right max-w-[200px] truncate">
+                            <span className="text-muted-foreground">Conference</span>
+                            <span className="font-medium text-foreground text-right max-w-[200px] truncate">
                                 {receipt.conferenceName}
                             </span>
                         </div>
                     )}
 
                     <div className="flex items-center justify-between">
-                        <span className="text-gray-500">Amount</span>
-                        <span className="font-semibold text-green-700">
+                        <span className="text-muted-foreground">Amount</span>
+                        <span className="font-semibold text-success">
                             {formattedAmount}
                         </span>
                     </div>
 
                     <div className="border-t pt-3">
                         <div className="flex items-center justify-between">
-                            <span className="text-gray-500">Payment ID</span>
+                            <span className="text-muted-foreground">Payment ID</span>
                             <div className="flex items-center gap-1.5">
-                                <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded font-mono text-gray-700">
+                                <code className="text-xs bg-muted px-1.5 py-0.5 rounded font-mono text-foreground">
                                     {receipt.paymentId.length > 24
                                         ? `${receipt.paymentId.slice(0, 24)}…`
                                         : receipt.paymentId}
                                 </code>
                                 <button
                                     onClick={handleCopyPaymentId}
-                                    className="p-1 cursor-pointer rounded hover:bg-gray-200 transition"
+                                    className="p-1 cursor-pointer rounded hover:bg-muted transition"
                                     title="Copy Payment ID"
                                 >
                                     {copied ? (
-                                        <Check className="h-3.5 w-3.5 text-green-600" />
+                                        <Check className="h-3.5 w-3.5 text-success" />
                                     ) : (
-                                        <Copy className="h-3.5 w-3.5 text-gray-400" />
+                                        <Copy className="h-3.5 w-3.5 text-muted-foreground" />
                                     )}
                                 </button>
                             </div>
@@ -139,7 +139,7 @@ export default function PaymentSuccessModal({
 
                     <Button
                         onClick={handleContinue}
-                        className="w-full gap-2 bg-green-600 hover:bg-green-700"
+                        className="w-full gap-2 bg-success hover:bg-success/90 text-success-foreground"
                     >
                         {continueLabel}
                         <ArrowRight className="h-4 w-4" />

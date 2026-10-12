@@ -48,14 +48,14 @@ export function PublishVerificationDialog({
       <DialogContent className="sm:max-w-[480px]">
         <DialogHeader>
           <div className="flex items-center gap-2">
-            <ShieldCheck className="h-5 w-5 text-indigo-600 shrink-0" />
+            <ShieldCheck className="h-5 w-5 text-primary shrink-0" />
             <DialogTitle>Institutional Verification Required</DialogTitle>
           </div>
-          <DialogDescription className="text-slate-600 text-sm leading-relaxed pt-2">
+          <DialogDescription className="text-muted-foreground text-sm leading-relaxed pt-2">
             {conferenceTitle ? (
               <>
                 The conference owner must verify their institutional affiliation before{" "}
-                <strong className="text-slate-900">{conferenceTitle}</strong> can be published.
+                <strong className="text-foreground">{conferenceTitle}</strong> can be published.
               </>
             ) : (
               "To publish an academic conference on Confairo, the conference owner must verify their institutional affiliation."
@@ -63,13 +63,13 @@ export function PublishVerificationDialog({
           </DialogDescription>
         </DialogHeader>
 
-        <div className="rounded-lg border border-slate-200 bg-slate-50/70 p-3.5 text-xs text-slate-600 space-y-1.5">
-          <p className="font-medium text-slate-800">Why is this required?</p>
+        <div className="rounded-lg border border-border bg-muted/40 p-3.5 text-xs text-muted-foreground space-y-1.5">
+          <p className="font-medium text-foreground">Why is this required?</p>
           <p>
             Verification helps maintain trust in the academic conference community by confirming
             an organizer&apos;s institutional affiliation.
           </p>
-          <p className="text-slate-500 pt-0.5">
+          <p className="text-muted-foreground pt-0.5">
             Your primary Confairo login email will not be changed.
           </p>
         </div>
@@ -85,7 +85,7 @@ export function PublishVerificationDialog({
           <Button
             type="button"
             onClick={handleStartVerification}
-            className="bg-indigo-600 hover:bg-indigo-700 text-white"
+            className="bg-primary hover:bg-primary-hover text-primary-foreground"
           >
             Verify Institutional Affiliation
           </Button>

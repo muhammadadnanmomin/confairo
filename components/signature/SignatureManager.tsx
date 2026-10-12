@@ -208,7 +208,7 @@ export default function SignatureManager({ conferenceId }: SignatureManagerProps
   /* ---------------------------------------------------------------- */
   if (loading) {
     return (
-      <div className="flex items-center gap-2 py-4 text-sm text-gray-500">
+      <div className="flex items-center gap-2 py-4 text-sm text-muted-foreground">
         <Loader2 className="h-4 w-4 animate-spin" />
         Loading signatures…
       </div>
@@ -220,10 +220,10 @@ export default function SignatureManager({ conferenceId }: SignatureManagerProps
       {/* Header row */}
       <div className="flex items-center justify-between">
         <div className="space-y-0.5">
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-muted-foreground">
             {signatures.length} / {MAX_ALLOWED} signatures configured
             {signatures.length < MIN_REQUIRED && (
-              <span className="ml-2 inline-flex items-center gap-1 text-amber-600 text-xs font-medium">
+              <span className="ml-2 inline-flex items-center gap-1 text-warning text-xs font-medium">
                 <AlertTriangle className="h-3 w-3" />
                 At least {MIN_REQUIRED} required for PDF certificates
               </span>
@@ -235,7 +235,7 @@ export default function SignatureManager({ conferenceId }: SignatureManagerProps
           size="sm"
           onClick={openAdd}
           disabled={signatures.length >= MAX_ALLOWED}
-          className="gap-1.5 bg-indigo-600 hover:bg-indigo-700"
+          className="gap-1.5 bg-primary hover:bg-primary-hover"
         >
           <Plus className="h-3.5 w-3.5" />
           Add Signature
@@ -244,17 +244,17 @@ export default function SignatureManager({ conferenceId }: SignatureManagerProps
 
       {/* Signature cards */}
       {signatures.length === 0 ? (
-        <div className="rounded-xl border-2 border-dashed border-gray-200 py-10 text-center">
-          <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-indigo-50">
-            <PenLine className="h-5 w-5 text-indigo-400" />
+        <div className="rounded-xl border-2 border-dashed border-border py-10 text-center">
+          <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+            <PenLine className="h-5 w-5 text-primary/70" />
           </div>
-          <p className="text-sm font-medium text-gray-700">No signatures yet</p>
-          <p className="text-xs text-gray-500 mt-1">
+          <p className="text-sm font-medium text-foreground">No signatures yet</p>
+          <p className="text-xs text-muted-foreground mt-1">
             Add at least {MIN_REQUIRED} signatures to enable dynamic PDF signing.
           </p>
           <Button
             size="sm"
-            className="mt-4 gap-1.5 bg-indigo-600 hover:bg-indigo-700"
+            className="mt-4 gap-1.5 bg-primary hover:bg-primary-hover"
             onClick={openAdd}
           >
             <Plus className="h-3.5 w-3.5" />
@@ -266,7 +266,7 @@ export default function SignatureManager({ conferenceId }: SignatureManagerProps
           {signatures.map((sig, i) => (
             <Card key={i} className="p-4 space-y-3">
               {/* Signature image */}
-              <div className="rounded-lg bg-gray-50 border border-gray-100 p-2 flex items-center justify-center h-16 overflow-hidden">
+              <div className="rounded-lg bg-muted/40 border border-border p-2 flex items-center justify-center h-16 overflow-hidden">
                 <img
                   src={sig.image_url}
                   alt={`${sig.role} signature`}
@@ -278,9 +278,9 @@ export default function SignatureManager({ conferenceId }: SignatureManagerProps
               {/* Meta */}
               <div>
                 {sig.name && (
-                  <p className="text-sm font-semibold text-gray-900 truncate">{sig.name}</p>
+                  <p className="text-sm font-semibold text-foreground truncate">{sig.name}</p>
                 )}
-                <p className="text-xs text-gray-500">{sig.role}</p>
+                <p className="text-xs text-muted-foreground">{sig.role}</p>
               </div>
 
               {/* Actions */}
@@ -297,7 +297,7 @@ export default function SignatureManager({ conferenceId }: SignatureManagerProps
                 <Button
                   variant="outline"
                   size="sm"
-                  className="flex-1 gap-1 h-7 text-xs text-red-600 border-red-200 hover:bg-red-50 hover:border-red-300"
+                  className="flex-1 gap-1 h-7 text-xs text-destructive border-destructive/20 hover:bg-destructive-surface hover:border-destructive/30"
                   onClick={() => handleDelete(i)}
                 >
                   <Trash2 className="h-3 w-3" />
@@ -322,7 +322,7 @@ export default function SignatureManager({ conferenceId }: SignatureManagerProps
             {/* Name */}
             <div className="space-y-1.5">
               <Label htmlFor="sig-name" className="text-sm">
-                Name <span className="text-gray-400">(optional)</span>
+                Name <span className="text-muted-foreground">(optional)</span>
               </Label>
               <Input
                 id="sig-name"
@@ -336,7 +336,7 @@ export default function SignatureManager({ conferenceId }: SignatureManagerProps
             {/* Role */}
             <div className="space-y-1.5">
               <Label htmlFor="sig-role" className="text-sm">
-                Role <span className="text-red-500">*</span>
+                Role <span className="text-destructive">*</span>
               </Label>
               <Input
                 id="sig-role"
@@ -353,19 +353,19 @@ export default function SignatureManager({ conferenceId }: SignatureManagerProps
                 {editIndex !== null
                   ? "Redraw Signature (leave blank to keep existing)"
                   : "Draw Signature"}
-                {editIndex === null && <span className="text-red-500 ml-1">*</span>}
+                {editIndex === null && <span className="text-destructive ml-1">*</span>}
               </Label>
 
               {/* Show existing on edit */}
               {editIndex !== null && signatures[editIndex] && !drawnDataUrlRef.current && (
-                <div className="rounded-lg border border-gray-200 bg-gray-50 p-2 mb-2 flex items-center gap-3">
+                <div className="rounded-lg border border-border bg-muted/40 p-2 mb-2 flex items-center gap-3">
                   <img
                     src={signatures[editIndex].image_url}
                     alt="Current signature"
                     className="h-10 object-contain"
                     style={{ maxWidth: 160 }}
                   />
-                  <p className="text-xs text-gray-400">Current — draw below to replace</p>
+                  <p className="text-xs text-muted-foreground">Current — draw below to replace</p>
                 </div>
               )}
 
@@ -378,7 +378,7 @@ export default function SignatureManager({ conferenceId }: SignatureManagerProps
 
             {/* Form-level error */}
             {formError && (
-              <p className="text-sm text-red-600 flex items-center gap-1.5">
+              <p className="text-sm text-destructive flex items-center gap-1.5">
                 <AlertTriangle className="h-4 w-4 shrink-0" />
                 {formError}
               </p>
@@ -389,7 +389,7 @@ export default function SignatureManager({ conferenceId }: SignatureManagerProps
               <Button
                 onClick={handleSave}
                 disabled={uploading}
-                className="flex-1 bg-indigo-600 hover:bg-indigo-700 gap-2"
+                className="flex-1 bg-primary hover:bg-primary-hover gap-2"
               >
                 {uploading && <Loader2 className="h-4 w-4 animate-spin" />}
                 {uploading ? "Uploading…" : editIndex !== null ? "Update Signature" : "Save Signature"}

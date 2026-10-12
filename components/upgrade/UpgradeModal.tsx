@@ -196,8 +196,8 @@ export default function UpgradeModal({
             <DialogContent className="sm:max-w-md">
                 <DialogHeader>
                     <div className="flex items-center gap-2">
-                        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-100">
-                            <Sparkles className="h-5 w-5 text-indigo-600" />
+                        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10">
+                            <Sparkles className="h-5 w-5 text-primary" />
                         </div>
                         <DialogTitle className="text-xl">{title}</DialogTitle>
                     </div>
@@ -207,23 +207,23 @@ export default function UpgradeModal({
                 </DialogHeader>
 
                 {/* Slot benefits */}
-                <div className="rounded-lg border bg-indigo-50/50 p-4 space-y-3">
+                <div className="rounded-lg border border-border bg-primary/5 p-4 space-y-3">
                     <div className="flex items-center justify-between">
-                        <Badge className="bg-indigo-600 text-white hover:bg-indigo-700">
+                        <Badge className="bg-primary text-primary-foreground hover:bg-primary-hover">
                             Pro
                         </Badge>
                         <div className="text-right">
-                            <span className="text-2xl font-bold text-gray-900">
+                            <span className="text-2xl font-bold text-foreground">
                                 ₹{PRO_SLOT_PRICE.toLocaleString("en-IN")}
                             </span>
-                            <span className="text-sm text-gray-500"> / slot</span>
+                            <span className="text-sm text-muted-foreground"> / slot</span>
                         </div>
                     </div>
 
                     <ul className="space-y-2">
                         {SLOT_BENEFITS.map((benefit) => (
-                            <li key={benefit} className="flex items-center gap-2 text-sm text-gray-700">
-                                <Check className="h-4 w-4 text-indigo-600 shrink-0" />
+                            <li key={benefit} className="flex items-center gap-2 text-sm text-muted-foreground">
+                                <Check className="h-4 w-4 text-primary shrink-0" />
                                 {benefit}
                             </li>
                         ))}
@@ -237,7 +237,7 @@ export default function UpgradeModal({
                     <Button
                         onClick={handleUpgrade}
                         disabled={loading}
-                        className="bg-indigo-600 hover:bg-indigo-700"
+                        className="bg-primary hover:bg-primary-hover"
                     >
                         {loading ? (
                             <>

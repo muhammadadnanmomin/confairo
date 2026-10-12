@@ -178,7 +178,7 @@ export default function CoOrganizerManager({
 
   if (loading) {
     return (
-      <div className="flex items-center gap-2 py-4 text-sm text-gray-500">
+      <div className="flex items-center gap-2 py-4 text-sm text-muted-foreground">
         <Loader2 className="h-4 w-4 animate-spin" />
         Loading co-organizers…
       </div>
@@ -190,7 +190,7 @@ export default function CoOrganizerManager({
       {/* Current organizers list */}
       <div className="space-y-2">
         {organizers.length === 0 ? (
-          <p className="text-sm text-gray-500">No co-organizers yet</p>
+          <p className="text-sm text-muted-foreground">No co-organizers yet</p>
         ) : (
           organizers.map((org) => {
             const orgName = org.organization_name || null;
@@ -198,29 +198,29 @@ export default function CoOrganizerManager({
             return (
               <div
                 key={org.id}
-                className="flex items-center justify-between rounded-lg border px-4 py-3 bg-white hover:bg-gray-50 transition"
+                className="flex items-center justify-between rounded-lg border px-4 py-3 bg-card hover:bg-muted/50 transition"
               >
                 <div className="flex items-center gap-3 min-w-0">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-indigo-50 shrink-0">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 shrink-0">
                     {org.role === "owner" ? (
-                      <Crown className="h-4 w-4 text-indigo-600" />
+                      <Crown className="h-4 w-4 text-primary" />
                     ) : (
-                      <Users className="h-4 w-4 text-indigo-400" />
+                      <Users className="h-4 w-4 text-primary/70" />
                     )}
                   </div>
 
                   <div className="min-w-0">
-                    <p className="text-sm font-medium text-gray-900 truncate">
+                    <p className="text-sm font-medium text-foreground truncate">
                       {org.profiles?.name || "Unknown"}
                     </p>
                     {org.profiles?.email && (
-                      <p className="text-xs text-gray-500 truncate flex items-center gap-1">
+                      <p className="text-xs text-muted-foreground truncate flex items-center gap-1">
                         <Mail className="h-3 w-3 shrink-0" />
                         {org.profiles.email}
                       </p>
                     )}
                     {orgName && (
-                      <p className="text-xs text-gray-400 truncate flex items-center gap-1 mt-0.5">
+                      <p className="text-xs text-muted-foreground truncate flex items-center gap-1 mt-0.5">
                         <Building2 className="h-3 w-3 shrink-0" />
                         {orgName}
                       </p>
@@ -232,8 +232,8 @@ export default function CoOrganizerManager({
                   <Badge
                     className={
                       org.role === "owner"
-                        ? "bg-indigo-100 text-indigo-700 border-indigo-200 hover:bg-indigo-100"
-                        : "bg-gray-100 text-gray-700 border-gray-200 hover:bg-gray-100"
+                        ? "bg-primary/10 text-primary border-primary/20 hover:bg-primary/15"
+                        : "bg-muted text-muted-foreground border-border hover:bg-muted/80"
                     }
                   >
                     {org.role === "owner" ? "Owner" : "Organizer"}
@@ -245,7 +245,7 @@ export default function CoOrganizerManager({
                       size="sm"
                       onClick={() => handleRemove(org.user_id)}
                       disabled={removingId === org.user_id}
-                      className="text-gray-400 hover:text-red-600 h-8 w-8 p-0"
+                      className="text-muted-foreground hover:text-destructive h-8 w-8 p-0"
                     >
                       {removingId === org.user_id ? (
                         <Loader2 className="h-3.5 w-3.5 animate-spin" />
@@ -263,9 +263,9 @@ export default function CoOrganizerManager({
 
       {/* Add co-organizer form (owner-only) */}
       {isOwner && (
-        <div className="rounded-lg border border-dashed border-gray-300 bg-gray-50/50 p-4 space-y-3">
-          <div className="flex items-center gap-2 text-sm font-medium text-gray-700">
-            <UserPlus className="h-4 w-4 text-indigo-500" />
+        <div className="rounded-lg border border-dashed border-border bg-muted/30 p-4 space-y-3">
+          <div className="flex items-center gap-2 text-sm font-medium text-foreground">
+            <UserPlus className="h-4 w-4 text-primary" />
             Add Co-Organizer
           </div>
 
@@ -279,7 +279,7 @@ export default function CoOrganizerManager({
                 if (addError) setAddError(null);
               }}
               onKeyDown={(e) => e.key === "Enter" && handleAdd()}
-              className={`flex-1 ${addError ? "border-red-300 focus-visible:ring-red-400" : ""}`}
+              className={`flex-1 ${addError ? "border-destructive/40 focus-visible:ring-destructive" : ""}`}
             />
             <Button
               onClick={handleAdd}
@@ -297,13 +297,13 @@ export default function CoOrganizerManager({
 
           {/* Inline error message */}
           {addError && (
-            <div className="flex items-start gap-2 text-xs text-red-600 bg-red-50 border border-red-200 rounded-md px-3 py-2">
+            <div className="flex items-start gap-2 text-xs text-destructive bg-destructive-surface border border-destructive/20 rounded-md px-3 py-2">
               <AlertCircle className="h-3.5 w-3.5 mt-0.5 shrink-0" />
               <span>{addError}</span>
             </div>
           )}
 
-          <p className="text-xs text-gray-500">
+          <p className="text-xs text-muted-foreground">
             Only users with an existing Confairo account and organization
             membership can be added. They will immediately gain access to manage
             this conference.

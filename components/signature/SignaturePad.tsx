@@ -78,13 +78,13 @@ const SignaturePad = forwardRef<SignaturePadHandle, SignaturePadProps>(
         <div
           className={`relative rounded-xl border-2 overflow-hidden bg-white transition-colors ${
             error
-              ? "border-red-400 shadow-sm shadow-red-100"
-              : "border-gray-300 shadow-sm"
+              ? "border-destructive/50 shadow-sm shadow-destructive/10"
+              : "border-border shadow-sm"
           } ${disabled ? "opacity-60 pointer-events-none" : ""}`}
         >
           {/* Hint text (disappears after drawing) */}
           {!hasDrawn && (
-            <p className="absolute inset-0 flex items-center justify-center text-sm text-gray-300 pointer-events-none select-none">
+            <p className="absolute inset-0 flex items-center justify-center text-sm text-muted-foreground/40 pointer-events-none select-none">
               Draw signature here
             </p>
           )}
@@ -107,21 +107,21 @@ const SignaturePad = forwardRef<SignaturePadHandle, SignaturePadProps>(
 
         {/* Error */}
         {error && (
-          <p className="text-xs text-red-600 flex items-center gap-1">
+          <p className="text-xs text-destructive flex items-center gap-1">
             <span className="font-medium">Error:</span> {error}
           </p>
         )}
 
         {/* Instant preview */}
         {preview && hasDrawn && (
-          <div className="rounded-lg border border-indigo-100 bg-indigo-50/40 p-2 flex items-center gap-3">
+          <div className="rounded-lg border border-primary/20 bg-primary/5 p-2 flex items-center gap-3">
             <img
               src={preview}
               alt="Signature preview"
               className="h-10 object-contain"
               style={{ maxWidth: 200 }}
             />
-            <p className="text-xs text-indigo-600">Preview — looks good?</p>
+            <p className="text-xs text-primary">Preview — looks good?</p>
           </div>
         )}
 
@@ -132,7 +132,7 @@ const SignaturePad = forwardRef<SignaturePadHandle, SignaturePadProps>(
             size="sm"
             onClick={handleSave}
             disabled={disabled || !hasDrawn}
-            className="gap-1.5 bg-indigo-600 hover:bg-indigo-700 text-white"
+            className="gap-1.5 bg-primary hover:bg-primary-hover text-primary-foreground"
           >
             <Save className="h-3.5 w-3.5" />
             {disabled ? "Uploading…" : "Save Signature"}
@@ -156,7 +156,7 @@ const SignaturePad = forwardRef<SignaturePadHandle, SignaturePadProps>(
             size="sm"
             onClick={handleClear}
             disabled={disabled}
-            className="gap-1.5 text-gray-500"
+            className="gap-1.5 text-muted-foreground"
           >
             <RotateCcw className="h-3.5 w-3.5" />
             Redraw

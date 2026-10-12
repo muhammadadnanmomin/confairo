@@ -173,7 +173,7 @@ export function VerificationRequestDialog({
           <div className="py-2 space-y-4">
             <DialogHeader>
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="h-5 w-5 text-emerald-600 shrink-0" />
+                <CheckCircle2 className="h-5 w-5 text-success shrink-0" />
                 <DialogTitle>Institutional Affiliation Verified</DialogTitle>
               </div>
               <DialogDescription>
@@ -181,22 +181,22 @@ export function VerificationRequestDialog({
               </DialogDescription>
             </DialogHeader>
 
-            <div className="rounded-lg border bg-slate-50/60 p-4 space-y-2 text-sm text-slate-700">
+            <div className="rounded-lg border border-border bg-muted/40 p-4 space-y-2 text-sm text-foreground">
               {currentInstitution && (
                 <div className="flex justify-between items-center">
-                  <span className="text-slate-500">Institution</span>
-                  <span className="font-medium text-slate-900">{currentInstitution}</span>
+                  <span className="text-muted-foreground">Institution</span>
+                  <span className="font-medium text-foreground">{currentInstitution}</span>
                 </div>
               )}
               {currentVerifiedEmail && (
                 <div className="flex justify-between items-center">
-                  <span className="text-slate-500">Institutional Email</span>
-                  <span className="font-medium text-slate-900">{currentVerifiedEmail}</span>
+                  <span className="text-muted-foreground">Institutional Email</span>
+                  <span className="font-medium text-foreground">{currentVerifiedEmail}</span>
                 </div>
               )}
-              <div className="flex justify-between items-center pt-1 border-t border-slate-200">
-                <span className="text-slate-500">Status</span>
-                <Badge className="bg-emerald-100 text-emerald-700 border-emerald-200">
+              <div className="flex justify-between items-center pt-1 border-t border-border">
+                <span className="text-muted-foreground">Status</span>
+                <Badge className="bg-success-surface text-success border-success/30">
                   Verified
                 </Badge>
               </div>
@@ -214,20 +214,20 @@ export function VerificationRequestDialog({
           /* ======================================================== */
           <div className="py-2 space-y-4">
             <DialogHeader>
-              <div className="flex items-center gap-2 text-emerald-600">
+              <div className="flex items-center gap-2 text-success">
                 <CheckCircle2 className="h-5 w-5 shrink-0" />
-                <DialogTitle className="text-slate-900">Verification email sent</DialogTitle>
+                <DialogTitle className="text-foreground">Verification email sent</DialogTitle>
               </div>
-              <DialogDescription className="text-slate-600 pt-1">
+              <DialogDescription className="text-muted-foreground pt-1">
                 We sent a verification link to{" "}
-                <strong className="text-slate-900">{institutionalEmail.trim()}</strong>.
+                <strong className="text-foreground">{institutionalEmail.trim()}</strong>.
                 Check your institutional inbox and click the link to confirm your affiliation.
               </DialogDescription>
             </DialogHeader>
 
-            <div className="rounded-lg border border-slate-200 bg-slate-50/60 p-3.5 text-xs text-slate-500 space-y-1.5">
-              <p className="flex items-center gap-1.5 font-medium text-slate-700">
-                <Clock className="h-3.5 w-3.5 text-slate-500" />
+            <div className="rounded-lg border border-border bg-muted/40 p-3.5 text-xs text-muted-foreground space-y-1.5">
+              <p className="flex items-center gap-1.5 font-medium text-foreground">
+                <Clock className="h-3.5 w-3.5 text-muted-foreground" />
                 Link expires in 24 hours
               </p>
               <p>
@@ -245,19 +245,19 @@ export function VerificationRequestDialog({
           /* ======================================================== */
           <div className="py-2 space-y-4">
             <DialogHeader>
-              <div className="flex items-center gap-2 text-amber-600">
+              <div className="flex items-center gap-2 text-warning">
                 <Clock className="h-5 w-5 shrink-0" />
-                <DialogTitle className="text-slate-900">Verification Pending</DialogTitle>
+                <DialogTitle className="text-foreground">Verification Pending</DialogTitle>
               </div>
-              <DialogDescription className="text-slate-600 pt-1">
+              <DialogDescription className="text-muted-foreground pt-1">
                 A verification link has already been requested for{" "}
-                <strong className="text-slate-900">{pendingEmail || "your institutional email"}</strong>.
+                <strong className="text-foreground">{pendingEmail || "your institutional email"}</strong>.
               </DialogDescription>
             </DialogHeader>
 
-            <div className="rounded-lg border border-amber-200 bg-amber-50/40 p-4 space-y-2 text-xs text-slate-600">
-              <p className="font-medium text-slate-900">Next Steps:</p>
-              <ol className="list-decimal list-inside space-y-1 text-slate-600">
+            <div className="rounded-lg border border-warning/30 bg-warning-surface/50 p-4 space-y-2 text-xs text-muted-foreground">
+              <p className="font-medium text-foreground">Next Steps:</p>
+              <ol className="list-decimal list-inside space-y-1 text-muted-foreground">
                 <li>Check your institutional inbox for the confirmation email from Confairo.</li>
                 <li>Click the verification link in the email.</li>
                 <li>Your status will update automatically upon return.</li>
@@ -271,7 +271,7 @@ export function VerificationRequestDialog({
                   if (pendingEmail) setInstitutionalEmail(pendingEmail);
                   setShowOverrideForm(true);
                 }}
-                className="text-xs text-slate-500 hover:text-slate-900 underline underline-offset-2"
+                className="text-xs text-muted-foreground hover:text-foreground underline underline-offset-2"
               >
                 Need to change email or request new link?
               </button>
@@ -287,17 +287,17 @@ export function VerificationRequestDialog({
           <form onSubmit={handleSubmit} className="space-y-4 py-1">
             <DialogHeader>
               <div className="flex items-center gap-2">
-                <ShieldCheck className="h-5 w-5 text-indigo-600 shrink-0" />
+                <ShieldCheck className="h-5 w-5 text-primary shrink-0" />
                 <DialogTitle>Verify your institutional affiliation</DialogTitle>
               </div>
-              <DialogDescription className="text-slate-600 text-xs leading-relaxed pt-1">
+              <DialogDescription className="text-muted-foreground text-xs leading-relaxed pt-1">
                 Confairo requires institutional affiliation verification for conference organizers before publishing conferences.
                 Verification confirms your affiliation using an institutional email address. Your primary Confairo login email will not change.
               </DialogDescription>
             </DialogHeader>
 
             {errorMessage && (
-              <div className="flex items-start gap-2 rounded-md border border-red-200 bg-red-50/80 p-3 text-xs text-red-700">
+              <div className="flex items-start gap-2 rounded-md border border-destructive/20 bg-destructive-surface p-3 text-xs text-destructive">
                 <AlertCircle className="h-4 w-4 shrink-0 mt-0.5" />
                 <span>{errorMessage}</span>
               </div>
@@ -305,11 +305,11 @@ export function VerificationRequestDialog({
 
             <div className="space-y-3 pt-1">
               <div className="space-y-1.5">
-                <Label htmlFor="inst-email" className="text-xs font-medium text-slate-700">
-                  Institutional Email <span className="text-red-500">*</span>
+                <Label htmlFor="inst-email" className="text-xs font-medium text-foreground">
+                  Institutional Email <span className="text-destructive">*</span>
                 </Label>
                 <div className="relative">
-                  <Mail className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
+                  <Mail className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
                   <Input
                     id="inst-email"
                     type="email"
@@ -322,14 +322,14 @@ export function VerificationRequestDialog({
                     required
                   />
                 </div>
-                <p className="text-[11px] text-slate-500">
+                <p className="text-[11px] text-muted-foreground">
                   Use your official university or academic institution email address.
                 </p>
               </div>
 
               <div className="space-y-1.5">
-                <Label htmlFor="inst-name" className="text-xs font-medium text-slate-700">
-                  Institution Name <span className="text-slate-400 font-normal">(Optional)</span>
+                <Label htmlFor="inst-name" className="text-xs font-medium text-foreground">
+                  Institution Name <span className="text-muted-foreground font-normal">(Optional)</span>
                 </Label>
                 <Input
                   id="inst-name"

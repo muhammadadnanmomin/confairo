@@ -995,7 +995,7 @@ export default function ConferenceForm({
                 <div className="space-y-1">
                     <label className="text-sm font-medium">Conference Logo</label>
                     {mode === "edit" && existingLogoUrl && !logoFile && (
-                        <p className="text-xs text-green-600 mb-1">
+                        <p className="text-xs text-success mb-1">
                             ✓ Logo already uploaded
                         </p>
                     )}
@@ -1031,7 +1031,7 @@ export default function ConferenceForm({
                 <div className="space-y-1">
                     <label className="text-sm font-medium">Conference Banner</label>
                     {mode === "edit" && existingBannerUrl && !bannerFile && (
-                        <p className="text-xs text-green-600 mb-1">
+                        <p className="text-xs text-success mb-1">
                             ✓ Banner already uploaded
                         </p>
                     )}
@@ -1277,7 +1277,7 @@ export default function ConferenceForm({
                         Sample Paper Format Template
                     </label>
                     {mode === "edit" && existingSamplePaperUrl && !samplePaperFile && (
-                        <p className="text-xs text-green-600 mb-1">
+                        <p className="text-xs text-success mb-1">
                             ✓ Sample paper already uploaded
                         </p>
                     )}
@@ -1317,7 +1317,7 @@ export default function ConferenceForm({
                         Presentation PPT Template
                     </label>
                     {mode === "edit" && existingPptTemplateUrl && !pptTemplateFile && (
-                        <p className="text-xs text-green-600 mb-1">
+                        <p className="text-xs text-success mb-1">
                             ✓ PPT template already uploaded
                         </p>
                     )}

@@ -270,7 +270,7 @@ export default function ConferenceExplorer({ conferences }: Props) {
             {trending.length > 0 && (
                 <div className="space-y-3">
                     <div className="flex items-center gap-2">
-                        <Flame className="h-5 w-5 text-orange-500" />
+                        <Flame className="h-5 w-5 text-warning" />
                         <h2 className="text-lg font-semibold text-foreground">
                             Trending Conferences
                         </h2>

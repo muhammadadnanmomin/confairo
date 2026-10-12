@@ -70,7 +70,7 @@ export default async function ProfileViewPage() {
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
           <Avatar className="h-24 w-24">
             <AvatarImage src={profile.avatar_url || ""} alt={profile.name || profile.username} />
-            <AvatarFallback className="bg-indigo-600 text-white text-2xl font-bold">
+            <AvatarFallback className="bg-primary text-primary-foreground text-2xl font-bold">
               {initial}
             </AvatarFallback>
           </Avatar>
@@ -109,11 +109,11 @@ export default async function ProfileViewPage() {
         <Card className="p-5 space-y-3">
           <div className="flex items-center justify-between">
             <p className="text-sm font-medium">Profile Completion</p>
-            <span className="text-sm font-semibold text-indigo-600">{completion}%</span>
+            <span className="text-sm font-semibold text-primary">{completion}%</span>
           </div>
-          <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+          <div className="w-full h-2 bg-muted rounded-full overflow-hidden">
             <div
-              className="h-full bg-indigo-600 rounded-full transition-all duration-500"
+              className="h-full bg-primary rounded-full transition-all duration-500"
               style={{ width: `${completion}%` }}
             />
           </div>
@@ -126,7 +126,7 @@ export default async function ProfileViewPage() {
       {/* ── About ── */}
       <Card className="p-6 space-y-3">
         <div className="flex items-center gap-2">
-          <User className="h-4 w-4 text-indigo-600" />
+          <User className="h-4 w-4 text-primary" />
           <h2 className="text-lg font-semibold">About</h2>
         </div>
         <p className="text-sm text-muted-foreground leading-relaxed">
@@ -137,7 +137,7 @@ export default async function ProfileViewPage() {
       {/* ── Research Interests ── */}
       <Card className="p-6 space-y-3">
         <div className="flex items-center gap-2">
-          <BookOpen className="h-4 w-4 text-indigo-600" />
+          <BookOpen className="h-4 w-4 text-primary" />
           <h2 className="text-lg font-semibold">Research Interests</h2>
         </div>
 
@@ -159,7 +159,7 @@ export default async function ProfileViewPage() {
       {/* ── Education ── */}
       <Card className="p-6 space-y-4">
         <div className="flex items-center gap-2">
-          <GraduationCap className="h-4 w-4 text-indigo-600" />
+          <GraduationCap className="h-4 w-4 text-primary" />
           <h2 className="text-lg font-semibold">Education</h2>
         </div>
 

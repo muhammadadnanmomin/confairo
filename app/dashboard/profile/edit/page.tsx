@@ -396,12 +396,12 @@ export default function EditProfilePage() {
             <div className="relative">
               <Avatar className="h-24 w-24">
                 <AvatarImage src={displayAvatar} alt={name || profile.username} />
-                <AvatarFallback className="bg-indigo-600 text-white text-2xl font-bold">
+                <AvatarFallback className="bg-primary text-primary-foreground text-2xl font-bold">
                   {initial}
                 </AvatarFallback>
               </Avatar>
-              <label className="absolute bottom-0 right-0 bg-white border rounded-full p-1.5 cursor-pointer hover:bg-gray-50 transition-colors shadow-sm">
-                <Camera className="h-3.5 w-3.5 text-gray-600" />
+              <label className="absolute bottom-0 right-0 bg-card border border-border rounded-full p-1.5 cursor-pointer hover:bg-muted transition-colors shadow-sm">
+                <Camera className="h-3.5 w-3.5 text-muted-foreground" />
                 <input
                   type="file"
                   accept=".jpg,.jpeg,.png"
@@ -413,7 +413,7 @@ export default function EditProfilePage() {
             <div className="text-sm text-muted-foreground space-y-1">
               <p>JPG or PNG · Max 2 MB</p>
               {avatarFile && (
-                <p className="text-green-600 text-xs">✓ New image selected: {avatarFile.name}</p>
+                <p className="text-success text-xs">✓ New image selected: {avatarFile.name}</p>
               )}
             </div>
           </div>
@@ -422,7 +422,7 @@ export default function EditProfilePage() {
         {/* ── Username (read-only) ── */}
         <div className="space-y-1">
           <label className="text-sm font-medium">Username</label>
-          <Input value={profile.username || ""} disabled className="bg-gray-50" />
+          <Input value={profile.username || ""} disabled className="bg-muted" />
           <p className="text-xs text-muted-foreground">
             Username cannot be changed. It is your unique public identifier.
           </p>
@@ -452,7 +452,7 @@ export default function EditProfilePage() {
         <div className="space-y-1">
           <div className="flex items-center justify-between">
             <label className="text-sm font-medium">Bio</label>
-            <span className={`text-xs ${bio.length > MAX_BIO_LENGTH ? "text-red-500" : "text-muted-foreground"}`}>
+            <span className={`text-xs ${bio.length > MAX_BIO_LENGTH ? "text-destructive" : "text-muted-foreground"}`}>
               {bio.length}/{MAX_BIO_LENGTH}
             </span>
           </div>
@@ -527,7 +527,7 @@ export default function EditProfilePage() {
         {/* ── Education ── */}
         <div className="border-t pt-8 space-y-5">
           <div className="flex items-center gap-2">
-            <GraduationCap className="h-5 w-5 text-indigo-600" />
+            <GraduationCap className="h-5 w-5 text-primary" />
             <h2 className="text-xl font-semibold">Education</h2>
           </div>
 
@@ -553,7 +553,7 @@ export default function EditProfilePage() {
                   <Button
                     size="sm"
                     variant="ghost"
-                    className="text-red-500 hover:text-red-700 hover:bg-red-50"
+                    className="text-destructive hover:text-destructive hover:bg-destructive-surface"
                     onClick={() => handleDeleteEducation(edu.id)}
                   >
                     <Trash2 className="h-4 w-4" />
@@ -568,7 +568,7 @@ export default function EditProfilePage() {
           )}
 
           {/* Add new education */}
-          <div className="border rounded-lg p-4 space-y-3 bg-gray-50/50">
+          <div className="border border-border rounded-lg p-4 space-y-3 bg-muted/50">
             <p className="text-sm font-medium">Add Education</p>
 
             <div className="grid md:grid-cols-2 gap-3">

@@ -180,13 +180,13 @@ export default function BillingUpgradePage() {
         const planLabel = PLAN_LABELS[normalizePlanType(organization.plan_type)];
         return (
             <div className="max-w-lg mx-auto py-16 px-4 text-center space-y-4">
-                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-green-100">
-                    <ShieldCheck className="h-7 w-7 text-green-600" />
+                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-success-surface">
+                    <ShieldCheck className="h-7 w-7 text-success" />
                 </div>
-                <h1 className="text-2xl font-bold text-gray-900">
+                <h1 className="text-2xl font-bold text-foreground">
                     You&apos;re on the {planLabel} Plan
                 </h1>
-                <p className="text-gray-600">
+                <p className="text-muted-foreground">
                     Your organization already has access to all {planLabel} features.
                     No further upgrade is needed.
                 </p>
@@ -207,7 +207,7 @@ export default function BillingUpgradePage() {
             {/* Back link */}
             <button
                 onClick={() => router.back()}
-                className="flex cursor-pointer items-center gap-1 text-sm text-gray-500 hover:text-gray-700 transition-colors"
+                className="flex cursor-pointer items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
                 <ArrowLeft className="h-4 w-4" />
                 Back
@@ -215,44 +215,44 @@ export default function BillingUpgradePage() {
 
             {/* Header */}
             <div className="text-center space-y-2">
-                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-indigo-100">
-                    <Crown className="h-6 w-6 text-indigo-600" />
+                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+                    <Crown className="h-6 w-6 text-primary" />
                 </div>
-                <h1 className="text-3xl font-bold tracking-tight text-gray-900">
+                <h1 className="text-3xl font-bold tracking-tight text-foreground">
                     Buy Conference Slot
                 </h1>
-                <p className="text-gray-600 max-w-md mx-auto">
+                <p className="text-muted-foreground max-w-md mx-auto">
                     Purchase an additional conference slot to create and manage
                     more academic events on Confairo.
                 </p>
             </div>
 
             {/* Pro plan card */}
-            <Card className="p-8 border-indigo-200 bg-gradient-to-b from-indigo-50/50 to-white">
+            <Card className="p-8 border-primary/20 bg-gradient-to-b from-primary/5 to-card">
 
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
                     <div className="flex items-center gap-3">
-                        <Badge className="bg-indigo-600 text-white hover:bg-indigo-700 text-sm px-3 py-1">
+                        <Badge className="bg-primary text-primary-foreground hover:bg-primary-hover text-sm px-3 py-1">
                             Pro
                         </Badge>
-                        <span className="text-sm text-gray-500">One-time per conference slot</span>
+                        <span className="text-sm text-muted-foreground">One-time per conference slot</span>
                     </div>
                     <div className="text-right">
-                        <span className="text-4xl font-bold text-gray-900">
+                        <span className="text-4xl font-bold text-foreground">
                             ₹{PRO_SLOT_PRICE.toLocaleString("en-IN")}
                         </span>
-                        <span className="text-gray-500 ml-1">/ slot</span>
+                        <span className="text-muted-foreground ml-1">/ slot</span>
                     </div>
                 </div>
 
                 <div className="border-t pt-6">
-                    <p className="text-sm font-medium text-gray-700 mb-4">
+                    <p className="text-sm font-medium text-foreground mb-4">
                         Everything in Free, plus:
                     </p>
                     <ul className="grid gap-3 sm:grid-cols-2">
                         {SLOT_BENEFITS.map((benefit) => (
-                            <li key={benefit} className="flex items-start gap-2.5 text-sm text-gray-600">
-                                <Check className="h-4 w-4 text-indigo-600 shrink-0 mt-0.5" />
+                            <li key={benefit} className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                                <Check className="h-4 w-4 text-primary shrink-0 mt-0.5" />
                                 {benefit}
                             </li>
                         ))}
@@ -262,7 +262,7 @@ export default function BillingUpgradePage() {
                 <Button
                     onClick={handlePayment}
                     disabled={paying}
-                    className="mt-8 w-full h-12 text-base bg-indigo-600 hover:bg-indigo-700 gap-2"
+                    className="mt-8 w-full h-12 text-base bg-primary hover:bg-primary-hover gap-2"
                 >
                     {paying ? (
                         <>
@@ -280,7 +280,7 @@ export default function BillingUpgradePage() {
             </Card>
 
             {/* Trust signals */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-xs text-gray-400">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-xs text-muted-foreground">
                 <span className="flex items-center gap-1">
                     <ShieldCheck className="h-3.5 w-3.5" />
                     Secured by Razorpay

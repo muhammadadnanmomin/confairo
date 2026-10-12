@@ -110,7 +110,7 @@ export default function SettingsPage() {
         <h1 className="text-3xl font-bold">
           Account Settings
         </h1>
-        <p className="text-gray-500 mt-1">
+        <p className="text-muted-foreground mt-1">
           Manage your account preferences and security.
         </p>
       </div>
@@ -127,13 +127,13 @@ export default function SettingsPage() {
         <Separator />
 
         <div className="space-y-1">
-          <p className="text-sm font-medium text-gray-500">
+          <p className="text-sm font-medium text-muted-foreground">
             Account Email
           </p>
           <p className="text-base font-medium">
             {email || "—"}
           </p>
-          <p className="text-xs text-gray-400">
+          <p className="text-xs text-muted-foreground">
             Email is managed through authentication and cannot be changed.
           </p>
         </div>
@@ -158,7 +158,7 @@ export default function SettingsPage() {
           </div>
         ) : verificationError ? (
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-sm">
-            <p className="text-gray-500">
+            <p className="text-muted-foreground">
               We could not load your verification status. Please try again.
             </p>
             <Button
@@ -174,21 +174,21 @@ export default function SettingsPage() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="space-y-1.5">
               <div className="flex flex-wrap items-center gap-2">
-                <Badge className="bg-emerald-100 text-emerald-700 border-emerald-200">
+                <Badge className="bg-success-surface text-success border-success">
                   <CheckCircle2 className="h-3 w-3 mr-1" />
                   Verified
                 </Badge>
                 {institutionName && (
-                  <span className="text-sm font-medium text-gray-900">
+                  <span className="text-sm font-medium text-foreground">
                     {institutionName}
                   </span>
                 )}
               </div>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-muted-foreground">
                 Your institutional affiliation is verified. You are authorized to publish academic conferences.
               </p>
               {institutionalEmail && (
-                <p className="text-xs text-gray-400">
+                <p className="text-xs text-muted-foreground">
                   Verified via {institutionalEmail}
                 </p>
               )}
@@ -207,17 +207,17 @@ export default function SettingsPage() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="space-y-1.5">
               <div className="flex flex-wrap items-center gap-2">
-                <Badge variant="outline" className="border-amber-300 bg-amber-50 text-amber-700">
+                <Badge variant="outline" className="border-warning bg-warning-surface text-warning">
                   <Clock className="h-3 w-3 mr-1" />
                   Verification Pending
                 </Badge>
                 {pendingEmail && (
-                  <span className="text-sm font-medium text-gray-800">
+                  <span className="text-sm font-medium text-foreground">
                     {pendingEmail}
                   </span>
                 )}
               </div>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-muted-foreground">
                 A verification link has been sent to your institutional email. Check your inbox to complete verification.
               </p>
             </div>
@@ -235,18 +235,18 @@ export default function SettingsPage() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="space-y-1">
               <div className="flex items-center gap-2">
-                <Badge variant="secondary" className="text-gray-600">
+                <Badge variant="secondary" className="text-muted-foreground">
                   Not Verified
                 </Badge>
               </div>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-muted-foreground">
                 Institutional affiliation is required to publish conferences. Your primary login email will not change.
               </p>
             </div>
 
             <Button
               onClick={() => setShowVerificationDialog(true)}
-              className="bg-indigo-600 hover:bg-indigo-700 text-white shrink-0"
+              className="bg-primary hover:bg-primary-hover text-primary-foreground shrink-0"
             >
               Verify Institutional Email
             </Button>
@@ -276,7 +276,7 @@ export default function SettingsPage() {
             <p className="font-medium">
               Email Notifications
             </p>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-muted-foreground">
               Receive conference updates and alerts.
             </p>
           </div>
@@ -345,7 +345,7 @@ export default function SettingsPage() {
               <p className="font-medium">
                 Payment Account
               </p>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-muted-foreground">
                 Connect Razorpay to receive payouts.
               </p>
             </div>
@@ -377,7 +377,7 @@ export default function SettingsPage() {
               <p className="font-medium">
                 Change Password
               </p>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-muted-foreground">
                 Send a password reset link to your email.
               </p>
             </div>
@@ -394,7 +394,7 @@ export default function SettingsPage() {
               <p className="font-medium">
                 Sign out of this device
               </p>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-muted-foreground">
                 You will need to login again.
               </p>
             </div>
@@ -447,7 +447,7 @@ function SectionHeader({
   return (
     <div>
       <div className="flex items-center gap-3">
-        <div className="text-gray-500">
+        <div className="text-muted-foreground">
           {icon}
         </div>
         <h2 className="text-xl font-semibold">
@@ -456,7 +456,7 @@ function SectionHeader({
       </div>
 
       {description && (
-        <p className="text-sm text-gray-500 mt-1">
+        <p className="text-sm text-muted-foreground mt-1">
           {description}
         </p>
       )}
@@ -481,10 +481,10 @@ function PreferenceRow({
   return (
     <div className="flex items-center justify-between">
       <div className="flex items-start gap-3">
-        <div className="text-gray-400 mt-0.5">{icon}</div>
+        <div className="text-muted-foreground mt-0.5">{icon}</div>
         <div>
           <p className="font-medium">{label}</p>
-          <p className="text-sm text-gray-500">{description}</p>
+          <p className="text-sm text-muted-foreground">{description}</p>
         </div>
       </div>
 

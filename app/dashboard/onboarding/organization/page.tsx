@@ -290,10 +290,10 @@ export default function OrganizationSetup() {
             Create Your Organization
           </h1>
         </div>
-        <p className="text-gray-500 mt-1">
+        <p className="text-muted-foreground mt-1">
           This workspace will allow you to:
         </p>
-        <ul className="text-gray-500 text-sm mt-2 space-y-1 ml-1">
+        <ul className="text-muted-foreground text-sm mt-2 space-y-1 ml-1">
           <li>• Host conferences</li>
           <li>• Manage paper submissions</li>
           <li>• Assign reviewers</li>
@@ -308,12 +308,12 @@ export default function OrganizationSetup() {
           <div>
             <label className="text-sm font-medium block mb-2">
               Organization Logo{" "}
-              <span className="text-gray-400 font-normal">(optional)</span>
+              <span className="text-muted-foreground font-normal">(optional)</span>
             </label>
 
             {logoPreview ? (
               <div className="flex items-center gap-4">
-                <div className="relative h-20 w-20 rounded-lg border overflow-hidden bg-gray-50">
+                <div className="relative h-20 w-20 rounded-lg border border-border overflow-hidden bg-muted">
                   <Image
                     src={logoPreview}
                     alt="Logo preview"
@@ -322,13 +322,13 @@ export default function OrganizationSetup() {
                   />
                 </div>
                 <div className="flex flex-col gap-1">
-                  <p className="text-sm text-gray-600 truncate max-w-[200px]">
+                  <p className="text-sm text-muted-foreground truncate max-w-[200px]">
                     {logoFile?.name}
                   </p>
                   <button
                     type="button"
                     onClick={clearLogo}
-                    className="cursor-pointer text-xs text-red-500 hover:text-red-700 transition flex items-center gap-1 w-fit"
+                    className="cursor-pointer text-xs text-destructive hover:text-destructive/80 transition flex items-center gap-1 w-fit"
                   >
                     <X className="h-3 w-3" />
                     Remove
@@ -339,16 +339,16 @@ export default function OrganizationSetup() {
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
-                className="flex cursor-pointer items-center gap-3 w-full rounded-lg border-2 border-dashed border-gray-200 hover:border-primary/40 transition p-4 text-left group"
+                className="flex cursor-pointer items-center gap-3 w-full rounded-lg border-2 border-dashed border-border hover:border-primary/40 transition p-4 text-left group"
               >
-                <div className="h-12 w-12 rounded-lg bg-gray-100 group-hover:bg-primary/10 transition flex items-center justify-center">
-                  <ImageIcon className="h-5 w-5 text-gray-400 group-hover:text-primary transition" />
+                <div className="h-12 w-12 rounded-lg bg-muted group-hover:bg-primary/10 transition flex items-center justify-center">
+                  <ImageIcon className="h-5 w-5 text-muted-foreground group-hover:text-primary transition" />
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-gray-700">
+                  <p className="text-sm font-medium text-foreground">
                     Upload logo
                   </p>
-                  <p className="text-xs text-gray-400">
+                  <p className="text-xs text-muted-foreground">
                     PNG or JPEG, max 2 MB
                   </p>
                 </div>
@@ -367,7 +367,7 @@ export default function OrganizationSetup() {
           {/* Name */}
           <div>
             <label className="text-sm font-medium">
-              Organization Name <span className="text-red-500">*</span>
+              Organization Name <span className="text-destructive">*</span>
             </label>
             <Input
               placeholder="International Conference Society"
@@ -375,10 +375,10 @@ export default function OrganizationSetup() {
               onChange={(e) => setName(e.target.value)}
             />
             {slug && (
-              <p className="text-xs text-gray-400 mt-1.5 flex items-center gap-1">
+              <p className="text-xs text-muted-foreground mt-1.5 flex items-center gap-1">
                 <Globe className="h-3 w-3" />
                 confairo.com/org/
-                <span className="font-mono text-gray-500">{slug}</span>
+                <span className="font-mono text-muted-foreground">{slug}</span>
               </p>
             )}
           </div>
@@ -386,12 +386,12 @@ export default function OrganizationSetup() {
           {/* Country */}
           <div>
             <label className="text-sm font-medium block mb-1">
-              Country <span className="text-red-500">*</span>
+              Country <span className="text-destructive">*</span>
             </label>
             <Select value={country} onValueChange={setCountry}>
               <SelectTrigger className="w-full">
                 <div className="flex items-center gap-2">
-                  <MapPin className="h-4 w-4 text-gray-400" />
+                  <MapPin className="h-4 w-4 text-muted-foreground" />
                   <SelectValue placeholder="Select a country" />
                 </div>
               </SelectTrigger>
@@ -409,10 +409,10 @@ export default function OrganizationSetup() {
           <div>
             <label className="text-sm font-medium">
               Website{" "}
-              <span className="text-gray-400 font-normal">(optional)</span>
+              <span className="text-muted-foreground font-normal">(optional)</span>
             </label>
             <div className="relative">
-              <Globe className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+              <Globe className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
                 className="pl-9"
                 placeholder="https://example.org"
@@ -426,10 +426,10 @@ export default function OrganizationSetup() {
           <div>
             <label className="text-sm font-medium">
               LinkedIn Page{" "}
-              <span className="text-gray-400 font-normal">(optional)</span>
+              <span className="text-muted-foreground font-normal">(optional)</span>
             </label>
             <div className="relative">
-              <Linkedin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+              <Linkedin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
                 className="pl-9"
                 placeholder="https://linkedin.com/company/your-org"
@@ -443,7 +443,7 @@ export default function OrganizationSetup() {
           <div>
             <label className="text-sm font-medium">
               Description{" "}
-              <span className="text-gray-400 font-normal">(optional)</span>
+              <span className="text-muted-foreground font-normal">(optional)</span>
             </label>
             <Textarea
               placeholder="Describe your organization and its mission in academic research."

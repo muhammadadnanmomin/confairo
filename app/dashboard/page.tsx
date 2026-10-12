@@ -82,7 +82,7 @@ export default function DashboardRedirect() {
   }, [profile, loading, organization, isReviewer, router]);
 
   return (
-    <div className="p-10 text-gray-500">
+    <div className="p-10 text-muted-foreground">
       Loading your workspace...
     </div>
   );

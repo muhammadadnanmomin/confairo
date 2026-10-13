@@ -723,7 +723,7 @@ export default function ConferenceDetails() {
                 href={conf.whatsapp_group_link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg border border-green-200 bg-green-50 px-4 py-2 text-sm font-medium text-green-700 hover:bg-green-100 transition-colors"
+                className="inline-flex items-center gap-2 rounded-lg border border-success/30 bg-success-surface px-4 py-2 text-sm font-medium text-success hover:bg-success/15 transition-colors"
               >
                 <MessageCircle className="h-4 w-4" />
                 Join WhatsApp Group

@@ -63,12 +63,11 @@ export function QuickActions({ onSelect, disabled }: QuickActionsProps) {
           disabled={disabled}
           className="
             inline-flex cursor-pointer items-center gap-1.5 rounded-full
-            border border-gray-200 dark:border-gray-700
-            bg-white dark:bg-gray-800
+            border border-border
+            bg-card
             px-2.5 py-1
-            text-xs font-medium text-gray-600 dark:text-gray-300
-            hover:bg-indigo-50 hover:border-indigo-300 hover:text-indigo-700
-            dark:hover:bg-indigo-950 dark:hover:border-indigo-600 dark:hover:text-indigo-300
+            text-xs font-medium text-muted-foreground
+            hover:bg-accent hover:border-primary/30 hover:text-primary
             transition-all duration-150
             disabled:opacity-40 disabled:cursor-not-allowed
             shadow-sm

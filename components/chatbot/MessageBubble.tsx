@@ -62,13 +62,13 @@ export function MessageBubble({ message }: MessageBubbleProps) {
         <div className="flex flex-col items-end gap-1 max-w-[80%]">
           <div className="
             rounded-2xl rounded-br-sm
-            bg-indigo-600 text-white
+            bg-primary text-primary-foreground
             px-4 py-2.5 text-sm leading-relaxed
             shadow-sm
           ">
             {message.content}
           </div>
-          <span className="text-[10px] text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity">
+          <span className="text-[10px] text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity">
             {formatTime(message.createdAt)}
           </span>
         </div>
@@ -82,7 +82,7 @@ export function MessageBubble({ message }: MessageBubbleProps) {
       {/* Avatar */}
       <div className="
         shrink-0 h-7 w-7 rounded-full
-        bg-white border border-gray-200 dark:border-gray-700
+        bg-card border border-border
         flex items-center justify-center
         shadow-sm mt-0.5 p-1 overflow-hidden
       ">
@@ -98,15 +98,15 @@ export function MessageBubble({ message }: MessageBubbleProps) {
       <div className="flex flex-col gap-1 max-w-[85%]">
         <div className="
           rounded-2xl rounded-bl-sm
-          bg-gray-100 dark:bg-gray-800
+          bg-muted
           px-4 py-3 text-sm leading-relaxed
-          text-gray-800 dark:text-gray-100
+          text-foreground
           shadow-sm
         ">
           {message.isStreaming ? (
             <span>
               <span dangerouslySetInnerHTML={{ __html: html || parseMarkdown(message.content) }} />
-              <span className="chatbot-cursor inline-block ml-0.5 h-4 w-0.5 bg-indigo-500 align-middle" />
+              <span className="chatbot-cursor inline-block ml-0.5 h-4 w-0.5 bg-primary align-middle" />
             </span>
           ) : (
             <div
@@ -118,13 +118,13 @@ export function MessageBubble({ message }: MessageBubbleProps) {
 
         {/* Bottom row: time + copy */}
         <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-          <span className="text-[10px] text-gray-400">
+          <span className="text-[10px] text-muted-foreground">
             {formatTime(message.createdAt)}
           </span>
           {!message.isStreaming && message.content && (
             <button
               onClick={handleCopy}
-              className="cursor-pointer text-[10px] text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 flex items-center gap-1 transition-colors"
+              className="cursor-pointer text-[10px] text-muted-foreground hover:text-foreground flex items-center gap-1 transition-colors"
               aria-label="Copy message"
             >
               {copied ? (

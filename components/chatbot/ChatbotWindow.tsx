@@ -105,8 +105,8 @@ export function ChatbotWindow({
         w-[380px] max-w-[calc(100vw-2rem)]
         flex flex-col
         rounded-2xl
-        border border-gray-200/60 dark:border-gray-700/60
-        bg-white/95 dark:bg-gray-900/95
+        border border-border
+        bg-card/95
         backdrop-blur-xl
         shadow-[0_20px_60px_rgba(0,0,0,0.18)]
         transition-all duration-300 ease-out origin-bottom-right
@@ -121,15 +121,15 @@ export function ChatbotWindow({
       <div className="
         flex items-center justify-between
         px-4 py-3
-        border-b border-gray-100 dark:border-gray-800
+        border-b border-border
         rounded-t-2xl
-        bg-gradient-to-r from-indigo-600 to-violet-600
+        bg-gradient-to-r from-primary to-primary-hover
         shrink-0
       ">
         <div className="flex items-center gap-2.5">
           <div className="
             h-8 w-8 rounded-full
-            bg-white
+            bg-card
             flex items-center justify-center
             overflow-hidden shadow-sm shrink-0 p-1
           ">
@@ -146,8 +146,8 @@ export function ChatbotWindow({
               {displayBotName}
             </p>
             <div className="flex items-center gap-1 mt-0.5">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-[10px] text-indigo-100">Online</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-success animate-pulse" />
+              <span className="text-[10px] text-primary-foreground/80">Online</span>
             </div>
           </div>
         </div>
@@ -210,8 +210,8 @@ export function ChatbotWindow({
           <div className="flex flex-col items-center justify-center h-full px-6 text-center gap-4">
             <div className="
               h-16 w-16 rounded-2xl
-              bg-white dark:bg-gray-800
-              border border-gray-100 dark:border-gray-700
+              bg-card
+              border border-border
               flex items-center justify-center
               shadow-lg p-3
             ">
@@ -224,14 +224,14 @@ export function ChatbotWindow({
               />
             </div>
             <div>
-              <p className="text-base font-semibold text-gray-800 dark:text-gray-100">
+              <p className="text-base font-semibold text-foreground">
                 {displayBotName}
               </p>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 leading-relaxed">
+              <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
                 {displayWelcomeMessage}
               </p>
             </div>
-            <p className="text-[11px] text-gray-400">
+            <p className="text-[11px] text-muted-foreground">
               Ask me anything or try a quick action below ↓
             </p>
           </div>
@@ -253,7 +253,7 @@ export function ChatbotWindow({
       </div>
 
       {/* ── Quick Actions ─────────────────────────────────────── */}
-      <div className="shrink-0 border-t border-gray-100 dark:border-gray-800 pt-2">
+      <div className="shrink-0 border-t border-border pt-2">
         <QuickActions onSelect={handleQuickAction} disabled={isStreaming} />
       </div>
 
@@ -262,11 +262,11 @@ export function ChatbotWindow({
         <div className="
           flex items-end gap-2
           rounded-xl
-          border border-gray-200 dark:border-gray-700
-          bg-gray-50 dark:bg-gray-800
+          border border-border
+          bg-muted/50
           px-3 py-2
-          focus-within:border-indigo-400 dark:focus-within:border-indigo-500
-          focus-within:ring-1 focus-within:ring-indigo-400/20
+          focus-within:border-primary
+          focus-within:ring-1 focus-within:ring-primary/20
           transition-all duration-150
         ">
           <textarea
@@ -281,8 +281,8 @@ export function ChatbotWindow({
             aria-label="Chat message input"
             className="
               flex-1 resize-none bg-transparent
-              text-sm text-gray-800 dark:text-gray-100
-              placeholder:text-gray-400 dark:placeholder:text-gray-500
+              text-sm text-foreground
+              placeholder:text-muted-foreground
               outline-none leading-5
               max-h-32 overflow-y-auto
               disabled:opacity-50
@@ -305,12 +305,12 @@ export function ChatbotWindow({
               aria-label="Stop generating"
               className="
                 shrink-0 h-8 w-8 cursor-pointer rounded-lg
-                bg-red-500 hover:bg-red-600
+                bg-destructive hover:bg-destructive/90 text-destructive-foreground
                 flex items-center justify-center
                 transition-colors
               "
             >
-              <StopCircle className="h-4 w-4 text-white" />
+              <StopCircle className="h-4 w-4 text-destructive-foreground" />
             </button>
           ) : (
             <button
@@ -320,18 +320,18 @@ export function ChatbotWindow({
               aria-label="Send message"
               className="
                 shrink-0 h-8 w-8 cursor-pointer rounded-lg
-                bg-indigo-600 hover:bg-indigo-700
+                bg-primary hover:bg-primary-hover text-primary-foreground
                 flex items-center justify-center
                 transition-colors
                 disabled:opacity-40 disabled:cursor-not-allowed
               "
             >
-              <Send className="h-3.5 w-3.5 text-white" />
+              <Send className="h-3.5 w-3.5 text-primary-foreground" />
             </button>
           )}
         </div>
 
-        <p className="text-center text-[10px] text-gray-400 mt-1.5">
+        <p className="text-center text-[10px] text-muted-foreground mt-1.5">
           Shift+Enter for new line · Enter to send
         </p>
       </div>

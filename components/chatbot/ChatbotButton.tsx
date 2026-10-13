@@ -62,7 +62,7 @@ export function ChatbotButton({
           <span className="
             absolute -top-1 -right-1
             h-5 w-5 rounded-full
-            bg-red-500 text-white
+            bg-destructive text-destructive-foreground
             text-[10px] font-bold
             flex items-center justify-center
             shadow-sm animate-bounce

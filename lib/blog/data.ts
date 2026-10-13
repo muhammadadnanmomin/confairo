@@ -2,23 +2,23 @@ import { BlogPost, BlogCategory, BlogCategoryValue } from "./types";
 
 // ─── Category definitions with brand-aligned colors ─────────────────────────
 export const blogCategories: BlogCategory[] = [
-  { label: "AI", value: "ai", color: "bg-violet-100 text-violet-700" },
+  { label: "AI", value: "ai", color: "bg-accent text-accent-foreground border border-accent-foreground/20" },
   {
     label: "Conferences",
     value: "conferences",
-    color: "bg-indigo-100 text-indigo-700",
+    color: "bg-primary/10 text-primary border border-primary/20",
   },
   {
     label: "Research",
     value: "research",
-    color: "bg-teal-100 text-teal-700",
+    color: "bg-info-surface text-info border border-info/30",
   },
   {
     label: "Productivity",
     value: "productivity",
-    color: "bg-amber-100 text-amber-700",
+    color: "bg-warning-surface text-warning border border-warning/30",
   },
-  { label: "Tech", value: "tech", color: "bg-sky-100 text-sky-700" },
+  { label: "Tech", value: "tech", color: "bg-success-surface text-success border border-success/30" },
 ];
 
 /** Lookup helper for category metadata */

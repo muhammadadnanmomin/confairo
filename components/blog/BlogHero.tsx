@@ -8,7 +8,7 @@ export function BlogHero() {
       {/* Background gradient (same pattern as landing hero) */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(99,102,241,0.1),transparent)]" />
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
       </div>
 
       <div className="mx-auto max-w-4xl text-center">
@@ -33,7 +33,7 @@ export function BlogHero() {
         {/* Title */}
         <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
           Confairo{" "}
-          <span className="bg-gradient-to-r from-indigo-600 to-indigo-500 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-primary to-primary-hover bg-clip-text text-transparent">
             Blog
           </span>
         </h1>

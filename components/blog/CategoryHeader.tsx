@@ -49,7 +49,7 @@ export function CategoryHeader({
       </div>
 
       {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-background to-transparent" />
     </div>
   );
 }
@@ -73,7 +73,7 @@ const headerStyles: Record<
     pattern:
       "bg-[linear-gradient(rgba(139,92,246,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(139,92,246,0.07)_1px,transparent_1px)] bg-[size:40px_40px]",
     badge:
-      "bg-violet-500/20 text-violet-200 border border-violet-400/30",
+      "bg-accent/20 text-accent border border-accent/30",
     title: "text-white",
     icon: (
       <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -82,20 +82,20 @@ const headerStyles: Record<
     ),
     shapes: (
       <>
-        <div className="absolute top-10 right-10 h-64 w-64 rounded-full bg-violet-500/10 blur-3xl" />
-        <div className="absolute bottom-0 left-10 h-48 w-48 rounded-full bg-cyan-500/10 blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-indigo-500/5 blur-3xl" />
+        <div className="absolute top-10 right-10 h-64 w-64 rounded-full bg-accent/10 blur-3xl" />
+        <div className="absolute bottom-0 left-10 h-48 w-48 rounded-full bg-info/10 blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />
       </>
     ),
   },
 
   // ── Conferences — Structured with step indicators ──
   conferences: {
-    bg: "bg-gradient-to-br from-indigo-50 via-blue-50 to-white min-h-[320px]",
+    bg: "bg-gradient-to-br from-primary/5 via-secondary/30 to-background min-h-[320px]",
     pattern:
       "bg-[radial-gradient(circle_at_1px_1px,rgba(99,102,241,0.08)_1px,transparent_0)] bg-[size:24px_24px]",
     badge:
-      "bg-indigo-100 text-indigo-700 border border-indigo-200",
+      "bg-primary/10 text-primary border border-primary/20",
     title: "text-foreground",
     icon: (
       <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -104,19 +104,19 @@ const headerStyles: Record<
     ),
     shapes: (
       <>
-        <div className="absolute -top-20 -right-20 h-80 w-80 rounded-full bg-indigo-100/60 blur-3xl" />
-        <div className="absolute bottom-10 -left-10 h-60 w-60 rounded-full bg-blue-100/40 blur-3xl" />
+        <div className="absolute -top-20 -right-20 h-80 w-80 rounded-full bg-primary/10 blur-3xl" />
+        <div className="absolute bottom-10 -left-10 h-60 w-60 rounded-full bg-secondary/40 blur-3xl" />
       </>
     ),
   },
 
   // ── Research — Clean academic with paper-like feel ──
   research: {
-    bg: "bg-gradient-to-b from-stone-50 via-slate-50 to-white min-h-[320px]",
+    bg: "bg-gradient-to-b from-muted/50 via-background to-background min-h-[320px]",
     pattern:
       "bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:1px_28px]",
     badge:
-      "bg-teal-100 text-teal-700 border border-teal-200",
+      "bg-info-surface text-info border border-info/30",
     title: "text-foreground font-serif",
     icon: (
       <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -125,19 +125,19 @@ const headerStyles: Record<
     ),
     shapes: (
       <>
-        <div className="absolute top-0 right-0 h-64 w-64 rounded-full bg-teal-50/80 blur-3xl" />
+        <div className="absolute top-0 right-0 h-64 w-64 rounded-full bg-info-surface/80 blur-3xl" />
         {/* Decorative rule lines */}
-        <div className="absolute top-8 left-1/2 -translate-x-1/2 w-24 border-t-2 border-stone-200/60" />
+        <div className="absolute top-8 left-1/2 -translate-x-1/2 w-24 border-t-2 border-border" />
       </>
     ),
   },
 
   // ── Productivity — Minimal and warm ──
   productivity: {
-    bg: "bg-gradient-to-br from-amber-50 via-orange-50/30 to-white min-h-[320px]",
+    bg: "bg-gradient-to-br from-warning-surface/50 via-warning-surface/20 to-background min-h-[320px]",
     pattern: "bg-transparent",
     badge:
-      "bg-amber-100 text-amber-700 border border-amber-200",
+      "bg-warning-surface text-warning border border-warning/30",
     title: "text-foreground",
     icon: (
       <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -146,8 +146,8 @@ const headerStyles: Record<
     ),
     shapes: (
       <>
-        <div className="absolute top-10 right-20 h-40 w-40 rounded-full bg-amber-200/30 blur-3xl" />
-        <div className="absolute bottom-0 left-1/3 h-52 w-52 rounded-full bg-orange-100/40 blur-3xl" />
+        <div className="absolute top-10 right-20 h-40 w-40 rounded-full bg-warning-surface blur-3xl" />
+        <div className="absolute bottom-0 left-1/3 h-52 w-52 rounded-full bg-warning-surface/40 blur-3xl" />
       </>
     ),
   },
@@ -158,7 +158,7 @@ const headerStyles: Record<
     pattern:
       "bg-[linear-gradient(rgba(16,185,129,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(16,185,129,0.05)_1px,transparent_1px)] bg-[size:32px_32px]",
     badge:
-      "bg-emerald-500/20 text-emerald-300 border border-emerald-400/30",
+      "bg-success/20 text-success border border-success/30",
     title: "text-white",
     icon: (
       <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -167,13 +167,13 @@ const headerStyles: Record<
     ),
     shapes: (
       <>
-        <div className="absolute top-0 right-0 h-72 w-72 rounded-full bg-emerald-500/5 blur-3xl" />
-        <div className="absolute bottom-0 left-0 h-56 w-56 rounded-full bg-sky-500/5 blur-3xl" />
+        <div className="absolute top-0 right-0 h-72 w-72 rounded-full bg-success/5 blur-3xl" />
+        <div className="absolute bottom-0 left-0 h-56 w-56 rounded-full bg-info/5 blur-3xl" />
         {/* Terminal cursor blink effect */}
         <div className="absolute top-6 left-6 flex items-center gap-1.5 opacity-40">
-          <div className="h-3 w-3 rounded-full bg-red-500/60" />
-          <div className="h-3 w-3 rounded-full bg-yellow-500/60" />
-          <div className="h-3 w-3 rounded-full bg-green-500/60" />
+          <div className="h-3 w-3 rounded-full bg-destructive/70" />
+          <div className="h-3 w-3 rounded-full bg-warning/70" />
+          <div className="h-3 w-3 rounded-full bg-success/70" />
         </div>
       </>
     ),

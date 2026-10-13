@@ -32,7 +32,7 @@ export function ReadingProgressBar() {
       aria-valuemax={100}
     >
       <div
-        className="h-full bg-gradient-to-r from-indigo-500 via-indigo-600 to-violet-600 transition-[width] duration-150 ease-out"
+        className="h-full bg-primary transition-[width] duration-150 ease-out"
         style={{ width: `${progress}%` }}
       />
     </div>

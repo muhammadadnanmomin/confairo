@@ -8,15 +8,15 @@ import { ArrowRight } from "lucide-react";
  */
 export function BlogCTA() {
   return (
-    <section className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-indigo-600 via-indigo-700 to-violet-700 px-6 py-12 text-center shadow-xl sm:px-10 sm:py-16">
+    <section className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary via-primary-hover to-primary px-6 py-12 text-center shadow-xl sm:px-10 sm:py-16">
       {/* Decorative shapes */}
       <div className="absolute -top-10 -right-10 h-52 w-52 rounded-full bg-white/5 blur-2xl" />
       <div className="absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-white/5 blur-2xl" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-72 w-72 rounded-full bg-violet-400/10 blur-3xl" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-72 w-72 rounded-full bg-primary-foreground/10 blur-3xl" />
 
       {/* Content */}
       <div className="relative z-10">
-        {/* <div className="mx-auto inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium text-indigo-100 backdrop-blur-sm">
+        {/* <div className="mx-auto inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium text-primary-foreground/90 backdrop-blur-sm">
           <svg
             className="h-4 w-4"
             fill="none"
@@ -37,7 +37,7 @@ export function BlogCTA() {
           Start managing your conferences with Confairo
         </h2>
 
-        <p className="mx-auto mt-3 max-w-lg text-base leading-relaxed text-indigo-100/80">
+        <p className="mx-auto mt-3 max-w-lg text-base leading-relaxed text-primary-foreground/80">
           From paper submissions to certificate generation — automate your
           entire conference workflow and save dozens of hours.
         </p>
@@ -46,8 +46,8 @@ export function BlogCTA() {
           <Link
             href="/signup"
             className="inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3
-                       text-sm font-semibold text-indigo-700 shadow-lg shadow-indigo-900/20
-                       transition-all hover:bg-indigo-50 hover:shadow-xl hover:-translate-y-0.5"
+                       text-sm font-semibold text-primary shadow-lg shadow-primary/20
+                       transition-all hover:bg-secondary hover:shadow-xl hover:-translate-y-0.5"
           >
             Get Started Free
             <ArrowRight className="h-4 w-4" />

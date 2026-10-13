@@ -231,12 +231,12 @@ export default async function ConferenceDetail({ params }: Props) {
                     {/* Submission Status */}
                     {conf.submission_deadline &&
                       (submissionsOpen ? (
-                        <Badge className="bg-green-500/80 text-white border-green-400/40 backdrop-blur hover:bg-green-500/90">
+                        <Badge className="bg-success/80 text-success-foreground border-success/40 backdrop-blur hover:bg-success/90">
                           <CheckCircle className="h-3 w-3" />
                           Submissions Open
                         </Badge>
                       ) : (
-                        <Badge className="bg-red-500/70 text-white border-red-400/40 backdrop-blur hover:bg-red-500/80">
+                        <Badge className="bg-destructive/80 text-destructive-foreground border-destructive/40 backdrop-blur hover:bg-destructive/90">
                           <XCircle className="h-3 w-3" />
                           Submissions Closed
                         </Badge>
@@ -616,7 +616,7 @@ export default async function ConferenceDetail({ params }: Props) {
                     href={conf.whatsapp_group_link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-lg border border-green-200 bg-green-50 px-4 py-2 text-sm font-medium text-green-700 hover:bg-green-100 transition-colors"
+                    className="inline-flex items-center gap-2 rounded-lg border border-success/30 bg-success-surface px-4 py-2 text-sm font-medium text-success hover:bg-success/15 transition-colors"
                   >
                     <MessageCircle className="h-4 w-4" />
                     Join WhatsApp Group

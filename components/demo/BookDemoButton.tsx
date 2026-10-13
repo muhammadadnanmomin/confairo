@@ -30,17 +30,17 @@ export function BookDemoButton({
     variant === "secondary" ? "Book 15-Min Demo" : "Book a Demo";
 
   const base =
-    "inline-flex items-center gap-2 font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 cursor-pointer";
+    "inline-flex items-center gap-2 font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 cursor-pointer";
 
   const variants: Record<Variant, string> = {
     primary:
-      "rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 px-7 py-3.5 text-base text-white shadow-lg shadow-indigo-600/25 hover:shadow-xl hover:shadow-indigo-600/30 hover:-translate-y-0.5",
+      "rounded-lg bg-gradient-to-r from-primary to-primary-hover px-7 py-3.5 text-base text-primary-foreground shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5",
     secondary:
-      "rounded-lg border border-indigo-200 bg-indigo-50/60 px-6 py-3 text-sm text-indigo-700 hover:bg-indigo-100 hover:border-indigo-300",
+      "rounded-lg border border-primary/20 bg-primary/5 px-6 py-3 text-sm text-primary hover:bg-primary/10 hover:border-primary/30",
     ghost:
-      "rounded-md px-4 py-2 text-sm text-gray-600 hover:text-indigo-600 hover:bg-indigo-50",
+      "rounded-md px-4 py-2 text-sm text-muted-foreground hover:text-primary hover:bg-accent",
     nav:
-      "rounded-md bg-gradient-to-r from-indigo-600 to-purple-600 px-4 py-2 text-sm text-white shadow-sm hover:shadow-md hover:-translate-y-px",
+      "rounded-md bg-gradient-to-r from-primary to-primary-hover px-4 py-2 text-sm text-primary-foreground shadow-sm hover:shadow-md hover:-translate-y-px",
   };
 
   const handleClick = () => {

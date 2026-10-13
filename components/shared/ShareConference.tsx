@@ -79,7 +79,7 @@ export default function ShareConference({ url, title }: ShareConferenceProps) {
                 variant="outline"
                 size="sm"
                 onClick={shareWhatsApp}
-                className="gap-1.5 text-green-700 border-green-200 hover:bg-green-50"
+                className="gap-1.5 text-success border-success/30 hover:bg-success-surface"
             >
                 <MessageCircle className="h-3.5 w-3.5" />
                 WhatsApp

@@ -96,7 +96,7 @@ export default async function OrganizationProfilePage({
             {/* ───── Organization Profile Card ───── */}
             <Card className="overflow-hidden">
                 {/* Accent strip */}
-                <div className="h-1.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-400" />
+                <div className="h-1.5 bg-gradient-to-r from-primary via-primary-hover to-primary" />
 
                 <div className="p-6 md:p-8">
                     <div className="flex flex-col md:flex-row gap-6">

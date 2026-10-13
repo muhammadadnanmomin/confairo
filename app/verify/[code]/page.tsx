@@ -88,8 +88,8 @@ export default async function VerifyCertificatePage({ params }: PageProps) {
       <div className="min-h-screen bg-muted flex items-center justify-center p-4">
         <div className="w-full max-w-md">
           <div className="bg-card rounded-2xl shadow-lg border border-border overflow-hidden">
-            {/* Red failure header — intentional branded state gradient, preserved per Phase C audit */}
-            <div className="bg-gradient-to-r from-red-500 to-rose-500 px-6 py-8 text-center">
+            {/* Red failure header — semantic destructive treatment */}
+            <div className="bg-gradient-to-r from-destructive to-destructive/90 px-6 py-8 text-center">
               <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-white/20 backdrop-blur">
                 <XCircle className="h-9 w-9 text-white" />
               </div>
@@ -151,15 +151,15 @@ export default async function VerifyCertificatePage({ params }: PageProps) {
     <div className="min-h-screen bg-muted flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="bg-card rounded-2xl shadow-lg border border-border overflow-hidden">
-          {/* Green success header — intentional branded state gradient, preserved per Phase C audit */}
-          <div className="bg-gradient-to-r from-emerald-500 to-green-500 px-6 py-8 text-center">
+          {/* Green success header — semantic success treatment */}
+          <div className="bg-gradient-to-r from-success to-success/90 px-6 py-8 text-center">
             <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-white/20 backdrop-blur">
               <CheckCircle2 className="h-9 w-9 text-white" />
             </div>
             <h1 className="text-2xl font-bold text-white">
               Certificate Verified
             </h1>
-            <p className="text-emerald-50 text-sm mt-1">
+            <p className="text-success-foreground/90 text-sm mt-1">
               This certificate is authentic and valid
             </p>
           </div>

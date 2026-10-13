@@ -545,12 +545,12 @@ export default function OrganizerCertificates() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="flex items-center gap-3">
-          <div className="bg-indigo-50 p-2.5 rounded-lg">
-            <Award className="h-6 w-6 text-indigo-600" />
+          <div className="bg-primary/10 p-2.5 rounded-lg">
+            <Award className="h-6 w-6 text-primary" />
           </div>
           <div>
             <h1 className="text-3xl font-bold tracking-tight">Certificates</h1>
-            <p className="text-gray-500 mt-0.5">
+            <p className="text-muted-foreground mt-0.5">
               Generate and manage author certificates
             </p>
           </div>
@@ -562,11 +562,11 @@ export default function OrganizerCertificates() {
               <Users className="h-3 w-3" />
               {totalAuthors} Authors
             </Badge>
-            <Badge className="bg-green-100 text-green-700 border-green-200 hover:bg-green-100 gap-1.5 text-xs py-1 px-2.5">
+            <Badge className="bg-success-surface text-success border-success/30 hover:bg-success-surface gap-1.5 text-xs py-1 px-2.5">
               <CheckCircle className="h-3 w-3" />
               {issuedCount} Issued
             </Badge>
-            <Badge className="bg-amber-100 text-amber-700 border-amber-200 hover:bg-amber-100 gap-1.5 text-xs py-1 px-2.5">
+            <Badge className="bg-warning-surface text-warning border-warning/30 hover:bg-warning-surface gap-1.5 text-xs py-1 px-2.5">
               <Clock className="h-3 w-3" />
               {readyCount} Ready
             </Badge>
@@ -576,21 +576,21 @@ export default function OrganizerCertificates() {
 
       {/* Stats */}
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <StatCard title="Total Author Certificates" value={loading ? "—" : totalAuthors} icon={Users} iconBg="bg-blue-50" iconColor="text-blue-600" />
-        <StatCard title="Certificates Issued" value={loading ? "—" : issuedCount} icon={CheckCircle} iconBg="bg-green-50" iconColor="text-green-600" />
-        <StatCard title="Ready to Generate" value={loading ? "—" : readyCount} icon={Sparkles} iconBg="bg-amber-50" iconColor="text-amber-600" />
+        <StatCard title="Total Author Certificates" value={loading ? "—" : totalAuthors} icon={Users} iconBg="bg-info-surface" iconColor="text-info" />
+        <StatCard title="Certificates Issued" value={loading ? "—" : issuedCount} icon={CheckCircle} iconBg="bg-success-surface" iconColor="text-success" />
+        <StatCard title="Ready to Generate" value={loading ? "—" : readyCount} icon={Sparkles} iconBg="bg-warning-surface" iconColor="text-warning" />
       </div>
 
       {/* Filters */}
       {!loading && rows.length > 0 && (
         <Card className="p-4">
-          <div className="flex items-center gap-2 mb-3 text-sm font-medium text-gray-700">
-            <Filter className="h-4 w-4 text-gray-400" />
+          <div className="flex items-center gap-2 mb-3 text-sm font-medium text-foreground">
+            <Filter className="h-4 w-4 text-muted-foreground" />
             Filters
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
                 placeholder="Search paper title or author…"
                 value={searchQuery}
@@ -601,7 +601,7 @@ export default function OrganizerCertificates() {
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="cursor-pointer rounded-md border border-gray-200 bg-white px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="cursor-pointer rounded-md border border-border bg-card px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
             >
               <option value="all">All Statuses</option>
               <option value="issued">Certificate Issued</option>
@@ -612,7 +612,7 @@ export default function OrganizerCertificates() {
             <select
               value={conferenceFilter}
               onChange={(e) => setConferenceFilter(e.target.value)}
-              className="cursor-pointer rounded-md border border-gray-200 bg-white px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 truncate"
+              className="cursor-pointer rounded-md border border-border bg-card px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary truncate"
             >
               <option value="all">All Conferences</option>
               {uniqueConferences.map((c) => (
@@ -655,11 +655,11 @@ export default function OrganizerCertificates() {
       {/* Empty */}
       {!loading && rows.length === 0 && (
         <Card className="p-12 text-center">
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-indigo-50">
-            <Award className="h-8 w-8 text-indigo-400" />
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
+            <Award className="h-8 w-8 text-primary/70" />
           </div>
-          <h2 className="text-xl font-semibold text-gray-900">No accepted papers yet</h2>
-          <p className="text-gray-500 mt-2 max-w-sm mx-auto">
+          <h2 className="text-xl font-semibold text-foreground">No accepted papers yet</h2>
+          <p className="text-muted-foreground mt-2 max-w-sm mx-auto">
             Certificates will appear here once papers are accepted.
           </p>
         </Card>
@@ -667,7 +667,7 @@ export default function OrganizerCertificates() {
 
       {/* No filter match */}
       {!loading && rows.length > 0 && filteredRows.length === 0 && (
-        <p className="text-sm text-gray-500 py-8 text-center">
+        <p className="text-sm text-muted-foreground py-8 text-center">
           No papers match the current filters.
         </p>
       )}
@@ -684,15 +684,15 @@ export default function OrganizerCertificates() {
             return (
               <Card key={group.paperId} className="overflow-hidden">
                 {/* Paper Header */}
-                <div className="flex items-start justify-between gap-3 p-5 border-b bg-gray-50/50">
+                <div className="flex items-start justify-between gap-3 p-5 border-b bg-muted/30">
                   <div className="min-w-0">
                     <div className="flex items-center gap-2 mb-1">
-                      <FileText className="h-4 w-4 text-gray-400 shrink-0" />
-                      <h3 className="font-semibold text-gray-900 truncate">
+                      <FileText className="h-4 w-4 text-muted-foreground shrink-0" />
+                      <h3 className="font-semibold text-foreground truncate">
                         {group.paperTitle}
                       </h3>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-500">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <Calendar className="h-3.5 w-3.5 shrink-0" />
                       {group.conferenceTitle}
                     </div>
@@ -700,23 +700,23 @@ export default function OrganizerCertificates() {
 
                   <div className="flex items-center gap-2 shrink-0 flex-wrap">
                     {group.awardType === "best_paper" && (
-                      <Badge className="bg-yellow-100 text-yellow-800 border-yellow-300 hover:bg-yellow-100 text-xs gap-1">
+                      <Badge className="bg-warning-surface text-warning border-warning/30 hover:bg-warning-surface text-xs gap-1">
                         <Trophy className="h-3 w-3" />
                         Best Paper
                       </Badge>
                     )}
                     {allIssued ? (
-                      <Badge className="bg-green-100 text-green-700 border-green-200 hover:bg-green-100 text-xs gap-1">
+                      <Badge className="bg-success-surface text-success border-success/30 hover:bg-success-surface text-xs gap-1">
                         <CheckCircle className="h-3 w-3" />
                         All Issued
                       </Badge>
                     ) : someIssued ? (
-                      <Badge className="bg-amber-100 text-amber-700 border-amber-200 hover:bg-amber-100 text-xs gap-1">
+                      <Badge className="bg-warning-surface text-warning border-warning/30 hover:bg-warning-surface text-xs gap-1">
                         <Clock className="h-3 w-3" />
                         Partially Issued
                       </Badge>
                     ) : group.presented ? (
-                      <Badge className="bg-blue-100 text-blue-700 border-blue-200 hover:bg-blue-100 text-xs gap-1">
+                      <Badge className="bg-info-surface text-info border-info/30 hover:bg-info-surface text-xs gap-1">
                         <Mic className="h-3 w-3" />
                         Presented
                       </Badge>
@@ -725,7 +725,7 @@ export default function OrganizerCertificates() {
                     <Button
                       size="sm"
                       variant={group.awardType === "best_paper" ? "default" : "outline"}
-                      className={group.awardType === "best_paper" ? "bg-yellow-500 hover:bg-yellow-600 text-white" : ""}
+                      className={group.awardType === "best_paper" ? "bg-warning hover:bg-warning/90 text-warning-foreground" : ""}
                       onClick={() => toggleBestPaper(group.paperId, group.awardType)}
                     >
                       <Star className={`h-4 w-4 mr-1 ${group.awardType === "best_paper" ? "fill-current" : ""}`} />
@@ -750,7 +750,7 @@ export default function OrganizerCertificates() {
                   {/* Desktop */}
                   <table className="w-full text-sm hidden md:table">
                     <thead>
-                      <tr className="border-b bg-gray-50/40 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <tr className="border-b bg-muted/20 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                         <th className="py-2.5 px-5">Author</th>
                         <th className="py-2.5 px-5">Role</th>
                         <th className="py-2.5 px-5">Certificate Status</th>
@@ -764,18 +764,18 @@ export default function OrganizerCertificates() {
                         const isGen = generatingIds.has(key);
 
                         return (
-                          <tr key={key} className="border-b last:border-0 hover:bg-gray-50/60 transition-colors">
+                          <tr key={key} className="border-b last:border-0 hover:bg-muted/40 transition-colors">
                             <td className="py-3 px-5">
                               <div className="min-w-0">
-                                <p className="font-medium text-gray-900">{a.authorName}</p>
+                                <p className="font-medium text-foreground">{a.authorName}</p>
                                 {a.authorEmail && (
-                                  <p className="text-xs text-gray-500 truncate">{a.authorEmail}</p>
+                                  <p className="text-xs text-muted-foreground truncate">{a.authorEmail}</p>
                                 )}
                               </div>
                             </td>
                             <td className="py-3 px-5">
                               {a.isPrimary ? (
-                                <Badge className="bg-blue-100 text-blue-700 border-blue-200 text-xs">Primary Author</Badge>
+                                <Badge className="bg-info-surface text-info border-info/30 text-xs">Primary Author</Badge>
                               ) : (
                                 <Badge variant="secondary" className="text-xs">Co-Author</Badge>
                               )}
@@ -810,7 +810,7 @@ export default function OrganizerCertificates() {
                                         <DropdownMenuContent align="end" className="min-w-[200px]">
                                           <DropdownMenuItem asChild>
                                             <a href={a.certificateUrl} download className="flex items-center gap-2 cursor-pointer">
-                                              <FileText className="h-4 w-4 text-red-500" />
+                                              <FileText className="h-4 w-4 text-destructive" />
                                               Participation PDF
                                             </a>
                                           </DropdownMenuItem>
@@ -822,7 +822,7 @@ export default function OrganizerCertificates() {
                                             {downloadingDocxKeys.has(`${a.paperId}_${a.authorId}`) ? (
                                               <Loader2 className="h-4 w-4 animate-spin" />
                                             ) : (
-                                              <FileType2 className="h-4 w-4 text-blue-500" />
+                                              <FileType2 className="h-4 w-4 text-info" />
                                             )}
                                             {downloadingDocxKeys.has(`${a.paperId}_${a.authorId}`) ? "Generating…" : "Participation DOCX"}
                                           </DropdownMenuItem>
@@ -837,7 +837,7 @@ export default function OrganizerCertificates() {
                                                 {downloadingDocxKeys.has(`bp_pdf_${a.paperId}_${a.authorId}`) ? (
                                                   <Loader2 className="h-4 w-4 animate-spin" />
                                                 ) : (
-                                                  <Trophy className="h-4 w-4 text-yellow-600" />
+                                                  <Trophy className="h-4 w-4 text-warning" />
                                                 )}
                                                 Best Paper PDF
                                               </DropdownMenuItem>
@@ -849,7 +849,7 @@ export default function OrganizerCertificates() {
                                                 {downloadingDocxKeys.has(`bp_docx_${a.paperId}_${a.authorId}`) ? (
                                                   <Loader2 className="h-4 w-4 animate-spin" />
                                                 ) : (
-                                                  <Trophy className="h-4 w-4 text-yellow-600" />
+                                                  <Trophy className="h-4 w-4 text-warning" />
                                                 )}
                                                 Best Paper DOCX
                                               </DropdownMenuItem>
@@ -882,7 +882,7 @@ export default function OrganizerCertificates() {
                                     )}
                                   </Button>
                                 ) : status === "awaiting_presentation" ? (
-                                  <span className="text-xs text-gray-400">Awaiting Presentation</span>
+                                  <span className="text-xs text-muted-foreground">Awaiting Presentation</span>
                                 ) : null}
                               </div>
                             </td>
@@ -903,11 +903,11 @@ export default function OrganizerCertificates() {
                         <div key={key} className="p-4 space-y-2">
                           <div className="flex items-center justify-between">
                             <div className="flex items-center gap-2">
-                              <User className="h-3.5 w-3.5 text-gray-400" />
+                              <User className="h-3.5 w-3.5 text-muted-foreground" />
                               <span className="font-medium text-sm">{a.authorName}</span>
                             </div>
                             {a.isPrimary ? (
-                              <Badge className="bg-blue-100 text-blue-700 border-blue-200 text-xs">Primary</Badge>
+                              <Badge className="bg-info-surface text-info border-info/30 text-xs">Primary</Badge>
                             ) : (
                               <Badge variant="secondary" className="text-xs">Co-Author</Badge>
                             )}
@@ -942,7 +942,7 @@ export default function OrganizerCertificates() {
                                     <DropdownMenuContent align="end" className="min-w-[200px]">
                                       <DropdownMenuItem asChild>
                                         <a href={a.certificateUrl} download className="flex items-center gap-2 cursor-pointer">
-                                          <FileText className="h-4 w-4 text-red-500" />
+                                          <FileText className="h-4 w-4 text-destructive" />
                                           Participation PDF
                                         </a>
                                       </DropdownMenuItem>
@@ -954,7 +954,7 @@ export default function OrganizerCertificates() {
                                         {downloadingDocxKeys.has(`${a.paperId}_${a.authorId}`) ? (
                                           <Loader2 className="h-4 w-4 animate-spin" />
                                         ) : (
-                                          <FileType2 className="h-4 w-4 text-blue-500" />
+                                          <FileType2 className="h-4 w-4 text-info" />
                                         )}
                                         {downloadingDocxKeys.has(`${a.paperId}_${a.authorId}`) ? "Generating…" : "Participation DOCX"}
                                       </DropdownMenuItem>
@@ -969,7 +969,7 @@ export default function OrganizerCertificates() {
                                             {downloadingDocxKeys.has(`bp_pdf_${a.paperId}_${a.authorId}`) ? (
                                               <Loader2 className="h-4 w-4 animate-spin" />
                                             ) : (
-                                              <Trophy className="h-4 w-4 text-yellow-600" />
+                                              <Trophy className="h-4 w-4 text-warning" />
                                             )}
                                             Best Paper PDF
                                           </DropdownMenuItem>
@@ -981,7 +981,7 @@ export default function OrganizerCertificates() {
                                             {downloadingDocxKeys.has(`bp_docx_${a.paperId}_${a.authorId}`) ? (
                                               <Loader2 className="h-4 w-4 animate-spin" />
                                             ) : (
-                                              <Trophy className="h-4 w-4 text-yellow-600" />
+                                              <Trophy className="h-4 w-4 text-warning" />
                                             )}
                                             Best Paper DOCX
                                           </DropdownMenuItem>
@@ -1013,7 +1013,7 @@ export default function OrganizerCertificates() {
                             ) : status === "awaiting_payment" ? (
                               <Button size="sm" disabled variant="outline">Payment Pending</Button>
                             ) : (
-                              <span className="text-xs text-gray-400">Awaiting Presentation</span>
+                              <span className="text-xs text-muted-foreground">Awaiting Presentation</span>
                             )}
                           </div>
                         </div>
@@ -1050,7 +1050,7 @@ function StatCard({
   return (
     <Card className="p-5 flex items-center justify-between hover:shadow-md transition-shadow">
       <div>
-        <p className="text-sm text-gray-500">{title}</p>
+        <p className="text-sm text-muted-foreground">{title}</p>
         <p className="text-2xl font-bold mt-1">{value}</p>
       </div>
       <div className={`${iconBg} p-3 rounded-lg`}>
@@ -1067,7 +1067,7 @@ function StatCard({
 function CertificateStatusBadge({ status }: { status: CertificateStatus }) {
   if (status === "issued")
     return (
-      <Badge className="bg-green-100 text-green-700 border-green-200 hover:bg-green-100 text-xs gap-1">
+      <Badge className="bg-success-surface text-success border-success/30 hover:bg-success-surface text-xs gap-1">
         <CheckCircle className="h-3 w-3" />
         Certificate Issued
       </Badge>
@@ -1075,7 +1075,7 @@ function CertificateStatusBadge({ status }: { status: CertificateStatus }) {
 
   if (status === "ready")
     return (
-      <Badge className="bg-amber-100 text-amber-700 border-amber-200 hover:bg-amber-100 text-xs gap-1">
+      <Badge className="bg-warning-surface text-warning border-warning/30 hover:bg-warning-surface text-xs gap-1">
         <Sparkles className="h-3 w-3" />
         Ready for Certificate
       </Badge>
@@ -1083,14 +1083,14 @@ function CertificateStatusBadge({ status }: { status: CertificateStatus }) {
 
   if (status === "awaiting_presentation")
     return (
-      <Badge className="bg-blue-100 text-blue-700 border-blue-200 hover:bg-blue-100 text-xs gap-1">
+      <Badge className="bg-info-surface text-info border-info/30 hover:bg-info-surface text-xs gap-1">
         <Clock className="h-3 w-3" />
         Awaiting Presentation
       </Badge>
     );
 
   return (
-    <Badge className="bg-red-100 text-red-700 border-red-200 hover:bg-red-100 text-xs gap-1">
+    <Badge className="bg-destructive-surface text-destructive border-destructive/30 hover:bg-destructive-surface text-xs gap-1">
       <AlertCircle className="h-3 w-3" />
       Awaiting Payment
     </Badge>

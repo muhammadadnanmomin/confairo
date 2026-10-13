@@ -157,7 +157,7 @@ export default function OrganizerPayoutsPage() {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
                     <h1 className="text-3xl font-bold tracking-tight">Payouts</h1>
-                    <p className="text-gray-500 mt-1">
+                    <p className="text-muted-foreground mt-1">
                         Request withdrawals of your conference fee earnings
                     </p>
                 </div>
@@ -165,7 +165,7 @@ export default function OrganizerPayoutsPage() {
                 {balance && balance.availableBalance > 0 && !showForm && (
                     <Button
                         onClick={() => setShowForm(true)}
-                        className="bg-indigo-600 hover:bg-indigo-700 gap-2 shrink-0"
+                        className="bg-primary hover:bg-primary-hover gap-2 shrink-0"
                     >
                         <ArrowDownToLine className="h-4 w-4" />
                         Request Payout
@@ -176,8 +176,8 @@ export default function OrganizerPayoutsPage() {
             {/* Loading */}
             {loading && (
                 <div className="flex flex-col items-center justify-center py-16 gap-3">
-                    <Loader2 className="h-8 w-8 animate-spin text-indigo-500" />
-                    <p className="text-gray-500 text-sm">Loading payout data…</p>
+                    <Loader2 className="h-8 w-8 animate-spin text-primary" />
+                    <p className="text-muted-foreground text-sm">Loading payout data…</p>
                 </div>
             )}
 
@@ -188,40 +188,40 @@ export default function OrganizerPayoutsPage() {
                         title="Total Earned"
                         value={`₹${formatINR(balance.totalEarned)}`}
                         icon={IndianRupee}
-                        iconBg="bg-emerald-50"
-                        iconColor="text-emerald-600"
+                        iconBg="bg-success-surface"
+                        iconColor="text-success"
                     />
                     <BalanceCard
                         title="Available Balance"
                         value={`₹${formatINR(balance.availableBalance)}`}
                         icon={Wallet}
-                        iconBg="bg-indigo-50"
-                        iconColor="text-indigo-600"
+                        iconBg="bg-primary/10"
+                        iconColor="text-primary"
                     />
                     <BalanceCard
                         title="Pending Payout"
                         value={`₹${formatINR(balance.pendingPayout)}`}
                         icon={Clock}
-                        iconBg="bg-amber-50"
-                        iconColor="text-amber-600"
+                        iconBg="bg-warning-surface"
+                        iconColor="text-warning"
                     />
                     <BalanceCard
                         title="Total Withdrawn"
                         value={`₹${formatINR(balance.totalWithdrawn)}`}
                         icon={CheckCircle2}
-                        iconBg="bg-green-50"
-                        iconColor="text-green-600"
+                        iconBg="bg-success-surface"
+                        iconColor="text-success"
                     />
                 </div>
             )}
 
             {/* Payout Request Form */}
             {!loading && showForm && (
-                <Card className="p-5 space-y-4 border-indigo-200">
-                    <h3 className="font-semibold text-gray-800">Request Payout</h3>
+                <Card className="p-5 space-y-4 border-primary/20">
+                    <h3 className="font-semibold text-foreground">Request Payout</h3>
 
                     <div>
-                        <label className="text-xs font-medium text-gray-500 uppercase tracking-wide block mb-1.5">
+                        <label className="text-xs font-medium text-muted-foreground uppercase tracking-wide block mb-1.5">
                             Amount (₹)
                         </label>
                         <Input
@@ -235,7 +235,7 @@ export default function OrganizerPayoutsPage() {
                     </div>
 
                     <div>
-                        <label className="text-xs font-medium text-gray-500 uppercase tracking-wide block mb-1.5">
+                        <label className="text-xs font-medium text-muted-foreground uppercase tracking-wide block mb-1.5">
                             Notes (optional)
                         </label>
                         <Input
@@ -245,7 +245,7 @@ export default function OrganizerPayoutsPage() {
                         />
                     </div>
 
-                    <div className="flex items-start gap-2 text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">
+                    <div className="flex items-start gap-2 text-xs text-warning bg-warning-surface/50 border border-warning/30 rounded-lg px-3 py-2">
                         <AlertTriangle className="h-3.5 w-3.5 flex-shrink-0 mt-0.5" />
                         <span>
                             Payouts are processed manually by the Confairo team.
@@ -255,7 +255,7 @@ export default function OrganizerPayoutsPage() {
 
                     <div className="flex gap-2">
                         <Button
-                            className="bg-indigo-600 hover:bg-indigo-700 text-white"
+                            className="bg-primary hover:bg-primary-hover text-primary-foreground"
                             disabled={submitting || !amount}
                             onClick={requestPayout}
                         >
@@ -276,28 +276,28 @@ export default function OrganizerPayoutsPage() {
             {!loading && (
                 <Link
                     href="/dashboard/organizer/bank-details"
-                    className="flex items-center justify-between rounded-xl border border-gray-200 px-4 py-3 hover:bg-gray-50 transition-colors group"
+                    className="flex items-center justify-between rounded-xl border border-border px-4 py-3 hover:bg-muted/50 transition-colors group"
                 >
                     <div className="flex items-center gap-2.5">
-                        <div className="flex items-center justify-center h-8 w-8 rounded-lg bg-indigo-100">
-                            <Landmark className="h-4 w-4 text-indigo-600" />
+                        <div className="flex items-center justify-center h-8 w-8 rounded-lg bg-primary/10">
+                            <Landmark className="h-4 w-4 text-primary" />
                         </div>
                         <div>
-                            <span className="font-medium text-gray-800 text-sm">Bank Details</span>
-                            <span className="text-xs text-gray-400 block">
+                            <span className="font-medium text-foreground text-sm">Bank Details</span>
+                            <span className="text-xs text-muted-foreground block">
                                 Manage your settlement bank account
                             </span>
                         </div>
                     </div>
-                    <ArrowRight className="h-4 w-4 text-gray-300 group-hover:text-indigo-500 transition-colors" />
+                    <ArrowRight className="h-4 w-4 text-muted-foreground/40 group-hover:text-primary transition-colors" />
                 </Link>
             )}
 
             {/* Payout History */}
             {!loading && payouts.length > 0 && (
                 <Card className="overflow-hidden">
-                    <div className="p-4 border-b bg-gray-50/60">
-                        <h3 className="font-semibold text-gray-800">Payout History</h3>
+                    <div className="p-4 border-b bg-muted/30">
+                        <h3 className="font-semibold text-foreground">Payout History</h3>
                     </div>
 
                     <div className="divide-y">
@@ -306,16 +306,16 @@ export default function OrganizerPayoutsPage() {
                                 <div className="flex items-center gap-3">
                                     <PayoutStatusBadge status={p.status} />
                                     <div>
-                                        <span className="font-semibold text-gray-800">
+                                        <span className="font-semibold text-foreground">
                                             ₹{formatINR(p.amount)}
                                         </span>
                                         {p.notes && (
-                                            <span className="text-xs text-gray-400 ml-2">— {p.notes}</span>
+                                            <span className="text-xs text-muted-foreground ml-2">— {p.notes}</span>
                                         )}
                                     </div>
                                 </div>
 
-                                <div className="text-xs text-gray-400 flex items-center gap-3">
+                                <div className="text-xs text-muted-foreground flex items-center gap-3">
                                     <span>Requested: {formatDate(p.created_at)}</span>
                                     {p.processed_at && (
                                         <span>Settled: {formatDate(p.processed_at)}</span>
@@ -329,11 +329,11 @@ export default function OrganizerPayoutsPage() {
 
             {!loading && payouts.length === 0 && (
                 <Card className="p-10 text-center">
-                    <div className="flex items-center justify-center h-16 w-16 rounded-full bg-gray-100 mx-auto mb-4">
-                        <ArrowDownToLine className="h-8 w-8 text-gray-400" />
+                    <div className="flex items-center justify-center h-16 w-16 rounded-full bg-muted mx-auto mb-4">
+                        <ArrowDownToLine className="h-8 w-8 text-muted-foreground" />
                     </div>
-                    <p className="text-gray-500 font-medium text-lg">No payouts yet</p>
-                    <p className="text-xs text-gray-400 mt-2 max-w-sm mx-auto">
+                    <p className="text-muted-foreground font-medium text-lg">No payouts yet</p>
+                    <p className="text-xs text-muted-foreground mt-2 max-w-sm mx-auto">
                         Once you earn conference fees, you can request payouts from this page.
                     </p>
                 </Card>
@@ -360,7 +360,7 @@ function BalanceCard({
     return (
         <Card className="p-5 flex items-center justify-between hover:shadow-md transition-shadow">
             <div>
-                <p className="text-sm text-gray-500">{title}</p>
+                <p className="text-sm text-muted-foreground">{title}</p>
                 <p className="text-2xl font-bold mt-1">{value}</p>
             </div>
             <div className={`${iconBg} p-3 rounded-lg`}>
@@ -373,24 +373,24 @@ function BalanceCard({
 function PayoutStatusBadge({ status }: { status: string }) {
     if (status === "completed")
         return (
-            <Badge className="bg-green-100 text-green-700 border-green-200 hover:bg-green-100 text-xs gap-1">
+            <Badge className="bg-success-surface text-success border-success/30 hover:bg-success-surface text-xs gap-1">
                 <CheckCircle2 className="h-3 w-3" /> Completed
             </Badge>
         );
     if (status === "processing")
         return (
-            <Badge className="bg-blue-100 text-blue-700 border-blue-200 hover:bg-blue-100 text-xs gap-1">
+            <Badge className="bg-info-surface text-info border-info/30 hover:bg-info-surface text-xs gap-1">
                 <Loader2 className="h-3 w-3" /> Processing
             </Badge>
         );
     if (status === "failed")
         return (
-            <Badge className="bg-red-100 text-red-700 border-red-200 hover:bg-red-100 text-xs gap-1">
+            <Badge className="bg-destructive-surface text-destructive border-destructive/30 hover:bg-destructive-surface text-xs gap-1">
                 <XCircle className="h-3 w-3" /> Failed
             </Badge>
         );
     return (
-        <Badge className="bg-amber-100 text-amber-700 border-amber-200 hover:bg-amber-100 text-xs gap-1">
+        <Badge className="bg-warning-surface text-warning border-warning/30 hover:bg-warning-surface text-xs gap-1">
             <Clock className="h-3 w-3" /> Pending
         </Badge>
     );

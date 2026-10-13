@@ -243,7 +243,7 @@ export default function OrganizerBankDetailsPage() {
             {/* Page Header */}
             <div>
                 <h1 className="text-3xl font-bold tracking-tight">Bank Details</h1>
-                <p className="text-gray-500 mt-1">
+                <p className="text-muted-foreground mt-1">
                     Add your bank account for receiving conference fee settlements
                 </p>
             </div>
@@ -251,8 +251,8 @@ export default function OrganizerBankDetailsPage() {
             {/* Loading */}
             {loading && (
                 <div className="flex flex-col items-center justify-center py-16 gap-3">
-                    <Loader2 className="h-8 w-8 animate-spin text-indigo-500" />
-                    <p className="text-gray-500 text-sm">Loading bank details…</p>
+                    <Loader2 className="h-8 w-8 animate-spin text-primary" />
+                    <p className="text-muted-foreground text-sm">Loading bank details…</p>
                 </div>
             )}
 
@@ -261,27 +261,27 @@ export default function OrganizerBankDetailsPage() {
                 <div className="space-y-5">
                     {/* Status Card */}
                     <Card className="overflow-hidden">
-                        <div className="flex flex-col sm:flex-row sm:items-center justify-between p-5 border-b bg-gray-50/60 gap-3">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between p-5 border-b bg-muted/30 gap-3">
                             <div className="flex items-center gap-2.5">
-                                <div className="flex items-center justify-center h-8 w-8 rounded-lg bg-indigo-100">
-                                    <Landmark className="h-4 w-4 text-indigo-600" />
+                                <div className="flex items-center justify-center h-8 w-8 rounded-lg bg-primary/10">
+                                    <Landmark className="h-4 w-4 text-primary" />
                                 </div>
                                 <div>
-                                    <span className="font-semibold text-gray-800 block">
+                                    <span className="font-semibold text-foreground block">
                                         {bankDetails.bank_name}
                                     </span>
-                                    <span className="text-xs text-gray-400">
+                                    <span className="text-xs text-muted-foreground">
                                         Settlement Bank Account
                                     </span>
                                 </div>
                             </div>
 
                             {bankDetails.is_verified ? (
-                                <Badge className="bg-green-100 text-green-700 border border-green-200 gap-1 self-start sm:self-auto">
+                                <Badge className="bg-success-surface text-success border border-success/30 gap-1 self-start sm:self-auto">
                                     <CheckCircle2 className="h-3 w-3" /> Verified
                                 </Badge>
                             ) : (
-                                <Badge className="bg-amber-100 text-amber-700 border border-amber-200 gap-1 self-start sm:self-auto">
+                                <Badge className="bg-warning-surface text-warning border border-warning/30 gap-1 self-start sm:self-auto">
                                     <Clock className="h-3 w-3" /> Pending Verification
                                 </Badge>
                             )}
@@ -327,13 +327,13 @@ export default function OrganizerBankDetailsPage() {
 
                     {/* Info Banner */}
                     {!bankDetails.is_verified && (
-                        <div className="flex items-start gap-3 bg-blue-50 border border-blue-200 rounded-xl px-4 py-3">
-                            <Info className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                        <div className="flex items-start gap-3 bg-info-surface border border-info/30 rounded-xl px-4 py-3">
+                            <Info className="h-4 w-4 text-info mt-0.5 flex-shrink-0" />
                             <div>
-                                <p className="text-sm font-medium text-blue-800">
+                                <p className="text-sm font-medium text-foreground">
                                     Verification in progress
                                 </p>
-                                <p className="text-xs text-blue-600 mt-0.5">
+                                <p className="text-xs text-info mt-0.5">
                                     Your bank details will be verified before settlements are enabled.
                                     This is a one-time process.
                                 </p>
@@ -342,9 +342,9 @@ export default function OrganizerBankDetailsPage() {
                     )}
 
                     {/* Razorpay Route notice */}
-                    <div className="border border-gray-100 rounded-xl p-4 bg-gray-50/50">
-                        <div className="flex items-center gap-2 text-xs text-gray-500">
-                            <ShieldCheck className="h-4 w-4 text-green-500" />
+                    <div className="border border-border rounded-xl p-4 bg-muted/30">
+                        <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                            <ShieldCheck className="h-4 w-4 text-success" />
                             <span>
                                 Your bank details are encrypted and stored securely.
                                 Settlements will be processed via Razorpay Route.
@@ -357,15 +357,15 @@ export default function OrganizerBankDetailsPage() {
             {/* ── Form Mode (Add / Edit) ── */}
             {!loading && editing && (
                 <Card className="overflow-hidden">
-                    <div className="flex items-center gap-2.5 p-5 border-b bg-gray-50/60">
-                        <div className="flex items-center justify-center h-8 w-8 rounded-lg bg-indigo-100">
-                            <Building2 className="h-4 w-4 text-indigo-600" />
+                    <div className="flex items-center gap-2.5 p-5 border-b bg-muted/30">
+                        <div className="flex items-center justify-center h-8 w-8 rounded-lg bg-primary/10">
+                            <Building2 className="h-4 w-4 text-primary" />
                         </div>
                         <div>
-                            <span className="font-semibold text-gray-800 block">
+                            <span className="font-semibold text-foreground block">
                                 {bankDetails ? "Update Bank Details" : "Add Bank Details"}
                             </span>
-                            <span className="text-xs text-gray-400">
+                            <span className="text-xs text-muted-foreground">
                                 Provide your bank account for conference fee settlements
                             </span>
                         </div>
@@ -437,8 +437,8 @@ export default function OrganizerBankDetailsPage() {
                         <Separator />
 
                         {/* Security Notice */}
-                        <div className="flex items-start gap-2 text-xs text-gray-500 bg-gray-50 border border-gray-200 rounded-lg px-3 py-2.5">
-                            <ShieldCheck className="h-3.5 w-3.5 mt-0.5 flex-shrink-0 text-green-500" />
+                        <div className="flex items-start gap-2 text-xs text-muted-foreground bg-muted/40 border border-border rounded-lg px-3 py-2.5">
+                            <ShieldCheck className="h-3.5 w-3.5 mt-0.5 flex-shrink-0 text-success" />
                             <span>
                                 Your bank details are encrypted and stored securely.
                                 Account numbers are never displayed in full — only the last 4 digits are shown.
@@ -448,7 +448,7 @@ export default function OrganizerBankDetailsPage() {
                         {/* Actions */}
                         <div className="flex flex-col sm:flex-row gap-3">
                             <Button
-                                className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white h-11 font-semibold"
+                                className="flex-1 bg-primary hover:bg-primary-hover text-primary-foreground h-11 font-semibold"
                                 disabled={saving}
                                 onClick={handleSubmit}
                             >
@@ -497,10 +497,10 @@ function DetailItem({
     mono?: boolean;
 }) {
     return (
-        <div className="bg-gray-50 rounded-lg p-3">
-            <p className="text-xs text-gray-400 uppercase tracking-wide">{label}</p>
+        <div className="bg-muted/40 rounded-lg p-3">
+            <p className="text-xs text-muted-foreground uppercase tracking-wide">{label}</p>
             <p
-                className={`text-sm font-medium text-gray-700 mt-0.5 ${mono ? "font-mono tracking-wider" : ""
+                className={`text-sm font-medium text-foreground mt-0.5 ${mono ? "font-mono tracking-wider" : ""
                     }`}
             >
                 {value}
@@ -530,9 +530,9 @@ function FormField({
 }) {
     return (
         <div>
-            <label className="text-xs font-medium text-gray-500 uppercase tracking-wide block mb-1.5">
+            <label className="text-xs font-medium text-muted-foreground uppercase tracking-wide block mb-1.5">
                 {label}
-                {required && <span className="text-red-400 ml-0.5">*</span>}
+                {required && <span className="text-destructive ml-0.5">*</span>}
             </label>
             <Input
                 type={type}
@@ -541,12 +541,12 @@ function FormField({
                 onChange={(e) => onChange(e.target.value)}
                 maxLength={maxLength}
                 className={`${error
-                        ? "border-red-300 focus-visible:ring-red-200"
+                        ? "border-destructive/40 focus-visible:ring-destructive/30"
                         : ""
                     }`}
             />
             {error && (
-                <p className="text-xs text-red-500 mt-1 flex items-center gap-1">
+                <p className="text-xs text-destructive mt-1 flex items-center gap-1">
                     <AlertCircle className="h-3 w-3" />
                     {error}
                 </p>

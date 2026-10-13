@@ -405,13 +405,13 @@ export default function OrganizerBillingPage() {
         const planLabel = PLAN_LABELS[normalizePlanType(organization.plan_type)];
         return (
             <div className="max-w-lg mx-auto py-16 px-4 text-center space-y-4">
-                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-green-100">
-                    <ShieldCheck className="h-7 w-7 text-green-600" />
+                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-success-surface">
+                    <ShieldCheck className="h-7 w-7 text-success" />
                 </div>
-                <h1 className="text-2xl font-bold text-gray-900">
+                <h1 className="text-2xl font-bold text-foreground">
                     You&apos;re on the {planLabel} Plan
                 </h1>
-                <p className="text-gray-600">
+                <p className="text-muted-foreground">
                     Your organization already has access to all {planLabel} features.
                     No further upgrade is needed.
                 </p>
@@ -432,20 +432,20 @@ export default function OrganizerBillingPage() {
             {/* Back link */}
             <button
                 onClick={() => router.back()}
-                className="flex cursor-pointer items-center gap-1 text-sm text-gray-500 hover:text-gray-700 transition-colors"
+                className="flex cursor-pointer items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
                 <ArrowLeft className="h-4 w-4" />
                 Back
             </button>
 
             <div className="text-center space-y-2">
-                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-indigo-100">
-                    <Crown className="h-6 w-6 text-indigo-600" />
+                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+                    <Crown className="h-6 w-6 text-primary" />
                 </div>
-                <h1 className="text-3xl font-bold tracking-tight text-gray-900">
+                <h1 className="text-3xl font-bold tracking-tight text-foreground">
                     Billing
                 </h1>
-                <p className="text-gray-600 max-w-md mx-auto">
+                <p className="text-muted-foreground max-w-md mx-auto">
                     Manage your conference billing and AI usage.
                 </p>
             </div>
@@ -456,14 +456,14 @@ export default function OrganizerBillingPage() {
             {/*  AI Credit Purchase Card                                      */}
             {/* ============================================================ */}
             {selectedConference && (
-                <Card className="p-6 border-green-200 bg-gradient-to-b from-green-50/50 to-white shadow-sm">
+                <Card className="p-6 border-success/30 bg-gradient-to-b from-success-surface/50 to-card shadow-sm">
                     <div className="flex items-center gap-3 mb-5">
-                        <div className="h-9 w-9 rounded-xl bg-green-100 flex items-center justify-center">
-                            <Package className="h-5 w-5 text-green-600" />
+                        <div className="h-9 w-9 rounded-xl bg-success-surface flex items-center justify-center">
+                            <Package className="h-5 w-5 text-success" />
                         </div>
                         <div>
-                            <h3 className="text-lg font-semibold text-gray-900">⚡ Buy AI Analyses</h3>
-                            <p className="text-xs text-gray-500">
+                            <h3 className="text-lg font-semibold text-foreground">⚡ Buy AI Analyses</h3>
+                            <p className="text-xs text-muted-foreground">
                                 Top up your AI analyses instantly
                             </p>
                         </div>
@@ -476,22 +476,22 @@ export default function OrganizerBillingPage() {
                                 onClick={() => handleBuyCredits(pack.id)}
                                 disabled={buyingCredits}
                                 className={`relative group cursor-pointer rounded-xl border-2 p-4 text-left transition-all hover:shadow-md disabled:cursor-not-allowed ${pack.id === "ai_100"
-                                    ? "border-indigo-300 bg-indigo-50/50 hover:border-indigo-400"
-                                    : "border-gray-200 bg-white hover:border-gray-300"
+                                    ? "border-primary/40 bg-primary/5 hover:border-primary/60"
+                                    : "border-border bg-card hover:border-border-strong"
                                     }`}
                             >
                                 {pack.id === "ai_100" && (
-                                    <span className="absolute -top-2.5 right-3 bg-indigo-600 text-white text-[10px] font-semibold px-2 py-0.5 rounded-full">
+                                    <span className="absolute -top-2.5 right-3 bg-primary text-primary-foreground text-[10px] font-semibold px-2 py-0.5 rounded-full">
                                         Best Value
                                     </span>
                                 )}
-                                <p className="text-2xl font-bold text-gray-900">+{pack.credits}</p>
-                                <p className="text-xs text-gray-500 mt-0.5">AI Analyses</p>
+                                <p className="text-2xl font-bold text-foreground">+{pack.credits}</p>
+                                <p className="text-xs text-muted-foreground mt-0.5">AI Analyses</p>
                                 <div className="mt-3 flex items-baseline gap-1">
-                                    <span className="text-lg font-bold text-gray-900">
+                                    <span className="text-lg font-bold text-foreground">
                                         ₹{pack.price.toLocaleString("en-IN")}
                                     </span>
-                                    <span className="text-xs text-gray-400">
+                                    <span className="text-xs text-muted-foreground">
                                         (₹{(pack.price / pack.credits).toFixed(1)}/analysis)
                                     </span>
                                 </div>
@@ -499,7 +499,7 @@ export default function OrganizerBillingPage() {
                         ))}
                     </div>
 
-                    <p className="text-xs text-gray-400 mt-4 flex items-center gap-1.5">
+                    <p className="text-xs text-muted-foreground mt-4 flex items-center gap-1.5">
                         <Zap className="h-3 w-3" />
                         Each AI action (paper review or similarity check) uses 1 analysis
                     </p>
@@ -511,31 +511,31 @@ export default function OrganizerBillingPage() {
             {/* ============================================================ */}
             {/*  Slot Purchase Card                                          */}
             {/* ============================================================ */}
-            <Card className="p-8 border-indigo-200 bg-gradient-to-b from-indigo-50/50 to-white">
+            <Card className="p-8 border-primary/20 bg-gradient-to-b from-primary/5 to-card">
 
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
                     <div className="flex items-center gap-3">
-                        <Badge className="bg-indigo-600 text-white hover:bg-indigo-700 text-sm px-3 py-1">
+                        <Badge className="bg-primary text-primary-foreground hover:bg-primary-hover text-sm px-3 py-1">
                             Pro
                         </Badge>
-                        <span className="text-sm text-gray-500">One-time per conference slot</span>
+                        <span className="text-sm text-muted-foreground">One-time per conference slot</span>
                     </div>
                     <div className="text-right">
-                        <span className="text-4xl font-bold text-gray-900">
+                        <span className="text-4xl font-bold text-foreground">
                             ₹{PRO_SLOT_PRICE.toLocaleString("en-IN")}
                         </span>
-                        <span className="text-gray-500 ml-1">/ slot</span>
+                        <span className="text-muted-foreground ml-1">/ slot</span>
                     </div>
                 </div>
 
                 <div className="border-t pt-6">
-                    <p className="text-sm font-medium text-gray-700 mb-4">
+                    <p className="text-sm font-medium text-foreground mb-4">
                         Everything in Free, plus:
                     </p>
                     <ul className="grid gap-3 sm:grid-cols-2">
                         {SLOT_BENEFITS.map((benefit) => (
-                            <li key={benefit} className="flex items-start gap-2.5 text-sm text-gray-600">
-                                <Check className="h-4 w-4 text-indigo-600 shrink-0 mt-0.5" />
+                            <li key={benefit} className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                                <Check className="h-4 w-4 text-primary shrink-0 mt-0.5" />
                                 {benefit}
                             </li>
                         ))}
@@ -545,7 +545,7 @@ export default function OrganizerBillingPage() {
                 <Button
                     onClick={() => setOpenBundleModal(true)}
                     disabled={paying}
-                    className="mt-8 w-full h-12 text-base bg-indigo-600 hover:bg-indigo-700 gap-2"
+                    className="mt-8 w-full h-12 text-base bg-primary hover:bg-primary-hover gap-2"
                 >
                     {paying ? (
                         <>
@@ -563,7 +563,7 @@ export default function OrganizerBillingPage() {
             </Card>
 
             {/* Trust signals */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-xs text-gray-400">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-xs text-muted-foreground">
                 <span className="flex items-center gap-1">
                     <ShieldCheck className="h-3.5 w-3.5" />
                     Secured by Razorpay
@@ -578,14 +578,14 @@ export default function OrganizerBillingPage() {
             {/*  Billing History                                             */}
             {/* ============================================================ */}
             <Card className="overflow-hidden">
-                <div className="flex items-center justify-between p-5 border-b bg-gray-50/60">
+                <div className="flex items-center justify-between p-5 border-b bg-muted/30">
                     <div className="flex items-center gap-2.5">
-                        <div className="flex items-center justify-center h-8 w-8 rounded-lg bg-indigo-100">
-                            <Receipt className="h-4 w-4 text-indigo-600" />
+                        <div className="flex items-center justify-center h-8 w-8 rounded-lg bg-primary/10">
+                            <Receipt className="h-4 w-4 text-primary" />
                         </div>
                         <div>
-                            <span className="font-semibold text-gray-800 block">Billing History</span>
-                            <span className="text-xs text-gray-400">
+                            <span className="font-semibold text-foreground block">Billing History</span>
+                            <span className="text-xs text-muted-foreground">
                                 {purchases.length} purchase{purchases.length !== 1 ? "s" : ""}
                             </span>
                         </div>
@@ -595,18 +595,18 @@ export default function OrganizerBillingPage() {
                 {/* Loading */}
                 {historyLoading && (
                     <div className="flex items-center justify-center py-8">
-                        <Loader2 className="h-5 w-5 animate-spin text-gray-400" />
+                        <Loader2 className="h-5 w-5 animate-spin text-muted-foreground" />
                     </div>
                 )}
 
                 {/* Empty */}
                 {!historyLoading && purchases.length === 0 && (
                     <div className="py-10 text-center">
-                        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-gray-100 mb-3">
-                            <CreditCard className="h-6 w-6 text-gray-400" />
+                        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-muted mb-3">
+                            <CreditCard className="h-6 w-6 text-muted-foreground" />
                         </div>
-                        <p className="text-sm text-gray-500 font-medium">No purchases yet</p>
-                        <p className="text-xs text-gray-400 mt-1">
+                        <p className="text-sm text-muted-foreground font-medium">No purchases yet</p>
+                        <p className="text-xs text-muted-foreground mt-1">
                             Your slot purchases will appear here after payment.
                         </p>
                     </div>
@@ -617,7 +617,7 @@ export default function OrganizerBillingPage() {
                     <div className="hidden md:block overflow-x-auto">
                         <table className="w-full border-collapse text-sm">
                             <thead>
-                                <tr className="border-b bg-gray-50/80 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <tr className="border-b bg-muted/40 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                                     <th className="py-3 px-4">Payment ID</th>
                                     <th className="py-3 px-4">Description</th>
                                     <th className="py-3 px-4">Amount</th>
@@ -629,25 +629,25 @@ export default function OrganizerBillingPage() {
                                 {purchases.map((p, i) => (
                                     <tr
                                         key={p.id}
-                                        className={`border-b last:border-0 hover:bg-gray-50 transition-colors ${i % 2 === 1 ? "bg-gray-50/40" : ""}`}
+                                        className={`border-b last:border-0 hover:bg-muted/50 transition-colors ${i % 2 === 1 ? "bg-muted/20" : ""}`}
                                     >
-                                        <td className="py-3 px-4 font-mono text-xs text-gray-600">
+                                        <td className="py-3 px-4 font-mono text-xs text-muted-foreground">
                                             {p.payment_id}
                                         </td>
-                                        <td className="py-3 px-4 text-gray-700">
+                                        <td className="py-3 px-4 text-foreground">
                                             {normalizeDescription(p.description)}
                                         </td>
-                                        <td className="py-3 px-4 font-semibold text-gray-900">
+                                        <td className="py-3 px-4 font-semibold text-foreground">
                                             ₹{p.amount.toLocaleString("en-IN")}
                                         </td>
-                                        <td className="py-3 px-4 text-gray-500">
+                                        <td className="py-3 px-4 text-muted-foreground">
                                             {formatDate(p.created_at)}
                                         </td>
                                         <td className="py-3 px-4">
                                             <Button
                                                 variant="ghost"
                                                 size="sm"
-                                                className="h-7 gap-1 text-indigo-600 hover:text-indigo-700 hover:bg-indigo-50 text-xs"
+                                                className="h-7 gap-1 text-primary hover:text-primary-hover hover:bg-primary/10 text-xs"
                                                 onClick={() =>
                                                     generateReceipt({
                                                         paymentId: p.payment_id,
@@ -678,26 +678,26 @@ export default function OrganizerBillingPage() {
                             <div key={p.id} className="p-4 space-y-2">
                                 <div className="flex items-start justify-between gap-2">
                                     <div className="min-w-0">
-                                        <p className="text-sm font-medium text-gray-900 truncate">
+                                        <p className="text-sm font-medium text-foreground truncate">
                                             {normalizeDescription(p.description)}
                                         </p>
-                                        <p className="text-xs text-gray-400 font-mono mt-0.5">
+                                        <p className="text-xs text-muted-foreground font-mono mt-0.5">
                                             {p.payment_id}
                                         </p>
                                     </div>
-                                    <span className="text-sm font-semibold text-gray-900 shrink-0">
+                                    <span className="text-sm font-semibold text-foreground shrink-0">
                                         ₹{p.amount.toLocaleString("en-IN")}
                                     </span>
                                 </div>
                                 <div className="flex items-center justify-between">
-                                    <span className="text-xs text-gray-400">
+                                    <span className="text-xs text-muted-foreground">
                                         <Clock className="h-3 w-3 inline mr-1" />
                                         {formatDate(p.created_at)}
                                     </span>
                                     <Button
                                         variant="ghost"
                                         size="sm"
-                                        className="h-6 gap-1 text-indigo-600 text-[11px] px-2"
+                                        className="h-6 gap-1 text-primary text-[11px] px-2"
                                         onClick={() =>
                                             generateReceipt({
                                                 paymentId: p.payment_id,

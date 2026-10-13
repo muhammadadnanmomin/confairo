@@ -474,7 +474,7 @@ export default function OrganizerReviewers() {
         <h1 className="text-3xl font-bold tracking-tight">
           Reviewer Management
         </h1>
-        <p className="text-gray-500">
+        <p className="text-muted-foreground">
           Invite reviewers and manage conference review teams.
         </p>
       </div>
@@ -483,7 +483,7 @@ export default function OrganizerReviewers() {
       <Card className="p-6 space-y-5 border shadow-sm">
         <div className="space-y-1">
           <h2 className="text-lg font-semibold">Invite Reviewer</h2>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-muted-foreground">
             Generate an invite link and automatically send it via email.
           </p>
         </div>
@@ -532,10 +532,10 @@ export default function OrganizerReviewers() {
         </div>
 
         {loading ? (
-          <p className="text-sm text-gray-500">Loading invitations…</p>
+          <p className="text-sm text-muted-foreground">Loading invitations…</p>
         ) : pendingInvites.length === 0 ? (
-          <div className="text-center py-8 text-gray-500">
-            <Mail className="h-8 w-8 text-gray-300 mx-auto mb-2" />
+          <div className="text-center py-8 text-muted-foreground">
+            <Mail className="h-8 w-8 text-muted-foreground/40 mx-auto mb-2" />
             <p className="text-sm">No pending invitations</p>
           </div>
         ) : (
@@ -548,11 +548,11 @@ export default function OrganizerReviewers() {
 
               let expiryBadge: { label: string; cls: string };
               if (expiry < now) {
-                expiryBadge = { label: "Expired", cls: "bg-red-100 text-red-700" };
+                expiryBadge = { label: "Expired", cls: "bg-destructive-surface text-destructive" };
               } else if (daysRemaining <= 2) {
-                expiryBadge = { label: "Expiring Soon", cls: "bg-yellow-100 text-yellow-700" };
+                expiryBadge = { label: "Expiring Soon", cls: "bg-warning-surface text-warning" };
               } else {
-                expiryBadge = { label: "Active", cls: "bg-green-100 text-green-700" };
+                expiryBadge = { label: "Active", cls: "bg-success-surface text-success" };
               }
 
               const link = `${window.location.origin}/invites/reviewer?token=${invite.token}`;
@@ -560,14 +560,14 @@ export default function OrganizerReviewers() {
               return (
                 <div
                   key={invite.id}
-                  className="flex flex-col sm:flex-row sm:items-center justify-between border rounded-lg p-4 bg-white hover:bg-gray-50 transition gap-3"
+                  className="flex flex-col sm:flex-row sm:items-center justify-between border rounded-lg p-4 bg-card hover:bg-muted/50 transition gap-3"
                 >
                   <div className="space-y-1">
                     <p className="text-sm font-medium">{invite.email}</p>
-                    <p className="text-xs text-gray-500">Conference: {confTitle}</p>
+                    <p className="text-xs text-muted-foreground">Conference: {confTitle}</p>
                     <div className="flex items-center gap-2 flex-wrap">
                       <Badge className={expiryBadge.cls}>{expiryBadge.label}</Badge>
-                      <span className="text-xs text-gray-400 flex items-center gap-1">
+                      <span className="text-xs text-muted-foreground flex items-center gap-1">
                         <Clock className="h-3 w-3" />
                         Expires {expiry.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
                       </span>
@@ -617,21 +617,21 @@ export default function OrganizerReviewers() {
 
       {/* ── Filter Panel ── */}
       <Card className="p-4 space-y-4">
-        <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Filters</h3>
+        <h3 className="text-sm font-semibold text-foreground uppercase tracking-wide">Filters</h3>
 
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <input
             type="text"
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
             placeholder="Search reviewer…"
-            className="w-full pl-10 pr-10 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full pl-10 pr-10 py-2 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
           />
           {searchQuery && (
             <button
               onClick={() => setSearchQuery("")}
-              className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-400 hover:text-gray-600"
+              className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-muted-foreground hover:text-foreground"
             >
               <X className="h-4 w-4" />
             </button>
@@ -640,11 +640,11 @@ export default function OrganizerReviewers() {
 
         <div className="flex flex-wrap gap-3 items-end">
           <div className="flex flex-col gap-1">
-            <label className="text-xs text-gray-500">Conference</label>
+            <label className="text-xs text-muted-foreground">Conference</label>
             <select
               value={selectedConference}
               onChange={e => setSelectedConference(e.target.value)}
-              className={`cursor-pointer border rounded-md px-2.5 py-1.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition ${selectedConference !== "all" ? "border-blue-400 bg-blue-50 text-blue-700" : "border-gray-200"
+              className={`cursor-pointer border rounded-md px-2.5 py-1.5 text-sm bg-card focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition ${selectedConference !== "all" ? "border-primary/40 bg-primary/10 text-primary" : "border-border"
                 }`}
             >
               <option value="all">All Conferences</option>
@@ -657,7 +657,7 @@ export default function OrganizerReviewers() {
           {activeFilterCount > 0 && (
             <button
               onClick={clearFilters}
-              className="flex cursor-pointer items-center gap-1 text-xs text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md border border-gray-200 hover:bg-gray-50 transition-colors"
+              className="flex cursor-pointer items-center gap-1 text-xs text-muted-foreground hover:text-foreground px-3 py-2 rounded-md border border-border hover:bg-muted/50 transition-colors"
             >
               <RotateCcw className="h-3 w-3" />
               Clear Filters
@@ -666,7 +666,7 @@ export default function OrganizerReviewers() {
         </div>
 
         {!loading && (
-          <p className="text-xs text-gray-400">
+          <p className="text-xs text-muted-foreground">
             Showing {filteredReviewerCount} of {totalReviewerCount} reviewer{totalReviewerCount !== 1 ? "s" : ""}
             {activeFilterCount > 0 && ` (${activeFilterCount} filter${activeFilterCount > 1 ? "s" : ""} active)`}
           </p>
@@ -685,14 +685,14 @@ export default function OrganizerReviewers() {
         </div>
 
         {loading ? (
-          <p className="text-sm text-gray-500">Loading reviewers…</p>
+          <p className="text-sm text-muted-foreground">Loading reviewers…</p>
         ) : filteredEntries.length === 0 ? (
-          <div className="text-center py-10 text-gray-500">
+          <div className="text-center py-10 text-muted-foreground">
             {activeFilterCount > 0 ? (
               <>
-                <Search className="h-8 w-8 text-gray-300 mx-auto mb-3" />
+                <Search className="h-8 w-8 text-muted-foreground/40 mx-auto mb-3" />
                 <p className="font-medium">No reviewers match current filters.</p>
-                <button onClick={clearFilters} className="mt-2 cursor-pointer text-xs text-blue-600 hover:underline">
+                <button onClick={clearFilters} className="mt-2 cursor-pointer text-xs text-primary hover:underline">
                   Clear all filters
                 </button>
               </>
@@ -710,7 +710,7 @@ export default function OrganizerReviewers() {
             {filteredEntries.map(
               ([confId, reviewers]) => (
                 <div key={confId} className="space-y-3">
-                  <p className="font-semibold text-gray-700">
+                  <p className="font-semibold text-foreground">
                     {
                       conferences.find(c => c.id === confId)
                         ?.title
@@ -723,26 +723,26 @@ export default function OrganizerReviewers() {
                       return (
                         <div
                           key={r.id}
-                          className="flex items-center justify-between border rounded-lg px-4 py-3 bg-white hover:bg-gray-50 transition"
+                          className="flex items-center justify-between border rounded-lg px-4 py-3 bg-card hover:bg-muted/50 transition"
                         >
                           <div>
                             <span className="font-medium text-sm">
                               {r.name}
                             </span>
                             {wl && (
-                              <p className="text-xs text-gray-500 mt-0.5">
+                              <p className="text-xs text-muted-foreground mt-0.5">
                                 Assigned: {wl.total} | Active: {wl.active} | Completed: {wl.completed}
                               </p>
                             )}
                             {!wl && (
-                              <p className="text-xs text-gray-400 mt-0.5">No assignments</p>
+                              <p className="text-xs text-muted-foreground mt-0.5">No assignments</p>
                             )}
                           </div>
                           <div className="flex items-center gap-2">
                             <Badge>Reviewer</Badge>
                             <button
                               onClick={() => setRemoveTarget({ reviewerId: r.id, conferenceId: confId, reviewerName: r.name })}
-                              className="cursor-pointer text-gray-400 hover:text-red-600 transition-colors p-1 rounded"
+                              className="cursor-pointer text-muted-foreground hover:text-destructive transition-colors p-1 rounded"
                               title="Remove reviewer"
                             >
                               <Trash2 className="h-3.5 w-3.5" />
@@ -764,15 +764,15 @@ export default function OrganizerReviewers() {
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4">
           <Card className="w-full max-w-md p-6 space-y-4">
             <h2 className="font-bold text-lg flex items-center gap-2">
-              <AlertTriangle className="h-5 w-5 text-red-500" />
+              <AlertTriangle className="h-5 w-5 text-destructive" />
               Remove Reviewer
             </h2>
 
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-muted-foreground">
               Are you sure you want to remove <strong>{removeTarget.reviewerName}</strong> from this conference?
             </p>
 
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-muted-foreground">
               This will only remove their conference role. Their profile and past reviews will not be affected.
             </p>
 
@@ -798,15 +798,15 @@ export default function OrganizerReviewers() {
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4">
           <Card className="w-full max-w-md p-6 space-y-4">
             <h2 className="font-bold text-lg flex items-center gap-2">
-              <AlertTriangle className="h-5 w-5 text-red-500" />
+              <AlertTriangle className="h-5 w-5 text-destructive" />
               Cancel Invitation
             </h2>
 
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-muted-foreground">
               Are you sure you want to cancel the invitation for <strong>{cancelTarget.email}</strong>?
             </p>
 
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-muted-foreground">
               The invite link will be invalidated and the reviewer will no longer be able to accept it.
             </p>
 
@@ -834,7 +834,7 @@ export default function OrganizerReviewers() {
             <DialogTitle>Share Reviewer Invite</DialogTitle>
           </DialogHeader>
 
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-muted-foreground">
             The reviewer has been emailed. You can also share the
             invite link manually.
           </p>

@@ -473,7 +473,7 @@ export default function OrganizerPayments() {
           <h1 className="text-3xl font-bold tracking-tight">
             Earnings &amp; Payments
           </h1>
-          <p className="text-gray-500 mt-1">
+          <p className="text-muted-foreground mt-1">
             Track collections, earnings, and payouts for conferences you own
           </p>
         </div>
@@ -499,29 +499,29 @@ export default function OrganizerPayments() {
             title="Available Balance"
             value={`₹${formatINR(balance.availableBalance)}`}
             icon={Wallet}
-            iconBg="bg-indigo-50"
-            iconColor="text-indigo-600"
+            iconBg="bg-primary/10"
+            iconColor="text-primary"
           />
           <StatCard
             title="Pending Payout"
             value={`₹${formatINR(balance.pendingPayout)}`}
             icon={Clock}
-            iconBg="bg-amber-50"
-            iconColor="text-amber-600"
+            iconBg="bg-warning-surface"
+            iconColor="text-warning"
           />
           <StatCard
             title="Total Withdrawn"
             value={`₹${formatINR(balance.totalWithdrawn)}`}
             icon={ArrowDownToLine}
-            iconBg="bg-green-50"
-            iconColor="text-green-600"
+            iconBg="bg-success-surface"
+            iconColor="text-success"
           />
           <StatCard
             title="Total Payments Receive"
             value={`₹${formatINR(balance.totalEarned)}`}
             icon={TrendingUp}
-            iconBg="bg-emerald-50"
-            iconColor="text-emerald-600"
+            iconBg="bg-success-surface"
+            iconColor="text-success"
           />
         </div>
       )}
@@ -534,29 +534,29 @@ export default function OrganizerPayments() {
           title="Total Collections"
           value={`₹${total.toLocaleString()}`}
           icon={IndianRupee}
-          iconBg="bg-emerald-50"
-          iconColor="text-emerald-600"
+          iconBg="bg-success-surface"
+          iconColor="text-success"
         />
         <StatCard
           title="Successful Payments"
           value={successfulCount}
           icon={CheckCircle}
-          iconBg="bg-green-50"
-          iconColor="text-green-600"
+          iconBg="bg-success-surface"
+          iconColor="text-success"
         />
         <StatCard
           title="Pending Payments"
           value={pendingCount}
           icon={Clock}
-          iconBg="bg-amber-50"
-          iconColor="text-amber-600"
+          iconBg="bg-warning-surface"
+          iconColor="text-warning"
         />
         <StatCard
           title="Total Transactions"
           value={payments.length}
           icon={CreditCard}
-          iconBg="bg-blue-50"
-          iconColor="text-blue-600"
+          iconBg="bg-info-surface"
+          iconColor="text-info"
         />
       </div>
 
@@ -568,16 +568,16 @@ export default function OrganizerPayments() {
         {/* Monthly Earnings (3 cols) */}
         <Card className="p-5 md:col-span-3">
           <div className="flex items-center gap-2 mb-4">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-50">
-              <BarChart3 className="h-4 w-4 text-indigo-600" />
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10">
+              <BarChart3 className="h-4 w-4 text-primary" />
             </div>
-            <h3 className="text-base font-semibold text-gray-900">Payments Overview</h3>
+            <h3 className="text-base font-semibold text-foreground">Payments Overview</h3>
           </div>
 
           <div className="flex items-end justify-between gap-2 h-36">
             {monthlyData.map((m) => (
               <div key={m.key} className="flex-1 flex flex-col items-center gap-1">
-                <span className="text-[10px] text-gray-400 font-medium">
+                <span className="text-[10px] text-muted-foreground font-medium">
                   {m.total > 0 ? `₹${Math.round(m.total).toLocaleString()}` : ""}
                 </span>
                 <div className="w-full max-w-[40px] flex items-end" style={{ height: "100px" }}>
@@ -592,7 +592,7 @@ export default function OrganizerPayments() {
                     }}
                   />
                 </div>
-                <span className="text-[10px] text-gray-500 font-medium">{m.label}</span>
+                <span className="text-[10px] text-muted-foreground font-medium">{m.label}</span>
               </div>
             ))}
           </div>
@@ -601,20 +601,20 @@ export default function OrganizerPayments() {
         {/* Fee Breakdown (2 cols) */}
         <Card className="p-5 md:col-span-2">
           <div className="flex items-center gap-2 mb-4">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-50">
-              <IndianRupee className="h-4 w-4 text-emerald-600" />
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-success-surface">
+              <IndianRupee className="h-4 w-4 text-success" />
             </div>
-            <h3 className="text-base font-semibold text-gray-900">Fee Breakdown</h3>
+            <h3 className="text-base font-semibold text-foreground">Fee Breakdown</h3>
           </div>
 
           <div className="space-y-3">
-            <FeeRow label="Conference Fees (Your Share)" value={feeBreakdown.conferenceFees} color="text-emerald-600" />
-            <FeeRow label="Platform Processing Fee (4%)" value={feeBreakdown.gatewayFees} color="text-gray-500" />
-            <FeeRow label="GST on Platform Processing Fee" value={feeBreakdown.gstFees} color="text-gray-500" />
+            <FeeRow label="Conference Fees (Your Share)" value={feeBreakdown.conferenceFees} color="text-success" />
+            <FeeRow label="Platform Processing Fee (4%)" value={feeBreakdown.gatewayFees} color="text-muted-foreground" />
+            <FeeRow label="GST on Platform Processing Fee" value={feeBreakdown.gstFees} color="text-muted-foreground" />
             <Separator />
             <div className="flex items-center justify-between">
-              <span className="text-sm font-semibold text-gray-900">Net Collections</span>
-              <span className="text-lg font-bold text-emerald-600">₹{formatINR(feeBreakdown.conferenceFees)}</span>
+              <span className="text-sm font-semibold text-foreground">Net Collections</span>
+              <span className="text-lg font-bold text-success">₹{formatINR(feeBreakdown.conferenceFees)}</span>
             </div>
           </div>
         </Card>
@@ -625,14 +625,14 @@ export default function OrganizerPayments() {
       {/* ============================================================ */}
       {!balanceLoading && balance && (
         <Card className="overflow-hidden">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between p-5 border-b bg-gray-50/60 gap-3">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between p-5 border-b bg-muted/30 gap-3">
             <div className="flex items-center gap-2.5">
-              <div className="flex items-center justify-center h-8 w-8 rounded-lg bg-indigo-100">
-                <ArrowDownToLine className="h-4 w-4 text-indigo-600" />
+              <div className="flex items-center justify-center h-8 w-8 rounded-lg bg-primary/10">
+                <ArrowDownToLine className="h-4 w-4 text-primary" />
               </div>
               <div>
-                <span className="font-semibold text-gray-800 block">Payouts</span>
-                <span className="text-xs text-gray-400">
+                <span className="font-semibold text-foreground block">Payouts</span>
+                <span className="text-xs text-muted-foreground">
                   Available: ₹{formatINR(balance.availableBalance)}
                 </span>
               </div>
@@ -643,7 +643,7 @@ export default function OrganizerPayments() {
                 <Button
                   size="sm"
                   onClick={() => setShowPayoutForm(true)}
-                  className="bg-indigo-600 hover:bg-indigo-700 gap-2"
+                  className="bg-primary hover:bg-primary-hover gap-2"
                 >
                   <ArrowDownToLine className="h-3.5 w-3.5" />
                   Request Payout
@@ -660,10 +660,10 @@ export default function OrganizerPayments() {
 
           {/* Payout request form */}
           {showPayoutForm && (
-            <div className="p-5 border-b space-y-3 bg-indigo-50/30">
+            <div className="p-5 border-b space-y-3 bg-primary/5">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="text-xs font-medium text-gray-500 uppercase tracking-wide block mb-1">
+                  <label className="text-xs font-medium text-muted-foreground uppercase tracking-wide block mb-1">
                     Amount (₹)
                   </label>
                   <Input
@@ -676,7 +676,7 @@ export default function OrganizerPayments() {
                   />
                 </div>
                 <div>
-                  <label className="text-xs font-medium text-gray-500 uppercase tracking-wide block mb-1">
+                  <label className="text-xs font-medium text-muted-foreground uppercase tracking-wide block mb-1">
                     Notes (optional)
                   </label>
                   <Input
@@ -687,7 +687,7 @@ export default function OrganizerPayments() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-2 text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">
+              <div className="flex items-center gap-2 text-xs text-warning bg-warning-surface/50 border border-warning/30 rounded-lg px-3 py-2">
                 <AlertTriangle className="h-3.5 w-3.5 flex-shrink-0" />
                 <span>Settlement typically takes 2–3 business days.</span>
               </div>
@@ -695,7 +695,7 @@ export default function OrganizerPayments() {
               <div className="flex gap-2">
                 <Button
                   size="sm"
-                  className="bg-indigo-600 hover:bg-indigo-700 text-white"
+                  className="bg-primary hover:bg-primary-hover text-primary-foreground"
                   disabled={submittingPayout || !payoutAmount}
                   onClick={requestPayout}
                 >
@@ -719,24 +719,24 @@ export default function OrganizerPayments() {
                 <div key={p.id} className="flex items-center justify-between px-5 py-3 text-sm">
                   <div className="flex items-center gap-2">
                     <PayoutBadge status={p.status} />
-                    <span className="font-medium text-gray-800">₹{formatINR(p.amount)}</span>
-                    {p.notes && <span className="text-xs text-gray-400">— {p.notes}</span>}
+                    <span className="font-medium text-foreground">₹{formatINR(p.amount)}</span>
+                    {p.notes && <span className="text-xs text-muted-foreground">— {p.notes}</span>}
                   </div>
-                  <span className="text-xs text-gray-400">{formatDate(p.created_at)}</span>
+                  <span className="text-xs text-muted-foreground">{formatDate(p.created_at)}</span>
                 </div>
               ))}
             </div>
           )}
 
           {payouts.length === 0 && (
-            <p className="px-5 py-4 text-sm text-gray-400 text-center">No payout history yet</p>
+            <p className="px-5 py-4 text-sm text-muted-foreground text-center">No payout history yet</p>
           )}
 
           {payouts.length > 5 && (
             <div className="border-t p-3 text-center">
               <Link
                 href="/dashboard/organizer/payouts"
-                className="text-xs text-indigo-600 hover:underline flex items-center gap-1 justify-center"
+                className="text-xs text-primary hover:underline flex items-center gap-1 justify-center"
               >
                 View all payouts <ArrowRight className="h-3 w-3" />
               </Link>
@@ -752,7 +752,7 @@ export default function OrganizerPayments() {
         <Card className="p-4 space-y-3">
           {/* Quick date filters */}
           <div className="flex items-center gap-2 flex-wrap">
-            <CalendarRange className="h-4 w-4 text-gray-400" />
+            <CalendarRange className="h-4 w-4 text-muted-foreground" />
             {(
               [
                 { key: "all", label: "All Time" },
@@ -773,15 +773,15 @@ export default function OrganizerPayments() {
             ))}
           </div>
 
-          <div className="flex items-center gap-2 text-sm font-medium text-gray-700">
-            <Filter className="h-4 w-4 text-gray-400" />
+          <div className="flex items-center gap-2 text-sm font-medium text-foreground">
+            <Filter className="h-4 w-4 text-muted-foreground" />
             Filters
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
             {/* Search */}
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
                 placeholder="Search name or email…"
                 value={searchQuery}
@@ -794,7 +794,7 @@ export default function OrganizerPayments() {
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="cursor-pointer rounded-md border border-gray-200 bg-white px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="cursor-pointer rounded-md border border-border bg-card px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
             >
               <option value="all">All Statuses</option>
               <option value="paid">Paid</option>
@@ -806,7 +806,7 @@ export default function OrganizerPayments() {
             <select
               value={typeFilter}
               onChange={(e) => setTypeFilter(e.target.value)}
-              className="cursor-pointer rounded-md border border-gray-200 bg-white px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="cursor-pointer rounded-md border border-border bg-card px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
             >
               <option value="all">All Types</option>
               <option value="registration">Registration</option>
@@ -817,7 +817,7 @@ export default function OrganizerPayments() {
             <select
               value={conferenceFilter}
               onChange={(e) => setConferenceFilter(e.target.value)}
-              className="cursor-pointer rounded-md border border-gray-200 bg-white px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 truncate"
+              className="cursor-pointer rounded-md border border-border bg-card px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary truncate"
             >
               <option value="all">All Conferences</option>
               {uniqueConferences.map((c) => (
@@ -834,7 +834,7 @@ export default function OrganizerPayments() {
       {/*  Loading                                                      */}
       {/* ============================================================ */}
       {loading && (
-        <p className="text-sm text-gray-500 py-8 text-center">
+        <p className="text-sm text-muted-foreground py-8 text-center">
           Loading payments…
         </p>
       )}
@@ -844,13 +844,13 @@ export default function OrganizerPayments() {
       {/* ============================================================ */}
       {!loading && payments.length === 0 && (
         <Card className="p-12 text-center">
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gray-100">
-            <CreditCard className="h-8 w-8 text-gray-400" />
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-muted">
+            <CreditCard className="h-8 w-8 text-muted-foreground" />
           </div>
-          <h2 className="text-xl font-semibold text-gray-900">
+          <h2 className="text-xl font-semibold text-foreground">
             No payments recorded yet
           </h2>
-          <p className="text-gray-500 mt-2 max-w-sm mx-auto">
+          <p className="text-muted-foreground mt-2 max-w-sm mx-auto">
             Participant registrations and paper fee collections will appear here.
           </p>
         </Card>
@@ -858,7 +858,7 @@ export default function OrganizerPayments() {
 
       {/* No results from filter */}
       {!loading && payments.length > 0 && filteredPayments.length === 0 && (
-        <p className="text-sm text-gray-500 py-8 text-center">
+        <p className="text-sm text-muted-foreground py-8 text-center">
           No payments match the current filters.
         </p>
       )}
@@ -871,7 +871,7 @@ export default function OrganizerPayments() {
           <div className="overflow-x-auto">
             <table className="w-full border-collapse text-sm">
               <thead>
-                <tr className="border-b bg-gray-50/80 text-left text-xs font-medium text-gray-500 uppercase tracking-wider sticky top-0">
+                <tr className="border-b bg-muted/40 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider sticky top-0">
                   <th className="py-3 px-4">Participant</th>
                   <th className="py-3 px-4">Conference</th>
                   <th className="py-3 px-4">Type</th>
@@ -886,19 +886,19 @@ export default function OrganizerPayments() {
                 {filteredPayments.map((p, i) => (
                   <tr
                     key={p.id}
-                    className={`border-b last:border-0 hover:bg-gray-50 transition-colors ${i % 2 === 1 ? "bg-gray-50/40" : ""
+                    className={`border-b last:border-0 hover:bg-muted/50 transition-colors ${i % 2 === 1 ? "bg-muted/20" : ""
                       }`}
                   >
                     <td className="py-3 px-4">
-                      <p className="font-medium text-gray-900">
+                      <p className="font-medium text-foreground">
                         {p.participant?.name || "—"}
                       </p>
-                      <p className="text-xs text-gray-500">
+                      <p className="text-xs text-muted-foreground">
                         {p.participant?.email || "—"}
                       </p>
                     </td>
 
-                    <td className="py-3 px-4 text-gray-700 max-w-[200px] truncate">
+                    <td className="py-3 px-4 text-foreground max-w-[200px] truncate">
                       {p.conference || "—"}
                     </td>
 
@@ -909,7 +909,7 @@ export default function OrganizerPayments() {
                       </Badge>
                     </td>
 
-                    <td className="py-3 px-4 font-semibold text-gray-900">
+                    <td className="py-3 px-4 font-semibold text-foreground">
                       ₹{(p.amount || 0).toLocaleString()}
                     </td>
 
@@ -917,11 +917,11 @@ export default function OrganizerPayments() {
                       <StatusBadge status={p.status} />
                     </td>
 
-                    <td className="py-3 px-4 text-xs text-gray-400 font-mono">
+                    <td className="py-3 px-4 text-xs text-muted-foreground font-mono">
                       {p.payment_id || "—"}
                     </td>
 
-                    <td className="py-3 px-4 text-gray-500">
+                    <td className="py-3 px-4 text-muted-foreground">
                       {formatDate(p.created_at)}
                     </td>
                   </tr>
@@ -941,10 +941,10 @@ export default function OrganizerPayments() {
             <Card key={p.id} className="p-4 space-y-2">
               <div className="flex items-start justify-between gap-2">
                 <div className="min-w-0">
-                  <p className="font-medium text-gray-900 truncate">
+                  <p className="font-medium text-foreground truncate">
                     {p.participant?.name || "—"}
                   </p>
-                  <p className="text-xs text-gray-500 truncate">
+                  <p className="text-xs text-muted-foreground truncate">
                     {p.participant?.email || "—"}
                   </p>
                 </div>
@@ -952,15 +952,15 @@ export default function OrganizerPayments() {
               </div>
 
               <div className="flex items-center justify-between text-sm">
-                <span className="text-gray-500 truncate max-w-[60%]">
+                <span className="text-muted-foreground truncate max-w-[60%]">
                   {p.conference || "—"}
                 </span>
-                <span className="font-semibold text-gray-900">
+                <span className="font-semibold text-foreground">
                   ₹{(p.amount || 0).toLocaleString()}
                 </span>
               </div>
 
-              <div className="flex items-center justify-between text-xs text-gray-400">
+              <div className="flex items-center justify-between text-xs text-muted-foreground">
                 <Badge variant="secondary" className="text-[11px]">
                   {p.type}
                 </Badge>
@@ -995,7 +995,7 @@ function StatCard({
   return (
     <Card className="p-5 flex items-center justify-between hover:shadow-md transition-shadow">
       <div>
-        <p className="text-sm text-gray-500">{title}</p>
+        <p className="text-sm text-muted-foreground">{title}</p>
         <p className="text-2xl font-bold mt-1">{value}</p>
       </div>
 
@@ -1009,7 +1009,7 @@ function StatCard({
 function StatusBadge({ status }: { status: string }) {
   if (status === "success" || status === "paid")
     return (
-      <Badge className="bg-green-100 text-green-700 border-green-200 hover:bg-green-100 text-xs gap-1">
+      <Badge className="bg-success-surface text-success border-success/30 hover:bg-success-surface text-xs gap-1">
         <CheckCircle className="h-3 w-3" />
         Paid
       </Badge>
@@ -1017,14 +1017,14 @@ function StatusBadge({ status }: { status: string }) {
 
   if (status === "failed")
     return (
-      <Badge className="bg-red-100 text-red-700 border-red-200 hover:bg-red-100 text-xs gap-1">
+      <Badge className="bg-destructive-surface text-destructive border-destructive/30 hover:bg-destructive-surface text-xs gap-1">
         <XCircle className="h-3 w-3" />
         Failed
       </Badge>
     );
 
   return (
-    <Badge className="bg-amber-100 text-amber-700 border-amber-200 hover:bg-amber-100 text-xs gap-1">
+    <Badge className="bg-warning-surface text-warning border-warning/30 hover:bg-warning-surface text-xs gap-1">
       <Clock className="h-3 w-3" />
       Pending
     </Badge>
@@ -1034,24 +1034,24 @@ function StatusBadge({ status }: { status: string }) {
 function PayoutBadge({ status }: { status: string }) {
   if (status === "completed")
     return (
-      <Badge className="bg-green-100 text-green-700 border-green-200 hover:bg-green-100 text-[11px] gap-0.5">
+      <Badge className="bg-success-surface text-success border-success/30 hover:bg-success-surface text-[11px] gap-0.5">
         <CheckCircle className="h-3 w-3" /> Completed
       </Badge>
     );
   if (status === "processing")
     return (
-      <Badge className="bg-blue-100 text-blue-700 border-blue-200 hover:bg-blue-100 text-[11px] gap-0.5">
+      <Badge className="bg-info-surface text-info border-info/30 hover:bg-info-surface text-[11px] gap-0.5">
         <Loader2 className="h-3 w-3" /> Processing
       </Badge>
     );
   if (status === "failed")
     return (
-      <Badge className="bg-red-100 text-red-700 border-red-200 hover:bg-red-100 text-[11px] gap-0.5">
+      <Badge className="bg-destructive-surface text-destructive border-destructive/30 hover:bg-destructive-surface text-[11px] gap-0.5">
         <XCircle className="h-3 w-3" /> Failed
       </Badge>
     );
   return (
-    <Badge className="bg-amber-100 text-amber-700 border-amber-200 hover:bg-amber-100 text-[11px] gap-0.5">
+    <Badge className="bg-warning-surface text-warning border-warning/30 hover:bg-warning-surface text-[11px] gap-0.5">
       <Clock className="h-3 w-3" /> Pending
     </Badge>
   );
@@ -1068,7 +1068,7 @@ function FeeRow({
 }) {
   return (
     <div className="flex items-center justify-between">
-      <span className="text-sm text-gray-600">{label}</span>
+      <span className="text-sm text-muted-foreground">{label}</span>
       <span className={`text-sm font-semibold ${color}`}>
         ₹{formatINR(value)}
       </span>

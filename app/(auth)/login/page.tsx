@@ -2,6 +2,8 @@
 
 import { Suspense, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import Image from "next/image";
+import Link from "next/link";
 
 import { createClient } from "@/lib/supabase/client";
 import { signIn } from "@/lib/auth/auth";
@@ -62,24 +64,31 @@ function LoginInner() {
 
   return (
     <div
-      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 via-white to-indigo-100 px-4"
+      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/5 via-background to-primary/10 px-4"
       suppressHydrationWarning
     >
-      <div className="w-full max-w-md rounded-2xl border bg-white p-6 shadow-lg sm:p-8 transition hover:shadow-xl">
+      <div className="w-full max-w-md rounded-2xl border border-border bg-card p-6 shadow-lg sm:p-8 transition hover:shadow-xl">
         {/* Brand header */}
-        <div className="mb-2 text-center">
-          <span className="text-lg font-semibold text-indigo-600 tracking-wide">
-            Confairo
-          </span>
+        <div className="mb-4 flex justify-center">
+          <Link href="/" className="inline-block">
+            <Image
+              src="/logos/Horizontal_Logo.png"
+              alt="Confairo"
+              width={165}
+              height={55}
+              priority
+              className="w-[150px] sm:w-[165px] h-auto object-contain"
+            />
+          </Link>
         </div>
 
         {/* Title */}
         <div className="mb-6 text-center">
-          <h1 className="text-2xl font-bold text-gray-900">
+          <h1 className="text-2xl font-bold text-foreground">
             Welcome back
           </h1>
 
-          <p className="mt-1 text-sm text-gray-500">
+          <p className="mt-1 text-sm text-muted-foreground">
             Sign in to continue to Confairo.
           </p>
         </div>
@@ -88,7 +97,7 @@ function LoginInner() {
         <form onSubmit={handleLogin} className="space-y-4">
           {/* Email */}
           <div className="space-y-1">
-            <label className="text-sm font-medium text-gray-700">
+            <label className="text-sm font-medium text-foreground">
               Email
             </label>
 
@@ -99,13 +108,13 @@ function LoginInner() {
               required
               autoFocus
               onChange={(e) => setEmail(e.target.value)}
-              className="focus:ring-2 focus:ring-indigo-500"
+              className="focus:ring-2 focus:ring-ring"
             />
           </div>
 
           {/* Password */}
           <div className="space-y-1">
-            <label className="text-sm font-medium text-gray-700">
+            <label className="text-sm font-medium text-foreground">
               Password
             </label>
 
@@ -116,12 +125,12 @@ function LoginInner() {
                 value={password}
                 required
                 onChange={(e) => setPassword(e.target.value)}
-                className="pr-10 focus:ring-2 focus:ring-indigo-500"
+                className="pr-10 focus:ring-2 focus:ring-ring"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-400 hover:text-gray-600"
+                className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-muted-foreground hover:text-foreground"
                 aria-label={showPassword ? "Hide password" : "Show password"}
               >
                 {showPassword ? (
@@ -135,7 +144,7 @@ function LoginInner() {
 
           {/* Error */}
           {error && (
-            <div className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-600">
+            <div className="rounded-lg border border-destructive/30 bg-destructive-surface px-3 py-2 text-sm text-destructive">
               {error}
             </div>
           )}
@@ -155,18 +164,18 @@ function LoginInner() {
 
         {/* Social login divider */}
         <div className="my-5 flex items-center gap-3">
-          <div className="h-px flex-1 bg-gray-200" />
-          <span className="text-xs text-gray-400">or continue with</span>
-          <div className="h-px flex-1 bg-gray-200" />
+          <div className="h-px flex-1 bg-border" />
+          <span className="text-xs text-muted-foreground">or continue with</span>
+          <div className="h-px flex-1 bg-border" />
         </div>
 
         {/* Footer */}
-        <div className="text-center space-y-2 text-sm text-gray-500">
+        <div className="text-center space-y-2 text-sm text-muted-foreground">
           <div>
             Don&apos;t have an account?{" "}
             <button
               onClick={() => router.push("/signup")}
-              className="cursor-pointer font-medium text-indigo-600 hover:underline"
+              className="cursor-pointer font-medium text-primary hover:underline"
             >
               Sign up
             </button>
@@ -175,7 +184,7 @@ function LoginInner() {
           <div>
             <button
               onClick={() => router.push("/forgot-password")}
-              className="cursor-pointer text-indigo-600 hover:underline"
+              className="cursor-pointer text-primary hover:underline"
             >
               Forgot password?
             </button>

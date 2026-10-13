@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import Link from "next/link";
 
 import { createClient } from "@/lib/supabase/client";
 
@@ -82,20 +84,34 @@ export default function ResetPasswordPage() {
 
     return (
         <div
-            className="min-h-screen flex items-center justify-center bg-gray-50 px-4"
+            className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/5 via-background to-primary/10 px-4"
             suppressHydrationWarning
         >
 
-            <div className="w-full max-w-md rounded-xl border bg-white p-6 shadow-lg">
+            <div className="w-full max-w-md rounded-2xl border border-border bg-card p-6 shadow-lg sm:p-8">
+
+                {/* Brand header */}
+                <div className="mb-4 flex justify-center">
+                    <Link href="/" className="inline-block">
+                        <Image
+                            src="/logos/Horizontal_Logo.png"
+                            alt="Confairo"
+                            width={165}
+                            height={55}
+                            priority
+                            className="w-[150px] sm:w-[165px] h-auto object-contain"
+                        />
+                    </Link>
+                </div>
 
                 {/* Title */}
-                <h1 className="mb-6 text-center text-2xl font-bold">
+                <h1 className="mb-6 text-center text-2xl font-bold text-foreground">
                     Reset Password
                 </h1>
 
                 {/* Error */}
                 {error && (
-                    <div className="mb-4 rounded bg-red-50 p-2 text-sm text-red-600">
+                    <div className="mb-4 rounded-lg border border-destructive/30 bg-destructive-surface p-2 text-sm text-destructive">
                         {error}
                     </div>
                 )}
@@ -104,7 +120,7 @@ export default function ResetPasswordPage() {
                 <form onSubmit={handleReset} className="space-y-4">
 
                     <div>
-                        <label className="text-sm font-medium text-gray-700">
+                        <label className="text-sm font-medium text-foreground">
                             New Password
                         </label>
 

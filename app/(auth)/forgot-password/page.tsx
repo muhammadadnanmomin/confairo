@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 
 import { Button } from "@/components/ui/button";
@@ -39,25 +41,39 @@ export default function ForgotPasswordPage() {
 
   return (
     <div
-      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 via-white to-indigo-100 px-4"
+      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/5 via-background to-primary/10 px-4"
       suppressHydrationWarning
     >
-      <div className="w-full max-w-md rounded-2xl border bg-white p-6 shadow-lg sm:p-8">
+      <div className="w-full max-w-md rounded-2xl border border-border bg-card p-6 shadow-lg sm:p-8">
+
+        {/* Brand header */}
+        <div className="mb-4 flex justify-center">
+          <Link href="/" className="inline-block">
+            <Image
+              src="/logos/Horizontal_Logo.png"
+              alt="Confairo"
+              width={165}
+              height={55}
+              priority
+              className="w-[150px] sm:w-[165px] h-auto object-contain"
+            />
+          </Link>
+        </div>
 
         {/* Title */}
         <div className="mb-6 text-center">
-          <h1 className="text-2xl font-bold text-gray-900">
+          <h1 className="text-2xl font-bold text-foreground">
             Reset Password
           </h1>
 
-          <p className="mt-1 text-sm text-gray-500">
+          <p className="mt-1 text-sm text-muted-foreground">
             We’ll send you a reset link
           </p>
         </div>
 
         {/* Success */}
         {success ? (
-          <div className="rounded-lg bg-green-50 px-4 py-3 text-sm text-green-700 text-center">
+          <div className="rounded-lg border border-success/30 bg-success-surface px-4 py-3 text-sm text-success text-center">
             ✅ Reset link sent. Check your email.
           </div>
         ) : (
@@ -66,7 +82,7 @@ export default function ForgotPasswordPage() {
 
             {/* Email */}
             <div className="space-y-1">
-              <label className="text-sm font-medium text-gray-700">
+              <label className="text-sm font-medium text-foreground">
                 Email
               </label>
 
@@ -81,7 +97,7 @@ export default function ForgotPasswordPage() {
 
             {/* Error */}
             {error && (
-              <div className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-600">
+              <div className="rounded-lg border border-destructive/30 bg-destructive-surface px-3 py-2 text-sm text-destructive">
                 {error}
               </div>
             )}
@@ -99,11 +115,11 @@ export default function ForgotPasswordPage() {
         )}
 
         {/* Back */}
-        <div className="mt-6 text-center text-sm text-gray-500">
+        <div className="mt-6 text-center text-sm text-muted-foreground">
 
           <button
             onClick={() => history.back()}
-            className="cursor-pointer text-indigo-600 hover:underline"
+            className="cursor-pointer text-primary hover:underline"
           >
             ← Back to login
           </button>

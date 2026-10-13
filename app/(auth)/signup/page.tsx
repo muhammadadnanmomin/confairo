@@ -2,6 +2,8 @@
 
 import { Suspense, useState, useMemo } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import Image from "next/image";
+import Link from "next/link";
 import { signUp } from "@/lib/auth/auth";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -24,9 +26,9 @@ function getPasswordStrength(pw: string) {
   if (/[0-9]/.test(pw)) score++;
   if (/[^a-zA-Z0-9]/.test(pw)) score++;
 
-  if (score <= 1) return { label: "Weak", color: "bg-red-500", width: "w-1/3" };
-  if (score <= 2) return { label: "Medium", color: "bg-yellow-500", width: "w-2/3" };
-  return { label: "Strong", color: "bg-green-500", width: "w-full" };
+  if (score <= 1) return { label: "Weak", color: "bg-destructive", width: "w-1/3" };
+  if (score <= 2) return { label: "Medium", color: "bg-warning", width: "w-2/3" };
+  return { label: "Strong", color: "bg-success", width: "w-full" };
 }
 
 function SignupInner() {
@@ -85,21 +87,28 @@ function SignupInner() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 via-white to-indigo-100 px-4">
-      <div className="w-full max-w-md rounded-2xl border bg-white p-6 shadow-lg sm:p-8 transition hover:shadow-xl">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/5 via-background to-primary/10 px-4">
+      <div className="w-full max-w-md rounded-2xl border border-border bg-card p-6 shadow-lg sm:p-8 transition hover:shadow-xl">
         {/* Brand header */}
-        <div className="mb-2 text-center">
-          <span className="text-lg font-semibold text-indigo-600 tracking-wide">
-            Confairo
-          </span>
+        <div className="mb-4 flex justify-center">
+          <Link href="/" className="inline-block">
+            <Image
+              src="/logos/Horizontal_Logo.png"
+              alt="Confairo"
+              width={165}
+              height={55}
+              priority
+              className="w-[150px] sm:w-[165px] h-auto object-contain"
+            />
+          </Link>
         </div>
 
         {/* Title */}
         <div className="mb-6 text-center">
-          <h1 className="text-2xl font-bold text-gray-900">
+          <h1 className="text-2xl font-bold text-foreground">
             Create your Confairo account
           </h1>
-          <p className="mt-1 text-sm text-gray-500">
+          <p className="mt-1 text-sm text-muted-foreground">
             Manage conferences, submissions, and peer reviews in one place.
           </p>
         </div>
@@ -107,7 +116,7 @@ function SignupInner() {
         <form onSubmit={handleSignup} className="space-y-4">
           {/* Username */}
           <div className="space-y-1">
-            <label className="text-sm font-medium text-gray-700">
+            <label className="text-sm font-medium text-foreground">
               Username
             </label>
             <Input
@@ -119,16 +128,16 @@ function SignupInner() {
                 setUsername(e.target.value.toLowerCase())
               }
               placeholder="your-username"
-              className="focus:ring-2 focus:ring-indigo-500"
+              className="focus:ring-2 focus:ring-ring"
             />
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-muted-foreground">
               3–30 characters. Lowercase letters, numbers, hyphen only.
             </p>
           </div>
 
           {/* Email */}
           <div className="space-y-1">
-            <label className="text-sm font-medium text-gray-700">
+            <label className="text-sm font-medium text-foreground">
               Email
             </label>
             <Input
@@ -137,16 +146,16 @@ function SignupInner() {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="focus:ring-2 focus:ring-indigo-500"
+              className="focus:ring-2 focus:ring-ring"
             />
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-muted-foreground">
               We&apos;ll send a confirmation email after signup.
             </p>
           </div>
 
           {/* Password */}
           <div className="space-y-1">
-            <label className="text-sm font-medium text-gray-700">
+            <label className="text-sm font-medium text-foreground">
               Password
             </label>
             <div className="relative">
@@ -156,12 +165,12 @@ function SignupInner() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="pr-10 focus:ring-2 focus:ring-indigo-500"
+                className="pr-10 focus:ring-2 focus:ring-ring"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-400 hover:text-gray-600"
+                className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-muted-foreground hover:text-foreground"
                 aria-label={showPassword ? "Hide password" : "Show password"}
               >
                 {showPassword ? (
@@ -175,23 +184,23 @@ function SignupInner() {
             {/* Password strength indicator */}
             {password.length > 0 && (
               <div className="mt-1.5">
-                <div className="h-1.5 w-full rounded-full bg-gray-200">
+                <div className="h-1.5 w-full rounded-full bg-muted">
                   <div
                     className={`h-1.5 rounded-full transition-all ${strength.color} ${strength.width}`}
                   />
                 </div>
                 <p className={`text-xs mt-0.5 ${strength.label === "Weak"
-                  ? "text-red-500"
+                  ? "text-destructive"
                   : strength.label === "Medium"
-                    ? "text-yellow-600"
-                    : "text-green-600"
+                    ? "text-warning"
+                    : "text-success"
                   }`}>
                   {strength.label}
                 </p>
               </div>
             )}
 
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-muted-foreground">
               8–64 characters. Use letters, numbers, and symbols for a stronger password.
             </p>
           </div>
@@ -214,13 +223,13 @@ function SignupInner() {
         </form>
 
         {/* Terms notice */}
-        <p className="mt-3 text-center text-xs text-gray-400">
+        <p className="mt-3 text-center text-xs text-muted-foreground">
           By creating an account you agree to our{" "}
-          <a href="/terms" className="underline hover:text-indigo-600">
+          <a href="/terms" className="underline hover:text-primary">
             Terms of Service
           </a>{" "}
           and{" "}
-          <a href="/privacy" className="underline hover:text-indigo-600">
+          <a href="/privacy" className="underline hover:text-primary">
             Privacy Policy
           </a>
           .
@@ -228,17 +237,17 @@ function SignupInner() {
 
         {/* Social login divider */}
         <div className="my-5 flex items-center gap-3">
-          <div className="h-px flex-1 bg-gray-200" />
-          <span className="text-xs text-gray-400">or continue with</span>
-          <div className="h-px flex-1 bg-gray-200" />
+          <div className="h-px flex-1 bg-border" />
+          <span className="text-xs text-muted-foreground">or continue with</span>
+          <div className="h-px flex-1 bg-border" />
         </div>
 
         {/* Footer */}
-        <div className="text-center text-sm text-gray-500">
+        <div className="text-center text-sm text-muted-foreground">
           Already have an account?{" "}
           <button
             onClick={() => router.push("/login")}
-            className="cursor-pointer font-medium text-indigo-600 hover:underline"
+            className="cursor-pointer font-medium text-primary hover:underline"
           >
             Login
           </button>

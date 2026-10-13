@@ -196,8 +196,8 @@ export default function SchedulePage() {
             {/* Page Header */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
-                    <div className="h-10 w-10 rounded-xl bg-indigo-100 flex items-center justify-center">
-                        <CalendarClock className="h-5 w-5 text-indigo-600" />
+                    <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                        <CalendarClock className="h-5 w-5 text-primary" />
                     </div>
                     <div>
                         <h1 className="text-2xl font-bold tracking-tight">Schedule</h1>
@@ -285,8 +285,8 @@ export default function SchedulePage() {
                         <div className="flex items-center gap-1.5 overflow-x-auto pb-1">
                             <button
                                 className={`cursor-pointer px-3 py-1.5 rounded-lg text-sm font-medium transition whitespace-nowrap ${!selectedDayId
-                                    ? "bg-indigo-100 text-indigo-700"
-                                    : "text-muted-foreground hover:bg-gray-100"
+                                    ? "bg-primary/10 text-primary"
+                                    : "text-muted-foreground hover:bg-muted"
                                     }`}
                                 onClick={() => setSelectedDayId("")}
                             >
@@ -296,8 +296,8 @@ export default function SchedulePage() {
                                 <button
                                     key={day.id}
                                     className={`cursor-pointer px-3 py-1.5 rounded-lg text-sm font-medium transition whitespace-nowrap ${selectedDayId === day.id
-                                        ? "bg-indigo-100 text-indigo-700"
-                                        : "text-muted-foreground hover:bg-gray-100"
+                                        ? "bg-primary/10 text-primary"
+                                        : "text-muted-foreground hover:bg-muted"
                                         }`}
                                     onClick={() => setSelectedDayId(day.id)}
                                 >
@@ -374,13 +374,13 @@ export default function SchedulePage() {
                     {/* View tabs + content */}
                     {days.length > 0 && tracks.length > 0 && (
                         <>
-                            <div className="flex items-center gap-1 rounded-lg bg-gray-100 p-1 w-fit">
+                            <div className="flex items-center gap-1 rounded-lg bg-muted p-1 w-fit">
                                 {VIEW_TABS.map((tab) => (
                                     <button
                                         key={tab.key}
                                         onClick={() => setActiveView(tab.key)}
                                         className={`flex cursor-pointer items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition ${activeView === tab.key
-                                            ? "bg-white shadow-sm text-foreground"
+                                            ? "bg-card shadow-sm text-foreground"
                                             : "text-muted-foreground hover:text-foreground"
                                             }`}
                                     >

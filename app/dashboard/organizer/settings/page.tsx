@@ -78,7 +78,7 @@ export default function OrganizerSettings() {
           Settings
         </h1>
 
-        <p className="text-gray-500 mt-1">
+        <p className="text-muted-foreground mt-1">
           Manage your account preferences
         </p>
       </div>
@@ -88,7 +88,7 @@ export default function OrganizerSettings() {
 
         <div className="flex items-center gap-3">
 
-          <User className="h-5 w-5 text-gray-500" />
+          <User className="h-5 w-5 text-muted-foreground" />
 
           <h2 className="text-xl font-semibold">
             Profile Information
@@ -155,7 +155,7 @@ export default function OrganizerSettings() {
 
         <div className="flex items-center gap-3">
 
-          <Bell className="h-5 w-5 text-gray-500" />
+          <Bell className="h-5 w-5 text-muted-foreground" />
 
           <h2 className="text-xl font-semibold">
             Preferences
@@ -172,7 +172,7 @@ export default function OrganizerSettings() {
               Email Notifications
             </p>
 
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-muted-foreground">
               Receive updates via email
             </p>
           </div>
@@ -191,7 +191,7 @@ export default function OrganizerSettings() {
 
         <div className="flex items-center gap-3">
 
-          <Shield className="h-5 w-5 text-gray-500" />
+          <Shield className="h-5 w-5 text-muted-foreground" />
 
           <h2 className="text-xl font-semibold">
             Account
@@ -208,7 +208,7 @@ export default function OrganizerSettings() {
               Logout
             </p>
 
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-muted-foreground">
               Sign out from your account
             </p>
           </div>
@@ -225,9 +225,9 @@ export default function OrganizerSettings() {
       </Card>
 
       {/* Danger Zone */}
-      <Card className="p-6 space-y-6 border-red-200">
+      <Card className="p-6 space-y-6 border-destructive/30">
 
-        <div className="flex items-center gap-3 text-red-600">
+        <div className="flex items-center gap-3 text-destructive">
 
           <Trash2 className="h-5 w-5" />
 
@@ -242,11 +242,11 @@ export default function OrganizerSettings() {
         <div className="flex items-center justify-between">
 
           <div>
-            <p className="font-medium text-red-600">
+            <p className="font-medium text-destructive">
               Delete Account
             </p>
 
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-muted-foreground">
               This action cannot be undone
             </p>
           </div>

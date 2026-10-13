@@ -77,7 +77,7 @@ export default function OrganizerNotifications() {
             Notifications
           </h1>
 
-          <p className="text-gray-500 mt-1">
+          <p className="text-muted-foreground mt-1">
             Stay updated with conference activity
           </p>
         </div>
@@ -96,13 +96,13 @@ export default function OrganizerNotifications() {
       <Card className="p-6">
 
         {loading && (
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-muted-foreground">
             Loading notifications...
           </p>
         )}
 
         {!loading && notifications.length === 0 && (
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-muted-foreground">
             No notifications yet.
           </p>
         )}
@@ -117,7 +117,7 @@ export default function OrganizerNotifications() {
                 key={n.id}
                 className={`flex gap-4 rounded-lg border p-4 transition ${
                   n.is_read
-                    ? "bg-white"
+                    ? "bg-card"
                     : "bg-muted/50"
                 }`}
               >
@@ -144,11 +144,11 @@ export default function OrganizerNotifications() {
 
                   </div>
 
-                  <p className="mt-1 text-sm text-gray-600">
+                  <p className="mt-1 text-sm text-muted-foreground">
                     {n.message}
                   </p>
 
-                  <p className="mt-2 text-xs text-gray-400">
+                  <p className="mt-2 text-xs text-muted-foreground">
                     {new Date(n.created_at).toLocaleString()}
                   </p>
 
@@ -173,17 +173,17 @@ function NotificationIcon({ type }: { type: string }) {
 
   if (type === "success") {
     return (
-      <CheckCircle className="h-5 w-5 text-green-600" />
+      <CheckCircle className="h-5 w-5 text-success" />
     );
   }
 
   if (type === "warning") {
     return (
-      <AlertTriangle className="h-5 w-5 text-yellow-600" />
+      <AlertTriangle className="h-5 w-5 text-warning" />
     );
   }
 
   return (
-    <Info className="h-5 w-5 text-blue-600" />
+    <Info className="h-5 w-5 text-info" />
   );
 }

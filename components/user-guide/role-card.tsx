@@ -15,72 +15,72 @@ export interface RoleCardProps {
 
 const colorMap = {
   indigo: {
-    bg: "bg-indigo-50",
-    bgActive: "bg-indigo-600",
-    border: "border-indigo-100",
-    borderActive: "border-indigo-600",
-    iconBg: "bg-indigo-100",
-    iconBgActive: "bg-indigo-500",
-    iconColor: "text-indigo-600",
-    iconColorActive: "text-white",
-    textColor: "text-indigo-600",
-    textColorActive: "text-white",
-    descColor: "text-gray-600",
-    descColorActive: "text-indigo-100",
-    badge: "bg-indigo-100 text-indigo-700",
-    badgeActive: "bg-indigo-500 text-white",
-    glow: "hover:shadow-indigo-200/60",
+    bg: "bg-primary/5",
+    bgActive: "bg-primary",
+    border: "border-primary/20",
+    borderActive: "border-primary",
+    iconBg: "bg-primary/10",
+    iconBgActive: "bg-primary-foreground/15",
+    iconColor: "text-primary",
+    iconColorActive: "text-primary-foreground",
+    textColor: "text-primary",
+    textColorActive: "text-primary-foreground",
+    descColor: "text-muted-foreground",
+    descColorActive: "text-primary-foreground/80",
+    badge: "bg-primary/10 text-primary border border-primary/20",
+    badgeActive: "bg-primary-foreground/20 text-primary-foreground",
+    glow: "hover:shadow-primary/20",
   },
   amber: {
-    bg: "bg-amber-50",
-    bgActive: "bg-amber-600",
-    border: "border-amber-100",
-    borderActive: "border-amber-600",
-    iconBg: "bg-amber-100",
-    iconBgActive: "bg-amber-500",
-    iconColor: "text-amber-600",
-    iconColorActive: "text-white",
-    textColor: "text-amber-700",
-    textColorActive: "text-white",
-    descColor: "text-gray-600",
-    descColorActive: "text-amber-100",
-    badge: "bg-amber-100 text-amber-700",
-    badgeActive: "bg-amber-500 text-white",
-    glow: "hover:shadow-amber-200/60",
+    bg: "bg-warning-surface/40",
+    bgActive: "bg-warning",
+    border: "border-warning/20",
+    borderActive: "border-warning",
+    iconBg: "bg-warning-surface",
+    iconBgActive: "bg-warning-foreground/15",
+    iconColor: "text-warning",
+    iconColorActive: "text-warning-foreground",
+    textColor: "text-warning",
+    textColorActive: "text-warning-foreground",
+    descColor: "text-muted-foreground",
+    descColorActive: "text-warning-foreground/80",
+    badge: "bg-warning-surface text-warning border border-warning/30",
+    badgeActive: "bg-warning-foreground/20 text-warning-foreground",
+    glow: "hover:shadow-warning/20",
   },
   emerald: {
-    bg: "bg-emerald-50",
-    bgActive: "bg-emerald-600",
-    border: "border-emerald-100",
-    borderActive: "border-emerald-600",
-    iconBg: "bg-emerald-100",
-    iconBgActive: "bg-emerald-500",
-    iconColor: "text-emerald-600",
-    iconColorActive: "text-white",
-    textColor: "text-emerald-700",
-    textColorActive: "text-white",
-    descColor: "text-gray-600",
-    descColorActive: "text-emerald-100",
-    badge: "bg-emerald-100 text-emerald-700",
-    badgeActive: "bg-emerald-500 text-white",
-    glow: "hover:shadow-emerald-200/60",
+    bg: "bg-success-surface/40",
+    bgActive: "bg-success",
+    border: "border-success/20",
+    borderActive: "border-success",
+    iconBg: "bg-success-surface",
+    iconBgActive: "bg-success-foreground/15",
+    iconColor: "text-success",
+    iconColorActive: "text-success-foreground",
+    textColor: "text-success",
+    textColorActive: "text-success-foreground",
+    descColor: "text-muted-foreground",
+    descColorActive: "text-success-foreground/80",
+    badge: "bg-success-surface text-success border border-success/30",
+    badgeActive: "bg-success-foreground/20 text-success-foreground",
+    glow: "hover:shadow-success/20",
   },
   violet: {
-    bg: "bg-violet-50",
-    bgActive: "bg-violet-600",
-    border: "border-violet-100",
-    borderActive: "border-violet-600",
-    iconBg: "bg-violet-100",
-    iconBgActive: "bg-violet-500",
-    iconColor: "text-violet-600",
-    iconColorActive: "text-white",
-    textColor: "text-violet-700",
-    textColorActive: "text-white",
-    descColor: "text-gray-600",
-    descColorActive: "text-violet-100",
-    badge: "bg-violet-100 text-violet-700",
-    badgeActive: "bg-violet-500 text-white",
-    glow: "hover:shadow-violet-200/60",
+    bg: "bg-accent/40",
+    bgActive: "bg-accent-foreground",
+    border: "border-accent-foreground/20",
+    borderActive: "border-accent-foreground",
+    iconBg: "bg-accent",
+    iconBgActive: "bg-accent/20",
+    iconColor: "text-accent-foreground",
+    iconColorActive: "text-accent",
+    textColor: "text-accent-foreground",
+    textColorActive: "text-accent",
+    descColor: "text-muted-foreground",
+    descColorActive: "text-accent/80",
+    badge: "bg-accent text-accent-foreground border border-accent-foreground/20",
+    badgeActive: "bg-accent/20 text-accent",
+    glow: "hover:shadow-primary/10",
   },
 };
 
@@ -105,7 +105,7 @@ export function RoleCard({
         hover:scale-[1.03] hover:shadow-xl ${c.glow}
         ${isActive
           ? `${c.bgActive} ${c.borderActive} shadow-lg`
-          : `bg-white ${c.border} hover:${c.bg}`
+          : `bg-card ${c.border} hover:${c.bg}`
         }
       `}
     >
@@ -127,7 +127,7 @@ export function RoleCard({
       {/* Title */}
       <h3
         className={`mt-4 text-lg font-bold transition-colors duration-300 ${
-          isActive ? c.textColorActive : "text-gray-900"
+          isActive ? c.textColorActive : "text-foreground"
         }`}
       >
         {title}
@@ -155,7 +155,7 @@ export function RoleCard({
 
       {/* Active indicator dot */}
       {isActive && (
-        <div className="absolute -top-1.5 -right-1.5 h-3.5 w-3.5 rounded-full bg-white shadow-md ring-2 ring-current">
+        <div className="absolute -top-1.5 -right-1.5 h-3.5 w-3.5 rounded-full bg-card shadow-md ring-2 ring-current">
           <div className={`h-full w-full rounded-full ${c.bgActive}`} />
         </div>
       )}

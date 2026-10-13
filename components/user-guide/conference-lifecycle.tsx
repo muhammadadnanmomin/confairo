@@ -36,16 +36,16 @@ export function ConferenceLifecycle() {
                 <div
                   className="
                     flex h-14 w-14 items-center justify-center rounded-2xl
-                    border-2 border-indigo-200 bg-white shadow-sm
+                    border-2 border-primary/20 bg-card shadow-sm
                     transition-all duration-300
-                    group-hover:border-indigo-500 group-hover:bg-indigo-600 group-hover:shadow-lg group-hover:shadow-indigo-200/50
+                    group-hover:border-primary group-hover:bg-primary group-hover:shadow-lg group-hover:shadow-primary/20
                     group-hover:scale-110
                     sm:h-16 sm:w-16
                   "
                 >
                   <Icon
                     className="
-                      h-6 w-6 text-indigo-500 transition-colors duration-300
+                      h-6 w-6 text-primary transition-colors duration-300
                       group-hover:text-white
                       sm:h-7 sm:w-7
                     "
@@ -53,10 +53,10 @@ export function ConferenceLifecycle() {
                 </div>
 
                 {/* Label */}
-                <p className="mt-2.5 text-sm font-semibold text-gray-900">
+                <p className="mt-2.5 text-sm font-semibold text-foreground">
                   {step.label}
                 </p>
-                <p className="text-[0.6875rem] text-gray-500">
+                <p className="text-[0.6875rem] text-muted-foreground">
                   {step.sublabel}
                 </p>
 
@@ -64,8 +64,8 @@ export function ConferenceLifecycle() {
                 <span
                   className="
                     mt-1.5 inline-flex h-5 w-5 items-center justify-center
-                    rounded-full bg-gray-100 text-[0.625rem] font-bold text-gray-500
-                    transition-colors group-hover:bg-indigo-100 group-hover:text-indigo-600
+                    rounded-full bg-muted text-[0.625rem] font-bold text-muted-foreground
+                    transition-colors group-hover:bg-primary/10 group-hover:text-primary
                   "
                 >
                   {idx + 1}
@@ -75,8 +75,8 @@ export function ConferenceLifecycle() {
               {/* Connector arrow */}
               {!isLast && (
                 <div className="mx-1 flex items-center sm:mx-2">
-                  <div className="h-px w-6 bg-gradient-to-r from-indigo-300 to-indigo-200 sm:w-10" />
-                  <div className="h-0 w-0 border-t-[5px] border-b-[5px] border-l-[6px] border-t-transparent border-b-transparent border-l-indigo-300" />
+                  <div className="h-px w-6 bg-gradient-to-r from-primary/30 to-primary/20 sm:w-10" />
+                  <div className="h-0 w-0 border-t-[5px] border-b-[5px] border-l-[6px] border-t-transparent border-b-transparent border-l-primary/30" />
                 </div>
               )}
             </div>
@@ -85,7 +85,7 @@ export function ConferenceLifecycle() {
       </div>
 
       {/* Scroll hint on mobile */}
-      <div className="mt-3 text-center text-xs text-gray-400 sm:hidden">
+      <div className="mt-3 text-center text-xs text-muted-foreground sm:hidden">
         ← Scroll to view full lifecycle →
       </div>
     </div>

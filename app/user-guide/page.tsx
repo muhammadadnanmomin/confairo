@@ -460,37 +460,37 @@ export default function UserGuidePage() {
   }
 
   return (
-    <main className="min-h-screen bg-white text-gray-900">
+    <main className="min-h-screen bg-background text-foreground">
       <Header />
 
       {/* ── Hero Section ──────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-white px-4 pt-16 pb-12 sm:px-6 sm:pt-24 sm:pb-16 lg:px-8">
+      <section className="relative overflow-hidden bg-background px-4 pt-16 pb-12 sm:px-6 sm:pt-24 sm:pb-16 lg:px-8">
         {/* Background pattern */}
         <div className="absolute inset-0 -z-10">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(99,102,241,0.10),transparent)]" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_600px_at_80%_60%,rgba(139,92,246,0.06),transparent)]" />
-          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
         </div>
 
         <div className="mx-auto max-w-4xl text-center">
           {/* Badge */}
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-indigo-100 bg-indigo-50/80 px-4 py-1.5 text-sm font-medium text-indigo-700 shadow-sm">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary shadow-sm">
             <Sparkles className="h-3.5 w-3.5" />
             Interactive Guide
           </div>
 
           {/* Title with gradient */}
           <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15]">
-            <span className="text-gray-900">Confairo </span>
-            <span className="bg-gradient-to-r from-indigo-600 via-violet-600 to-indigo-600 bg-clip-text text-transparent">
+            <span className="text-foreground">Confairo </span>
+            <span className="bg-gradient-to-r from-primary via-primary-hover to-primary bg-clip-text text-transparent">
               User Guide
             </span>
           </h1>
 
           {/* Subtitle */}
-          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-gray-600 sm:text-xl">
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
             Everything you need to{" "}
-            <strong className="text-gray-900">run and participate</strong> in
+            <strong className="text-foreground">run and participate</strong> in
             academic conferences — from first setup to certificates.
           </p>
 
@@ -498,14 +498,14 @@ export default function UserGuidePage() {
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-sm">
             <Link
               href="/signup"
-              className="inline-flex items-center gap-1.5 rounded-lg bg-indigo-600 px-5 py-2.5 font-semibold text-white shadow-md shadow-indigo-200/50 transition-all hover:bg-indigo-700 hover:-translate-y-0.5"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-primary px-5 py-2.5 font-semibold text-primary-foreground shadow-md shadow-primary/20 transition-all hover:bg-primary-hover hover:-translate-y-0.5"
             >
               Get Started Free
               <ArrowRight className="h-3.5 w-3.5" />
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-1.5 rounded-lg border border-gray-300 bg-white px-5 py-2.5 font-medium text-gray-700 transition hover:border-gray-400 hover:bg-gray-50"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-card px-5 py-2.5 font-medium text-foreground transition hover:border-border-strong hover:bg-muted/50"
             >
               Need Help? Contact Us
             </Link>
@@ -514,16 +514,16 @@ export default function UserGuidePage() {
       </section>
 
       {/* ── Conference Lifecycle Section ───────────────────── */}
-      <section className="border-y border-gray-100 bg-slate-50/60 px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+      <section className="border-y border-border bg-muted/30 px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
         <div className="mx-auto max-w-5xl">
           <div className="mb-8 text-center">
-            <p className="text-sm font-semibold uppercase tracking-wider text-indigo-600">
+            <p className="text-sm font-semibold uppercase tracking-wider text-primary">
               Conference Lifecycle
             </p>
-            <h2 className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl">
+            <h2 className="mt-2 text-2xl font-bold text-foreground sm:text-3xl">
               The Complete Conference Journey
             </h2>
-            <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-gray-600">
+            <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">
               Every conference on Confairo follows this lifecycle — from creation to certification.
             </p>
           </div>
@@ -533,22 +533,22 @@ export default function UserGuidePage() {
       </section>
 
       {/* ── Search Bar ────────────────────────────────────── */}
-      <section className="border-b border-gray-100 bg-white px-4 py-6 sm:px-6 lg:px-8">
+      <section className="border-b border-border bg-background px-4 py-6 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl">
           <div className="relative">
-            <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
+            <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
             <input
               type="text"
               placeholder="Search the guide... (e.g. 'certificate', 'reviewer', 'submit paper')"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full rounded-xl border border-gray-200 bg-gray-50/50 py-3.5 pl-12 pr-4 text-sm text-gray-900 placeholder-gray-400 outline-none transition focus:border-indigo-300 focus:bg-white focus:ring-2 focus:ring-indigo-100"
+              className="w-full rounded-xl border border-border bg-muted/30 py-3.5 pl-12 pr-4 text-sm text-foreground placeholder:text-muted-foreground outline-none transition focus:border-primary/40 focus:bg-card focus:ring-2 focus:ring-ring/20"
             />
             {searchQuery && (
               <button
                 type="button"
                 onClick={() => setSearchQuery("")}
-                className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-xs font-medium text-gray-400 hover:text-gray-600"
+                className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-xs font-medium text-muted-foreground hover:text-foreground"
               >
                 Clear
               </button>
@@ -558,16 +558,16 @@ export default function UserGuidePage() {
       </section>
 
       {/* ── Role Cards ────────────────────────────────────── */}
-      <section className="bg-white px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+      <section className="bg-background px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
         <div className="mx-auto max-w-5xl">
           <div className="mb-8 text-center">
-            <p className="text-sm font-semibold uppercase tracking-wider text-indigo-600">
+            <p className="text-sm font-semibold uppercase tracking-wider text-primary">
               Choose Your Role
             </p>
-            <h2 className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl">
+            <h2 className="mt-2 text-2xl font-bold text-foreground sm:text-3xl">
               What&apos;s your role in the conference?
             </h2>
-            <p className="mx-auto mt-3 max-w-xl text-sm text-gray-600">
+            <p className="mx-auto mt-3 max-w-xl text-sm text-muted-foreground">
               Select your role below to see a step-by-step guide tailored to your workflow.
             </p>
           </div>
@@ -593,7 +593,7 @@ export default function UserGuidePage() {
       {/* ── Content Panel ─────────────────────────────────── */}
       <section
         ref={contentRef}
-        className="scroll-mt-20 border-t border-gray-100 bg-slate-50/40 px-4 py-12 sm:px-6 sm:py-16 lg:px-8"
+        className="scroll-mt-20 border-t border-border bg-muted/30 px-4 py-12 sm:px-6 sm:py-16 lg:px-8"
       >
         <div className="mx-auto max-w-3xl">
           {/* Role header */}
@@ -601,31 +601,31 @@ export default function UserGuidePage() {
             <div
               className={`flex items-center justify-center rounded-xl p-3 ${
                 currentRole.color === "indigo"
-                  ? "bg-indigo-100"
+                  ? "bg-primary/10"
                   : currentRole.color === "amber"
-                  ? "bg-amber-100"
+                  ? "bg-warning-surface"
                   : currentRole.color === "emerald"
-                  ? "bg-emerald-100"
-                  : "bg-violet-100"
+                  ? "bg-success-surface"
+                  : "bg-accent"
               }`}
             >
               <currentRole.icon
                 className={`h-6 w-6 ${
                   currentRole.color === "indigo"
-                    ? "text-indigo-600"
+                    ? "text-primary"
                     : currentRole.color === "amber"
-                    ? "text-amber-600"
+                    ? "text-warning"
                     : currentRole.color === "emerald"
-                    ? "text-emerald-600"
-                    : "text-violet-600"
+                    ? "text-success"
+                    : "text-accent-foreground"
                 }`}
               />
             </div>
             <div>
-              <h2 className="text-xl font-bold text-gray-900 sm:text-2xl">
+              <h2 className="text-xl font-bold text-foreground sm:text-2xl">
                 {currentRole.title} Guide
               </h2>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-muted-foreground">
                 {totalSteps(currentRole)} steps across {currentRole.sections.length} section
                 {currentRole.sections.length > 1 ? "s" : ""}
               </p>
@@ -634,7 +634,7 @@ export default function UserGuidePage() {
 
           {/* Search results info */}
           {searchQuery && (
-            <div className="mb-6 flex items-center gap-2 rounded-lg border border-amber-200 bg-amber-50 px-4 py-2.5 text-sm text-amber-800">
+            <div className="mb-6 flex items-center gap-2 rounded-lg border border-warning/30 bg-warning-surface px-4 py-2.5 text-sm text-warning">
               <Search className="h-4 w-4 shrink-0" />
               <span>
                 Showing results for{" "}
@@ -652,7 +652,7 @@ export default function UserGuidePage() {
             />
           ) : (
             !searchQuery && (
-              <p className="text-center text-gray-500">
+              <p className="text-center text-muted-foreground">
                 Select a role above to view the guide.
               </p>
             )
@@ -663,7 +663,7 @@ export default function UserGuidePage() {
             {activeRole === "organizer" && (
               <Link
                 href="/dashboard/onboarding/organization"
-                className="group inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-md shadow-indigo-200/50 transition-all hover:bg-indigo-700 hover:-translate-y-0.5"
+                className="group inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-md shadow-primary/20 transition-all hover:bg-primary-hover hover:-translate-y-0.5"
               >
                 Start Organizing Your Conference
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -672,7 +672,7 @@ export default function UserGuidePage() {
             {activeRole === "reviewer" && (
               <Link
                 href="/dashboard/reviewer"
-                className="group inline-flex items-center gap-2 rounded-lg bg-amber-600 px-6 py-3 text-sm font-semibold text-white shadow-md shadow-amber-200/50 transition-all hover:bg-amber-700 hover:-translate-y-0.5"
+                className="group inline-flex items-center gap-2 rounded-lg bg-warning px-6 py-3 text-sm font-semibold text-warning-foreground shadow-md shadow-warning/20 transition-all hover:bg-warning/90 hover:-translate-y-0.5"
               >
                 Open Reviewer Dashboard
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -681,7 +681,7 @@ export default function UserGuidePage() {
             {activeRole === "author" && (
               <Link
                 href="/dashboard/participant/overview"
-                className="group inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-6 py-3 text-sm font-semibold text-white shadow-md shadow-emerald-200/50 transition-all hover:bg-emerald-700 hover:-translate-y-0.5"
+                className="group inline-flex items-center gap-2 rounded-lg bg-success px-6 py-3 text-sm font-semibold text-success-foreground shadow-md shadow-success/20 transition-all hover:bg-success/90 hover:-translate-y-0.5"
               >
                 Go to Participant Dashboard
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -690,7 +690,7 @@ export default function UserGuidePage() {
             {activeRole === "public" && (
               <Link
                 href="/conferences"
-                className="group inline-flex items-center gap-2 rounded-lg bg-violet-600 px-6 py-3 text-sm font-semibold text-white shadow-md shadow-violet-200/50 transition-all hover:bg-violet-700 hover:-translate-y-0.5"
+                className="group inline-flex items-center gap-2 rounded-lg bg-accent-foreground px-6 py-3 text-sm font-semibold text-accent shadow-md shadow-primary/20 transition-all hover:bg-accent-foreground/90 hover:-translate-y-0.5"
               >
                 Browse Conferences
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -701,14 +701,14 @@ export default function UserGuidePage() {
       </section>
 
       {/* ── Tips Section ──────────────────────────────────── */}
-      <section className="bg-white px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+      <section className="bg-background px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
         <div className="mx-auto max-w-3xl">
-          <div className="rounded-2xl border border-gray-200 bg-gradient-to-br from-slate-50 to-white p-8 sm:p-10">
+          <div className="rounded-2xl border border-border bg-card p-8 sm:p-10">
             <div className="flex items-center gap-3 mb-6">
-              <div className="flex items-center justify-center rounded-xl bg-amber-100 p-2.5">
-                <Lightbulb className="h-5 w-5 text-amber-600" />
+              <div className="flex items-center justify-center rounded-xl bg-warning-surface border border-warning/30 p-2.5">
+                <Lightbulb className="h-5 w-5 text-warning" />
               </div>
-              <h2 className="text-xl font-bold text-gray-900">
+              <h2 className="text-xl font-bold text-foreground">
                 Pro Tips for Best Experience
               </h2>
             </div>
@@ -719,30 +719,30 @@ export default function UserGuidePage() {
                   icon: ShieldCheck,
                   title: "Secure Your Account",
                   text: "Use a strong password and verify your email address.",
-                  color: "text-emerald-600 bg-emerald-100",
+                  color: "text-success bg-success-surface",
                 },
                 {
                   icon: Bell,
                   title: "Stay Updated",
                   text: "Check notifications regularly for submission and review updates.",
-                  color: "text-indigo-600 bg-indigo-100",
+                  color: "text-primary bg-primary/10",
                 },
                 {
                   icon: CalendarDays,
                   title: "Set Clear Deadlines",
                   text: "Organizers: set clear submission deadlines and assign reviewers early.",
-                  color: "text-violet-600 bg-violet-100",
+                  color: "text-accent-foreground bg-accent",
                 },
                 {
                   icon: Download,
                   title: "Save Certificates",
                   text: "Download your certificates promptly — they're QR-verified for authenticity.",
-                  color: "text-amber-600 bg-amber-100",
+                  color: "text-warning bg-warning-surface",
                 },
               ].map((tip) => (
                 <div
                   key={tip.title}
-                  className="flex gap-3 rounded-xl border border-gray-100 bg-white p-4 transition hover:border-gray-200 hover:shadow-sm"
+                  className="flex gap-3 rounded-xl border border-border bg-card p-4 transition hover:border-border-strong hover:shadow-sm"
                 >
                   <div
                     className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${tip.color}`}
@@ -750,10 +750,10 @@ export default function UserGuidePage() {
                     <tip.icon className="h-4 w-4" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold text-gray-900">
+                    <h3 className="text-sm font-semibold text-foreground">
                       {tip.title}
                     </h3>
-                    <p className="mt-1 text-xs leading-relaxed text-gray-600">
+                    <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
                       {tip.text}
                     </p>
                   </div>
@@ -763,11 +763,11 @@ export default function UserGuidePage() {
 
             {/* Help link */}
             <div className="mt-6 text-center">
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-muted-foreground">
                 Need more help?{" "}
                 <Link
                   href="/contact"
-                  className="font-medium text-indigo-600 hover:text-indigo-700 hover:underline"
+                  className="font-medium text-primary hover:text-primary-hover hover:underline"
                 >
                   Contact our support team →
                 </Link>

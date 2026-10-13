@@ -21,32 +21,32 @@ interface GuideAccordionProps {
 
 const sectionColors = {
   indigo: {
-    activeBg: "bg-indigo-50/50",
-    activeBorder: "border-indigo-200",
-    iconBg: "bg-indigo-100",
-    iconColor: "text-indigo-600",
-    hoverBg: "hover:bg-indigo-50/30",
+    activeBg: "bg-primary/5",
+    activeBorder: "border-primary/20",
+    iconBg: "bg-primary/10",
+    iconColor: "text-primary",
+    hoverBg: "hover:bg-primary/5",
   },
   amber: {
-    activeBg: "bg-amber-50/50",
-    activeBorder: "border-amber-200",
-    iconBg: "bg-amber-100",
-    iconColor: "text-amber-600",
-    hoverBg: "hover:bg-amber-50/30",
+    activeBg: "bg-warning-surface/50",
+    activeBorder: "border-warning/30",
+    iconBg: "bg-warning-surface",
+    iconColor: "text-warning",
+    hoverBg: "hover:bg-warning/5",
   },
   emerald: {
-    activeBg: "bg-emerald-50/50",
-    activeBorder: "border-emerald-200",
-    iconBg: "bg-emerald-100",
-    iconColor: "text-emerald-600",
-    hoverBg: "hover:bg-emerald-50/30",
+    activeBg: "bg-success-surface/50",
+    activeBorder: "border-success/30",
+    iconBg: "bg-success-surface",
+    iconColor: "text-success",
+    hoverBg: "hover:bg-success/5",
   },
   violet: {
-    activeBg: "bg-violet-50/50",
-    activeBorder: "border-violet-200",
-    iconBg: "bg-violet-100",
-    iconColor: "text-violet-600",
-    hoverBg: "hover:bg-violet-50/30",
+    activeBg: "bg-accent/40",
+    activeBorder: "border-accent-foreground/20",
+    iconBg: "bg-accent",
+    iconColor: "text-accent-foreground",
+    hoverBg: "hover:bg-accent/30",
   },
 };
 
@@ -71,7 +71,7 @@ export function GuideAccordion({ sections, color }: GuideAccordionProps) {
             key={idx}
             className={`
               rounded-2xl border transition-all duration-300
-              ${isOpen ? `${c.activeBg} ${c.activeBorder}` : `bg-white border-gray-200 ${c.hoverBg}`}
+              ${isOpen ? `${c.activeBg} ${c.activeBorder}` : `bg-card border-border ${c.hoverBg}`}
             `}
           >
             {/* Section header */}
@@ -90,7 +90,7 @@ export function GuideAccordion({ sections, color }: GuideAccordionProps) {
                   <h3 className="text-[0.938rem] font-semibold text-foreground sm:text-base">
                     {section.title}
                   </h3>
-                  <p className="mt-0.5 text-xs text-gray-500">
+                  <p className="mt-0.5 text-xs text-muted-foreground">
                     {section.steps.length} step{section.steps.length > 1 ? "s" : ""}
                   </p>
                 </div>

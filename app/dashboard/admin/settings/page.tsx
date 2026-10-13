@@ -78,7 +78,7 @@ export default function AdminSettingsPage() {
 
   if (loading) {
     return (
-      <div className="p-10 text-gray-500">
+      <div className="p-10 text-muted-foreground">
         Loading settings...
       </div>
     );
@@ -95,7 +95,7 @@ export default function AdminSettingsPage() {
             Platform Settings
           </h1>
 
-          <p className="text-gray-500 mt-1">
+          <p className="text-muted-foreground mt-1">
             Configure system-wide options
           </p>
         </div>
@@ -170,7 +170,7 @@ export default function AdminSettingsPage() {
 
               <div>
                 <Label>Allow Free Events</Label>
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-muted-foreground">
                   Organizers can create free conferences
                 </p>
               </div>
@@ -203,7 +203,7 @@ export default function AdminSettingsPage() {
 
             <div>
               <Label>Maintenance Mode</Label>
-              <p className="text-xs text-gray-500">
+              <p className="text-xs text-muted-foreground">
                 Disable user access temporarily
               </p>
             </div>

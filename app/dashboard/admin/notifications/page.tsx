@@ -79,7 +79,7 @@ export default function AdminNotificationsPage() {
             System Notifications
           </h1>
 
-          <p className="text-gray-500 mt-1">
+          <p className="text-muted-foreground mt-1">
             Send announcements to users
           </p>
         </div>
@@ -137,7 +137,7 @@ export default function AdminNotificationsPage() {
           </h2>
 
           {notifications.length === 0 && (
-            <p className="text-sm text-gray-500 p-2">
+            <p className="text-sm text-muted-foreground p-2">
               No notifications yet.
             </p>
           )}
@@ -163,11 +163,11 @@ export default function AdminNotificationsPage() {
 
                 </div>
 
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-muted-foreground">
                   {n.message}
                 </p>
 
-                <p className="text-xs text-gray-400">
+                <p className="text-xs text-muted-foreground">
                   {new Date(n.created_at).toLocaleString()}
                 </p>
 

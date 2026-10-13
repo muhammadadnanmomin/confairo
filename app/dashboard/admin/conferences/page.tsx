@@ -94,7 +94,7 @@ export default function AdminConferencesPage() {
             Conference Moderation
           </h1>
 
-          <p className="text-gray-500 mt-1">
+          <p className="text-muted-foreground mt-1">
             Manage and review all conferences
           </p>
         </div>
@@ -103,13 +103,13 @@ export default function AdminConferencesPage() {
         <Card className="p-4 overflow-x-auto">
 
           {loading && (
-            <p className="text-sm text-gray-500 p-4">
+            <p className="text-sm text-muted-foreground p-4">
               Loading conferences...
             </p>
           )}
 
           {!loading && conferences.length === 0 && (
-            <p className="text-sm text-gray-500 p-4">
+            <p className="text-sm text-muted-foreground p-4">
               No conferences found.
             </p>
           )}
@@ -119,7 +119,7 @@ export default function AdminConferencesPage() {
             <table className="w-full text-sm">
 
               <thead>
-                <tr className="border-b text-left text-gray-500">
+                <tr className="border-b text-left text-muted-foreground">
 
                   <th className="py-3 px-2">
                     Title
@@ -163,7 +163,7 @@ export default function AdminConferencesPage() {
 
                       <div className="flex items-center gap-2">
 
-                        <User className="h-4 w-4 text-gray-400" />
+                        <User className="h-4 w-4 text-muted-foreground" />
 
                         <div className="text-xs">
 
@@ -171,7 +171,7 @@ export default function AdminConferencesPage() {
                             {c.profiles?.full_name || "—"}
                           </p>
 
-                          <p className="text-gray-400">
+                          <p className="text-muted-foreground">
                             {c.profiles?.email}
                           </p>
 
@@ -182,7 +182,7 @@ export default function AdminConferencesPage() {
                     </td>
 
                     {/* Dates */}
-                    <td className="py-3 px-2 text-xs text-gray-500">
+                    <td className="py-3 px-2 text-xs text-muted-foreground">
 
                       <div className="flex items-center gap-1">
 
@@ -199,13 +199,13 @@ export default function AdminConferencesPage() {
 
                       {c.is_published ? (
 
-                        <Badge className="bg-green-100 text-green-700">
+                        <Badge className="bg-success-surface text-success border border-success/30">
                           Published
                         </Badge>
 
                       ) : (
 
-                        <Badge className="bg-yellow-100 text-yellow-700">
+                        <Badge className="bg-warning-surface text-warning border border-warning/30">
                           Draft
                         </Badge>
 

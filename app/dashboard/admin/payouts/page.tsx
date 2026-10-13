@@ -145,7 +145,7 @@ export default function AdminPayoutsPage() {
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div>
                         <h1 className="text-3xl font-bold tracking-tight">Payout Management</h1>
-                        <p className="text-gray-500 mt-1">Review and process organizer payout requests</p>
+                        <p className="text-muted-foreground mt-1">Review and process organizer payout requests</p>
                     </div>
                     <Button variant="outline" onClick={loadPayouts} className="gap-2 shrink-0">
                         <RefreshCcw className="h-4 w-4" />
@@ -157,29 +157,29 @@ export default function AdminPayoutsPage() {
                 <div className="grid gap-4 sm:grid-cols-3">
                     <Card className="p-5 flex items-center justify-between">
                         <div>
-                            <p className="text-sm text-gray-500">Pending / Processing</p>
+                            <p className="text-sm text-muted-foreground">Pending / Processing</p>
                             <p className="text-2xl font-bold mt-1">₹{formatINR(totalPending)}</p>
                         </div>
-                        <div className="bg-amber-50 p-3 rounded-lg">
-                            <Clock className="h-5 w-5 text-amber-600" />
+                        <div className="bg-warning-surface p-3 rounded-lg">
+                            <Clock className="h-5 w-5 text-warning" />
                         </div>
                     </Card>
                     <Card className="p-5 flex items-center justify-between">
                         <div>
-                            <p className="text-sm text-gray-500">Total Settled</p>
+                            <p className="text-sm text-muted-foreground">Total Settled</p>
                             <p className="text-2xl font-bold mt-1">₹{formatINR(totalCompleted)}</p>
                         </div>
-                        <div className="bg-green-50 p-3 rounded-lg">
-                            <IndianRupee className="h-5 w-5 text-green-600" />
+                        <div className="bg-success-surface p-3 rounded-lg">
+                            <IndianRupee className="h-5 w-5 text-success" />
                         </div>
                     </Card>
                     <Card className="p-5 flex items-center justify-between">
                         <div>
-                            <p className="text-sm text-gray-500">Total Requests</p>
+                            <p className="text-sm text-muted-foreground">Total Requests</p>
                             <p className="text-2xl font-bold mt-1">{payouts.length}</p>
                         </div>
-                        <div className="bg-indigo-50 p-3 rounded-lg">
-                            <ArrowDownToLine className="h-5 w-5 text-indigo-600" />
+                        <div className="bg-primary/10 p-3 rounded-lg">
+                            <ArrowDownToLine className="h-5 w-5 text-primary" />
                         </div>
                     </Card>
                 </div>
@@ -201,13 +201,13 @@ export default function AdminPayoutsPage() {
 
                 {/* Loading */}
                 {loading && (
-                    <p className="text-sm text-gray-500 py-8 text-center">Loading payouts…</p>
+                    <p className="text-sm text-muted-foreground py-8 text-center">Loading payouts…</p>
                 )}
 
                 {/* Empty */}
                 {!loading && payouts.length === 0 && (
                     <Card className="p-10 text-center">
-                        <p className="text-gray-500">No payout requests found.</p>
+                        <p className="text-muted-foreground">No payout requests found.</p>
                     </Card>
                 )}
 
@@ -217,7 +217,7 @@ export default function AdminPayoutsPage() {
                         <div className="overflow-x-auto">
                             <table className="w-full border-collapse text-sm">
                                 <thead>
-                                    <tr className="border-b bg-gray-50/80 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    <tr className="border-b bg-muted/50 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                                         <th className="py-3 px-4">Organizer</th>
                                         <th className="py-3 px-4">Amount</th>
                                         <th className="py-3 px-4">Status</th>
@@ -230,24 +230,24 @@ export default function AdminPayoutsPage() {
                                     {payouts.map((p, i) => (
                                         <tr
                                             key={p.id}
-                                            className={`border-b last:border-0 hover:bg-gray-50 transition-colors ${i % 2 === 1 ? "bg-gray-50/40" : ""
+                                            className={`border-b last:border-0 hover:bg-muted/50 transition-colors ${i % 2 === 1 ? "bg-muted/25" : ""
                                                 }`}
                                         >
                                             <td className="py-3 px-4">
                                                 <div className="flex items-center gap-2">
-                                                    <User className="h-4 w-4 text-gray-400" />
+                                                    <User className="h-4 w-4 text-muted-foreground" />
                                                     <div>
-                                                        <p className="font-medium text-gray-900">
+                                                        <p className="font-medium text-foreground">
                                                             {p.profiles?.name || "—"}
                                                         </p>
-                                                        <p className="text-xs text-gray-400">
+                                                        <p className="text-xs text-muted-foreground">
                                                             {p.profiles?.email || "—"}
                                                         </p>
                                                     </div>
                                                 </div>
                                             </td>
 
-                                            <td className="py-3 px-4 font-semibold text-gray-900">
+                                            <td className="py-3 px-4 font-semibold text-foreground">
                                                 ₹{formatINR(Number(p.amount))}
                                             </td>
 
@@ -255,14 +255,14 @@ export default function AdminPayoutsPage() {
                                                 <PayoutStatusBadge status={p.status} />
                                             </td>
 
-                                            <td className="py-3 px-4 text-xs text-gray-500">
+                                            <td className="py-3 px-4 text-xs text-muted-foreground">
                                                 <div className="flex items-center gap-1">
                                                     <Calendar className="h-3 w-3" />
                                                     {formatDate(p.created_at)}
                                                 </div>
                                             </td>
 
-                                            <td className="py-3 px-4 text-xs text-gray-500 max-w-[150px] truncate">
+                                            <td className="py-3 px-4 text-xs text-muted-foreground max-w-[150px] truncate">
                                                 {p.notes || "—"}
                                             </td>
 
@@ -280,7 +280,7 @@ export default function AdminPayoutsPage() {
                                                         </Button>
                                                         <Button
                                                             size="sm"
-                                                            className="text-xs bg-green-600 hover:bg-green-700 text-white"
+                                                            className="text-xs bg-success hover:bg-success/90 text-success-foreground"
                                                             disabled={processingId === p.id}
                                                             onClick={() => processAction(p.id, "completed")}
                                                         >
@@ -292,7 +292,7 @@ export default function AdminPayoutsPage() {
                                                     <div className="flex gap-1">
                                                         <Button
                                                             size="sm"
-                                                            className="text-xs bg-green-600 hover:bg-green-700 text-white"
+                                                            className="text-xs bg-success hover:bg-success/90 text-success-foreground"
                                                             disabled={processingId === p.id}
                                                             onClick={() => processAction(p.id, "completed")}
                                                         >
@@ -301,7 +301,7 @@ export default function AdminPayoutsPage() {
                                                         <Button
                                                             size="sm"
                                                             variant="outline"
-                                                            className="text-xs text-red-600"
+                                                            className="text-xs text-destructive hover:text-destructive/90"
                                                             disabled={processingId === p.id}
                                                             onClick={() => processAction(p.id, "failed")}
                                                         >
@@ -310,7 +310,7 @@ export default function AdminPayoutsPage() {
                                                     </div>
                                                 )}
                                                 {(p.status === "completed" || p.status === "failed") && (
-                                                    <span className="text-xs text-gray-400">
+                                                    <span className="text-xs text-muted-foreground">
                                                         {p.processed_at ? formatDate(p.processed_at) : "—"}
                                                     </span>
                                                 )}
@@ -332,24 +332,24 @@ export default function AdminPayoutsPage() {
 function PayoutStatusBadge({ status }: { status: string }) {
     if (status === "completed")
         return (
-            <Badge className="bg-green-100 text-green-700 border-green-200 hover:bg-green-100 text-xs gap-1">
+            <Badge className="bg-success-surface text-success border border-success/30 hover:bg-success-surface text-xs gap-1">
                 <CheckCircle2 className="h-3 w-3" /> Completed
             </Badge>
         );
     if (status === "processing")
         return (
-            <Badge className="bg-blue-100 text-blue-700 border-blue-200 hover:bg-blue-100 text-xs gap-1">
+            <Badge className="bg-info-surface text-info border border-info/30 hover:bg-info-surface text-xs gap-1">
                 <Loader2 className="h-3 w-3" /> Processing
             </Badge>
         );
     if (status === "failed")
         return (
-            <Badge className="bg-red-100 text-red-700 border-red-200 hover:bg-red-100 text-xs gap-1">
+            <Badge className="bg-destructive-surface text-destructive border border-destructive/30 hover:bg-destructive-surface text-xs gap-1">
                 <XCircle className="h-3 w-3" /> Failed
             </Badge>
         );
     return (
-        <Badge className="bg-amber-100 text-amber-700 border-amber-200 hover:bg-amber-100 text-xs gap-1">
+        <Badge className="bg-warning-surface text-warning border border-warning/30 hover:bg-warning-surface text-xs gap-1">
             <Clock className="h-3 w-3" /> Pending
         </Badge>
     );

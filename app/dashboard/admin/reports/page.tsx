@@ -79,7 +79,7 @@ export default function AdminReportsPage() {
             Reports & Analytics
           </h1>
 
-          <p className="text-gray-500 mt-1">
+          <p className="text-muted-foreground mt-1">
             Platform performance overview
           </p>
         </div>
@@ -126,7 +126,7 @@ export default function AdminReportsPage() {
 
           {loading ? (
 
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-muted-foreground">
               Loading report summary...
             </p>
 
@@ -183,10 +183,10 @@ function ReportCard({
 }: any) {
 
   const colors: any = {
-    blue: "bg-blue-100 text-blue-700",
-    purple: "bg-purple-100 text-purple-700",
-    orange: "bg-orange-100 text-orange-700",
-    green: "bg-green-100 text-green-700",
+    blue: "bg-info-surface text-info border border-info/30",
+    purple: "bg-primary/10 text-primary border border-primary/20",
+    orange: "bg-warning-surface text-warning border border-warning/30",
+    green: "bg-success-surface text-success border border-success/30",
   };
 
   return (
@@ -195,7 +195,7 @@ function ReportCard({
       <div className="flex items-center justify-between">
 
         <div>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-muted-foreground">
             {title}
           </p>
 
@@ -224,15 +224,15 @@ function SummaryItem({
 }: any) {
 
   const colors: any = {
-    green: "text-green-600",
-    blue: "text-blue-600",
-    orange: "text-orange-600",
+    green: "text-success bg-success-surface border border-success/30",
+    blue: "text-info bg-info-surface border border-info/30",
+    orange: "text-warning bg-warning-surface border border-warning/30",
   };
 
   return (
     <div className="flex justify-between">
 
-      <span className="text-gray-600">
+      <span className="text-muted-foreground">
         {label}
       </span>
 

@@ -59,7 +59,7 @@ export default function AdminUsersPage() {
 
   if (!profile || profile.role !== "admin") {
     return (
-      <div className="p-10 text-center text-red-600 font-medium">
+      <div className="p-10 text-center text-destructive font-medium">
         ❌ Access Denied
       </div>
     );
@@ -74,7 +74,7 @@ export default function AdminUsersPage() {
           User Management
         </h1>
 
-        <p className="text-gray-500 text-sm">
+        <p className="text-muted-foreground text-sm">
           Manage roles and permissions
         </p>
       </div>
@@ -84,7 +84,7 @@ export default function AdminUsersPage() {
 
         <table className="w-full text-sm">
 
-          <thead className="bg-gray-50 text-left">
+          <thead className="bg-muted/50 text-left">
 
             <tr>
               <th className="p-3">Name</th>
@@ -100,7 +100,7 @@ export default function AdminUsersPage() {
             {users.map((u) => (
               <tr
                 key={u.id}
-                className="border-t hover:bg-gray-50"
+                className="border-t hover:bg-muted/50"
               >
                 <td className="p-3">
                   {u.name || "-"}

@@ -60,7 +60,7 @@ export default function AdminDashboard() {
             👑 Admin Dashboard
           </h1>
 
-          <p className="text-gray-500 mt-1">
+          <p className="text-muted-foreground mt-1">
             System overview and controls
           </p>
         </div>
@@ -96,9 +96,9 @@ export default function AdminDashboard() {
 
           <div className="flex items-center gap-3">
 
-            <Shield className="h-5 w-5 text-green-600" />
+            <Shield className="h-5 w-5 text-success" />
 
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-muted-foreground">
               All systems operational
             </p>
 
@@ -127,7 +127,7 @@ function AdminCard({
         <div className="flex items-center justify-between">
 
           <div>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-muted-foreground">
               {title}
             </p>
 

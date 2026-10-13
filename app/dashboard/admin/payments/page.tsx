@@ -76,7 +76,7 @@ export default function AdminPaymentsPage() {
               Payments Monitoring
             </h1>
 
-            <p className="text-gray-500 mt-1">
+            <p className="text-muted-foreground mt-1">
               Track all platform transactions
             </p>
           </div>
@@ -96,13 +96,13 @@ export default function AdminPaymentsPage() {
         <Card className="p-4 overflow-x-auto">
 
           {loading && (
-            <p className="text-sm text-gray-500 p-4">
+            <p className="text-sm text-muted-foreground p-4">
               Loading payments...
             </p>
           )}
 
           {!loading && payments.length === 0 && (
-            <p className="text-sm text-gray-500 p-4">
+            <p className="text-sm text-muted-foreground p-4">
               No payments found.
             </p>
           )}
@@ -112,7 +112,7 @@ export default function AdminPaymentsPage() {
             <table className="w-full text-sm">
 
               <thead>
-                <tr className="border-b text-left text-gray-500">
+                <tr className="border-b text-left text-muted-foreground">
 
                   <th className="py-3 px-2">
                     User
@@ -155,7 +155,7 @@ export default function AdminPaymentsPage() {
 
                       <div className="flex items-center gap-2">
 
-                        <User className="h-4 w-4 text-gray-400" />
+                        <User className="h-4 w-4 text-muted-foreground" />
 
                         <div className="text-xs">
 
@@ -163,7 +163,7 @@ export default function AdminPaymentsPage() {
                             {p.profiles?.full_name || "—"}
                           </p>
 
-                          <p className="text-gray-400">
+                          <p className="text-muted-foreground">
                             {p.profiles?.email}
                           </p>
 
@@ -194,7 +194,7 @@ export default function AdminPaymentsPage() {
                     </td>
 
                     {/* Date */}
-                    <td className="py-3 px-2 text-xs text-gray-500">
+                    <td className="py-3 px-2 text-xs text-muted-foreground">
 
                       <div className="flex items-center gap-1">
 
@@ -231,7 +231,7 @@ function StatusBadge({ status }: { status: string }) {
 
   if (status === "success") {
     return (
-      <Badge className="bg-green-100 text-green-700">
+      <Badge className="bg-success-surface text-success border border-success/30">
         Paid
       </Badge>
     );
@@ -239,14 +239,14 @@ function StatusBadge({ status }: { status: string }) {
 
   if (status === "failed") {
     return (
-      <Badge className="bg-red-100 text-red-700">
+      <Badge className="bg-destructive-surface text-destructive border border-destructive/30">
         Failed
       </Badge>
     );
   }
 
   return (
-    <Badge className="bg-yellow-100 text-yellow-700">
+    <Badge className="bg-warning-surface text-warning border border-warning/30">
       Pending
     </Badge>
   );

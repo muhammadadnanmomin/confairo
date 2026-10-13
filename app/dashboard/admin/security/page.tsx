@@ -58,7 +58,7 @@ export default function AdminSecurityPage() {
               Security & Audit Logs
             </h1>
 
-            <p className="text-gray-500 mt-1">
+            <p className="text-muted-foreground mt-1">
               Monitor system activity
             </p>
           </div>
@@ -78,13 +78,13 @@ export default function AdminSecurityPage() {
         <Card className="p-4 overflow-x-auto">
 
           {loading && (
-            <p className="text-sm text-gray-500 p-4">
+            <p className="text-sm text-muted-foreground p-4">
               Loading logs...
             </p>
           )}
 
           {!loading && logs.length === 0 && (
-            <p className="text-sm text-gray-500 p-4">
+            <p className="text-sm text-muted-foreground p-4">
               No activity found.
             </p>
           )}
@@ -94,7 +94,7 @@ export default function AdminSecurityPage() {
             <table className="w-full text-sm">
 
               <thead>
-                <tr className="border-b text-left text-gray-500">
+                <tr className="border-b text-left text-muted-foreground">
 
                   <th className="py-3 px-2">
                     User
@@ -133,7 +133,7 @@ export default function AdminSecurityPage() {
 
                       <div className="flex items-center gap-2">
 
-                        <User className="h-4 w-4 text-gray-400" />
+                        <User className="h-4 w-4 text-muted-foreground" />
 
                         <div className="text-xs">
 
@@ -141,7 +141,7 @@ export default function AdminSecurityPage() {
                             {log.user_email || "—"}
                           </p>
 
-                          <p className="text-gray-400">
+                          <p className="text-muted-foreground">
                             {log.user_id}
                           </p>
 
@@ -168,7 +168,7 @@ export default function AdminSecurityPage() {
                     </td>
 
                     {/* Time */}
-                    <td className="py-3 px-2 text-xs text-gray-500">
+                    <td className="py-3 px-2 text-xs text-muted-foreground">
 
                       <div className="flex items-center gap-1">
 
@@ -183,7 +183,7 @@ export default function AdminSecurityPage() {
                     </td>
 
                     {/* Meta */}
-                    <td className="py-3 px-2 text-xs text-gray-400">
+                    <td className="py-3 px-2 text-xs text-muted-foreground">
 
                       <div>
                         IP: {log.ip_address || "—"}

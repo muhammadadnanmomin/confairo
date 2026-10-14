@@ -80,7 +80,7 @@ export default function AdminUsersPage() {
       </div>
 
       {/* Table */}
-      <div className="overflow-x-auto rounded-lg border bg-white">
+      <div className="overflow-x-auto rounded-lg border bg-card">
 
         <table className="w-full text-sm">
 
@@ -122,7 +122,7 @@ export default function AdminUsersPage() {
                     onChange={(e) =>
                       updateRole(u.id, e.target.value)
                     }
-                    className="cursor-pointer rounded border px-2 py-1 text-sm disabled:cursor-not-allowed"
+                    className="cursor-pointer rounded border border-border bg-card text-foreground px-2 py-1 text-sm disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-primary"
                   >
                     <option value="participant">
                       Participant

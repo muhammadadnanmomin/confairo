@@ -21,7 +21,7 @@ export function FinalCTASection() {
   return (
     <section
       className="px-4 py-14 sm:px-6 sm:py-18 lg:px-8"
-      style={{ backgroundColor: "white" }}
+      style={{ backgroundColor: "var(--lp-surface)" }}
     >
       <div className="mx-auto max-w-2xl text-center">
 

@@ -118,7 +118,7 @@ export default function AIUsageBanner({ conferenceId }: AIUsageBannerProps) {
       </div>
 
       {/* Progress bar */}
-      <div className="w-full bg-white/70 rounded-full h-2.5 overflow-hidden border border-border/50 shadow-inner">
+      <div className="w-full bg-muted rounded-full h-2.5 overflow-hidden border border-border/50 shadow-inner">
         <div
           className={`h-full rounded-full ${barColor} transition-all duration-1000 ease-out`}
           style={{ width: `${Math.min(percentage, 100)}%` }}

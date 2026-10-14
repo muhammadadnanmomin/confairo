@@ -65,7 +65,7 @@ export function HowItWorksSection() {
                 className="relative flex flex-col items-center text-center"
                 style={{ width: "33.33%" }}
               >
-                <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-lg border border-[var(--lp-border)] bg-white">
+                <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-lg border border-[var(--lp-border)] bg-[var(--lp-surface)]">
                   <step.icon className="h-5 w-5 text-[var(--lp-accent)]" />
                 </div>
                 <p className="mt-3 text-xs font-bold text-[var(--lp-ink-tertiary)]">
@@ -87,9 +87,9 @@ export function HowItWorksSection() {
           {steps.map((step, i) => (
             <div
               key={step.num}
-              className="flex items-center gap-3 rounded-lg border border-[var(--lp-border)] bg-white px-4 py-3"
+              className="flex items-center gap-3 rounded-lg border border-[var(--lp-border)] bg-[var(--lp-surface)] px-4 py-3"
             >
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-[var(--lp-border)] bg-white text-xs font-bold text-[var(--lp-accent)]">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-[var(--lp-border)] bg-[var(--lp-surface)] text-xs font-bold text-[var(--lp-accent)]">
                 {step.num}
               </div>
               <div className="min-w-0">

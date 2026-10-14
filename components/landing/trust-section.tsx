@@ -28,7 +28,7 @@ export function TrustSection() {
     <section
       id="trust"
       className="px-4 py-10 sm:px-6 sm:py-14 lg:px-8"
-      style={{ backgroundColor: "white" }}
+      style={{ backgroundColor: "var(--lp-surface)" }}
     >
       <div className="mx-auto max-w-7xl">
 
@@ -45,7 +45,7 @@ export function TrustSection() {
         </div>
 
         {/* Compact trust indicators — 2×2 grid */}
-        <div className="mx-auto mt-8 max-w-2xl rounded-lg border border-[var(--lp-border)] bg-white p-5 sm:p-6">
+        <div className="mx-auto mt-8 max-w-2xl rounded-lg border border-[var(--lp-border)] bg-[var(--lp-surface)] p-5 sm:p-6">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {trustSignals.map((signal) => (
               <div key={signal.title} className="flex items-start gap-3">

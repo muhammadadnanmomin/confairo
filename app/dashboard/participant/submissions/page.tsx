@@ -971,7 +971,7 @@ export default function ParticipantSubmissionsPage() {
 
                         <div className="flex flex-col sm:flex-row gap-2">
                           <Button
-                            className="flex-1 bg-primary hover:bg-primary-hover text-white"
+                            className="flex-1 bg-primary hover:bg-primary-hover text-primary-foreground"
                             disabled={paying === confId}
                             onClick={() => handlePayment(confId, submission)}
                           >

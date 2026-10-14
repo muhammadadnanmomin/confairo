@@ -26,7 +26,7 @@ export function ProblemSection() {
     <section
       id="problem"
       className="px-4 py-14 sm:px-6 sm:py-18 lg:px-8"
-      style={{ backgroundColor: "white" }}
+      style={{ backgroundColor: "var(--lp-surface)" }}
     >
       <div className="mx-auto max-w-7xl">
 
@@ -48,7 +48,7 @@ export function ProblemSection() {
               key={card.title}
               className="rounded-lg border border-[var(--lp-border)] bg-[var(--lp-surface-subtle)] p-6 text-center"
             >
-              <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-md border border-[var(--lp-border)] bg-white">
+              <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-md border border-[var(--lp-border)] bg-[var(--lp-surface)]">
                 <card.icon className="h-5 w-5 text-[var(--lp-ink-tertiary)]" />
               </div>
               <h3 className="mt-4 text-sm font-semibold text-[var(--lp-ink)]">

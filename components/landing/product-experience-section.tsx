@@ -75,7 +75,7 @@ export function ProductExperienceSection() {
               </span>
             </div>
 
-            <div className="flex bg-white">
+            <div className="flex bg-[var(--lp-surface)]">
               {/* Sidebar */}
               <div className="hidden md:block w-44 shrink-0 border-r border-[var(--lp-border)] bg-[var(--lp-surface-subtle)] p-3 space-y-0.5">
                 {sidebarItems.map((item) => (
@@ -153,7 +153,7 @@ export function ProductExperienceSection() {
 
           {/* Mobile product preview */}
           <div className="sm:hidden">
-            <div className="rounded-lg border border-[var(--lp-border)] bg-white p-4">
+            <div className="rounded-lg border border-[var(--lp-border)] bg-[var(--lp-surface)] p-4">
               <p className="text-xs font-semibold text-[var(--lp-ink)] mb-1">
                 Conference Dashboard
               </p>

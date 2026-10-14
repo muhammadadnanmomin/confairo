@@ -404,7 +404,7 @@ export default function AIReviewCard({ submissionId, onUseDecision, readOnly }: 
                 <BarChart3 className="h-3 w-3" /> 📊 Confidence Score
               </p>
               <div className="flex items-center gap-3">
-                <div className="flex-1 bg-white/60 rounded-full h-3 overflow-hidden border border-border/50">
+                <div className="flex-1 bg-muted rounded-full h-3 overflow-hidden border border-border/50">
                   <div
                     className={`h-full rounded-full ${confidenceColor(score)} transition-all duration-1000 ease-out`}
                     style={{ width: `${score}%` }}

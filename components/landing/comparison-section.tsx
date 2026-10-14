@@ -49,7 +49,7 @@ export function ComparisonSection() {
 
         {/* Connected workflow visual */}
         <div className="mx-auto mt-10 max-w-3xl">
-          <div className="rounded-lg border border-[var(--lp-border)] bg-white p-6 sm:p-8">
+          <div className="rounded-lg border border-[var(--lp-border)] bg-[var(--lp-surface)] p-6 sm:p-8">
 
             {/* Desktop — two grouped rows with arrows */}
             <div className="hidden sm:block space-y-5">
@@ -58,7 +58,7 @@ export function ComparisonSection() {
                 {topRow.map((item, i) => (
                   <div key={item.label} className="flex items-center gap-2">
                     <div className="flex flex-col items-center text-center">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-md border border-[var(--lp-border)] bg-white">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-md border border-[var(--lp-border)] bg-[var(--lp-surface)]">
                         <item.icon className="h-5 w-5 text-[var(--lp-accent)]" />
                       </div>
                       <span className="mt-2 text-xs font-medium text-[var(--lp-ink-secondary)]">
@@ -85,7 +85,7 @@ export function ComparisonSection() {
                 {bottomRow.map((item, i) => (
                   <div key={item.label} className="flex items-center gap-2">
                     <div className="flex flex-col items-center text-center">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-md border border-[var(--lp-border)] bg-white">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-md border border-[var(--lp-border)] bg-[var(--lp-surface)]">
                         <item.icon className="h-5 w-5 text-[var(--lp-accent)]" />
                       </div>
                       <span className="mt-2 text-xs font-medium text-[var(--lp-ink-secondary)]">
@@ -105,7 +105,7 @@ export function ComparisonSection() {
               {allItems.map((item) => (
                 <div
                   key={item.label}
-                  className="flex items-center gap-2.5 rounded-md border border-[var(--lp-border)] bg-white px-3 py-2.5"
+                  className="flex items-center gap-2.5 rounded-md border border-[var(--lp-border)] bg-[var(--lp-surface)] px-3 py-2.5"
                 >
                   <item.icon className="h-4 w-4 shrink-0 text-[var(--lp-accent)]" />
                   <span className="text-xs font-medium text-[var(--lp-ink-secondary)]">

@@ -82,10 +82,10 @@ export function TrackView({
     }
 
     return (
-        <div className="overflow-x-auto border rounded-xl bg-white">
+        <div className="overflow-x-auto border rounded-xl bg-card">
             <div className="min-w-[700px]">
                 {/* Header row */}
-                <div className="flex border-b sticky top-0 bg-white z-10">
+                <div className="flex border-b sticky top-0 bg-card z-10">
                     {/* Time column header */}
                     <div className="w-20 shrink-0 px-2 py-3 text-xs font-semibold text-muted-foreground border-r">
                         Time

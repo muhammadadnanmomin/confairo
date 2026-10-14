@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 
 import { useRouter } from "next/navigation";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -138,7 +139,7 @@ export function DashboardHeader({
   }
 
   return (
-    <header className="sticky top-0 z-20 flex h-16 items-center justify-between border-b bg-white px-4 md:px-6">
+    <header className="sticky top-0 z-20 flex h-16 items-center justify-between border-b bg-card px-4 md:px-6">
       {/* Left */}
       <div className="flex items-center gap-2">
         <Button
@@ -155,12 +156,13 @@ export function DashboardHeader({
 
       {/* Right */}
       <div className="flex items-center gap-2">
+        <ThemeToggle />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="flex items-center gap-2 text-foreground hover:bg-accent hover:text-foreground focus:bg-accent focus:text-foreground">
               <Avatar className="h-8 w-8">
                 <AvatarImage src={userAvatar || ""} />
-                <AvatarFallback className="bg-primary text-white text-sm">
+                <AvatarFallback className="bg-primary text-primary-foreground text-sm">
                   {userName
                     .split(" ")
                     .map((n) => n[0])

@@ -85,58 +85,76 @@
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --primary-hover: oklch(0.9 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --destructive-surface: oklch(0.25 0.05 25);
-  --border: oklch(0.269 0 0);
-  --border-strong: oklch(0.35 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.439 0 0);
+  /* ── Core Surfaces (Academic Ink Navy) ────────────────────── */
+  --background: #0F1219;
+  --foreground: #E8ECF4;
+  --card: #161B26;
+  --card-foreground: #E8ECF4;
+  --popover: #161B26;
+  --popover-foreground: #E8ECF4;
+
+  /* ── Interactive & Brand (Academic Ink Blue — Dark) ────────── */
+  --primary: #6B8FCC;
+  --primary-foreground: #0F172A;
+  --primary-hover: #8BAADE;
+  --secondary: #1E2433;
+  --secondary-foreground: #6B8FCC;
+
+  /* ── Muted & Tertiary ────────────────────────────────────── */
+  --muted: #1E2433;
+  --muted-foreground: #8896AB;
+
+  /* ── Accent ──────────────────────────────────────────────── */
+  --accent: #1E2433;
+  --accent-foreground: #E8ECF4;
+
+  /* ── Borders & Focus ─────────────────────────────────────── */
+  --border: #303D54;
+  --border-strong: #3A4860;
+  --input: #303D54;
+  --ring: #6B8FCC;
+
+  /* ── Semantic Status (Brighter for dark backgrounds) ──────── */
   --success: #34D399;
   --success-foreground: #0A0F1D;
   --success-surface: rgba(52, 211, 153, 0.15);
+
   --warning: #FBBF24;
   --warning-foreground: #0A0F1D;
   --warning-surface: rgba(251, 191, 36, 0.15);
+
+  --destructive: #F87171;
+  --destructive-foreground: #0A0F1D;
+  --destructive-surface: rgba(248, 113, 113, 0.15);
+
   --info: #60A5FA;
   --info-foreground: #0A0F1D;
   --info-surface: rgba(96, 165, 250, 0.15);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
 
-  /* Dark mode compatibility aliases */
+  /* ── Sidebar ─────────────────────────────────────────────── */
+  --sidebar: #0C1018;
+  --sidebar-foreground: #E8ECF4;
+  --sidebar-primary: #6B8FCC;
+  --sidebar-primary-foreground: #0F172A;
+  --sidebar-accent: #1E2433;
+  --sidebar-accent-foreground: #E8ECF4;
+  --sidebar-border: #303D54;
+  --sidebar-ring: #6B8FCC;
+
+  /* ── Charts & Metrics (Brighter for dark backgrounds) ──── */
+  --chart-1: #6B8FCC;
+  --chart-2: #34D399;
+  --chart-3: #FBBF24;
+  --chart-4: #818CF8;
+  --chart-5: #38BDF8;
+
+  /* ── Landing Page Dark Mode Aliases ──────────────────────── */
   --lp-ink: var(--foreground);
   --lp-ink-secondary: var(--muted-foreground);
-  --lp-ink-tertiary: #94A3B8;
+  --lp-ink-tertiary: #7A8BA0;
   --lp-surface: var(--card);
   --lp-surface-subtle: var(--muted);
-  --lp-surface-muted: oklch(0.18 0 0);
+  --lp-surface-muted: #131820;
   --lp-border: var(--border);
   --lp-border-strong: var(--border-strong);
   --lp-accent: var(--primary);

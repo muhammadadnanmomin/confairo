@@ -32,6 +32,7 @@ import {
 } from "lucide-react";
 
 import Image from "next/image";
+import { ThemeLogo } from "@/components/theme-logo";
 import { Button } from "@/components/ui/button";
 import {
   Tooltip,
@@ -174,7 +175,7 @@ export function DashboardSidebar({
   return (
     <aside
       className={cn(
-        "fixed top-0 left-0 z-[60] flex h-screen flex-col bg-white border-r shadow-lg",
+        "fixed top-0 left-0 z-[60] flex h-screen flex-col bg-card border-r shadow-lg",
         "transform transition-transform duration-300 ease-in-out",
         "w-72 md:w-64",
         collapsed && "md:w-16",
@@ -185,14 +186,15 @@ export function DashboardSidebar({
       {/* Header */}
       <div
         className={cn(
-          "flex h-16 items-center border-b px-4 bg-white",
+          "flex h-16 items-center border-b px-4 bg-card",
           collapsed ? "justify-center" : "gap-3"
         )}
       >
         {collapsed ? (
           <div className="flex items-center justify-center h-9 w-9 flex-shrink-0">
-            <Image
-              src="/logos/Symbol.png"
+            <ThemeLogo
+              lightSrc="/logos/Transparent_Symbol.png"
+              darkSrc="/logos/Transparent_Symbol.png"
               alt="Confairo Logo"
               width={36}
               height={36}
@@ -202,8 +204,9 @@ export function DashboardSidebar({
           </div>
         ) : (
           <Link href="/dashboard" className="flex items-center">
-            <Image
-              src="/logos/Horizontal_Logo.png"
+            <ThemeLogo
+              lightSrc="/logos/Horizontal_Logo.png"
+              darkSrc="/logos/Dark_Mode_Transparent_Logo.png"
               alt="Confairo"
               width={144}
               height={48}

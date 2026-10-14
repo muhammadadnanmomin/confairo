@@ -87,8 +87,8 @@ export function MessageBubble({ message }: MessageBubbleProps) {
         shadow-sm mt-0.5 p-1 overflow-hidden
       ">
         <Image
-          src="/logos/Symbol.png"
-          alt="Confairo AI"
+          src="/logos/Transparent_Symbol.png"
+          alt=""
           width={20}
           height={20}
           className="h-4 w-4 object-contain"

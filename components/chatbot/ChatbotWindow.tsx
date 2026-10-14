@@ -134,15 +134,15 @@ export function ChatbotWindow({
             overflow-hidden shadow-sm shrink-0 p-1
           ">
             <Image
-              src="/logos/Symbol.png"
-              alt="Confairo AI"
+              src="/logos/Transparent_Symbol.png"
+              alt=""
               width={24}
               height={24}
               className="h-5 w-5 object-contain"
             />
           </div>
           <div>
-            <p className="text-sm font-semibold text-white leading-none">
+            <p className="text-sm font-semibold text-primary-foreground leading-none">
               {displayBotName}
             </p>
             <div className="flex items-center gap-1 mt-0.5">
@@ -161,7 +161,7 @@ export function ChatbotWindow({
             className="
               h-7 w-7 cursor-pointer rounded-lg
               flex items-center justify-center
-              text-white/70 hover:text-white hover:bg-white/20
+              text-primary-foreground/70 hover:text-primary-foreground hover:bg-primary-foreground/15
               transition-colors
             "
           >
@@ -176,7 +176,7 @@ export function ChatbotWindow({
             className="
               h-7 w-7 cursor-pointer rounded-lg
               flex items-center justify-center
-              text-white/70 hover:text-white hover:bg-white/20
+              text-primary-foreground/70 hover:text-primary-foreground hover:bg-primary-foreground/15
               transition-colors
             "
           >
@@ -191,7 +191,7 @@ export function ChatbotWindow({
             className="
               h-7 w-7 cursor-pointer rounded-lg
               flex items-center justify-center
-              text-white/70 hover:text-white hover:bg-white/20
+              text-primary-foreground/70 hover:text-primary-foreground hover:bg-primary-foreground/15
               transition-colors
             "
           >
@@ -216,7 +216,7 @@ export function ChatbotWindow({
               shadow-lg p-3
             ">
               <Image
-                src="/logos/Symbol.png"
+                src="/logos/Transparent_Symbol.png"
                 alt="Confairo AI"
                 width={44}
                 height={44}

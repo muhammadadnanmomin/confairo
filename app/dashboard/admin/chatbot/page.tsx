@@ -121,7 +121,7 @@ export default function ChatbotAdminPage() {
       {/* Page header */}
       <div className="flex items-center gap-3">
         <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-primary to-primary-hover flex items-center justify-center shadow-sm">
-          <Bot className="h-5 w-5 text-white" />
+          <Bot className="h-5 w-5 text-primary-foreground" />
         </div>
         <div>
           <h1 className="text-xl font-semibold text-foreground">Chatbot Controls</h1>
@@ -176,7 +176,7 @@ export default function ChatbotAdminPage() {
             >
               <span
                 className={`
-                  inline-block h-4 w-4 rounded-full bg-white shadow
+                  inline-block h-4 w-4 rounded-full bg-background dark:bg-foreground shadow
                   transform transition-transform duration-200
                   ${settings.enabled ? "translate-x-6" : "translate-x-1"}
                 `}
@@ -196,7 +196,7 @@ export default function ChatbotAdminPage() {
               onChange={(e) => setSettings((s) => ({ ...s, botName: e.target.value }))}
               maxLength={50}
               className="
-                w-full rounded-xl border border-input
+                w-full rounded-xl border border-input bg-card
                 px-3.5 py-2.5 text-sm text-foreground
                 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary
                 transition-all
@@ -216,7 +216,7 @@ export default function ChatbotAdminPage() {
               rows={4}
               maxLength={500}
               className="
-                w-full rounded-xl border border-input
+                w-full rounded-xl border border-input bg-card
                 px-3.5 py-2.5 text-sm text-foreground resize-none
                 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary
                 transition-all
@@ -235,7 +235,7 @@ export default function ChatbotAdminPage() {
             className="
               flex cursor-pointer items-center gap-2
               bg-primary hover:bg-primary-hover
-              text-white text-sm font-medium
+              text-primary-foreground text-sm font-medium
               px-4 py-2.5 rounded-xl
               transition-colors disabled:cursor-not-allowed disabled:opacity-50
               shadow-sm
@@ -289,7 +289,7 @@ export default function ChatbotAdminPage() {
               className="
                 flex cursor-pointer items-center gap-2
                 bg-success hover:bg-success/90
-                text-white text-sm font-medium
+                text-success-foreground text-sm font-medium
                 px-4 py-2.5 rounded-xl
                 transition-colors disabled:cursor-not-allowed disabled:opacity-50
                 shadow-sm
@@ -385,7 +385,7 @@ function CustomFAQCard({ onSaved }: { onSaved: () => void }) {
             onChange={(e) => setQuestion(e.target.value)}
             placeholder="e.g. How do I reset my password?"
             className="
-              w-full rounded-xl border border-input
+              w-full rounded-xl border border-input bg-card
               px-3.5 py-2.5 text-sm text-foreground
               focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary
               transition-all placeholder:text-muted-foreground
@@ -404,7 +404,7 @@ function CustomFAQCard({ onSaved }: { onSaved: () => void }) {
             placeholder="Provide a helpful, detailed answer…"
             rows={4}
             className="
-              w-full rounded-xl border border-input
+              w-full rounded-xl border border-input bg-card
               px-3.5 py-2.5 text-sm text-foreground resize-none
               focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary
               transition-all placeholder:text-muted-foreground
@@ -419,7 +419,7 @@ function CustomFAQCard({ onSaved }: { onSaved: () => void }) {
           className="
             flex cursor-pointer items-center gap-2
             bg-primary hover:bg-primary-hover
-            text-white text-sm font-medium
+            text-primary-foreground text-sm font-medium
             px-4 py-2.5 rounded-xl
             transition-colors disabled:cursor-not-allowed disabled:opacity-50
             shadow-sm

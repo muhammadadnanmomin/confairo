@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "@/components/ui/toaster";
 import Script from "next/script"; // ✅ added
 import { ChatbotWidget } from "@/components/chatbot/ChatbotWidget";
+import { ThemeProvider } from "@/components/theme-provider";
 
 import "./globals.css";
 
@@ -24,11 +25,11 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "/logos/Favicon.png",
+        url: "/logos/Transparent_Symbol.png",
         type: "image/png",
       },
     ],
-    apple: "/logos/Compact_Square.png",
+    apple: "/logos/Transparent_Symbol.png",
   },
 };
 
@@ -38,7 +39,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`
           ${geist.variable}
@@ -47,13 +48,20 @@ export default function RootLayout({
           bg-background text-foreground
         `}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
 
-        {/* ✅ REQUIRED FOR TOASTS */}
-        <Toaster />
+          {/* ✅ REQUIRED FOR TOASTS */}
+          <Toaster />
 
-        {/* ✅ Confairo AI Chatbot */}
-        <ChatbotWidget />
+          {/* ✅ Confairo AI Chatbot */}
+          <ChatbotWidget />
+        </ThemeProvider>
 
         {/* ✅ Razorpay Checkout Script */}
         <Script

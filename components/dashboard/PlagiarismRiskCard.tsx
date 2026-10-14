@@ -149,11 +149,11 @@ function FullReportModal({
 
           {/* Score breakdown */}
           <div className="grid grid-cols-2 gap-3 mt-3">
-            <div className="bg-white/60 rounded-md p-3">
+            <div className="bg-card/60 rounded-md p-3">
               <p className="text-xs text-muted-foreground uppercase tracking-wide">Pattern Analysis</p>
               <p className="text-lg font-bold text-foreground">{sa.score}/100</p>
             </div>
-            <div className="bg-white/60 rounded-md p-3">
+            <div className="bg-card/60 rounded-md p-3">
               <p className="text-xs text-muted-foreground uppercase tracking-wide">Content Analysis</p>
               <p className="text-lg font-bold text-foreground">{result.llm_score}/100</p>
             </div>
@@ -406,7 +406,7 @@ export default function PlagiarismRiskCard({ submissionId }: PlagiarismRiskCardP
             onClick={() => limitReached ? setShowLimitModal(true) : analyzeSimilarity(false)}
             className={limitReached
               ? "bg-muted-foreground/40 hover:bg-muted-foreground/40 text-white gap-2 cursor-not-allowed"
-              : "bg-primary hover:bg-primary-hover text-white gap-2"}
+              : "bg-primary hover:bg-primary-hover text-primary-foreground gap-2"}
             size="sm"
             disabled={limitReached}
           >
@@ -574,7 +574,7 @@ export default function PlagiarismRiskCard({ submissionId }: PlagiarismRiskCardP
 
             {/* Progress bar */}
             <div className="flex items-center gap-3">
-              <div className="flex-1 bg-white/60 rounded-full h-4 overflow-hidden border border-border/50 shadow-inner">
+              <div className="flex-1 bg-muted rounded-full h-4 overflow-hidden border border-border/50 shadow-inner">
                 <div
                   className={`h-full rounded-full ${rc.bar} shadow-sm`}
                   style={{

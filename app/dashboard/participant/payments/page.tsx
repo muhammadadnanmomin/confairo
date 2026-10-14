@@ -565,12 +565,12 @@ export default function ParticipantPaymentsPage() {
       {paymentSuccess && (
         <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50 p-4">
           <div className="bg-card rounded-2xl shadow-2xl max-w-md w-full overflow-hidden">
-            <div className="bg-gradient-to-br from-success to-success p-8 text-center text-white">
+            <div className="bg-gradient-to-br from-success to-success p-8 text-center text-success-foreground">
               <div className="flex items-center justify-center h-16 w-16 rounded-full bg-card/20 mx-auto mb-4">
-                <CheckCircle className="h-10 w-10 text-white" />
+                <CheckCircle className="h-10 w-10 text-success-foreground" />
               </div>
               <h2 className="text-2xl font-bold">Payment Successful! 🎉</h2>
-              <p className="text-success-surface mt-2 text-sm">
+              <p className="text-success-foreground/80 mt-2 text-sm">
                 Your conference fee has been confirmed.
               </p>
             </div>
@@ -583,7 +583,7 @@ export default function ParticipantPaymentsPage() {
               </p>
               <Button
                 onClick={() => setPaymentSuccess(false)}
-                className="w-full bg-primary hover:bg-primary-hover text-white"
+                className="w-full bg-primary hover:bg-primary-hover text-primary-foreground"
               >
                 Continue
               </Button>
@@ -892,7 +892,7 @@ export default function ParticipantPaymentsPage() {
 
                   {/* Pay Button */}
                   <Button
-                    className="w-full bg-primary hover:bg-primary-hover text-white h-12 text-base font-semibold transition-all"
+                    className="w-full bg-primary hover:bg-primary-hover text-primary-foreground h-12 text-base font-semibold transition-all"
                     disabled={isProcessing || breakdown.conferenceFee <= 0}
                     onClick={() => openPayment(row)}
                   >

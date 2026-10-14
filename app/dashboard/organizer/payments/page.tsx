@@ -588,7 +588,7 @@ export default function OrganizerPayments() {
                       background:
                         m.total > 0
                           ? "linear-gradient(to top, #6366f1, #818cf8)"
-                          : "#e5e7eb",
+                          : "var(--muted)",
                     }}
                   />
                 </div>

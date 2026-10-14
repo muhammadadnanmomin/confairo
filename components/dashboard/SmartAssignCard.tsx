@@ -348,11 +348,11 @@ export default function SmartAssignCard({
             return (
               <div
                 key={r.reviewer_id}
-                className="opacity-0 border rounded-lg p-4 hover:shadow-sm transition-all duration-200"
+                className={`opacity-0 border rounded-lg p-4 hover:shadow-sm transition-all duration-200 ${
+                  isCurrentReviewer ? "border-info/40 bg-info-surface" : "border-border bg-card"
+                }`}
                 style={{
                   animation: `smartFadeIn 0.4s ease-out ${index * 100}ms forwards`,
-                  borderColor: isCurrentReviewer ? "#93c5fd" : undefined,
-                  backgroundColor: isCurrentReviewer ? "#eff6ff" : undefined,
                 }}
               >
                 <div className="flex items-start justify-between gap-3">

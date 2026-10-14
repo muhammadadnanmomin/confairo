@@ -89,7 +89,7 @@ export function PricingSection() {
     <section
       id="pricing"
       className="px-4 py-14 sm:px-6 sm:py-18 lg:px-8"
-      style={{ backgroundColor: "white" }}
+      style={{ backgroundColor: "var(--lp-surface)" }}
     >
       <div className="mx-auto max-w-5xl">
 
@@ -109,7 +109,7 @@ export function PricingSection() {
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={`relative flex flex-col rounded-lg border bg-white p-6 ${
+              className={`relative flex flex-col rounded-lg border bg-[var(--lp-surface)] p-6 ${
                 plan.highlighted
                   ? "border-[var(--lp-accent)] ring-1 ring-[var(--lp-accent)]"
                   : "border-[var(--lp-border)]"

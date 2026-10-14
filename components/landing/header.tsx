@@ -6,7 +6,8 @@ import { useRouter, usePathname } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import Image from "next/image";
+import { ThemeLogo } from "@/components/theme-logo";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 import { useProfile } from "@/lib/auth/useProfile";
 import { createClient } from "@/lib/supabase/client";
@@ -37,14 +38,15 @@ export function Header() {
     }`;
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[var(--lp-border)] bg-white">
+    <header className="sticky top-0 z-50 w-full border-b border-[var(--lp-border)] bg-[var(--lp-surface)]">
 
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 
         {/* Logo */}
         <Link href="/" className="flex items-center">
-          <Image
-            src="/logos/Horizontal_Logo.png"
+          <ThemeLogo
+            lightSrc="/logos/Horizontal_Logo.png"
+            darkSrc="/logos/Dark_Mode_Transparent_Logo.png"
             alt="Confairo"
             width={144}
             height={48}
@@ -76,6 +78,7 @@ export function Header() {
         <div className="hidden items-center gap-2 md:flex">
 
           <BookDemoButton variant="ghost" />
+          <ThemeToggle />
 
           {!loading && !profile && (
             <>
@@ -136,7 +139,7 @@ export function Header() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="border-t border-[var(--lp-border)] bg-white md:hidden">
+        <div className="border-t border-[var(--lp-border)] bg-[var(--lp-surface)] md:hidden">
 
           <nav className="flex flex-col gap-1 px-4 py-4" aria-label="Mobile navigation">
 
@@ -189,6 +192,11 @@ export function Header() {
             </Link>
 
             <div className="mt-3 flex flex-col gap-2 border-t border-[var(--lp-border)] pt-4">
+
+              <div className="flex items-center justify-between px-1 py-1">
+                <span className="text-xs font-medium text-[var(--lp-ink-secondary)]">Theme</span>
+                <ThemeToggle />
+              </div>
 
               <BookDemoButton
                 variant="secondary"

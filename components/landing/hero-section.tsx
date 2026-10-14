@@ -64,7 +64,7 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="bg-white px-4 pt-14 pb-14 sm:px-6 sm:pt-20 sm:pb-20 lg:px-8 lg:pt-24 lg:pb-24"
+      className="bg-[var(--lp-surface)] px-4 pt-14 pb-14 sm:px-6 sm:pt-20 sm:pb-20 lg:px-8 lg:pt-24 lg:pb-24"
     >
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 items-center">
@@ -171,7 +171,7 @@ export function HeroSection() {
                 </div>
 
                 {/* Content area */}
-                <div className="flex-1 p-4 bg-white">
+                <div className="flex-1 p-4 bg-[var(--lp-surface)]">
                   <p className="text-xs font-semibold text-[var(--lp-ink)]">
                     Conference Overview
                   </p>
@@ -234,7 +234,7 @@ export function HeroSection() {
                   {sidebarModules.map((mod) => (
                     <div
                       key={mod.label}
-                      className="flex flex-col items-center gap-1.5 rounded-md bg-white border border-[var(--lp-border)] py-2.5 px-1"
+                      className="flex flex-col items-center gap-1.5 rounded-md bg-[var(--lp-surface)] border border-[var(--lp-border)] py-2.5 px-1"
                     >
                       <mod.icon className="h-4 w-4 text-[var(--lp-ink-tertiary)]" />
                       <span className="text-[10px] font-medium text-[var(--lp-ink-secondary)]">

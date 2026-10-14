@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import { ThemeLogo } from "@/components/theme-logo";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 
@@ -49,8 +49,9 @@ export default function ForgotPasswordPage() {
         {/* Brand header */}
         <div className="mb-4 flex justify-center">
           <Link href="/" className="inline-block">
-            <Image
-              src="/logos/Horizontal_Logo.png"
+            <ThemeLogo
+              lightSrc="/logos/Horizontal_Logo.png"
+              darkSrc="/logos/Dark_Mode_Transparent_Logo.png"
               alt="Confairo"
               width={165}
               height={55}

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import { ThemeLogo } from "@/components/theme-logo";
 import { Mail, Phone } from "lucide-react";
 
 const navigation = {
@@ -50,8 +50,9 @@ export function Footer() {
           <div className="lg:col-span-2">
 
             <Link href="/" className="flex items-center">
-              <Image
-                src="/logos/Transparent_Logo.png"
+              <ThemeLogo
+                lightSrc="/logos/Transparent_Logo.png"
+                darkSrc="/logos/Dark_Mode_Transparent_Logo.png"
                 alt="Confairo"
                 width={144}
                 height={48}

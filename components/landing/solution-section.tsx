@@ -84,7 +84,7 @@ export function SolutionSection() {
                       className="flex h-11 w-11 items-center justify-center rounded-lg border"
                       style={{
                         borderColor: i === 0 ? "var(--lp-accent)" : "var(--lp-border)",
-                        backgroundColor: i === 0 ? "var(--lp-accent-light)" : "white",
+                        backgroundColor: i === 0 ? "var(--lp-accent-light)" : "var(--lp-surface)",
                         color: i === 0 ? "var(--lp-accent)" : "var(--lp-ink-tertiary)",
                       }}
                     >
@@ -121,7 +121,7 @@ export function SolutionSection() {
           {workflowSteps.map((step) => (
             <div
               key={step.label}
-              className="flex flex-col items-center text-center rounded-lg border border-[var(--lp-border)] bg-white p-4"
+              className="flex flex-col items-center text-center rounded-lg border border-[var(--lp-border)] bg-[var(--lp-surface)] p-4"
             >
               <step.icon className="h-5 w-5 text-[var(--lp-ink-tertiary)]" />
               <span className="mt-2 text-xs font-bold text-[var(--lp-ink-tertiary)]">
@@ -142,7 +142,7 @@ export function SolutionSection() {
           {workflowSteps.map((step, i) => (
             <div
               key={step.label}
-              className="flex items-center gap-4 rounded-lg border border-[var(--lp-border)] bg-white px-4 py-3"
+              className="flex items-center gap-4 rounded-lg border border-[var(--lp-border)] bg-[var(--lp-surface)] px-4 py-3"
             >
               <div
                 className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border text-xs font-bold"

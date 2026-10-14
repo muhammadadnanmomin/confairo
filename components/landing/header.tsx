@@ -20,6 +20,7 @@ export function Header() {
   const router = useRouter();
   const pathname = usePathname();
 
+  const isUserGuideActive = pathname === "/user-guide" || pathname.startsWith("/user-guide/");
   const isBlogActive = pathname === "/blog" || pathname.startsWith("/blog/");
   const isConferencesActive = pathname === "/conferences" || pathname.startsWith("/conferences/");
 
@@ -31,10 +32,9 @@ export function Header() {
   }
 
   const navLinkClass = (active: boolean) =>
-    `text-[13px] font-medium transition-colors duration-200 ${
-      active
-        ? "text-[var(--lp-accent)] border-b-2 border-current pb-0.5"
-        : "lp-link"
+    `text-[13px] font-medium transition-colors duration-200 ${active
+      ? "text-[var(--lp-accent)] border-b-2 border-current pb-0.5"
+      : "lp-link"
     }`;
 
   return (
@@ -57,10 +57,7 @@ export function Header() {
 
         {/* Desktop Nav */}
         <nav className="hidden items-center gap-6 md:flex" aria-label="Main navigation">
-          <Link href="/#features" className={navLinkClass(false)}>
-            Features
-          </Link>
-          <Link href="/#how-it-works" className={navLinkClass(false)}>
+          <Link href="/user-guide" className={navLinkClass(isUserGuideActive)}>
             How It Works
           </Link>
           <Link href="/#pricing" className={navLinkClass(false)}>
@@ -152,9 +149,12 @@ export function Header() {
             </Link>
 
             <Link
-              href="#how-it-works"
+              href="/user-guide"
               onClick={() => setMobileMenuOpen(false)}
-              className="rounded-md px-3 py-2 text-sm font-medium text-[var(--lp-ink-secondary)] hover:bg-[var(--lp-surface-subtle)]"
+              className={`rounded-md px-3 py-2 text-sm font-medium ${isUserGuideActive
+                ? "text-[var(--lp-accent)] bg-[var(--lp-accent-light)]"
+                : "text-[var(--lp-ink-secondary)] hover:bg-[var(--lp-surface-subtle)]"
+                }`}
             >
               How It Works
             </Link>
@@ -170,11 +170,10 @@ export function Header() {
             <Link
               href="/blog"
               onClick={() => setMobileMenuOpen(false)}
-              className={`rounded-md px-3 py-2 text-sm font-medium ${
-                isBlogActive
-                  ? "text-[var(--lp-accent)] bg-[var(--lp-accent-light)]"
-                  : "text-[var(--lp-ink-secondary)] hover:bg-[var(--lp-surface-subtle)]"
-              }`}
+              className={`rounded-md px-3 py-2 text-sm font-medium ${isBlogActive
+                ? "text-[var(--lp-accent)] bg-[var(--lp-accent-light)]"
+                : "text-[var(--lp-ink-secondary)] hover:bg-[var(--lp-surface-subtle)]"
+                }`}
             >
               Blog
             </Link>
@@ -182,11 +181,10 @@ export function Header() {
             <Link
               href="/conferences"
               onClick={() => setMobileMenuOpen(false)}
-              className={`rounded-md px-3 py-2 text-sm font-medium ${
-                isConferencesActive
-                  ? "text-[var(--lp-accent)] bg-[var(--lp-accent-light)]"
-                  : "text-[var(--lp-ink-secondary)] hover:bg-[var(--lp-surface-subtle)]"
-              }`}
+              className={`rounded-md px-3 py-2 text-sm font-medium ${isConferencesActive
+                ? "text-[var(--lp-accent)] bg-[var(--lp-accent-light)]"
+                : "text-[var(--lp-ink-secondary)] hover:bg-[var(--lp-surface-subtle)]"
+                }`}
             >
               Conferences
             </Link>

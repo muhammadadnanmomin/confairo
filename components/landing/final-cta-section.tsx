@@ -21,7 +21,7 @@ export function FinalCTASection() {
   return (
     <section
       className="px-4 py-14 sm:px-6 sm:py-18 lg:px-8"
-      style={{ backgroundColor: "var(--lp-surface)" }}
+      style={{ backgroundColor: "var(--lp-surface-subtle)" }}
     >
       <div className="mx-auto max-w-2xl text-center">
 
@@ -51,10 +51,6 @@ export function FinalCTASection() {
             Book a Demo
           </button>
         </div>
-
-        <p className="mt-5 text-sm text-[var(--lp-ink-tertiary)]">
-          No credit card required
-        </p>
 
       </div>
     </section>

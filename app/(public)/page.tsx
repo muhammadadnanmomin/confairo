@@ -1,12 +1,7 @@
 import type { Metadata } from "next";
 
 import { HeroSection } from "@/components/landing/hero-section";
-import { ProblemSection } from "@/components/landing/problem-section";
-import { SolutionSection } from "@/components/landing/solution-section";
 import { FeaturesSection } from "@/components/landing/features-section";
-import { ProductExperienceSection } from "@/components/landing/product-experience-section";
-import { MidPageDemoCTA } from "@/components/landing/mid-page-demo-cta";
-import { HowItWorksSection } from "@/components/landing/how-it-works";
 import { AudienceSection } from "@/components/landing/audience-section";
 import { AIDemoSection } from "@/components/landing/ai-demo-section";
 import { TrustSection } from "@/components/landing/trust-section";
@@ -43,43 +38,28 @@ export default function Home() {
       {/* 1. Hero — Headline + CTA + Trust */}
       <HeroSection />
 
-      {/* 2. Problem — Conference management fragmentation */}
-      <ProblemSection />
-
-      {/* 3. Platform — One workflow, seven steps */}
-      <SolutionSection />
-
-      {/* 4. Core Capabilities — Six modules */}
+      {/* 2. Core Capabilities — Six modules */}
       <FeaturesSection />
 
-      {/* 5. Product Experience — Dashboard preview */}
-      <ProductExperienceSection />
-
-      {/* 6. Mid-page CTA — Book a Demo */}
-      <MidPageDemoCTA />
-
-      {/* 7. How It Works — Set up → Run → Finish */}
-      <HowItWorksSection />
-
-      {/* 8. Who It's For — Organizers, institutions, communities */}
+      {/* 3. Who It's For — Organizers, institutions, communities */}
       <AudienceSection />
 
-      {/* 9. AI Assistance — Reviewer, analysis, similarity */}
+      {/* 4. AI Assistance — Reviewer, analysis, similarity */}
       <AIDemoSection />
 
-      {/* 10. Trust — Product-based credibility signals */}
+      {/* 5. Trust — Product-based credibility signals */}
       <TrustSection />
 
-      {/* 11. Pricing — Free-first positioning */}
+      {/* 6. Pricing — Free-first positioning */}
       <PricingSection />
 
-      {/* 12. Comparison — Confairo vs traditional */}
+      {/* 7. Comparison — Confairo vs traditional */}
       <ComparisonSection />
 
-      {/* 13. Social Proof — Testimonials + Use Cases */}
+      {/* 8. Social Proof — Testimonials + Use Cases */}
       {/* <SocialProofSection /> */}
 
-      {/* 14. Final CTA — Before footer */}
+      {/* 8. Final CTA — Before footer */}
       <FinalCTASection />
 
     </main>

@@ -32,7 +32,7 @@ export function ComparisonSection() {
     <section
       id="comparison"
       className="px-4 py-14 sm:px-6 sm:py-18 lg:px-8"
-      style={{ backgroundColor: "var(--lp-surface-subtle)" }}
+      style={{ backgroundColor: "var(--lp-surface)" }}
     >
       <div className="mx-auto max-w-7xl">
 
@@ -49,7 +49,7 @@ export function ComparisonSection() {
 
         {/* Connected workflow visual */}
         <div className="mx-auto mt-10 max-w-3xl">
-          <div className="rounded-lg border border-[var(--lp-border)] bg-[var(--lp-surface)] p-6 sm:p-8">
+          <div className="rounded-lg border border-[var(--lp-border)] bg-[var(--lp-surface-subtle)] p-6 sm:p-8">
 
             {/* Desktop — two grouped rows with arrows */}
             <div className="hidden sm:block space-y-5">

@@ -72,14 +72,9 @@ export function HeroSection() {
           {/* ── Left — Text Content ── */}
           <div className="mx-auto max-w-xl text-center lg:text-left lg:mx-0">
 
-            {/* Eyebrow */}
-            <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[var(--lp-accent)]">
-              Academic Conference Management
-            </p>
-
             {/* Heading */}
-            <h1 className="mt-4 text-balance text-[2rem] font-bold tracking-tight text-[var(--lp-ink)] sm:text-[2.5rem] sm:leading-[1.2] lg:text-[3rem] lg:leading-[1.15]">
-              Manage your academic conference from submission to certificate.
+            <h1 className="text-balance text-[2rem] font-bold tracking-tight text-[var(--lp-ink)] sm:text-[2.5rem] sm:leading-[1.2] lg:text-[3rem] lg:leading-[1.15]">
+              Empowering Academic Conferences
             </h1>
 
             {/* Description */}
@@ -99,7 +94,7 @@ export function HeroSection() {
               </button>
 
               <Link
-                href="/#how-it-works"
+                href="/user-guide"
                 className="inline-flex items-center gap-2 rounded-md border border-[var(--lp-border)] px-6 py-2.5 text-sm font-medium text-[var(--lp-ink-secondary)] transition-colors duration-200 hover:border-[var(--lp-border-strong)] hover:text-[var(--lp-ink)]"
               >
                 See How It Works
@@ -116,22 +111,6 @@ export function HeroSection() {
                 Set up your organizer workspace →
               </button>
             </p>
-
-            {/* Trust indicators */}
-            <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-sm text-[var(--lp-ink-tertiary)]">
-              <span className="inline-flex items-center gap-1.5">
-                <span className="h-1 w-1 rounded-full bg-[var(--lp-positive)]" />
-                Built for academic conferences
-              </span>
-              <span className="inline-flex items-center gap-1.5">
-                <span className="h-1 w-1 rounded-full bg-[var(--lp-positive)]" />
-                Submission-to-certificate workflow
-              </span>
-              <span className="inline-flex items-center gap-1.5">
-                <span className="h-1 w-1 rounded-full bg-[var(--lp-positive)]" />
-                Organizer, reviewer & participant access
-              </span>
-            </div>
 
           </div>
 

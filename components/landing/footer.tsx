@@ -1,6 +1,24 @@
 import Link from "next/link";
 import { ThemeLogo } from "@/components/theme-logo";
-import { Mail, Phone } from "lucide-react";
+import { Mail, Phone, Linkedin } from "lucide-react";
+
+/* ------------------------------------------------------------------ */
+/*  Social Icons                                                       */
+/* ------------------------------------------------------------------ */
+
+function XIcon({ className = "h-4 w-4" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      className={className}
+      fill="currentColor"
+      style={{ color: "#FFFFFF" }}
+    >
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  );
+}
 
 const navigation = {
   product: [
@@ -38,7 +56,7 @@ export function Footer() {
       className="border-t px-4 py-10 sm:px-6 lg:px-8"
       style={{
         borderColor: "var(--lp-border)",
-        backgroundColor: "var(--lp-surface-subtle)",
+        backgroundColor: "var(--lp-surface)",
       }}
     >
       <div className="mx-auto max-w-7xl">
@@ -76,6 +94,31 @@ export function Footer() {
                 <Phone className="h-3.5 w-3.5 text-[var(--lp-accent)]" />
                 +91-7796453687
               </div>
+            </div>
+
+            {/* Social Links */}
+            <div className="mt-4 flex items-center gap-2.5">
+              <a
+                href="https://www.linkedin.com/company/confairo"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Confairo on LinkedIn"
+                title="Confairo on LinkedIn"
+                className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-[#161B26] text-white shadow-xs transition-colors duration-200 hover:bg-[var(--lp-accent)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--lp-accent)] dark:bg-[#252C3D] dark:border dark:border-[var(--lp-border)] dark:hover:bg-[var(--lp-accent)] dark:hover:border-transparent"
+              >
+                <Linkedin className="h-4 w-4" style={{ color: "#FFFFFF" }} />
+              </a>
+
+              <a
+                href="https://x.com/confairo_"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Confairo on X (formerly Twitter)"
+                title="Confairo on X"
+                className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-[#161B26] text-white shadow-xs transition-colors duration-200 hover:bg-[var(--lp-accent)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--lp-accent)] dark:bg-[#252C3D] dark:border dark:border-[var(--lp-border)] dark:hover:bg-[var(--lp-accent)] dark:hover:border-transparent"
+              >
+                <XIcon className="h-4 w-4" />
+              </a>
             </div>
 
           </div>

@@ -33,6 +33,7 @@ import {
   Layers,
   Sparkles,
   Crown,
+  Pencil,
 } from "lucide-react";
 
 import Link from "next/link";
@@ -58,7 +59,7 @@ function formatDate(date: string | null) {
 
 export default function OrganizerDashboard() {
   const { profile } = useProfile();
-  const { organization } = useOrganization();
+  const { organization, loading: orgLoading } = useOrganization();
   const plan = usePlan();
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
 
@@ -238,11 +239,21 @@ export default function OrganizerDashboard() {
             Organizer Dashboard
           </h1>
 
-          {organization ? (
-            <p className="text-muted-foreground mt-1 flex items-center gap-2">
-              <Building2 className="h-4 w-4" />
-              {organization.name}
-            </p>
+          {orgLoading ? (
+            <div className="h-5 w-48 mt-1.5 animate-pulse rounded bg-muted" />
+          ) : organization ? (
+            <div className="text-muted-foreground mt-1 flex flex-wrap items-center gap-2">
+              <span className="flex items-center gap-1.5 font-medium text-foreground">
+                <Building2 className="h-4 w-4 text-muted-foreground" />
+                {organization.name}
+              </span>
+              <Button asChild variant="ghost" size="sm" className="h-7 px-2 text-xs text-muted-foreground hover:text-foreground">
+                <Link href="/dashboard/organizer/settings" className="inline-flex items-center gap-1">
+                  <Pencil className="h-3 w-3" />
+                  Edit Organization
+                </Link>
+              </Button>
+            </div>
           ) : (
             <p className="text-warning mt-1">
               No organization found
@@ -251,9 +262,9 @@ export default function OrganizerDashboard() {
         </div>
 
         <div className="flex gap-2">
-          {!organization && (
+          {!orgLoading && !organization && (
             <Button asChild variant="outline">
-              <Link href="/dashboard/organizer/create">
+              <Link href="/dashboard/onboarding/organization">
                 Create Organization
               </Link>
             </Button>

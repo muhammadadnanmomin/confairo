@@ -16,21 +16,45 @@ interface Profile {
   created_at?: string;
 }
 
+// Module-level cache to eliminate reload/flicker across internal navigations
+let cachedProfile: Profile | null = null;
+let profileLoaded = false;
+let isFetchingProfile = false;
+const profileListeners = new Set<(p: Profile | null) => void>();
+
+function notifyProfileListeners(p: Profile | null) {
+  cachedProfile = p;
+  profileLoaded = true;
+  profileListeners.forEach((fn) => fn(p));
+}
+
 export function useProfile() {
-  const [profile, setProfile] = useState<Profile | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [profile, setProfile] = useState<Profile | null>(cachedProfile);
+  const [loading, setLoading] = useState<boolean>(!profileLoaded);
 
   useEffect(() => {
     let mounted = true;
 
+    const listener = (p: Profile | null) => {
+      if (mounted) {
+        setProfile(p);
+        setLoading(false);
+      }
+    };
+    profileListeners.add(listener);
+
     async function loadProfile(user: any) {
       if (!user) {
+        notifyProfileListeners(null);
         if (mounted) {
           setProfile(null);
           setLoading(false);
         }
         return;
       }
+
+      if (isFetchingProfile && profileLoaded) return;
+      isFetchingProfile = true;
 
       const { data, error } = await supabase
         .from("profiles")
@@ -46,31 +70,39 @@ export function useProfile() {
         .eq("id", user.id)
         .single();
 
+      isFetchingProfile = false;
+
+      if (!error && data) {
+        notifyProfileListeners(data);
+      } else {
+        if (error) console.error("Profile load error:", error);
+        notifyProfileListeners(null);
+      }
+
       if (mounted) {
-        if (!error && data) {
-          setProfile(data);
-        } else {
-          console.error("Profile load error:", error);
-          setProfile(null);
-        }
         setLoading(false);
       }
     }
 
-    /* Load current user (server-validated, not from local storage) */
-    supabase.auth.getUser().then(({ data }) => {
-      loadProfile(data.user);
-    });
+    if (!profileLoaded && !isFetchingProfile) {
+      supabase.auth.getUser().then(({ data }) => {
+        if (mounted) loadProfile(data.user);
+      });
+    }
 
-    /* Listen for auth changes */
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
-      loadProfile(session?.user);
+      if (_event === "SIGNED_OUT") {
+        notifyProfileListeners(null);
+      } else if (session?.user) {
+        loadProfile(session.user);
+      }
     });
 
     return () => {
       mounted = false;
+      profileListeners.delete(listener);
       subscription.unsubscribe();
     };
   }, []);

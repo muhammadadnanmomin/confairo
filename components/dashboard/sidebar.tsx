@@ -77,7 +77,7 @@ const organizerNav = [
   { name: "Billing", href: "/dashboard/organizer/billing", icon: Receipt },
   { name: "Certificates", href: "/dashboard/organizer/certificates", icon: Award },
   { name: "Notifications", href: "/dashboard/organizer/notifications", icon: Bell },
-  { name: "Settings", href: "/dashboard/settings", icon: Settings },
+  { name: "Settings", href: "/dashboard/organizer/settings", icon: Settings },
 ];
 
 const reviewerNav = [
@@ -113,44 +113,32 @@ export function DashboardSidebar({
   const router = useRouter();
   const { organization } = useOrganization();
 
-  const [activeRole, setActiveRole] = useState(role);
+  // Derive role synchronously from URL or fallback
+  const resolvedRole = pathname.includes("/organizer")
+    ? "organizer"
+    : pathname.includes("/reviewer")
+    ? "reviewer"
+    : pathname.includes("/admin")
+    ? "admin"
+    : role;
 
-  /* Sync with localStorage */
+  const [activeRole, setActiveRole] = useState(resolvedRole);
+
   useEffect(() => {
-    const stored = localStorage.getItem("activeRole");
+    setActiveRole(resolvedRole);
+    try {
+      localStorage.setItem("activeRole", resolvedRole);
+    } catch {}
+  }, [resolvedRole]);
 
-    // detect role from URL
-    if (pathname.includes("/organizer")) {
-      setActiveRole("organizer");
-      localStorage.setItem("activeRole", "organizer");
-      return;
-    }
-
-    if (pathname.includes("/reviewer")) {
-      setActiveRole("reviewer");
-      localStorage.setItem("activeRole", "reviewer");
-      return;
-    }
-
-    if (pathname.includes("/admin")) {
-      setActiveRole("admin");
-      localStorage.setItem("activeRole", "admin");
-      return;
-    }
-
-    if (stored) {
-      setActiveRole(stored);
-    } else {
-      setActiveRole(role);
-    }
-  }, [pathname, role]);
+  const effectiveRole = resolvedRole || activeRole;
 
   let navItems =
-    activeRole === "admin"
+    effectiveRole === "admin"
       ? adminNav
-      : activeRole === "organizer"
+      : effectiveRole === "organizer"
         ? organizerNav
-        : activeRole === "reviewer"
+        : effectiveRole === "reviewer"
           ? reviewerNav
           : participantNav;
 
@@ -244,9 +232,17 @@ export function DashboardSidebar({
             title={organization.name}
           >
             {/* Avatar */}
-            <div className="flex h-9 w-9 items-center justify-center rounded-md bg-primary/10 text-primary font-semibold shrink-0">
-              {organization.name.charAt(0)}
-            </div>
+            {organization.logo_url ? (
+              <img
+                src={organization.logo_url}
+                alt={organization.name}
+                className="h-9 w-9 rounded-md object-contain border bg-background shrink-0"
+              />
+            ) : (
+              <div className="flex h-9 w-9 items-center justify-center rounded-md bg-primary/10 text-primary font-semibold shrink-0">
+                {organization.name.charAt(0)}
+              </div>
+            )}
 
             {!collapsed && (
               <div className="flex flex-col min-w-0">

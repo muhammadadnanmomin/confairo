@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import type { Metadata } from "next";
 
 import { supabaseServerClient } from "@/lib/supabase/server-client";
@@ -48,6 +48,25 @@ export async function generateMetadata({
         .maybeSingle();
 
     if (!org) {
+        try {
+            const { data: historyRecord } = await supabaseServerClient
+                .from("organization_slug_history")
+                .select("organization:organizations(name, description, slug)")
+                .eq("slug", slug)
+                .maybeSingle();
+
+            const histOrg = historyRecord?.organization as any;
+            if (histOrg?.name) {
+                return {
+                    title: `${histOrg.name} | Confairo`,
+                    description:
+                        histOrg.description ||
+                        `View conferences and research events hosted by ${histOrg.name}.`,
+                };
+            }
+        } catch {
+            // history table might not exist yet
+        }
         return { title: "Organization Not Found | Confairo" };
     }
 
@@ -69,15 +88,42 @@ export default async function OrganizationProfilePage({
     const { slug } = await params;
 
     /* --- Fetch organization --- */
-    const { data: org } = await supabaseServerClient
+    let { data: org } = await supabaseServerClient
         .from("organizations")
         .select(
-            "id, name, description, logo_url, website, linkedin_url, country, created_at"
+            "id, name, description, logo_url, website, linkedin_url, country, created_at, slug"
         )
         .eq("slug", slug)
         .maybeSingle();
 
-    if (!org) return notFound();
+    /* --- If not found, check historical slug for redirect --- */
+    if (!org) {
+        try {
+            const { data: historyRecord } = await supabaseServerClient
+                .from("organization_slug_history")
+                .select("organization:organizations(id, slug)")
+                .eq("slug", slug)
+                .maybeSingle();
+
+            const histOrg = historyRecord?.organization as any;
+            if (histOrg?.slug) {
+                redirect(`/org/${histOrg.slug}`);
+            }
+        } catch (redirectErr) {
+            // Re-throw Next.js redirect exception if triggered
+            if (
+                redirectErr &&
+                typeof redirectErr === "object" &&
+                "digest" in redirectErr &&
+                typeof (redirectErr as any).digest === "string" &&
+                (redirectErr as any).digest.startsWith("NEXT_REDIRECT")
+            ) {
+                throw redirectErr;
+            }
+        }
+
+        return notFound();
+    }
 
     /* --- Fetch hosted conferences --- */
     const { data: conferences } = await supabaseServerClient

@@ -227,7 +227,13 @@ export function DashboardHeader({
 
             {/* Settings */}
             <DropdownMenuItem
-              onSelect={() => router.push("/dashboard/settings")}
+              onSelect={() =>
+                router.push(
+                  activeRole === "organizer"
+                    ? "/dashboard/organizer/settings"
+                    : "/dashboard/settings"
+                )
+              }
               className="cursor-pointer"
             >
               <Settings className="mr-2 h-4 w-4" />
